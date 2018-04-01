@@ -1,0 +1,37 @@
+<strings>
+    <string id="AppName">SolarEdgeWidget</string>
+    
+    <string id="UPDATING">Verversen...</string>
+    <string id="CURRENT">Huidig</string>
+    <string id="TODAY">Vandaag</string>
+    <string id="THISMONTH">Maand</string>
+    <string id="THISYEAR">Jaar</string>
+    <string id="TOTAL">Totaal</string>
+    
+    <string id="NOBLUETOOTHERRORTEXT1">Bluetooth Uit</string>
+    <string id="NOBLUETOOTHERRORTEXT2">Zet Bluetooth aan</string>
+    <string id="NOBLUETOOTHERRORTEXT3">en pair met handset</string>
+        
+    <string id="INVALIDSETTINGSTEXT1">Foute Instellingen</string>
+    <string id="INVALIDSETTINGSTEXT2">Configureer widget in</string>
+    <string id="INVALIDSETTINGSTEXT3">Garmin Connect of Express</string>
+    
+    <string id="NOINTERNET1">Geen Internet"</string>
+    <string id="NOINTERNET2">Zet internetverbinding"</string>
+    <string id="NOINTERNET3">aan op handset"</string>
+            
+        
+    <string id="title_startpage">Startpagina</string>
+    <string id="opt_page_1">Huidige Vermogen</string>
+    <string id="opt_page_2">Vandaag</string>
+    <string id="opt_page_3">Deze Maand</string>
+    <string id="opt_page_4">Dit Jaar</string>
+    <string id="opt_page_5">Totaal</string>
+    <string id="opt_page_6">Overzicht</string>
+    
+    
+    
+    <string id="title_siteid">Site ID</string>
+    <string id="title_API_key">Solar Edge API Key</string>
+    
+</strings>

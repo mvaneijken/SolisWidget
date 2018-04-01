@@ -1,0 +1,34 @@
+<strings>
+    <string id="AppName">SolarEdgeWidget</string>
+    
+    <string id="UPDATING">Updating...</string>
+    <string id="CURRENT">Current</string>
+    <string id="TODAY">Today</string>
+    <string id="THISMONTH">Month</string>
+    <string id="THISYEAR">Year</string>
+    <string id="TOTAL">Total</string>
+    
+    <string id="NOBLUETOOTHERRORTEXT1">No Bluetooth</string>
+    <string id="NOBLUETOOTHERRORTEXT2">Turn on Bluetooth</string>
+    <string id="NOBLUETOOTHERRORTEXT3">And pair with handset</string>
+    
+    <string id="INVALIDSETTINGSTEXT1">Invalid settings</string>
+    <string id="INVALIDSETTINGSTEXT2">Configure correct settings at</string>
+    <string id="INVALIDSETTINGSTEXT3">Garmin Connect or Express</string>
+    
+    <string id="NOINTERNET1">No Internet"</string>
+    <string id="NOINTERNET2">turn on wifi or data"</string>
+    <string id="NOINTERNET3">connection on phone"</string>
+            
+    <string id="title_startpage">Starting Page</string>
+    <string id="opt_page_1">Current Power</string>
+    <string id="opt_page_2">Today</string>
+    <string id="opt_page_3">Last Month</string>
+    <string id="opt_page_4">Last Year</string>
+    <string id="opt_page_5">Total</string>
+    <string id="opt_page_6">Overview</string>
+    
+    <string id="title_siteid">Site ID</string>
+    <string id="title_API_key">Solar Edge API Key</string>
+    
+</strings>
