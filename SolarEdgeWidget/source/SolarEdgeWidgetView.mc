@@ -6,24 +6,33 @@ using Toybox.Time.Gregorian;
 using Toybox.Communications as Comm;
 using Toybox.System as Sys;
 
+
+// Commands from the delegate
 var DOWEBREQUEST=1;
 
+// Status screens vars
+var ShowRefreshing=false;
 var ShowError=false;
 var Errortext1;
 var Errortext2;
 var Errortext3;
 
-var ShowRefreshing=false;
-
-var CurrentPage; 
+// vars to remember 
 var Current;
 var Today; 
 var ThisMonth;
 var ThisYear;
 var Total;
 var LastUpdate;
-var UpdateInterval=new Time.Duration(15*60);
-var TimeDifference=new Time.Duration(2*3600);
+var NextUpdate;
+
+// Settings
+var CurrentPage; 
+var SiteID;
+var API_Key;
+
+// Constants
+var UpdateInterval=15; // in Minutes
 
 
 function NextPage()
@@ -60,34 +69,81 @@ function PreviousPage()
 class SolarEdgeWidgetView extends Ui.View {
     
     function initialize() {
+        retrieveSettings();
     
-    	// Get Current Page From settings
-    	CurrentPage=App.getApp().getProperty("PROP_STARTPAGE");
-
         View.initialize();
     }
     
+   function retrieveSettings() {
+	    // Get SiteID From settings
+	    SiteID = App.getApp().getProperty("PROP_SITEID");
+	    	
+	    // Get API Key from Settings
+	    API_Key = App.getApp().getProperty("PROP_APIKEY");		
+	    
+	    // Get Current Page From settings
+    	CurrentPage=App.getApp().getProperty("PROP_STARTPAGE");
+	    
+	}
+	
+	function moment_from_info(info)
+	{
+	    return Gregorian.moment({
+	        :year   => info.year,
+	        :month  => info.month,
+	        :day    => info.day,
+	        :hour   => info.hour,
+	        :minute => info.min,
+	        :second => info.sec
+	    });
+	}
+	
+	function StringFromInfo(info)
+	{
+	   var DateText = info.year+"-"+info.month+"-"+info.day+" "+info.hour+":"+info.min+":"+info.sec;
+	   return DateText;
+	}
+	
+	function StringFromMoment(moment)
+	{
+	    var info=Gregorian.info(moment,Time.FORMAT_MEDIUM);
+	    return StringFromInfo(info);
+	}
+    
+    
     // function to convert date in string format to moment object
-    function ParseDateToMoment(date) 
+    function DetermineNextUpdateFromLastUpdate() 
     {
-    	// 0123456789012345678   positions
-    	// 2018-03-25 20:16:18   date format
     	
-    	// check if correct field
-    	// if (date.length()<19) {
-    		//return null;
-    	// }
+    	// There might be a time differnce, so only use the number of minutes from the string, 
+    	// and derive the lastupdate time from the current time (which is alway max 15 mins away i))
     	
-    	var moment = Gregorian.moment({
-    		:year	=>	date.substring( 0,  4).toNumber(),
-    		:month	=>	date.substring( 5,  7).toNumber(),
-    		:day 	=>	date.substring( 8, 10).toNumber(),
-    		:hour	=>	date.substring(11, 13).toNumber(),
-    		:minute	=>	date.substring(14, 16).toNumber(),
-    		:second	=>	date.substring(17, 19).toNumber()
-    	});
+    	// Determin minute number from lastupdate string
+    	var LastUpdateMinute=LastUpdate.substring(14, 16).toNumber();
     	
-    	return moment;
+    	// derive offset from GetClockTime object.
+		var myTime = System.getClockTime(); // ClockTime object
+	    var timeZoneOffset = new Time.Moment(myTime.timeZoneOffset);
+	    
+    	// get current time as moment to calculate with
+    	var CurrentMoment=Time.now().value();
+    
+    	// correct current hour if 12'o clock sign has passed after last update
+    	if (myTime.min<LastUpdateMinute) 
+    	{
+    	   // hour has passed, so make sure the we are in the previous hour.
+    	   CurrentMoment=CurrentMoment-Gregorian.SECONDS_PER_HOUR; 
+    	}
+    	
+    	// Create the gregorian info object for the previous update moment (Current time, where minute number is changed to the minute number of the reported last update)
+    	var gpreviousupdate = Gregorian.info(new Time.Moment(CurrentMoment), Time.FORMAT_MEDIUM);
+    	gpreviousupdate.min=LastUpdateMinute;
+    	
+    	// Calculate Next Update Moment (=previousupdate+15mins-offset to correct timezone)
+       NextUpdate=moment_from_info(gpreviousupdate).value()+UpdateInterval*Gregorian.SECONDS_PER_MINUTE-myTime.timeZoneOffset;
+
+
+    	return NextUpdate;
     	
     }
     
@@ -109,6 +165,7 @@ class SolarEdgeWidgetView extends Ui.View {
         {
            // Turn of refreshpage
            ShowRefreshing=false;
+           
         
            // Check responsecode
            if (responseCode==200)
@@ -177,6 +234,8 @@ class SolarEdgeWidgetView extends Ui.View {
 		            
 		            // Format Last Update
 		            LastUpdate=data["overview"]["lastUpdateTime"]; 
+		            var a = DetermineNextUpdateFromLastUpdate();
+		            
 		       } else {
 		            // not parsable
 					Current = null;
@@ -218,16 +277,16 @@ class SolarEdgeWidgetView extends Ui.View {
     function makeRequest() {
     
         // Show refreshing page
-        ShowError=false;
-        ShowRefreshing=true;
+        ShowError=false; // turn off an error screen (if any)
+        ShowRefreshing=true; // make sure refreshingscreen is shown when updating the UI.
         Ui.requestUpdate();
         
-    
-		// Get SiteID From settings
-    	var SiteID = App.getApp().getProperty("PROP_SITEID");
-    	
-    	// Get API Key from Settings
-    	var API_Key = App.getApp().getProperty("PROP_APIKEY");
+        // only retrieve the settings if they've actually changed
+	    // Get SiteID From settings
+	    SiteID = App.getApp().getProperty("PROP_SITEID");
+	    	
+	    // Get API Key from Settings
+	    API_Key = App.getApp().getProperty("PROP_APIKEY");
     	
     	// Setup URL
     	var url="https://monitoringapi.solaredge.com/site/"+SiteID+"/overview.json?api_key="+API_Key;
@@ -262,29 +321,31 @@ class SolarEdgeWidgetView extends Ui.View {
        ThisYear = app.getProperty("ThisYear");
        Total = app.getProperty("Total");
        LastUpdate= app.getProperty("LastUpdate");
-
-
-       /* Auto Update always until timezones fixed
-       // Check if autoupdate is needed
-       if (LastUpdate==null) {
-          // some kind of error in previous session. Do update
-          makeRequest("verversen...");
-       } else {
-	       var NextUpdate=ParseDateToMoment(LastUpdate).add(UpdateInterval);
-	       var now = new Time.Moment(Time.now().value()).add(TimeDifference);
-	       if (now.greaterThan(NextUpdate))
-	       {
-	         makeRequest(Current);
-	       } else {
-	          // Current=now.value();
-	       }    
-       } */
+       NextUpdate = app.getProperty("NextUpdate");
        
-       makeRequest();
+       
+       // Check if autoupdate is needed
+       if (NextUpdate==null) {
+          // some kind of error in previous session. Do update
+          makeRequest();
+       } else {
+	       // var NextUpdate=ParseDateToMoment(LastUpdate).add(UpdateInterval);
+	       if (Time.now().greaterThan(new Time.Moment(NextUpdate)))
+	       {
+	         makeRequest();
+	       }  
+       } 
+       
     }
     
     // Update the view
     function onUpdate(dc) {
+    
+        if ($.gSettingsChanged) {
+			$.gSettingsChanged = false;
+			retrieveSettings();
+		}
+    
         // Call the parent onUpdate function to redraw the layout
         // View.onUpdate(dc);
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
@@ -367,12 +428,16 @@ class SolarEdgeWidgetView extends Ui.View {
        
        var app=Application.getApp();
        
+       
        app.setProperty("Current",Current);       
        app.setProperty("Today", Today); 
        app.setProperty("ThisMonth", ThisMonth);
        app.setProperty("ThisYear", ThisYear);
        app.setProperty("Total",Total);
        app.setProperty("LastUpdate", LastUpdate);
+       app.setProperty("NextUpdate", NextUpdate);
+
+
       
     }
     
