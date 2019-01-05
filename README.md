@@ -3,6 +3,7 @@
 This Garmin Connect IQ  Widget allows you to monitor your solar output from your SolarEdge PV System on your Garmin ConnectIQ device
 
 This widget requires the following to run correctly
+- a garmin Connect IQ Smartwatch or device
 - a handset with an active internet connection 
 - which is paired with your device using Garmin Connect 
 - the SolarEdge API key and Site ID configured in the settings of the widget 
