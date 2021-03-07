@@ -7,7 +7,7 @@ using Toybox.Application as App;
 using Toybox.WatchUi as Ui;
 using Toybox.System as System;
 
-class SolarEdgeWidgetDelegate extends Ui.BehaviorDelegate {
+class OmnikWidgetDelegate extends Ui.BehaviorDelegate {
     var notify;
 
     // Handle menu button press

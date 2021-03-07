@@ -20,7 +20,7 @@
         <setting propertyKey="@Properties.PROP_USERNAME" title="@Strings.title_username">
         	<settingConfig type="AlphaNumeric" required="true"></settingConfig>
         </setting>
-                <setting propertyKey="@Properties.PROP_PASSWORD" title="@Strings.title_password">
+		<setting propertyKey="@Properties.PROP_PASSWORD" title="@Strings.title_password">
         	<settingConfig type="AlphaNumeric" required="true"></settingConfig>
         </setting>
 		<setting propertyKey="@Properties.PROP_C_USER_ID" title="@Strings.title_c_user_id">

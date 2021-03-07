@@ -1,5 +1,5 @@
 <strings>
-    <string id="AppName">SolarEdgeWidget</string>
+    <string id="AppName">OmnikWidget</string>
     
     <string id="UPDATING">Verversen...</string>
     <string id="CURRENT">Huidig</string>
@@ -31,7 +31,10 @@
     
     
     
-    <string id="title_siteid">Site ID</string>
-    <string id="title_API_key">Solar Edge API Key</string>
+    <string id="title_username">Omnik Portal Gebruikersnaam</string>
+    <string id="title_password">Omnik Portal Wachtwoord</string>
     
+    <string id="title_c_user_id">Omnik API User ID (Wordt automatisch ingevuld)</string>
+    <string id="title_uid">Omnik API Site ID (Wordt automatisch ingevuld)</string> 
+
 </strings>
