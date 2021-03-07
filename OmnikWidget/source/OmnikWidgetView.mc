@@ -6,7 +6,6 @@ using Toybox.Time.Gregorian;
 using Toybox.Communications as Comm;
 using Toybox.System as Sys;
 
-
 // Commands from the delegate
 var DOWEBREQUEST=1;
 
@@ -32,7 +31,6 @@ var appkey = "Ox7yu3Eivicheinguth9ef9kohngo9oo";
 var c_user_id;
 var plantid;
 
-
 // Settings
 var CurrentPage; 
 var UserName;
@@ -41,10 +39,8 @@ var Password;
 // Constants
 var UpdateInterval=15; // in Minutes
 
-
 function NextPage()
 {
-
    // Next Page pressed, increase the pagenumber
    CurrentPage++;
    
@@ -72,12 +68,10 @@ function PreviousPage()
    Ui.requestUpdate();
 }
 
-
 class OmnikWidgetView extends Ui.View {
     
     function initialize() {
-        retrieveSettings();
-    
+        retrieveSettings();  
         View.initialize();
     }
     
@@ -85,7 +79,7 @@ class OmnikWidgetView extends Ui.View {
 	    // Get UserName From settings
 	    UserName = App.getApp().getProperty("PROP_UserName");
 	    	
-	    // Get API Key from Settings
+	    // Get Password from Settings
 	    Password = App.getApp().getProperty("PROP_Password");		
 	    
 	    // Get Current Page From settings
@@ -95,8 +89,7 @@ class OmnikWidgetView extends Ui.View {
 		c_user_id=App.getApp().getProperty("PROP_C_USER_ID");
 
 		// Get the uid
-		uid=App.getApp().getProperty("PROP_UID");
-	    
+		uid=App.getApp().getProperty("PROP_UID");  
 	}
 	
 	function moment_from_info(info)
@@ -127,8 +120,7 @@ class OmnikWidgetView extends Ui.View {
     // function to convert date in string format to moment object
     function DetermineNextUpdateFromLastUpdate() 
     {
-    	
-    	// There might be a time differnce, so only use the number of minutes from the string, 
+    	// There might be a time difference, so only use the number of minutes from the string, 
     	// and derive the lastupdate time from the current time (which is alway max 15 mins away i))
     	
     	// Determin minute number from lastupdate string
@@ -153,33 +145,27 @@ class OmnikWidgetView extends Ui.View {
     	gpreviousupdate.min=LastUpdateMinute;
     	
     	// Calculate Next Update Moment (=previousupdate+15mins-offset to correct timezone)
-       NextUpdate=moment_from_info(gpreviousupdate).value()+UpdateInterval*Gregorian.SECONDS_PER_MINUTE-myTime.timeZoneOffset;
+       	NextUpdate=moment_from_info(gpreviousupdate).value()+UpdateInterval*Gregorian.SECONDS_PER_MINUTE-myTime.timeZoneOffset;
 
-
-    	return NextUpdate;
-    	
+		return NextUpdate;
     }
-    
     
     // Handle Command from Delegate view
     function HandleCommand (data)
     {
-
         // update of data requested
         if (data==DOWEBREQUEST) 
         {
             makeRequest();
         }
     }
-    
-    
+      
     // Receive the data from the web request
         function onReceive(responseCode, data) 
         {
            // Turn of refreshpage
            ShowRefreshing=false;
-           
-        
+               
            // Check responsecode
            if (responseCode==200)
            {
@@ -196,12 +182,15 @@ class OmnikWidgetView extends Ui.View {
 	       			Errortext3="Garmin Connect or Express";
 				}
 				else if (c_user_id.length == 0){
+					ShowError=false;
 		            c_user_id = data["c_user_id"].toString();
 				}
 				else if (uid == "-1 || uid.length == 0){
+					ShowError=false;
 					uid = data["plants"][0]["plant_id"].toString();
 				}
 				else{
+					ShowError=false;
 	          		if (data instanceof Dictionary) {
 	       
 						var power=0.0; // init variable
@@ -218,47 +207,47 @@ class OmnikWidgetView extends Ui.View {
 						// Format Today
 						power = data["today_energy"].toFloat();
 						if (power<1000) {
-						// Less than 1 kWh Present in Wh
-						Today=power.toNumber() + " Wh";
+							// Less than 1 kWh Present in Wh
+							Today=power.toNumber() + " Wh";
 						} else {
-						// > more than kWh, so present in in kWh
-						// Current=Lang.format("$1$ kWh",power/1000);
-						Today = (power/1000).format("%.2f") + " kWh";
+							// > more than kWh, so present in in kWh
+							// Current=Lang.format("$1$ kWh",power/1000);
+							Today = (power/1000).format("%.2f") + " kWh";
 						}   
 						
 						// Format This Month
 						power = data["monthly_energy"].toFloat();
 						if (power<1000) {
-						// Less than 1 kWh Present in Wh
-						ThisMonth=power.toNumber() + " Wh";
+							// Less than 1 kWh Present in Wh
+							ThisMonth=power.toNumber() + " Wh";
 						} else {
-						// > more than kWh, so present in in kWh
-						// Current=Lang.format("$1$ kWh",power/1000);
-						ThisMonth= (power/1000).format("%.1f") + " kWh";
+							// > more than kWh, so present in in kWh
+							// Current=Lang.format("$1$ kWh",power/1000);
+							ThisMonth= (power/1000).format("%.1f") + " kWh";
 						}   
 						
 						// Format This Year
 						power = data["yearly_energy"].toFloat();
 						if (power<1000) {
-						// Less than 1 kWh Present in Wh
-						ThisYear=power.toNumber() + " Wh";
+							// Less than 1 kWh Present in Wh
+							ThisYear=power.toNumber() + " Wh";
 						} else if (power<1000000) {
-						// > more than kWh, so present in in kWh
-						ThisYear= (power/1000).format("%.1f") + " kWh";
+							// > more than kWh, so present in in kWh
+							ThisYear= (power/1000).format("%.1f") + " kWh";
 						} else {
-						ThisYear= (power/1000000).format("%.2f") + " MWh";
+							ThisYear= (power/1000000).format("%.2f") + " MWh";
 						}
 			
 						// Format Total
 						power = data["today_energy"].toFloat();
 						if (power<1000) {
-						// Less than 1 kWh Present in Wh
-						Total=power.toNumber() + " Wh";
+							// Less than 1 kWh Present in Wh
+							Total=power.toNumber() + " Wh";
 						} else if (power<1000000) {
-						// > more than kWh, so present in in kWh
-						Total= (power/1000).format("%.1f") + " kWh";
+							// > more than kWh, so present in in kWh
+							Total= (power/1000).format("%.1f") + " kWh";
 						} else {
-						Total= (power/1000000).format("%.2f") + " MWh";
+							Total= (power/1000000).format("%.2f") + " MWh";
 						}
 						
 						// Format Last Update
@@ -319,6 +308,7 @@ class OmnikWidgetView extends Ui.View {
 			  "user_type" => 1
        		};
 		if (c_user_id.length = 0){
+			// Need to get the c_user_id of the user
 
 			// Setup URL
 			var url= BaseUrl+"/user/account_validate";
@@ -370,9 +360,7 @@ class OmnikWidgetView extends Ui.View {
 			// Make the authentication request
 			Comm.makeWebRequest(url,params,options,method(:onReceive));
 		}
-		
     }
-    
       
     // Load your resources here
     function onLayout(dc) {
@@ -392,8 +380,7 @@ class OmnikWidgetView extends Ui.View {
        Total = app.getProperty("Total");
        LastUpdate= app.getProperty("LastUpdate");
        NextUpdate = app.getProperty("NextUpdate");
-       
-       
+             
        // Check if autoupdate is needed
        if (NextUpdate==null) {
           // some kind of error in previous session. Do update
@@ -404,8 +391,7 @@ class OmnikWidgetView extends Ui.View {
 	       {
 	         makeRequest();
 	       }  
-       } 
-       
+       }     
     }
     
     // Update the view
@@ -486,8 +472,6 @@ class OmnikWidgetView extends Ui.View {
 	    	}
     	}
     }
-    
-    
 
     // Called when this View is removed from the screen. Save the
     // state of this View here. This includes freeing resources from
@@ -495,22 +479,13 @@ class OmnikWidgetView extends Ui.View {
     function onHide() {
     
        // Safe data
-       
        var app=Application.getApp();
-       
-       
        app.setProperty("Current",Current);       
        app.setProperty("Today", Today); 
        app.setProperty("ThisMonth", ThisMonth);
        app.setProperty("ThisYear", ThisYear);
        app.setProperty("Total",Total);
        app.setProperty("LastUpdate", LastUpdate);
-       app.setProperty("NextUpdate", NextUpdate);
-
-
-      
+       app.setProperty("NextUpdate", NextUpdate);      
     }
-    
-    
-
 }

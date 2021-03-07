@@ -4,7 +4,7 @@ using Toybox.WatchUi as Ui;
 var gSettingsChanged = true;
 
 
-class SolarEdgeWidgetApp extends App.AppBase {
+class OmnikWidgetApp extends App.AppBase {
     hidden var mView;
 
     function initialize() {
