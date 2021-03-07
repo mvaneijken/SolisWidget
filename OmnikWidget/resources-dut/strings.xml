@@ -19,8 +19,7 @@
     <string id="NOINTERNET1">Geen Internet"</string>
     <string id="NOINTERNET2">Zet internetverbinding"</string>
     <string id="NOINTERNET3">aan op handset"</string>
-            
-        
+              
     <string id="title_startpage">Startpagina</string>
     <string id="opt_page_1">Huidige Vermogen</string>
     <string id="opt_page_2">Vandaag</string>
@@ -28,8 +27,6 @@
     <string id="opt_page_4">Dit Jaar</string>
     <string id="opt_page_5">Totaal</string>
     <string id="opt_page_6">Overzicht</string>
-    
-    
     
     <string id="title_username">Omnik Portal Gebruikersnaam</string>
     <string id="title_password">Omnik Portal Wachtwoord</string>
