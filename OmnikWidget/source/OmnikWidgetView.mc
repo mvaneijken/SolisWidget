@@ -28,8 +28,8 @@ var BaseUrl = "https://api.omnikportal.com/v1";
 var uid = "-1";
 var appid = "10038";
 var appkey = "Ox7yu3Eivicheinguth9ef9kohngo9oo";
-var c_user_id;
-var plantid;
+var c_user_id = "-";
+var plantid = "-";
 
 // Settings
 var CurrentPage; 
@@ -76,10 +76,11 @@ class OmnikWidgetView extends Ui.View {
     
    function retrieveSettings() {
 	    // Get Username From settings
-	    Username = App.getApp().getProperty("PROP_UserName");
-	    	
+	    Username = App.getApp().getProperty("PROP_USERNAME");
+	    Sys.println(Username); 	
 	    // Get Password from Settings
-	    Password = App.getApp().getProperty("PROP_Password");		
+	    Password = App.getApp().getProperty("PROP_PASSWORD");		
+	    Sys.println(Password); 	
 	    
 	    // Get Current Page From settings
     	CurrentPage=App.getApp().getProperty("PROP_STARTPAGE");
@@ -163,14 +164,15 @@ class OmnikWidgetView extends Ui.View {
 	{
 		// Turn of refreshpage
 		ShowRefreshing=false;
+		Sys.println(responseCode);
+	Sys.println(data);
 			
 		// Check responsecode
 		if (responseCode==200)
 		{
 			// Make sure no error is shown	
 			ShowError=false;
-
-			if(data["error_msg"].length >= 0)
+			if(data["error_msg"].length() >= 0)
 			{
 				// Reset values to reinitiate login
 				ShowError=true;
@@ -180,15 +182,17 @@ class OmnikWidgetView extends Ui.View {
 				Errortext2="If needed try to remove the Omnik API User ID and Omnik API Site ID in";
 				Errortext3="Garmin Connect or Express";
 			}
-			else if (c_user_id.length == 0)
+			else if (c_user_id.length() < 2)
 			{
 				ShowError=false;
 				c_user_id = data["c_user_id"].toString();
+				Sys.println("uid:"+c_user_id);
 			}
-			else if (uid == "-1" || uid.length == 0)
+			else if (uid.length() < 2)
 			{
 				ShowError=false;
 				uid = data["plants"][0]["plant_id"].toString();
+				Sys.println("uid:"+uid);
 			}
 			else
 			{
@@ -328,7 +332,7 @@ class OmnikWidgetView extends Ui.View {
         ShowError=false; // turn off an error screen (if any)
         ShowRefreshing=true; // make sure refreshingscreen is shown when updating the UI.
         Ui.requestUpdate();
-		var url = "";
+		var url = BaseUrl;
 		var options = {                                           
 			:method => Communications.HTTP_REQUEST_METHOD_GET,      
 			:headers => {                                           
@@ -346,32 +350,35 @@ class OmnikWidgetView extends Ui.View {
 			  "user_password" => Password,
 			  "user_type" => 1
        		};
-		if (c_user_id.length == 0){
+       	
+       	Sys.println("c_user_id:"+c_user_id+",uid:"+uid);
+		if (c_user_id.length() < 2){
 			// Need to get the c_user_id of the user
 
 			// Setup URL
-			var url= BaseUrl+"/user/account_validate";
+			url= BaseUrl+"/user/account_validate";
 
 			//Options Variable
-			var options = {                                           
+			options = {                                           
 				:method => Communications.HTTP_REQUEST_METHOD_POST,      
 				:headers => {                                           
 						"Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED,
-						"uid" => uid,
+						"uid" => "-1",
 						"appid" => appid,
 						"appkey" => appkey
-				}
-			//	:responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON,
+				},
+				:responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
 			};
+			Sys.println(uid);
 		}
-		else if (uid == "-1" || uid.length == 0) {
+		else if (uid.length() < 2) {
 			// Need to get the uid of the user
 			
 			// Setup URL
-			var url= BaseUrl+"/plant/list";
+			url= BaseUrl+"/plant/list";
 
 			//Options Variable
-			var options = {                                           
+			options = {                                           
 				:method => Communications.HTTP_REQUEST_METHOD_GET,      
 				:headers => {                                           
 						"Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED,
@@ -384,10 +391,10 @@ class OmnikWidgetView extends Ui.View {
 		}
 		else{
 			// Setup URL
-			var url= BaseUrl+"/plant/data?plant_id="+plantid;
+			url= BaseUrl+"/plant/data?plant_id="+plantid;
 
 			//Options Variable
-			var options = {                                           
+			options = {                                           
 				:method => Communications.HTTP_REQUEST_METHOD_GET,      
 				:headers => {                                           
 						"Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED,
@@ -400,8 +407,8 @@ class OmnikWidgetView extends Ui.View {
 		}
 					
 		// Make the authentication request
-		Comm.makeWebRequest(url,params,options,method(:onReceive));
-		
+		Sys.println("url:"+url);
+		Comm.makeWebRequest(url,params,options,method(:onReceive));	
     }
       
     // Load your resources here
