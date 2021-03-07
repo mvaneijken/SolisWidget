@@ -1,4 +1,4 @@
 <drawables>
-    <bitmap id="SolarEdgeIcon" filename="SolarEdgeIcon.png" />
-    <bitmap id="solaredgelogo" filename="SolarEdge_logo_garmin.png"/>
+    <bitmap id="omnikicon" filename="omnikicon.png" />
+    <bitmap id="omniklogo" filename="omniklogo.png"/>
 </drawables>

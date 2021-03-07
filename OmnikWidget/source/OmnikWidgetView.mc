@@ -25,11 +25,18 @@ var ThisYear;
 var Total;
 var LastUpdate;
 var NextUpdate;
+var BaseUrl = "https://api.omnikportal.com/v1";
+var uid = "-1";
+var appid = "10038";
+var appkey = "Ox7yu3Eivicheinguth9ef9kohngo9oo";
+var c_user_id;
+var plantid;
+
 
 // Settings
 var CurrentPage; 
-var SiteID;
-var API_Key;
+var UserName;
+var Password;
 
 // Constants
 var UpdateInterval=15; // in Minutes
@@ -66,7 +73,7 @@ function PreviousPage()
 }
 
 
-class SolarEdgeWidgetView extends Ui.View {
+class OmnikWidgetView extends Ui.View {
     
     function initialize() {
         retrieveSettings();
@@ -75,14 +82,20 @@ class SolarEdgeWidgetView extends Ui.View {
     }
     
    function retrieveSettings() {
-	    // Get SiteID From settings
-	    SiteID = App.getApp().getProperty("PROP_SITEID");
+	    // Get UserName From settings
+	    UserName = App.getApp().getProperty("PROP_UserName");
 	    	
 	    // Get API Key from Settings
-	    API_Key = App.getApp().getProperty("PROP_APIKEY");		
+	    Password = App.getApp().getProperty("PROP_Password");		
 	    
 	    // Get Current Page From settings
     	CurrentPage=App.getApp().getProperty("PROP_STARTPAGE");
+
+		// Get the c_user_id
+		c_user_id=App.getApp().getProperty("PROP_C_USER_ID");
+
+		// Get the uid
+		uid=App.getApp().getProperty("PROP_UID");
 	    
 	}
 	
@@ -171,80 +184,97 @@ class SolarEdgeWidgetView extends Ui.View {
            if (responseCode==200)
            {
            		// Make sure no error is shown	
-               ShowError=false;
-	           
-	           if (data instanceof Dictionary) {
+				ShowError=false;
+
+				if(data["error_msg"].length() >= 0){
+					// Reset values to reinitiate login
+					ShowError=true;
+					c_user_id = "";
+					uid = "-1";
+	       			Errortext1="Error:"+ data["error_code"] + ", " + data["error_msg"];
+	       			Errortext2="If needed try to remove the Omnik API User ID and Omnik API Site ID in";
+	       			Errortext3="Garmin Connect or Express";
+				}
+				else if (c_user_id.length == 0){
+		            c_user_id = data["c_user_id"].toString();
+				}
+				else if (uid == "-1 || uid.length == 0){
+					uid = data["plants"][0]["plant_id"].toString();
+				}
+				else{
+	          		if (data instanceof Dictionary) {
 	       
-		            var power=0.0; // init variable
-		            
-		            // Format Current Power
-		            power = data["overview"]["currentPower"]["power"].toFloat();
-		            if (power<1000)
-		            {
-		            	Current=power.toNumber() + " W";
-		            } else {
-		                Current=(power/1000).format("%.2f") + " kW";
-		            }
-		            
-		            // Format Today
-		            power = data["overview"]["lastDayData"]["energy"].toFloat();
-		            if (power<1000) {
-		               // Less than 1 kWh Present in Wh
-		               Today=power.toNumber() + " Wh";
-		            } else {
-		              // > more than kWh, so present in in kWh
-		              // Current=Lang.format("$1$ kWh",power/1000);
-		              Today = (power/1000).format("%.2f") + " kWh";
-		            }   
-		            
-		            // Format This Month
-		            power = data["overview"]["lastMonthData"]["energy"].toFloat();
-		            if (power<1000) {
-		               // Less than 1 kWh Present in Wh
-		               ThisMonth=power.toNumber() + " Wh";
-		            } else {
-		              // > more than kWh, so present in in kWh
-		              // Current=Lang.format("$1$ kWh",power/1000);
-		              ThisMonth= (power/1000).format("%.1f") + " kWh";
-		            }   
-		            
-		            // Format This Year
-		            power = data["overview"]["lastYearData"]["energy"].toFloat();
-		            if (power<1000) {
-		               // Less than 1 kWh Present in Wh
-		               ThisYear=power.toNumber() + " Wh";
-		            } else if (power<1000000) {
-		              // > more than kWh, so present in in kWh
-		              ThisYear= (power/1000).format("%.1f") + " kWh";
-		            } else {
-		              ThisYear= (power/1000000).format("%.2f") + " MWh";
-		            }
-		
-		            // Format Total
-		            power = data["overview"]["lifeTimeData"]["energy"].toFloat();
-		            if (power<1000) {
-		               // Less than 1 kWh Present in Wh
-		               Total=power.toNumber() + " Wh";
-		            } else if (power<1000000) {
-		              // > more than kWh, so present in in kWh
-		              Total= (power/1000).format("%.1f") + " kWh";
-		            } else {
-		              Total= (power/1000000).format("%.2f") + " MWh";
-		            }
-		            
-		            // Format Last Update
-		            LastUpdate=data["overview"]["lastUpdateTime"]; 
-		            var a = DetermineNextUpdateFromLastUpdate();
-		            
-		       } else {
-		            // not parsable
-					Current = null;
-					Today = null; 
-					ThisMonth = null;
-					ThisYear = null;
-					Total = null;
-					LastUpdate = null;
-		       }
+						var power=0.0; // init variable
+						
+						// Format Current Power
+						power = data["current_power"].toFloat();
+						if (power<1000)
+						{
+							Current=power.toNumber() + " W";
+						} else {
+							Current=(power/1000).format("%.2f") + " kW";
+						}
+						
+						// Format Today
+						power = data["today_energy"].toFloat();
+						if (power<1000) {
+						// Less than 1 kWh Present in Wh
+						Today=power.toNumber() + " Wh";
+						} else {
+						// > more than kWh, so present in in kWh
+						// Current=Lang.format("$1$ kWh",power/1000);
+						Today = (power/1000).format("%.2f") + " kWh";
+						}   
+						
+						// Format This Month
+						power = data["monthly_energy"].toFloat();
+						if (power<1000) {
+						// Less than 1 kWh Present in Wh
+						ThisMonth=power.toNumber() + " Wh";
+						} else {
+						// > more than kWh, so present in in kWh
+						// Current=Lang.format("$1$ kWh",power/1000);
+						ThisMonth= (power/1000).format("%.1f") + " kWh";
+						}   
+						
+						// Format This Year
+						power = data["yearly_energy"].toFloat();
+						if (power<1000) {
+						// Less than 1 kWh Present in Wh
+						ThisYear=power.toNumber() + " Wh";
+						} else if (power<1000000) {
+						// > more than kWh, so present in in kWh
+						ThisYear= (power/1000).format("%.1f") + " kWh";
+						} else {
+						ThisYear= (power/1000000).format("%.2f") + " MWh";
+						}
+			
+						// Format Total
+						power = data["today_energy"].toFloat();
+						if (power<1000) {
+						// Less than 1 kWh Present in Wh
+						Total=power.toNumber() + " Wh";
+						} else if (power<1000000) {
+						// > more than kWh, so present in in kWh
+						Total= (power/1000).format("%.1f") + " kWh";
+						} else {
+						Total= (power/1000000).format("%.2f") + " MWh";
+						}
+						
+						// Format Last Update
+						LastUpdate=data["last_update_time"]; 
+						var a = DetermineNextUpdateFromLastUpdate();
+						
+					} else {
+							// not parsable
+							Current = null;
+							Today = null; 
+							ThisMonth = null;
+							ThisYear = null;
+							Total = null;
+							LastUpdate = null;
+					}
+				}
 		   } else if (responseCode==Comm.BLE_CONNECTION_UNAVAILABLE) {
 		        // bluetooth not connected
 		        ShowError = true;
@@ -274,7 +304,7 @@ class SolarEdgeWidgetView extends Ui.View {
         Ui.requestUpdate();
     }
     
-    function makeRequest() {
+    function onRequest() {
     
         // Show refreshing page
         ShowError=false; // turn off an error screen (if any)
@@ -282,25 +312,65 @@ class SolarEdgeWidgetView extends Ui.View {
         Ui.requestUpdate();
         
         // only retrieve the settings if they've actually changed
-	    // Get SiteID From settings
-	    SiteID = App.getApp().getProperty("PROP_SITEID");
-	    	
-	    // Get API Key from Settings
-	    API_Key = App.getApp().getProperty("PROP_APIKEY");
-    	
-    	// Setup URL
-    	var url="https://monitoringapi.solaredge.com/site/"+SiteID+"/overview.json?api_key="+API_Key;
+	    // Get UserName From settings
+		var params = {                                              // set the parameters
+              "user_email" => username
+			  "user_password" => password
+			  "user_type" => 1
+       		};
+		if (c_user_id.length = 0){
+
+			// Setup URL
+			var url= BaseUrl+"/user/account_validate";
+
+			//Options Variable
+			var options = {                                           
+				:method => Communications.HTTP_REQUEST_METHOD_POST,      
+				:headers => {                                           
+						"Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED},
+						"uid" = uid,
+						"appid" = appid,
+						"appkey" = appkey,
+				:responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+			};
+		}
+		else (uid == "-1" || uid.length = 0) {
+			// Need to get the uid of the user
+			
+			// Setup URL
+			var url= BaseUrl+"/plant/list";
+
+			//Options Variable
+			var options = {                                           
+				:method => Communications.HTTP_REQUEST_METHOD_GET,      
+				:headers => {                                           
+						"Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED},
+						"uid" = uid,
+						"appid" = appid,
+						"appkey" = appkey,
+				:responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+			};
+		}
+		else{
+			// Setup URL
+			var url= BaseUrl+"/plant/data?plant_id="+plantid;
+
+			//Options Variable
+			var options = {                                           
+				:method => Communications.HTTP_REQUEST_METHOD_GET,      
+				:headers => {                                           
+						"Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED},
+						"uid" = uid,
+						"appid" = appid,
+						"appkey" = appkey,
+				:responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+			};
+		}
+					
+			// Make the authentication request
+			Comm.makeWebRequest(url,params,options,method(:onReceive));
+		}
 		
-		// Make the request
-        Comm.makeWebRequest(
-            url,
-            {
-            },
-            {
-                "Content-Type" => Comm.REQUEST_CONTENT_TYPE_URL_ENCODED
-            },
-            method(:onReceive)
-        );
     }
     
       
@@ -353,7 +423,7 @@ class SolarEdgeWidgetView extends Ui.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         
         // Draw logo
-        var image = Ui.loadResource( Rez.Drawables.solaredgelogo);
+        var image = Ui.loadResource( Rez.Drawables.omniklogo);
         if (dc.getHeight()>180) {
             // later model: Draw bitmap a bit lower
         	dc.drawBitmap(dc.getWidth()/2-70,25,image);

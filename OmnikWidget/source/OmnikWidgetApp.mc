@@ -29,8 +29,8 @@ class SolarEdgeWidgetApp extends App.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() {
-        mView = new SolarEdgeWidgetView();
-        return [mView, new SolarEdgeWidgetDelegate(mView.method(:HandleCommand))];
+        mView = new OmnikWidgetView();
+        return [mView, new OmnikWidgetDelegate(mView.method(:HandleCommand))];
     }
 
 }
