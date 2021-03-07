@@ -3,7 +3,7 @@
         <property id="PROP_STARTPAGE" type="number">1</property>
         <property id="PROP_USERNAME" type="string"></property>
         <property id="PROP_PASSWORD" type="string"></property>
-		<property id="PROP_C_USER_ID" type="string"></property>
+        <property id="PROP_C_USER_ID" type="string"></property>
         <property id="PROP_UID" type="string"></property>
 	</properties>
 	<settings>
