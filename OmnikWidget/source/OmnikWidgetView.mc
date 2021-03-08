@@ -28,7 +28,6 @@ var BaseUrl = "https://api.omnikportal.com/v1";
 var uid = "-1";
 var appid = "10038";
 var appkey = "Ox7yu3Eivicheinguth9ef9kohngo9oo";
-var c_user_id = "-";
 var plantid = "-";
 
 // Settings
@@ -75,6 +74,7 @@ class OmnikWidgetView extends Ui.View {
     }
     
    function retrieveSettings() {
+    
 	    // Get Username From settings
 	    Username = App.getApp().getProperty("PROP_USERNAME");
 	    Sys.println(Username); 	
@@ -86,10 +86,8 @@ class OmnikWidgetView extends Ui.View {
     	CurrentPage=App.getApp().getProperty("PROP_STARTPAGE");
 
 		// Get the c_user_id
-		c_user_id=App.getApp().getProperty("PROP_C_USER_ID");
+		plantid=App.getApp().getProperty("PROP_UID");
 
-		// Get the uid
-		uid=App.getApp().getProperty("PROP_UID");  
 	}
 	
 	function moment_from_info(info)
@@ -158,41 +156,31 @@ class OmnikWidgetView extends Ui.View {
             makeRequest();
         }
     }
-      
-    // Receive the data from the web request
-	function onReceive(responseCode, data) 
+    
+	function onReceiveData(responseCode, data) 
 	{
+		Sys.println("onReceiveData");
+	
 		// Turn of refreshpage
 		ShowRefreshing=false;
 		Sys.println(responseCode);
-	Sys.println(data);
+		Sys.println(data);
+		//Sys.println(data["data"]["c_user_id"]);
+		//Sys.println(data["error_msg"].length());
 			
 		// Check responsecode
 		if (responseCode==200)
 		{
 			// Make sure no error is shown	
 			ShowError=false;
-			if(data["error_msg"].length() >= 0)
+			if(data["error_msg"].length() > 0)
 			{
 				// Reset values to reinitiate login
 				ShowError=true;
-				c_user_id = "";
 				uid = "-1";
 				Errortext1="Error:"+ data["error_code"] + ", " + data["error_msg"];
 				Errortext2="If needed try to remove the Omnik API User ID and Omnik API Site ID in";
 				Errortext3="Garmin Connect or Express";
-			}
-			else if (c_user_id.length() < 2)
-			{
-				ShowError=false;
-				c_user_id = data["c_user_id"].toString();
-				Sys.println("uid:"+c_user_id);
-			}
-			else if (uid.length() < 2)
-			{
-				ShowError=false;
-				uid = data["plants"][0]["plant_id"].toString();
-				Sys.println("uid:"+uid);
 			}
 			else
 			{
@@ -203,7 +191,7 @@ class OmnikWidgetView extends Ui.View {
 					var power=0.0; // init variable
 					
 					// Format Current Power
-					power = data["current_power"].toFloat();
+					power = data["data"]["current_power"].toFloat();
 					if (power<1000)
 					{
 						Current=power.toNumber() + " W";
@@ -212,7 +200,7 @@ class OmnikWidgetView extends Ui.View {
 					}
 					
 					// Format Today
-					power = data["today_energy"].toFloat();
+					power = data["data"]["today_energy"].toFloat();
 					if (power<1000) 
 					{
 						// Less than 1 kWh Present in Wh
@@ -226,7 +214,7 @@ class OmnikWidgetView extends Ui.View {
 					}   
 					
 					// Format This Month
-					power = data["monthly_energy"].toFloat();
+					power = data["data"]["monthly_energy"].toFloat();
 					if (power<1000) 
 					{
 						// Less than 1 kWh Present in Wh
@@ -240,7 +228,7 @@ class OmnikWidgetView extends Ui.View {
 					}   
 					
 					// Format This Year
-					power = data["yearly_energy"].toFloat();
+					power = data["data"]["yearly_energy"].toFloat();
 					if (power<1000) 
 					{
 						// Less than 1 kWh Present in Wh
@@ -257,7 +245,7 @@ class OmnikWidgetView extends Ui.View {
 					}
 		
 					// Format Total
-					power = data["today_energy"].toFloat();
+					power = data["data"]["today_energy"].toFloat();
 					if (power<1000) 
 					{
 						// Less than 1 kWh Present in Wh
@@ -274,7 +262,7 @@ class OmnikWidgetView extends Ui.View {
 					}
 					
 					// Format Last Update
-					LastUpdate=data["last_update_time"]; 
+					LastUpdate=data["data"]["last_update_time"]; 
 					var a = DetermineNextUpdateFromLastUpdate();
 					
 				} 
@@ -324,93 +312,147 @@ class OmnikWidgetView extends Ui.View {
 		}
 		Ui.requestUpdate();
 	}
-    
-    function makeRequest() 
+      
+    // Receive the data from the web request
+	function onReceive(responseCode, data) 
 	{
+		Sys.println("onReceive");
+	
+		// Turn of refreshpage
+		ShowRefreshing=false;
+		Sys.println(responseCode);
+		Sys.println(data);
+		Sys.println(data["data"]["c_user_id"]);
+		//Sys.println(data["error_msg"].length());
+			
+		// Check responsecode
+		if (responseCode==200)
+		{
+			// Make sure no error is shown	
+			ShowError=false;
+			if(data["error_msg"].length() > 0)
+			{
+				// Reset values to reinitiate login
+				ShowError=true;
+				uid = "-1";
+				Errortext1="Error:"+ data["error_code"] + ", " + data["error_msg"];
+				Errortext2="If needed try to remove the Omnik API User ID and Omnik API Site ID in";
+				Errortext3="Garmin Connect or Express";
+			}
+			else 
+			{
+				ShowError=false;
+				uid = data["data"]["c_user_id"];
+				Sys.println("uid set:"+uid);
+				makeRequestData();
+			}
+			
+		} 
+		else if (responseCode==Comm.BLE_CONNECTION_UNAVAILABLE) 
+		{
+			// bluetooth not connected
+			ShowError = true;
+			Errortext1=Ui.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT1);
+			Errortext2=Ui.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT2);
+			Errortext3=Ui.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT3);
+		} 
+		else if (responseCode==Comm.INVALID_HTTP_BODY_IN_NETWORK_RESPONSE) 
+		{
+			// Invalid API key
+			ShowError = true;
+			Errortext1=Ui.loadResource(Rez.Strings.INVALIDSETTINGSTEXT1);
+			Errortext2=Ui.loadResource(Rez.Strings.INVALIDSETTINGSTEXT2);
+			Errortext3=Ui.loadResource(Rez.Strings.INVALIDSETTINGSTEXT3);		 
+		} 
+		else if (responseCode==Comm.NETWORK_REQUEST_TIMED_OUT ) 
+		{
+			// No Internet
+			ShowError = true;
+			Errortext1=Ui.loadResource(Rez.Strings.NOINTERNET1);
+			Errortext2=Ui.loadResource(Rez.Strings.NOINTERNET2);
+			Errortext3=Ui.loadResource(Rez.Strings.NOINTERNET3);       				 
+		} 
+		else 
+		{
+			// general Error
+			ShowError = true;
+			Errortext1="Error "+responseCode;
+			Errortext2="Configure settings in";
+			Errortext3="Garmin Connect or Express";
+		}
+		Ui.requestUpdate();
+	}
+    
+    function makeRequestData() 
+	{
+		Sys.println("makeRequestData");
     
         // Show refreshing page
         ShowError=false; // turn off an error screen (if any)
         ShowRefreshing=true; // make sure refreshingscreen is shown when updating the UI.
         Ui.requestUpdate();
-		var url = BaseUrl;
-		var options = {                                           
-			:method => Communications.HTTP_REQUEST_METHOD_GET,      
-			:headers => {                                           
-					"Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED,
-					"uid" => uid,
-					"appid" => appid,
-					"appkey" => appkey
-			}
+        Sys.println("makeRequest uid:"+uid);
+		var url = BaseUrl+"/plant/data?plant_id="+plantid;
+		var headers = {
+			"Content-Type" => Comm.REQUEST_CONTENT_TYPE_URL_ENCODED,
+			"uid" => uid.toString(),
+			"appid" => appid.toString(),
+			"appkey" => appkey.toString()
 		};
+        Sys.println("makeRequestData headers:"+headers);
         
-        // only retrieve the settings if they've actually changed
-	    // Get Username From settings
-		var params = {                                              // set the parameters
-              "user_email" => Username,
-			  "user_password" => Password,
-			  "user_type" => 1
-       		};
-       	
-       	Sys.println("c_user_id:"+c_user_id+",uid:"+uid);
-		if (c_user_id.length() < 2){
-			// Need to get the c_user_id of the user
-
-			// Setup URL
-			url= BaseUrl+"/user/account_validate";
-
-			//Options Variable
-			options = {                                           
-				:method => Communications.HTTP_REQUEST_METHOD_POST,      
-				:headers => {                                           
-						"Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED,
-						"uid" => "-1",
-						"appid" => appid,
-						"appkey" => appkey
-				},
-				:responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-			};
-			Sys.println(uid);
-		}
-		else if (uid.length() < 2) {
-			// Need to get the uid of the user
-			
-			// Setup URL
-			url= BaseUrl+"/plant/list";
-
-			//Options Variable
-			options = {                                           
+		
+		var options = {                                           
 				:method => Communications.HTTP_REQUEST_METHOD_GET,      
-				:headers => {                                           
-						"Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED,
-						"uid" => uid,
-						"appid" => appid,
-						"appkey" => appkey
-				}
-			//	:responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+				:headers => headers,
+				:responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+		};
+       						
+		// Make the authentication request
+		Sys.println("makeRequestData url:"+url);
+		Sys.println("makeRequestData options:"+options);
+		Comm.makeWebRequest(url,{},options,method(:onReceiveData));	
+    }
+    
+    function makeRequest() {
+		Sys.println("makeRequest");
+    
+    	if(uid.length() <3 ){
+	        // Show refreshing page
+	        ShowError=false; // turn off an error screen (if any)
+	        ShowRefreshing=true; // make sure refreshingscreen is shown when updating the UI.
+	        Ui.requestUpdate();
+			var url = BaseUrl+"/user/account_validate";
+			var options = {                                           
+					:method => Communications.HTTP_REQUEST_METHOD_POST,      
+					:headers => {                                           
+							"Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED,
+							"uid" => "-1",
+							"appid" => appid,
+							"appkey" => appkey
+					},
+					:responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
 			};
+	        
+	        // only retrieve the settings if they've actually changed
+		    // Get Username From settings
+			var params = {                                              // set the parameters
+	              "user_email" => Username,
+				  "user_password" => Password,
+				  "user_type" => 1
+	       		};
+	       	
+			// Make the authentication request
+			Sys.println("makeRequest url:"+url);
+			Sys.println("makeRequest params:"+params);
+			Sys.println("makeRequest options:"+options);
+			Comm.makeWebRequest(url,params,options,method(:onReceive));	
 		}
 		else{
-			// Setup URL
-			url= BaseUrl+"/plant/data?plant_id="+plantid;
-
-			//Options Variable
-			options = {                                           
-				:method => Communications.HTTP_REQUEST_METHOD_GET,      
-				:headers => {                                           
-						"Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED,
-						"uid" => uid,
-						"appid" => appid,
-						"appkey" => appkey
-				}
-			//	:responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-			};
+			makeRequestData();
 		}
-					
-		// Make the authentication request
-		Sys.println("url:"+url);
-		Comm.makeWebRequest(url,params,options,method(:onReceive));	
     }
-      
+         
     // Load your resources here
     function onLayout(dc) {
         setLayout(Rez.Layouts.MainLayout(dc));
@@ -544,4 +586,5 @@ class OmnikWidgetView extends Ui.View {
        app.setProperty("NextUpdate", NextUpdate);      
     }
 }
+
 
