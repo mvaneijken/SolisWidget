@@ -1,10 +1,10 @@
-using Toybox.WatchUi as Ui;
-using Toybox.Application as App;
-using Toybox.Lang as Lang;
+using Toybox.WatchUi;
+using Toybox.Application;
+using Toybox.Lang;
 using Toybox.Time;
 using Toybox.Time.Gregorian;
-using Toybox.Communications as Comm;
-using Toybox.System as Sys;
+using Toybox.Communications;
+using Toybox.System;
 
 
 // Commands from the delegate
@@ -31,6 +31,9 @@ var appid = "10038"; //Source: https://github.com/jbouwh/omnikdatalogger
 var appkey = "Ox7yu3Eivicheinguth9ef9kohngo9oo"; //Source: https://github.com/jbouwh/omnikdatalogger
 var uid = ""; //c_user_id variable received when authenticating to the API
 var plantid = ""; //plant_id variable received when retrieving the plants. 
+var glancesName = "";
+var glancesValue = ""; 
+
 
 // Settings
 var CurrentPage; 
@@ -51,7 +54,7 @@ function NextPage()
    }
        
    // refresh the screen
-   Ui.requestUpdate();
+   WatchUi.requestUpdate();
 }
 
 function PreviousPage()
@@ -65,19 +68,19 @@ function PreviousPage()
    }
        
    // refresh the screen
-   Ui.requestUpdate();
+   WatchUi.requestUpdate();
 } 
 
-class OmnikWidgetView extends Ui.View {
+class OmnikWidgetView extends WatchUi.View {
     
     function initialize() {
-    	Sys.println("getDevicePartNumber: " + getDevicePartNumber());
+    	System.println("getDevicePartNumber: " + getDevicePartNumber());
         retrieveSettings();  
         View.initialize();
     }
     
 	function getDevicePartNumber() {
-		var deviceSettings = Sys.getDeviceSettings();
+		var deviceSettings = System.getDeviceSettings();
 		// device part numbers come from ${SDKROOT}/bin/devices.xml
 		var partNumber = deviceSettings.partNumber;
 		return partNumber;
@@ -85,27 +88,29 @@ class OmnikWidgetView extends Ui.View {
 
    function retrieveSettings() {
       // Get Username From settings
-	    Username = App.getApp().getProperty("PROP_USERNAME");
-	    Sys.println("Username: "+ Username);
+	    Username = Application.getApp().getProperty("PROP_USERNAME");
+	    System.println("Username: "+ Username);
 
 	    // Get Password from Settings
-	    Password = App.getApp().getProperty("PROP_PASSWORD");		
-
+	    Password = Application.getApp().getProperty("PROP_PASSWORD");		
 	    
 	    // Get Current Page From settings
-    	CurrentPage=App.getApp().getProperty("PROP_STARTPAGE");
+    	CurrentPage=Application.getApp().getProperty("PROP_STARTPAGE");
 
 		// Get the UID
-		uid=App.getApp().getProperty("PROP_UID");
+		uid=Application.getApp().getProperty("PROP_UID");
 		
 		// Get the plantid
-		plantid=App.getApp().getProperty("PROP_PLANTID");
-
+		plantid=Application.getApp().getProperty("PROP_PLANTID");
+		
+		// Set initial glancesValue
+		glancesName = WatchUi.loadResource(Rez.Strings.AppName);
+		glancesValue = "";
 	}
 	
 	function formatTimeStampRFC3339 (string)
 	{
-		Sys.println(string.toString());
+		System.println(string.toString());
 	    var options ={
 	        :year   => string.toString().substring(0,4).toNumber(),
 	        :month  => string.toString().substring(5,7).toNumber(),
@@ -196,14 +201,14 @@ class OmnikWidgetView extends Ui.View {
     }
     
 	function makeRequest() {
-		Sys.println("makeRequest");
-		Sys.println("makeRequest uid:"+uid);
+		System.println("makeRequest");
+		System.println("makeRequest uid:"+uid);
     
     	if(uid.toString().length() <3 ){
 	        // Show refreshing page
 	        ShowError=false; // turn off an error screen (if any)
 	        ShowRefreshing=true; // make sure refreshingscreen is shown when updating the UI.
-	        Ui.requestUpdate();
+	        WatchUi.requestUpdate();
 			var url = BaseUrl+"/user/account_validate";
 			var options = {                                           
 					:method => Communications.HTTP_REQUEST_METHOD_POST,      
@@ -225,14 +230,14 @@ class OmnikWidgetView extends Ui.View {
 	       		};
 	       	
 			// Make the authentication request
-			Sys.println("makeRequest url:"+url);
-			Sys.println("makeRequest params:"+params);
-			Sys.println("makeRequest options:"+options);
-			Comm.makeWebRequest(url,params,options,method(:onReceive));	
+			System.println("makeRequest url:"+url);
+			System.println("makeRequest params:"+params);
+			System.println("makeRequest options:"+options);
+			Communications.makeWebRequest(url,params,options,method(:onReceive));	
 		}
 		else{
 			//Go and check the plantid when the uid is allready set.
-			Sys.println("makeRequest");
+			System.println("makeRequest");
 			makeRequestPlantId();
 		}
     }
@@ -240,14 +245,14 @@ class OmnikWidgetView extends Ui.View {
     // Receive the data from the web request
 	function onReceive(responseCode, data) 
 	{
-		Sys.println("onReceive");
+		System.println("onReceive");
 	
 		// Turn of refreshpage
 		ShowRefreshing=false;
-		Sys.println(responseCode);
-		Sys.println(data);
-		Sys.println(data["data"]["c_user_id"]);
-		//Sys.println(data["error_msg"].length());
+		System.println(responseCode);
+		System.println(data);
+		System.println(data["data"]["c_user_id"]);
+		//System.println(data["error_msg"].length());
 			
 		// Check responsecode
 		if (responseCode==200)
@@ -260,8 +265,8 @@ class OmnikWidgetView extends Ui.View {
 				ShowError=true;
 				uid = "";
 				plantid = "";
-				App.getApp().setProperty("PROP_UID","");
-				App.getApp().setProperty("PROP_PLANTID","");
+				Application.getApp().setProperty("PROP_UID","");
+				Application.getApp().setProperty("PROP_PLANTID","");
 			
 				Errortext1="Error:"+ data["error_code"] + ", " + data["error_msg"];
 				Errortext2="If needed check Omnik credentials in";
@@ -271,35 +276,35 @@ class OmnikWidgetView extends Ui.View {
 			{
 				ShowError=false;
 				uid = data["data"]["c_user_id"];
-				App.getApp().setProperty("PROP_UID",uid);
-				Sys.println("uid set:"+uid);
+				Application.getApp().setProperty("PROP_UID",uid);
+				System.println("uid set:"+uid);
 				makeRequestPlantId();
 			}
 			
 		} 
-		else if (responseCode==Comm.BLE_CONNECTION_UNAVAILABLE) 
+		else if (responseCode==Communications.BLE_CONNECTION_UNAVAILABLE) 
 		{
 			// bluetooth not connected
 			ShowError = true;
-			Errortext1=Ui.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT1);
-			Errortext2=Ui.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT2);
-			Errortext3=Ui.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT3);
+			Errortext1=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT1);
+			Errortext2=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT2);
+			Errortext3=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT3);
 		} 
-		else if (responseCode==Comm.INVALID_HTTP_BODY_IN_NETWORK_RESPONSE) 
+		else if (responseCode==Communications.INVALID_HTTP_BODY_IN_NETWORK_RESPONSE) 
 		{
 			// Invalid API key
 			ShowError = true;
-			Errortext1=Ui.loadResource(Rez.Strings.INVALIDSETTINGSTEXT1);
-			Errortext2=Ui.loadResource(Rez.Strings.INVALIDSETTINGSTEXT2);
-			Errortext3=Ui.loadResource(Rez.Strings.INVALIDSETTINGSTEXT3);		 
+			Errortext1=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT1);
+			Errortext2=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT2);
+			Errortext3=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT3);		 
 		} 
-		else if (responseCode==Comm.NETWORK_REQUEST_TIMED_OUT ) 
+		else if (responseCode==Communications.NETWORK_REQUEST_TIMED_OUT ) 
 		{
 			// No Internet
 			ShowError = true;
-			Errortext1=Ui.loadResource(Rez.Strings.NOINTERNET1);
-			Errortext2=Ui.loadResource(Rez.Strings.NOINTERNET2);
-			Errortext3=Ui.loadResource(Rez.Strings.NOINTERNET3);       				 
+			Errortext1=WatchUi.loadResource(Rez.Strings.NOINTERNET1);
+			Errortext2=WatchUi.loadResource(Rez.Strings.NOINTERNET2);
+			Errortext3=WatchUi.loadResource(Rez.Strings.NOINTERNET3);       				 
 		} 
 		else 
 		{
@@ -309,25 +314,25 @@ class OmnikWidgetView extends Ui.View {
 			Errortext2="Configure settings in";
 			Errortext3="Garmin Connect or Express";
 		}
-		Ui.requestUpdate();
+		WatchUi.requestUpdate();
 	}
 	
 	function makeRequestPlantId() {
-		Sys.println("makeRequestPlantId");
+		System.println("makeRequestPlantId");
     
     	if(plantid.toString().length() < 3 ){
 	        // Show refreshing page
 	        ShowError=false; // turn off an error screen (if any)
 	        ShowRefreshing=true; // make sure refreshingscreen is shown when updating the UI.
-	        Ui.requestUpdate();
+	        WatchUi.requestUpdate();
 			var url = BaseUrl+"/plant/list";
 			var headers = {
-				"Content-Type" => Comm.REQUEST_CONTENT_TYPE_URL_ENCODED,
+				"Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED,
 				"uid" => uid.toString(),
 				"appid" => appid.toString(),
 				"appkey" => appkey.toString()
 			};
-        	Sys.println("makeRequestPlantId headers:"+headers);
+        	System.println("makeRequestPlantId headers:"+headers);
         
 		
 			var options = {                                           
@@ -337,9 +342,9 @@ class OmnikWidgetView extends Ui.View {
 			};
 	       	
 			// Make the authentication request
-			Sys.println("makeRequestPlantId url:"+url);
-			Sys.println("makeRequestPlantId options:"+options);
-			Comm.makeWebRequest(url,{},options,method(:onReceivePlantId));	
+			System.println("makeRequestPlantId url:"+url);
+			System.println("makeRequestPlantId options:"+options);
+			Communications.makeWebRequest(url,{},options,method(:onReceivePlantId));	
 		}
 		else{
 			//PlantId allready known, go ahead and request data.
@@ -349,12 +354,12 @@ class OmnikWidgetView extends Ui.View {
     
 	function onReceivePlantId(responseCode, data) 
 	{
-		Sys.println("onReceivePlantId ");
+		System.println("onReceivePlantId ");
 	
 		// Turn of refreshpage
 		ShowRefreshing=false;
-		Sys.println(responseCode);
-		Sys.println(data);
+		System.println(responseCode);
+		System.println(data);
 			
 		// Check responsecode
 		if (responseCode==200)
@@ -367,8 +372,8 @@ class OmnikWidgetView extends Ui.View {
 				ShowError=true;
 				uid = "";
 				plantid = "";
-				App.getApp().setProperty("PROP_UID","");
-				App.getApp().setProperty("PROP_PLANTID","");
+				Application.getApp().setProperty("PROP_UID","");
+				Application.getApp().setProperty("PROP_PLANTID","");
 			
 				Errortext1="Error:"+ data["error_code"] + ", " + data["error_msg"];
 				Errortext2="If needed check Omnik credentials in";
@@ -378,35 +383,35 @@ class OmnikWidgetView extends Ui.View {
 			{
 				ShowError=false;
 				plantid = data["data"]["plants"][0]["plant_id"];
-				App.getApp().setProperty("PROP_PLANTID",plantid);
-				Sys.println("plantid set:"+plantid);
+				Application.getApp().setProperty("PROP_PLANTID",plantid);
+				System.println("plantid set:"+plantid);
 				makeRequestData();
 			}
 			
 		} 
-		else if (responseCode==Comm.BLE_CONNECTION_UNAVAILABLE) 
+		else if (responseCode==Communications.BLE_CONNECTION_UNAVAILABLE) 
 		{
 			// bluetooth not connected
 			ShowError = true;
-			Errortext1=Ui.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT1);
-			Errortext2=Ui.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT2);
-			Errortext3=Ui.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT3);
+			Errortext1=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT1);
+			Errortext2=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT2);
+			Errortext3=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT3);
 		} 
-		else if (responseCode==Comm.INVALID_HTTP_BODY_IN_NETWORK_RESPONSE) 
+		else if (responseCode==Communications.INVALID_HTTP_BODY_IN_NETWORK_RESPONSE) 
 		{
 			// Invalid API key
 			ShowError = true;
-			Errortext1=Ui.loadResource(Rez.Strings.INVALIDSETTINGSTEXT1);
-			Errortext2=Ui.loadResource(Rez.Strings.INVALIDSETTINGSTEXT2);
-			Errortext3=Ui.loadResource(Rez.Strings.INVALIDSETTINGSTEXT3);		 
+			Errortext1=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT1);
+			Errortext2=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT2);
+			Errortext3=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT3);		 
 		} 
-		else if (responseCode==Comm.NETWORK_REQUEST_TIMED_OUT ) 
+		else if (responseCode==Communications.NETWORK_REQUEST_TIMED_OUT ) 
 		{
 			// No Internet
 			ShowError = true;
-			Errortext1=Ui.loadResource(Rez.Strings.NOINTERNET1);
-			Errortext2=Ui.loadResource(Rez.Strings.NOINTERNET2);
-			Errortext3=Ui.loadResource(Rez.Strings.NOINTERNET3);       				 
+			Errortext1=WatchUi.loadResource(Rez.Strings.NOINTERNET1);
+			Errortext2=WatchUi.loadResource(Rez.Strings.NOINTERNET2);
+			Errortext3=WatchUi.loadResource(Rez.Strings.NOINTERNET3);       				 
 		} 
 		else 
 		{
@@ -416,26 +421,26 @@ class OmnikWidgetView extends Ui.View {
 			Errortext2="Configure settings in";
 			Errortext3="Garmin Connect or Express";
 		}
-		Ui.requestUpdate();
+		WatchUi.requestUpdate();
 	}    
     
     function makeRequestData() 
 	{
-		Sys.println("makeRequestData");
+		System.println("makeRequestData");
     
         // Show refreshing page
         ShowError=false; // turn off an error screen (if any)
         ShowRefreshing=true; // make sure refreshingscreen is shown when updating the UI.
-        Ui.requestUpdate();
-        Sys.println("makeRequest uid:"+uid);
+        WatchUi.requestUpdate();
+        System.println("makeRequest uid:"+uid);
 		var url = BaseUrl+"/plant/data?plant_id="+plantid;
 		var headers = {
-			"Content-Type" => Comm.REQUEST_CONTENT_TYPE_URL_ENCODED,
+			"Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED,
 			"uid" => uid.toString(),
 			"appid" => appid.toString(),
 			"appkey" => appkey.toString()
 		};
-        Sys.println("makeRequestData headers:"+headers);
+        System.println("makeRequestData headers:"+headers);
         
 		
 		var options = {                                           
@@ -445,21 +450,21 @@ class OmnikWidgetView extends Ui.View {
 		};
        						
 		// Make the authentication request
-		Sys.println("makeRequestData url:"+url);
-		Sys.println("makeRequestData options:"+options);
-		Comm.makeWebRequest(url,{},options,method(:onReceiveData));	
+		System.println("makeRequestData url:"+url);
+		System.println("makeRequestData options:"+options);
+		Communications.makeWebRequest(url,{},options,method(:onReceiveData));	
     }
     
     function onReceiveData(responseCode, data) 
 	{
-		Sys.println("onReceiveData");
+		System.println("onReceiveData");
 	
 		// Turn of refreshpage
 		ShowRefreshing=false;
-		Sys.println(responseCode);
-		Sys.println(data);
-		//Sys.println(data["data"]["c_user_id"]);
-		//Sys.println(data["error_msg"].length());
+		System.println(responseCode);
+		System.println(data);
+		//System.println(data["data"]["c_user_id"]);
+		//System.println(data["error_msg"].length());
 			
 		// Check responsecode
 		if (responseCode==200)
@@ -472,8 +477,8 @@ class OmnikWidgetView extends Ui.View {
 				ShowError=true;
 				uid = "";
 				plantid = "";
-				App.getApp().setProperty("PROP_UID","");
-				App.getApp().setProperty("PROP_PLANTID","");
+				Application.getApp().setProperty("PROP_UID","");
+				Application.getApp().setProperty("PROP_PLANTID","");
 			
 				Errortext1="Error:"+ data["error_code"] + ", " + data["error_msg"];
 				Errortext2="If needed check Omnik credentials in";
@@ -497,7 +502,7 @@ class OmnikWidgetView extends Ui.View {
 					} else {
 						Current=power.format("%.2f") + " kW";
 					}
-					Sys.println("current_power: "+power + " Current: "+ Current); 
+					System.println("current_power: "+power + " Current: "+ Current); 
 					
 					// Format Today
 					power = data["data"]["today_energy"].toFloat();
@@ -512,7 +517,7 @@ class OmnikWidgetView extends Ui.View {
 						// Current=Lang.format("$1$ kWh",power/1000);
 						Today = power.format("%.2f") + " kWh";
 					}
-					Sys.println("today_energy: "+power + " Today :"+Today);   
+					System.println("today_energy: "+power + " Today :"+Today);   
 					
 					// Format This Month
 					power = data["data"]["monthly_energy"].toFloat();
@@ -527,7 +532,7 @@ class OmnikWidgetView extends Ui.View {
 						// Current=Lang.format("$1$ kWh",power/1000);
 						ThisMonth= power.format("%.1f") + " kWh";
 					}
-					Sys.println("monthly_energy: "+power + " ThisMonth: " + ThisMonth);   
+					System.println("monthly_energy: "+power + " ThisMonth: " + ThisMonth);   
 					
 					// Format This Year
 					power = data["data"]["yearly_energy"].toFloat();
@@ -545,7 +550,7 @@ class OmnikWidgetView extends Ui.View {
 					{
 						ThisYear= (power/1000).format("%.2f") + " MWh";
 					}
-					Sys.println("yearly_energy: "+power + " ThisYear: " + ThisYear);
+					System.println("yearly_energy: "+power + " ThisYear: " + ThisYear);
 		
 					// Format Total
 					power = data["data"]["total_energy"].toFloat();
@@ -563,7 +568,7 @@ class OmnikWidgetView extends Ui.View {
 					{
 						Total= (power/1000).format("%.2f") + " MWh";
 					}
-					Sys.println("total_energy: "+power + " Total: " + Total);
+					System.println("total_energy: "+power + " Total: " + Total);
 					
 					// Format Last Update
 					LastUpdate=data["data"]["last_update_time"]; 
@@ -582,29 +587,29 @@ class OmnikWidgetView extends Ui.View {
 				}
 			}
 		} 
-		else if (responseCode==Comm.BLE_CONNECTION_UNAVAILABLE) 
+		else if (responseCode==Communications.BLE_CONNECTION_UNAVAILABLE) 
 		{
 			// bluetooth not connected
 			ShowError = true;
-			Errortext1=Ui.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT1);
-			Errortext2=Ui.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT2);
-			Errortext3=Ui.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT3);
+			Errortext1=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT1);
+			Errortext2=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT2);
+			Errortext3=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT3);
 		} 
-		else if (responseCode==Comm.INVALID_HTTP_BODY_IN_NETWORK_RESPONSE) 
+		else if (responseCode==Communications.INVALID_HTTP_BODY_IN_NETWORK_RESPONSE) 
 		{
 			// Invalid API key
 			ShowError = true;
-			Errortext1=Ui.loadResource(Rez.Strings.INVALIDSETTINGSTEXT1);
-			Errortext2=Ui.loadResource(Rez.Strings.INVALIDSETTINGSTEXT2);
-			Errortext3=Ui.loadResource(Rez.Strings.INVALIDSETTINGSTEXT3);		 
+			Errortext1=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT1);
+			Errortext2=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT2);
+			Errortext3=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT3);		 
 		} 
-		else if (responseCode==Comm.NETWORK_REQUEST_TIMED_OUT ) 
+		else if (responseCode==Communications.NETWORK_REQUEST_TIMED_OUT ) 
 		{
 			// No Internet
 			ShowError = true;
-			Errortext1=Ui.loadResource(Rez.Strings.NOINTERNET1);
-			Errortext2=Ui.loadResource(Rez.Strings.NOINTERNET2);
-			Errortext3=Ui.loadResource(Rez.Strings.NOINTERNET3);       				 
+			Errortext1=WatchUi.loadResource(Rez.Strings.NOINTERNET1);
+			Errortext2=WatchUi.loadResource(Rez.Strings.NOINTERNET2);
+			Errortext3=WatchUi.loadResource(Rez.Strings.NOINTERNET3);       				 
 		} 
 		else 
 		{
@@ -614,7 +619,7 @@ class OmnikWidgetView extends Ui.View {
 			Errortext2="Configure settings in";
 			Errortext3="Garmin Connect or Express";
 		}
-		Ui.requestUpdate();
+		WatchUi.requestUpdate();
 	}
     
     
@@ -628,15 +633,14 @@ class OmnikWidgetView extends Ui.View {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() {
-       //  Load saved data
-       var app=Application.getApp();       
-       Current = app.getProperty("Current");       
-       Today = app.getProperty("Today"); 
-       ThisMonth = app.getProperty("ThisMonth");
-       ThisYear = app.getProperty("ThisYear");
-       Total = app.getProperty("Total");
-       LastUpdate= app.getProperty("LastUpdate");
-       NextUpdate = app.getProperty("NextUpdate");
+       //  Load saved data    
+       Current = Application.getApp().getProperty("Current");       
+       Today = Application.getApp().getProperty("Today"); 
+       ThisMonth = Application.getApp().getProperty("ThisMonth");
+       ThisYear = Application.getApp().getProperty("ThisYear");
+       Total = Application.getApp().getProperty("Total");
+       LastUpdate= Application.getApp().getProperty("LastUpdate");
+       NextUpdate = Application.getApp().getProperty("NextUpdate");
              
        // Check if autoupdate is needed
        if (NextUpdate==null) {
@@ -650,7 +654,7 @@ class OmnikWidgetView extends Ui.View {
 	       }  
        }     
     }
-    
+       
     // Update the view
     function onUpdate(dc) {
     
@@ -664,76 +668,140 @@ class OmnikWidgetView extends Ui.View {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+
+		var fontSmall = Graphics.FONT_SMALL;
+		var fontMedium = Graphics.FONT_MEDIUM;
+		var fontLarge = Graphics.FONT_LARGE;
+		var fontSmallHeight = Graphics.getFontHeight(fontSmall);
+		var fontMediumHeight = Graphics.getFontHeight(fontMedium);
+		var fontLargeHeight = Graphics.getFontHeight(fontLarge);
+		var height = dc.getHeight();
+		var lineOnePosY = height / 3; 
+		var lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
+		var lineThreePosY = lineTwoPosY + ((fontLargeHeight/2.6) + (fontSmallHeight/2.6));
+		var lineFourPosY = 0;
+		var lineFivePosY= 0;
+		var lineOneValue;
+		var lineTwoValue;
+		var lineThreeValue;
+		var lineFourValue;
+		var lineFiveValue;
         
         // Draw logo
-        var image = Ui.loadResource( Rez.Drawables.omniklogo);
-        if (dc.getHeight()>180) {
-            // later model: Draw bitmap a bit lower
-        	dc.drawBitmap(dc.getWidth()/2-70,25,image);
-        } else {
-            // eurlier model, draw bitmap a bigh higher
-            dc.drawBitmap(dc.getWidth()/2-70,10,image);
-        }
-             
+        var image = WatchUi.loadResource(Rez.Drawables.omniklogo);
+        var imagewidth = image.getWidth();
+        var imagePosX = (dc.getWidth() - imagewidth)/2;
+        var imagePosY = (dc.getHeight() - imagewidth)/5;
+    	dc.drawBitmap((dc.getWidth() - imagewidth)/2,imagePosY,image);
+                     
         if (ShowError) {
            // Show Error
-	        	// dc.drawText(dc.getWidth()/2,55,Graphics.FONT_LARGE,"ERROR",Graphics.TEXT_JUSTIFY_CENTER);
-	        	dc.drawText(dc.getWidth()/2,dc.getHeight()/2-40,Graphics.FONT_MEDIUM,Errortext1,Graphics.TEXT_JUSTIFY_CENTER);
-	        	dc.drawText(dc.getWidth()/2,dc.getHeight()/2,Graphics.FONT_SMALL,Errortext2,Graphics.TEXT_JUSTIFY_CENTER);
-	        	dc.drawText(dc.getWidth()/2,dc.getHeight()/2+40,Graphics.FONT_SMALL,Errortext3,Graphics.TEXT_JUSTIFY_CENTER);
+    			lineOnePosY = height / 3; 
+				lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
+				lineThreePosY = lineTwoPosY + ((fontSmallHeight/2.6) + (fontSmallHeight/2.6));
+				lineOneValue = Errortext1;
+				lineTwoValue = Errortext2;
+				lineThreeValue = Errortext3;
+	        	dc.drawText(dc.getWidth()/2,lineOnePosY,fontMedium,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
+	        	dc.drawText(dc.getWidth()/2,lineTwoPosY,fontMedium,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
+	        	dc.drawText(dc.getWidth()/2,lineThreePosY,fontMedium,lineThreeValue,Graphics.TEXT_JUSTIFY_CENTER);
         } 
 		else  if (ShowRefreshing) {
-                // show refreshing page
-                dc.drawText(dc.getWidth()/2,dc.getHeight()/2,Graphics.FONT_LARGE,Ui.loadResource(Rez.Strings.UPDATING),Graphics.TEXT_JUSTIFY_CENTER);
+    			lineOnePosY = height / 2;
+				lineOneValue = WatchUi.loadResource(Rez.Strings.UPDATING);
+                dc.drawText(dc.getWidth()/2,lineOnePosY,fontLarge,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
         } 
 		else {
             // Show status page
 	        if (CurrentPage==1) {
 	            // Current Power
-	        	dc.drawText(dc.getWidth()/2,dc.getHeight()/2-40,Graphics.FONT_LARGE,Ui.loadResource(Rez.Strings.CURRENT),Graphics.TEXT_JUSTIFY_CENTER);
-	    	    dc.drawText(dc.getWidth()/2,dc.getHeight()/2,Graphics.FONT_LARGE,Current,Graphics.TEXT_JUSTIFY_CENTER);
-	    	    dc.drawText(dc.getWidth()/2,dc.getHeight()/2+40,Graphics.FONT_SMALL,lastUpdateLocalized,Graphics.TEXT_JUSTIFY_CENTER);
-	        
+    			lineOnePosY = height / 3; 
+				lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
+				lineThreePosY = lineTwoPosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
+				lineOneValue = WatchUi.loadResource(Rez.Strings.CURRENT);
+				lineTwoValue = Current;
+				lineThreeValue = lastUpdateLocalized;				
+	        	dc.drawText(dc.getWidth()/2,lineOnePosY,fontLarge,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    	    dc.drawText(dc.getWidth()/2,lineTwoPosY,fontLarge,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    	    dc.drawText(dc.getWidth()/2,lineThreePosY,fontSmall,lineThreeValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    		glancesName =  lineOneValue;
+				glancesValue = lineTwoValue;
 	    	} 
 			else if (CurrentPage==2) {
 	    	    // Today
-	        	dc.drawText(dc.getWidth()/2,dc.getHeight()/2-40,Graphics.FONT_LARGE,loadResource(Rez.Strings.TODAY),Graphics.TEXT_JUSTIFY_CENTER);
-	    	    dc.drawText(dc.getWidth()/2,dc.getHeight()/2,Graphics.FONT_LARGE,Today,Graphics.TEXT_JUSTIFY_CENTER);
-	    	    dc.drawText(dc.getWidth()/2,dc.getHeight()/2+40,Graphics.FONT_SMALL,lastUpdateLocalized,Graphics.TEXT_JUSTIFY_CENTER);
+    			lineOnePosY = height / 3; 
+				lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
+				lineThreePosY = lineTwoPosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
+				lineOneValue = WatchUi.loadResource(Rez.Strings.TODAY);
+				lineTwoValue = Today;
+				lineThreeValue = lastUpdateLocalized;	    	    
+	        	dc.drawText(dc.getWidth()/2,lineOnePosY,fontLarge,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    	    dc.drawText(dc.getWidth()/2,lineTwoPosY,fontLarge,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    	    dc.drawText(dc.getWidth()/2,lineThreePosY,fontSmall,lineThreeValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    		glancesName =  lineOneValue;
+				glancesValue = lineTwoValue;
 	    	} 
 			else if (CurrentPage==3) {
 	    	    //  this Week
-	        	dc.drawText(dc.getWidth()/2,dc.getHeight()/2-40,Graphics.FONT_LARGE,loadResource(Rez.Strings.THISMONTH),Graphics.TEXT_JUSTIFY_CENTER);
-	    	    dc.drawText(dc.getWidth()/2,dc.getHeight()/2,Graphics.FONT_LARGE,ThisMonth,Graphics.TEXT_JUSTIFY_CENTER);
-	    	    dc.drawText(dc.getWidth()/2,dc.getHeight()/2+40,Graphics.FONT_SMALL,lastUpdateLocalized,Graphics.TEXT_JUSTIFY_CENTER);
+    			lineOnePosY = height / 3; 
+				lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
+				lineThreePosY = lineTwoPosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
+				lineOneValue = WatchUi.loadResource(Rez.Strings.THISMONTH);
+				lineTwoValue = ThisMonth;
+				lineThreeValue = lastUpdateLocalized;				
+	        	dc.drawText(dc.getWidth()/2,lineOnePosY,fontLarge,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    	    dc.drawText(dc.getWidth()/2,lineTwoPosY,fontLarge,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    	    dc.drawText(dc.getWidth()/2,lineThreePosY,fontSmall,lineThreeValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    		glancesName =  lineOneValue;
+				glancesValue = lineTwoValue;	    	    
 	    	} 
 			else if (CurrentPage==4) {
 	    	    // This Month
-	        	dc.drawText(dc.getWidth()/2,dc.getHeight()/2-40,Graphics.FONT_LARGE,loadResource(Rez.Strings.THISYEAR),Graphics.TEXT_JUSTIFY_CENTER);
-	    	    dc.drawText(dc.getWidth()/2,dc.getHeight()/2,Graphics.FONT_LARGE,ThisYear,Graphics.TEXT_JUSTIFY_CENTER);
-	    	    dc.drawText(dc.getWidth()/2,dc.getHeight()/2+40,Graphics.FONT_SMALL,lastUpdateLocalized,Graphics.TEXT_JUSTIFY_CENTER);
+    			lineOnePosY = height / 3; 
+				lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
+				lineThreePosY = lineTwoPosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
+				lineOneValue = WatchUi.loadResource(Rez.Strings.THISYEAR);
+				lineTwoValue = ThisYear;
+				lineThreeValue = lastUpdateLocalized;				
+	        	dc.drawText(dc.getWidth()/2,lineOnePosY,fontLarge,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    	    dc.drawText(dc.getWidth()/2,lineTwoPosY,fontLarge,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    	    dc.drawText(dc.getWidth()/2,lineThreePosY,fontSmall,lineThreeValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    		glancesName =  lineOneValue;
+				glancesValue = lineTwoValue;    	    
 	    	} 
 			else if (CurrentPage==5) {
 	    	    // Total
-	        	dc.drawText(dc.getWidth()/2,dc.getHeight()/2-40,Graphics.FONT_LARGE,loadResource(Rez.Strings.TOTAL),Graphics.TEXT_JUSTIFY_CENTER);
-	    	    dc.drawText(dc.getWidth()/2,dc.getHeight()/2,Graphics.FONT_LARGE,Total,Graphics.TEXT_JUSTIFY_CENTER);
-	    	    dc.drawText(dc.getWidth()/2,dc.getHeight()/2+40,Graphics.FONT_SMALL,lastUpdateLocalized,Graphics.TEXT_JUSTIFY_CENTER);
+    			lineOnePosY = height / 3; 
+				lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
+				lineThreePosY = lineTwoPosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
+				lineOneValue = WatchUi.loadResource(Rez.Strings.TOTAL);
+				lineTwoValue = Total;
+				lineThreeValue = lastUpdateLocalized;				
+	        	dc.drawText(dc.getWidth()/2,lineOnePosY,fontLarge,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    	    dc.drawText(dc.getWidth()/2,lineTwoPosY,fontLarge,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    	    dc.drawText(dc.getWidth()/2,lineThreePosY,fontSmall,lineThreeValue,Graphics.TEXT_JUSTIFY_CENTER);
+	    		glancesName =  lineOneValue;
+				glancesValue = lineTwoValue;    	    
 	    	} 
 			else if (CurrentPage==6) {
-	    	    // All details
-	    	    // create offset for lager displays.
-	    	    var offset=0;
-	    	    if (dc.getHeight()>180) {
-	    	       offset=-10;
-	    	    }
-	    	    Sys.println(dc.getHeight());
+	    	    lineOnePosY = height / 4; 
+				lineTwoPosY = lineOnePosY + ((fontMediumHeight/2.6) + (fontMediumHeight/2.6));
+				lineThreePosY = lineTwoPosY + ((fontMediumHeight/2.6) + (fontMediumHeight/2.6));
+				lineFourPosY = lineThreePosY + ((fontMediumHeight/2.6) + (fontMediumHeight/2.6));
+				lineFivePosY = lineFourPosY + ((fontMediumHeight/2.6) + (fontMediumHeight/2.6)); 
+				lineOneValue = WatchUi.loadResource(Rez.Strings.CURRENT)+": "+Current;
+				lineTwoValue = WatchUi.loadResource(Rez.Strings.TODAY)+": "+Today;
+				lineThreeValue = WatchUi.loadResource(Rez.Strings.THISMONTH)+": "+ThisMonth;
+				lineFourValue = WatchUi.loadResource(Rez.Strings.THISYEAR)+": "+ThisYear;	
+				lineFiveValue = WatchUi.loadResource(Rez.Strings.TOTAL)+": "+Total;			    	    
 	    	    
-	        	dc.drawText(dc.getWidth()/2, dc.getHeight()/2-50+offset, Graphics.FONT_MEDIUM, loadResource(Rez.Strings.CURRENT)+": "+Current, Graphics.TEXT_JUSTIFY_CENTER);
-	        	dc.drawText(dc.getWidth()/2, dc.getHeight()/2-25+offset, Graphics.FONT_MEDIUM, loadResource(Rez.Strings.TODAY)+": "+Today, Graphics.TEXT_JUSTIFY_CENTER);
-	        	dc.drawText(dc.getWidth()/2, dc.getHeight()/2+offset, Graphics.FONT_MEDIUM, loadResource(Rez.Strings.THISMONTH)+": "+ThisMonth, Graphics.TEXT_JUSTIFY_CENTER);
-	        	dc.drawText(dc.getWidth()/2, dc.getHeight()/2+25+offset, Graphics.FONT_MEDIUM, loadResource(Rez.Strings.THISYEAR)+": "+ThisYear, Graphics.TEXT_JUSTIFY_CENTER);
-	        	dc.drawText(dc.getWidth()/2, dc.getHeight()/2+50+offset, Graphics.FONT_MEDIUM, loadResource(Rez.Strings.TOTAL)+": "+Total, Graphics.TEXT_JUSTIFY_CENTER);
+	        	dc.drawText(dc.getWidth()/2, lineOnePosY, fontMedium, lineOneValue, Graphics.TEXT_JUSTIFY_CENTER);
+	        	dc.drawText(dc.getWidth()/2, lineTwoPosY, fontMedium, lineTwoValue, Graphics.TEXT_JUSTIFY_CENTER);
+	        	dc.drawText(dc.getWidth()/2, lineThreePosY, fontMedium, lineThreeValue, Graphics.TEXT_JUSTIFY_CENTER);
+	        	dc.drawText(dc.getWidth()/2, lineFourPosY, fontMedium, lineFourValue, Graphics.TEXT_JUSTIFY_CENTER);
+	        	dc.drawText(dc.getWidth()/2, lineFivePosY, fontMedium, lineFiveValue, Graphics.TEXT_JUSTIFY_CENTER);
 	    	}
+	    	System.println("glancesValue: " + glancesValue + ", glancesName: " + glancesName );
     	}
     }
 
@@ -742,16 +810,18 @@ class OmnikWidgetView extends Ui.View {
     // memory.
     function onHide() {
     
-       // Safe data
-       var app=Application.getApp();
-       app.setProperty("Current",Current);       
-       app.setProperty("Today", Today); 
-       app.setProperty("ThisMonth", ThisMonth);
-       app.setProperty("ThisYear", ThisYear);
-       app.setProperty("Total",Total);
-       app.setProperty("LastUpdate", LastUpdate);
-       app.setProperty("NextUpdate", NextUpdate);      
-       app.setProperty("LastUpdateLocalized", lastUpdateLocalized);
+       // Save data for later
+       Application.getApp().setProperty("Current",Current);       
+       Application.getApp().setProperty("Today", Today); 
+       Application.getApp().setProperty("ThisMonth", ThisMonth);
+       Application.getApp().setProperty("ThisYear", ThisYear);
+       Application.getApp().setProperty("Total",Total);
+       Application.getApp().setProperty("LastUpdate", LastUpdate);
+       Application.getApp().setProperty("NextUpdate", NextUpdate);      
+       Application.getApp().setProperty("LastUpdateLocalized", lastUpdateLocalized);
+       Application.getApp().setProperty("glancesName", glancesName);
+       Application.getApp().setProperty("glancesValue", glancesValue);
+       
     }
 }
 
