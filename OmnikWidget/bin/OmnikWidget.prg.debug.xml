@@ -2,454 +2,554 @@
 <debugInfo>
 <manifest filename="D:\Users\mark\git\OmnikWidget\OmnikWidget\manifest.xml"/>
 <pcToLineNum>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="2" lineNum="41" pc="268435456" symbol="NextPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="2" lineNum="44" pc="268435468" symbol="NextPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="2" lineNum="47" pc="268435487" symbol="NextPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="2" lineNum="48" pc="268435504" symbol="NextPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="2" lineNum="52" pc="268435520" symbol="NextPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="3" lineNum="55" pc="268435537" symbol="PreviousPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="3" lineNum="58" pc="268435549" symbol="PreviousPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="3" lineNum="61" pc="268435568" symbol="PreviousPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="3" lineNum="62" pc="268435585" symbol="PreviousPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="3" lineNum="66" pc="268435601" symbol="PreviousPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="5" lineNum="71" pc="268435618" symbol="initialize"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="5" lineNum="72" pc="268435622" symbol="initialize"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="5" lineNum="73" pc="268435634" symbol="initialize"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="6" lineNum="76" pc="268435653" symbol="retrieveSettings"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="6" lineNum="79" pc="268435657" symbol="retrieveSettings"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="6" lineNum="80" pc="268435694" symbol="retrieveSettings"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="6" lineNum="82" pc="268435718" symbol="retrieveSettings"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="6" lineNum="83" pc="268435755" symbol="retrieveSettings"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="6" lineNum="86" pc="268435779" symbol="retrieveSettings"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="6" lineNum="89" pc="268435816" symbol="retrieveSettings"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="7" lineNum="93" pc="268435854" symbol="moment_from_info"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="7" lineNum="95" pc="268435858" symbol="moment_from_info"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="8" lineNum="105" pc="268435977" symbol="StringFromInfo"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="8" lineNum="107" pc="268435981" symbol="StringFromInfo"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="8" lineNum="108" pc="268436066" symbol="StringFromInfo"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="9" lineNum="111" pc="268436070" symbol="StringFromMoment"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="9" lineNum="113" pc="268436074" symbol="StringFromMoment"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="9" lineNum="114" pc="268436105" symbol="StringFromMoment"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="118" pc="268436120" symbol="DetermineNextUpdateFromLastUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="124" pc="268436124" symbol="DetermineNextUpdateFromLastUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="127" pc="268436162" symbol="DetermineNextUpdateFromLastUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="128" pc="268436181" symbol="DetermineNextUpdateFromLastUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="131" pc="268436217" symbol="DetermineNextUpdateFromLastUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="134" pc="268436243" symbol="DetermineNextUpdateFromLastUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="137" pc="268436257" symbol="DetermineNextUpdateFromLastUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="141" pc="268436277" symbol="DetermineNextUpdateFromLastUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="142" pc="268436334" symbol="DetermineNextUpdateFromLastUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="145" pc="268436344" symbol="DetermineNextUpdateFromLastUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="147" pc="268436405" symbol="DetermineNextUpdateFromLastUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="11" lineNum="151" pc="268436415" symbol="HandleCommand"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="11" lineNum="154" pc="268436419" symbol="HandleCommand"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="11" lineNum="156" pc="268436433" symbol="HandleCommand"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="160" pc="268436449" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="162" pc="268436453" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="165" pc="268436474" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="166" pc="268436484" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="167" pc="268436502" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="172" pc="268436520" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="175" pc="268436531" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="176" pc="268436541" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="179" pc="268436567" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="180" pc="268436577" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="181" pc="268436590" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="182" pc="268436627" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="183" pc="268436640" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="187" pc="268436656" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="188" pc="268436666" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="191" pc="268436680" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="194" pc="268436687" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="195" pc="268436712" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="197" pc="268436723" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="199" pc="268436751" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="203" pc="268436787" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="204" pc="268436812" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="207" pc="268436823" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="213" pc="268436851" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="217" pc="268436887" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="218" pc="268436912" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="221" pc="268436923" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="227" pc="268436951" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="231" pc="268436987" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="232" pc="268437012" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="235" pc="268437023" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="237" pc="268437051" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="240" pc="268437062" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="244" pc="268437101" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="248" pc="268437137" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="249" pc="268437162" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="252" pc="268437173" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="254" pc="268437201" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="257" pc="268437212" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="261" pc="268437251" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="265" pc="268437287" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="266" pc="268437309" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="272" pc="268437325" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="273" pc="268437334" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="274" pc="268437343" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="275" pc="268437352" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="276" pc="268437361" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="277" pc="268437370" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="281" pc="268437382" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="284" pc="268437400" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="285" pc="268437410" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="286" pc="268437453" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="287" pc="268437496" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="289" pc="268437542" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="292" pc="268437560" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="293" pc="268437570" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="294" pc="268437613" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="295" pc="268437656" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="297" pc="268437702" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="300" pc="268437720" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="301" pc="268437730" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="302" pc="268437773" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="303" pc="268437816" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="308" pc="268437862" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="309" pc="268437872" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="310" pc="268437888" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="311" pc="268437901" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="313" pc="268437914" symbol="onReceiveData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="317" pc="268437931" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="319" pc="268437935" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="322" pc="268437956" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="323" pc="268437966" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="324" pc="268437984" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="325" pc="268438002" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="329" pc="268438032" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="332" pc="268438043" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="333" pc="268438053" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="336" pc="268438079" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="337" pc="268438089" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="338" pc="268438102" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="339" pc="268438139" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="340" pc="268438152" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="344" pc="268438168" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="345" pc="268438178" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="346" pc="268438200" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="347" pc="268438230" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="351" pc="268438245" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="354" pc="268438263" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="355" pc="268438273" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="356" pc="268438316" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="357" pc="268438359" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="359" pc="268438405" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="362" pc="268438423" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="363" pc="268438433" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="364" pc="268438476" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="365" pc="268438519" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="367" pc="268438565" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="370" pc="268438583" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="371" pc="268438593" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="372" pc="268438636" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="373" pc="268438679" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="378" pc="268438725" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="379" pc="268438735" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="380" pc="268438751" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="381" pc="268438764" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="383" pc="268438777" symbol="onReceive"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="386" pc="268438794" symbol="makeRequestData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="388" pc="268438798" symbol="makeRequestData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="391" pc="268438819" symbol="makeRequestData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="392" pc="268438829" symbol="makeRequestData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="393" pc="268438839" symbol="makeRequestData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="394" pc="268438855" symbol="makeRequestData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="395" pc="268438885" symbol="makeRequestData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="396" pc="268438910" symbol="makeRequestData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="402" pc="268439013" symbol="makeRequestData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="405" pc="268439037" symbol="makeRequestData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="412" pc="268439099" symbol="makeRequestData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="413" pc="268439123" symbol="makeRequestData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="414" pc="268439147" symbol="makeRequestData"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="417" pc="268439190" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="418" pc="268439194" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="420" pc="268439215" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="422" pc="268439241" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="423" pc="268439251" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="424" pc="268439261" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="425" pc="268439277" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="426" pc="268439293" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="439" pc="268439426" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="446" pc="268439479" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="447" pc="268439503" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="448" pc="268439527" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="449" pc="268439551" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="452" pc="268439592" symbol="makeRequest"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="457" pc="268439605" symbol="onLayout"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="458" pc="268439609" symbol="onLayout"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="464" pc="268439647" symbol="onShow"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="466" pc="268439651" symbol="onShow"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="467" pc="268439670" symbol="onShow"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="468" pc="268439694" symbol="onShow"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="469" pc="268439718" symbol="onShow"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="470" pc="268439742" symbol="onShow"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="471" pc="268439766" symbol="onShow"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="472" pc="268439790" symbol="onShow"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="473" pc="268439814" symbol="onShow"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="476" pc="268439838" symbol="onShow"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="478" pc="268439851" symbol="onShow"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="481" pc="268439866" symbol="onShow"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="483" pc="268439927" symbol="onShow"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="489" pc="268439943" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="491" pc="268439947" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="492" pc="268439962" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="493" pc="268439976" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="498" pc="268439991" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="499" pc="268440031" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="500" pc="268440043" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="503" pc="268440083" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="504" pc="268440120" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="506" pc="268440140" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="509" pc="268440185" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="512" pc="268440227" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="515" pc="268440238" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="516" pc="268440326" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="517" pc="268440408" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="519" pc="268440499" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="521" pc="268440510" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="525" pc="268440622" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="527" pc="268440639" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="528" pc="268440754" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="529" pc="268440836" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="532" pc="268440927" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="534" pc="268440944" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="535" pc="268441055" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="536" pc="268441137" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="538" pc="268441228" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="540" pc="268441245" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="541" pc="268441356" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="542" pc="268441438" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="544" pc="268441529" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="546" pc="268441546" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="547" pc="268441657" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="548" pc="268441739" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="550" pc="268441830" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="552" pc="268441847" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="553" pc="268441958" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="554" pc="268442040" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="556" pc="268442131" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="559" pc="268442148" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="560" pc="268442155" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="561" pc="268442175" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="564" pc="268442185" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="565" pc="268442314" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="566" pc="268442443" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="567" pc="268442566" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="568" pc="268442695" symbol="onUpdate"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="576" pc="268442828" symbol="onHide"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="579" pc="268442832" symbol="onHide"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="580" pc="268442851" symbol="onHide"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="581" pc="268442876" symbol="onHide"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="582" pc="268442901" symbol="onHide"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="583" pc="268442926" symbol="onHide"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="584" pc="268442951" symbol="onHide"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="585" pc="268442976" symbol="onHide"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="586" pc="268443001" symbol="onHide"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="21" lineNum="10" pc="268443027" symbol="initialize"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="21" lineNum="11" pc="268443031" symbol="initialize"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="22" lineNum="16" pc="268443050" symbol="onStart"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="23" lineNum="20" pc="268443055" symbol="onStop"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="24" lineNum="24" pc="268443060" symbol="onSettingsChanged"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="24" lineNum="25" pc="268443064" symbol="onSettingsChanged"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="24" lineNum="26" pc="268443078" symbol="onSettingsChanged"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="25" lineNum="31" pc="268443095" symbol="getInitialView"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="25" lineNum="32" pc="268443099" symbol="getInitialView"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="25" lineNum="33" pc="268443129" symbol="getInitialView"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="27" lineNum="14" pc="268443205" symbol="onMenu"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="27" lineNum="15" pc="268443209" symbol="onMenu"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="27" lineNum="16" pc="268443235" symbol="onMenu"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="28" lineNum="19" pc="268443239" symbol="onSelect"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="28" lineNum="20" pc="268443243" symbol="onSelect"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="28" lineNum="21" pc="268443255" symbol="onSelect"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="29" lineNum="24" pc="268443259" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="29" lineNum="25" pc="268443263" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="29" lineNum="27" pc="268443276" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="29" lineNum="28" pc="268443290" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="29" lineNum="29" pc="268443305" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="29" lineNum="30" pc="268443319" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="29" lineNum="33" pc="268443334" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="30" lineNum="38" pc="268443338" symbol="initialize"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="30" lineNum="39" pc="268443342" symbol="initialize"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="30" lineNum="40" pc="268443364" symbol="initialize"/>
-<entry filename="Rez" id="36" lineNum="17" pc="268443375" symbol="MainLayout"/>
-<entry filename="Rez" id="36" lineNum="19" pc="268443387" symbol="MainLayout"/>
-<entry filename="Rez" id="36" lineNum="21" pc="268443492" symbol="MainLayout"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="2" lineNum="43" pc="268435456" symbol="NextPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="2" lineNum="46" pc="268435468" symbol="NextPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="2" lineNum="49" pc="268435487" symbol="NextPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="2" lineNum="50" pc="268435504" symbol="NextPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="2" lineNum="54" pc="268435520" symbol="NextPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="3" lineNum="57" pc="268435537" symbol="PreviousPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="3" lineNum="60" pc="268435549" symbol="PreviousPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="3" lineNum="63" pc="268435568" symbol="PreviousPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="3" lineNum="64" pc="268435585" symbol="PreviousPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="3" lineNum="68" pc="268435601" symbol="PreviousPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="5" lineNum="73" pc="268435618" symbol="initialize"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="5" lineNum="74" pc="268435622" symbol="initialize"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="5" lineNum="75" pc="268435655" symbol="initialize"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="5" lineNum="76" pc="268435667" symbol="initialize"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="6" lineNum="79" pc="268435686" symbol="getDevicePartNumber"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="6" lineNum="80" pc="268435690" symbol="getDevicePartNumber"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="6" lineNum="82" pc="268435707" symbol="getDevicePartNumber"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="6" lineNum="83" pc="268435717" symbol="getDevicePartNumber"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="7" lineNum="86" pc="268435721" symbol="retrieveSettings"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="7" lineNum="88" pc="268435725" symbol="retrieveSettings"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="7" lineNum="89" pc="268435762" symbol="retrieveSettings"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="7" lineNum="92" pc="268435792" symbol="retrieveSettings"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="7" lineNum="96" pc="268435829" symbol="retrieveSettings"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="7" lineNum="99" pc="268435866" symbol="retrieveSettings"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="7" lineNum="102" pc="268435903" symbol="retrieveSettings"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="8" lineNum="106" pc="268435941" symbol="formatTimeStampRFC3339"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="8" lineNum="108" pc="268435945" symbol="formatTimeStampRFC3339"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="8" lineNum="109" pc="268435972" symbol="formatTimeStampRFC3339"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="8" lineNum="117" pc="268436262" symbol="formatTimeStampRFC3339"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="8" lineNum="118" pc="268436281" symbol="formatTimeStampRFC3339"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="8" lineNum="119" pc="268436281" symbol="formatTimeStampRFC3339"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="8" lineNum="121" pc="268436312" symbol="formatTimeStampRFC3339"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="9" lineNum="132" pc="268436520" symbol="moment_from_info"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="9" lineNum="134" pc="268436524" symbol="moment_from_info"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="144" pc="268436643" symbol="StringFromInfo"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="146" pc="268436647" symbol="StringFromInfo"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="10" lineNum="147" pc="268436732" symbol="StringFromInfo"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="11" lineNum="150" pc="268436736" symbol="StringFromMoment"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="11" lineNum="152" pc="268436740" symbol="StringFromMoment"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="11" lineNum="153" pc="268436771" symbol="StringFromMoment"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="157" pc="268436786" symbol="DetermineNextUpdateFromLastUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="163" pc="268436790" symbol="DetermineNextUpdateFromLastUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="166" pc="268436828" symbol="DetermineNextUpdateFromLastUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="167" pc="268436847" symbol="DetermineNextUpdateFromLastUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="170" pc="268436883" symbol="DetermineNextUpdateFromLastUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="173" pc="268436909" symbol="DetermineNextUpdateFromLastUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="176" pc="268436923" symbol="DetermineNextUpdateFromLastUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="180" pc="268436943" symbol="DetermineNextUpdateFromLastUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="181" pc="268437000" symbol="DetermineNextUpdateFromLastUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="184" pc="268437010" symbol="DetermineNextUpdateFromLastUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="12" lineNum="185" pc="268437071" symbol="DetermineNextUpdateFromLastUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="189" pc="268437081" symbol="HandleCommand"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="192" pc="268437085" symbol="HandleCommand"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="13" lineNum="194" pc="268437099" symbol="HandleCommand"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="198" pc="268437115" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="199" pc="268437119" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="200" pc="268437140" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="202" pc="268437170" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="204" pc="268437205" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="205" pc="268437215" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="206" pc="268437225" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="207" pc="268437241" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="208" pc="268437257" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="221" pc="268437408" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="228" pc="268437461" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="229" pc="268437485" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="230" pc="268437509" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="231" pc="268437533" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="235" pc="268437574" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="14" lineNum="236" pc="268437595" symbol="makeRequest"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="241" pc="268437608" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="243" pc="268437612" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="246" pc="268437633" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="247" pc="268437643" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="248" pc="268437661" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="249" pc="268437679" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="253" pc="268437709" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="256" pc="268437720" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="257" pc="268437730" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="260" pc="268437756" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="261" pc="268437766" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="262" pc="268437779" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="263" pc="268437792" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="264" pc="268437827" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="266" pc="268437862" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="267" pc="268437899" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="268" pc="268437912" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="272" pc="268437928" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="273" pc="268437938" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="274" pc="268437960" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="275" pc="268437998" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="276" pc="268438028" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="280" pc="268438043" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="283" pc="268438061" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="284" pc="268438071" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="285" pc="268438114" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="286" pc="268438157" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="288" pc="268438203" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="291" pc="268438221" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="292" pc="268438231" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="293" pc="268438274" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="294" pc="268438317" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="296" pc="268438363" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="299" pc="268438381" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="300" pc="268438391" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="301" pc="268438434" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="302" pc="268438477" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="307" pc="268438523" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="308" pc="268438533" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="309" pc="268438549" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="310" pc="268438562" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="15" lineNum="312" pc="268438575" symbol="onReceive"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="315" pc="268438592" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="316" pc="268438596" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="318" pc="268438617" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="320" pc="268438652" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="321" pc="268438662" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="322" pc="268438672" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="323" pc="268438688" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="324" pc="268438704" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="330" pc="268438807" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="333" pc="268438831" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="340" pc="268438893" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="341" pc="268438917" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="342" pc="268438941" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="16" lineNum="346" pc="268438986" symbol="makeRequestPlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="350" pc="268438999" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="352" pc="268439003" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="355" pc="268439024" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="356" pc="268439034" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="357" pc="268439052" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="360" pc="268439070" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="363" pc="268439081" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="364" pc="268439091" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="367" pc="268439117" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="368" pc="268439127" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="369" pc="268439140" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="370" pc="268439153" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="371" pc="268439188" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="373" pc="268439223" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="374" pc="268439260" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="375" pc="268439273" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="379" pc="268439289" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="380" pc="268439299" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="381" pc="268439333" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="382" pc="268439371" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="383" pc="268439401" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="387" pc="268439416" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="390" pc="268439434" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="391" pc="268439444" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="392" pc="268439487" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="393" pc="268439530" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="395" pc="268439576" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="398" pc="268439594" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="399" pc="268439604" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="400" pc="268439647" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="401" pc="268439690" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="403" pc="268439736" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="406" pc="268439754" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="407" pc="268439764" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="408" pc="268439807" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="409" pc="268439850" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="414" pc="268439896" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="415" pc="268439906" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="416" pc="268439922" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="417" pc="268439935" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="17" lineNum="419" pc="268439948" symbol="onReceivePlantId"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="422" pc="268439965" symbol="makeRequestData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="424" pc="268439969" symbol="makeRequestData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="427" pc="268439990" symbol="makeRequestData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="428" pc="268440000" symbol="makeRequestData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="429" pc="268440010" symbol="makeRequestData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="430" pc="268440026" symbol="makeRequestData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="431" pc="268440056" symbol="makeRequestData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="432" pc="268440081" symbol="makeRequestData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="438" pc="268440184" symbol="makeRequestData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="441" pc="268440208" symbol="makeRequestData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="448" pc="268440270" symbol="makeRequestData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="449" pc="268440294" symbol="makeRequestData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="18" lineNum="450" pc="268440318" symbol="makeRequestData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="453" pc="268440361" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="455" pc="268440365" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="458" pc="268440386" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="459" pc="268440396" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="460" pc="268440414" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="465" pc="268440432" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="468" pc="268440443" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="469" pc="268440453" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="472" pc="268440479" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="473" pc="268440489" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="474" pc="268440502" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="475" pc="268440515" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="476" pc="268440550" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="478" pc="268440585" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="479" pc="268440622" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="480" pc="268440635" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="486" pc="268440651" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="487" pc="268440661" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="490" pc="268440675" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="493" pc="268440682" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="494" pc="268440707" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="496" pc="268440718" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="498" pc="268440752" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="500" pc="268440782" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="503" pc="268440821" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="504" pc="268440846" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="507" pc="268440857" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="513" pc="268440891" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="515" pc="268440921" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="518" pc="268440960" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="519" pc="268440985" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="522" pc="268440996" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="528" pc="268441030" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="530" pc="268441060" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="533" pc="268441099" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="534" pc="268441124" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="537" pc="268441135" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="539" pc="268441169" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="542" pc="268441180" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="546" pc="268441213" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="548" pc="268441249" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="551" pc="268441288" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="552" pc="268441313" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="555" pc="268441324" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="557" pc="268441358" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="560" pc="268441369" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="564" pc="268441402" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="566" pc="268441438" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="569" pc="268441477" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="570" pc="268441499" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="571" pc="268441512" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="576" pc="268441542" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="577" pc="268441551" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="578" pc="268441560" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="579" pc="268441569" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="580" pc="268441578" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="581" pc="268441587" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="585" pc="268441599" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="588" pc="268441617" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="589" pc="268441627" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="590" pc="268441670" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="591" pc="268441713" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="593" pc="268441759" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="596" pc="268441777" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="597" pc="268441787" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="598" pc="268441830" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="599" pc="268441873" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="601" pc="268441919" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="604" pc="268441937" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="605" pc="268441947" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="606" pc="268441990" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="607" pc="268442033" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="612" pc="268442079" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="613" pc="268442089" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="614" pc="268442105" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="615" pc="268442118" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="19" lineNum="617" pc="268442131" symbol="onReceiveData"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="20" lineNum="623" pc="268442148" symbol="onLayout"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="20" lineNum="624" pc="268442152" symbol="onLayout"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="21" lineNum="630" pc="268442190" symbol="onShow"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="21" lineNum="632" pc="268442194" symbol="onShow"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="21" lineNum="633" pc="268442213" symbol="onShow"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="21" lineNum="634" pc="268442237" symbol="onShow"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="21" lineNum="635" pc="268442261" symbol="onShow"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="21" lineNum="636" pc="268442285" symbol="onShow"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="21" lineNum="637" pc="268442309" symbol="onShow"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="21" lineNum="638" pc="268442333" symbol="onShow"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="21" lineNum="639" pc="268442357" symbol="onShow"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="21" lineNum="642" pc="268442381" symbol="onShow"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="21" lineNum="644" pc="268442394" symbol="onShow"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="21" lineNum="647" pc="268442409" symbol="onShow"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="21" lineNum="649" pc="268442470" symbol="onShow"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="655" pc="268442486" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="657" pc="268442490" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="658" pc="268442505" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="659" pc="268442519" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="664" pc="268442534" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="665" pc="268442574" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="666" pc="268442586" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="669" pc="268442626" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="670" pc="268442663" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="672" pc="268442683" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="675" pc="268442728" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="678" pc="268442770" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="681" pc="268442781" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="682" pc="268442869" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="683" pc="268442951" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="685" pc="268443042" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="687" pc="268443053" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="691" pc="268443165" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="693" pc="268443182" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="694" pc="268443297" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="695" pc="268443379" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="698" pc="268443470" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="700" pc="268443487" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="701" pc="268443598" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="702" pc="268443680" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="704" pc="268443771" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="706" pc="268443788" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="707" pc="268443899" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="708" pc="268443981" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="710" pc="268444072" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="712" pc="268444089" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="713" pc="268444200" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="714" pc="268444282" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="716" pc="268444373" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="718" pc="268444390" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="719" pc="268444501" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="720" pc="268444583" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="722" pc="268444674" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="725" pc="268444691" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="726" pc="268444698" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="727" pc="268444718" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="729" pc="268444728" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="731" pc="268444755" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="732" pc="268444884" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="733" pc="268445013" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="734" pc="268445136" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="22" lineNum="735" pc="268445265" symbol="onUpdate"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="23" lineNum="743" pc="268445398" symbol="onHide"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="23" lineNum="746" pc="268445402" symbol="onHide"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="23" lineNum="747" pc="268445421" symbol="onHide"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="23" lineNum="748" pc="268445446" symbol="onHide"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="23" lineNum="749" pc="268445471" symbol="onHide"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="23" lineNum="750" pc="268445496" symbol="onHide"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="23" lineNum="751" pc="268445521" symbol="onHide"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="23" lineNum="752" pc="268445546" symbol="onHide"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="23" lineNum="753" pc="268445571" symbol="onHide"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetView.mc" id="23" lineNum="754" pc="268445596" symbol="onHide"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="25" lineNum="10" pc="268445622" symbol="initialize"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="25" lineNum="11" pc="268445626" symbol="initialize"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="26" lineNum="16" pc="268445645" symbol="onStart"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="27" lineNum="20" pc="268445650" symbol="onStop"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="28" lineNum="24" pc="268445655" symbol="onSettingsChanged"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="28" lineNum="25" pc="268445659" symbol="onSettingsChanged"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="28" lineNum="26" pc="268445673" symbol="onSettingsChanged"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="29" lineNum="31" pc="268445690" symbol="getInitialView"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="29" lineNum="32" pc="268445694" symbol="getInitialView"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetApp.mc" id="29" lineNum="33" pc="268445724" symbol="getInitialView"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="31" lineNum="14" pc="268445800" symbol="onMenu"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="31" lineNum="15" pc="268445804" symbol="onMenu"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="31" lineNum="16" pc="268445830" symbol="onMenu"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="32" lineNum="19" pc="268445834" symbol="onSelect"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="32" lineNum="20" pc="268445838" symbol="onSelect"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="32" lineNum="21" pc="268445850" symbol="onSelect"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="33" lineNum="24" pc="268445854" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="33" lineNum="25" pc="268445858" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="33" lineNum="27" pc="268445871" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="33" lineNum="28" pc="268445885" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="33" lineNum="29" pc="268445900" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="33" lineNum="30" pc="268445914" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="33" lineNum="33" pc="268445929" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="34" lineNum="38" pc="268445933" symbol="initialize"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="34" lineNum="39" pc="268445937" symbol="initialize"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="34" lineNum="40" pc="268445959" symbol="initialize"/>
+<entry filename="Rez" id="40" lineNum="17" pc="268445970" symbol="MainLayout"/>
+<entry filename="Rez" id="40" lineNum="19" pc="268445982" symbol="MainLayout"/>
+<entry filename="Rez" id="40" lineNum="21" pc="268446087" symbol="MainLayout"/>
 </pcToLineNum>
 <symbolTable>
 <entry id="8388639" module="true" symbol="Graphics"/>
 <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
 <entry id="4" module="true" symbol="globals/Rez/Menus"/>
 <entry field="true" id="24" symbol="appid"/>
-<entry id="71" method="true" symbol="moment_from_info"/>
-<entry field="true" id="49" symbol="TOTAL"/>
-<entry id="42" method="true" symbol="MainLayout"/>
+<entry id="74" method="true" symbol="moment_from_info"/>
+<entry field="true" id="50" symbol="TOTAL"/>
+<entry id="43" method="true" symbol="MainLayout"/>
 <entry field="true" id="11" symbol="ShowError"/>
 <entry id="8389683" method="true" symbol="onSettingsChanged"/>
-<entry id="35" object="true" symbol="OmnikWidgetApp"/>
+<entry id="36" object="true" symbol="OmnikWidgetApp"/>
 <entry field="true" id="8388938" symbol="month"/>
-<entry field="true" id="23" symbol="uid"/>
-<entry field="true" id="26" symbol="plantid"/>
-<entry field="true" id="30" symbol="UpdateInterval"/>
+<entry field="true" id="26" symbol="uid"/>
+<entry field="true" id="27" symbol="plantid"/>
+<entry field="true" id="31" symbol="UpdateInterval"/>
 <entry id="8388924" module="true" symbol="Gregorian"/>
 <entry field="true" id="8388611" module="true" symbol="Toybox"/>
-<entry field="true" id="41" symbol="omnikicon"/>
-<entry field="true" id="28" symbol="Username"/>
+<entry field="true" id="42" symbol="omnikicon"/>
+<entry field="true" id="29" symbol="Username"/>
 <entry field="true" id="16" symbol="Today"/>
-<entry field="true" id="81" symbol="mView"/>
-<entry id="76" method="true" symbol="onReceiveData"/>
-<entry field="true" id="44" symbol="AppName"/>
+<entry field="true" id="86" symbol="mView"/>
+<entry id="84" method="true" symbol="onReceiveData"/>
+<entry field="true" id="45" symbol="AppName"/>
 <entry id="8389339" symbol="second"/>
 <entry field="true" id="17" symbol="ThisMonth"/>
-<entry field="true" id="45" symbol="title_uid"/>
-<entry id="74" method="true" symbol="DetermineNextUpdateFromLastUpdate"/>
+<entry field="true" id="46" symbol="title_uid"/>
+<entry id="77" method="true" symbol="DetermineNextUpdateFromLastUpdate"/>
 <entry id="8" module="true" symbol="globals/Rez/Strings"/>
 <entry id="8389594" symbol="headers"/>
 <entry id="8389080" method="true" symbol="onMenu"/>
 <entry id="8388772" module="true" object="true" symbol="Fonts"/>
-<entry id="70" method="true" symbol="retrieveSettings"/>
+<entry id="72" method="true" symbol="retrieveSettings"/>
 <entry id="8389345" symbol="rezId"/>
 <entry field="true" id="25" symbol="appkey"/>
-<entry field="true" id="54" symbol="NOBLUETOOTHERRORTEXT3"/>
-<entry field="true" id="53" symbol="NOBLUETOOTHERRORTEXT2"/>
-<entry field="true" id="52" symbol="NOBLUETOOTHERRORTEXT1"/>
-<entry field="true" id="64" symbol="THISMONTH"/>
+<entry field="true" id="55" symbol="NOBLUETOOTHERRORTEXT3"/>
+<entry field="true" id="54" symbol="NOBLUETOOTHERRORTEXT2"/>
+<entry field="true" id="53" symbol="NOBLUETOOTHERRORTEXT1"/>
+<entry field="true" id="66" symbol="THISMONTH"/>
 <entry id="8389338" symbol="minute"/>
-<entry field="true" id="69" symbol="title_c_user_id"/>
 <entry id="8388648" module="true" symbol="WatchUi"/>
 <entry id="2" module="true" symbol="globals/Rez"/>
-<entry field="true" id="40" symbol="logo"/>
-<entry field="true" id="22" symbol="BaseUrl"/>
-<entry field="true" id="46" symbol="NOINTERNET3"/>
-<entry field="true" id="48" symbol="NOINTERNET2"/>
-<entry field="true" id="43" symbol="NOINTERNET1"/>
-<entry field="true" id="57" symbol="THISYEAR"/>
+<entry field="true" id="41" symbol="logo"/>
+<entry field="true" id="23" symbol="BaseUrl"/>
+<entry id="71" method="true" symbol="getDevicePartNumber"/>
+<entry field="true" id="47" symbol="NOINTERNET3"/>
+<entry field="true" id="49" symbol="NOINTERNET2"/>
+<entry field="true" id="44" symbol="NOINTERNET1"/>
+<entry field="true" id="59" symbol="THISYEAR"/>
+<entry id="81" method="true" symbol="makeRequestPlantId"/>
 <entry id="8389124" method="true" symbol="onUpdate"/>
 <entry field="true" id="8389065" symbol="locY"/>
 <entry field="true" id="8389064" symbol="locX"/>
 <entry field="true" id="15" symbol="Current"/>
 <entry id="8388771" module="true" object="true" symbol="Drawables"/>
-<entry id="38" module="true" symbol="Menus"/>
+<entry id="39" module="true" symbol="Menus"/>
 <entry id="6" module="true" symbol="globals/Rez/Layouts"/>
-<entry field="true" id="62" symbol="INVALIDSETTINGSTEXT3"/>
-<entry field="true" id="61" symbol="INVALIDSETTINGSTEXT2"/>
-<entry field="true" id="60" symbol="INVALIDSETTINGSTEXT1"/>
-<entry field="true" id="29" symbol="Password"/>
+<entry field="true" id="64" symbol="INVALIDSETTINGSTEXT3"/>
+<entry field="true" id="63" symbol="INVALIDSETTINGSTEXT2"/>
+<entry field="true" id="62" symbol="INVALIDSETTINGSTEXT1"/>
+<entry field="true" id="30" symbol="Password"/>
 <entry id="8389122" method="true" symbol="onLayout"/>
+<entry id="73" method="true" symbol="formatTimeStampRFC3339"/>
 <entry field="true" id="8389063" symbol="identifier"/>
-<entry field="true" id="27" symbol="CurrentPage"/>
-<entry field="true" id="20" symbol="LastUpdate"/>
+<entry field="true" id="28" symbol="CurrentPage"/>
+<entry field="true" id="21" symbol="LastUpdate"/>
 <entry id="79" method="true" symbol="makeRequest"/>
 <entry id="7" module="true" symbol="globals/Rez/JsonData"/>
-<entry field="true" id="21" symbol="NextUpdate"/>
+<entry field="true" id="22" symbol="NextUpdate"/>
 <entry id="3" module="true" symbol="globals/Rez/Drawables"/>
-<entry id="78" method="true" symbol="makeRequestData"/>
+<entry id="83" method="true" symbol="makeRequestData"/>
 <entry id="8389844" symbol="responseType"/>
 <entry field="true" id="14" symbol="Errortext3"/>
 <entry field="true" id="13" symbol="Errortext2"/>
 <entry field="true" id="12" symbol="Errortext1"/>
 <entry field="true" id="10" symbol="ShowRefreshing"/>
-<entry field="true" id="51" symbol="TODAY"/>
-<entry field="true" id="67" symbol="UPDATING"/>
+<entry field="true" id="52" symbol="TODAY"/>
+<entry field="true" id="69" symbol="UPDATING"/>
+<entry id="82" method="true" symbol="onReceivePlantId"/>
 <entry id="8388786" method="true" symbol="method"/>
 <entry id="8388644" module="true" symbol="System"/>
 <entry id="8389619" method="true" symbol="onSelect"/>
 <entry id="8388645" module="true" symbol="Time"/>
 <entry id="8388769" module="true" object="true" symbol="Rez"/>
-<entry id="77" method="true" symbol="onReceive"/>
-<entry id="33" object="true" symbol="OmnikWidgetView"/>
-<entry id="73" method="true" symbol="StringFromMoment"/>
+<entry id="80" method="true" symbol="onReceive"/>
+<entry id="34" object="true" symbol="OmnikWidgetView"/>
+<entry field="true" id="20" symbol="lastUpdateLocalized"/>
+<entry id="76" method="true" symbol="StringFromMoment"/>
 <entry field="true" id="8388720" symbol="hour"/>
-<entry field="true" id="80" symbol="notify"/>
+<entry field="true" id="85" symbol="notify"/>
 <entry id="8388640" module="true" symbol="Lang"/>
-<entry id="72" method="true" symbol="StringFromInfo"/>
+<entry id="75" method="true" symbol="StringFromInfo"/>
 <entry id="8390088" module="true" object="true" symbol="JsonData"/>
-<entry id="31" method="true" symbol="NextPage"/>
+<entry id="32" method="true" symbol="NextPage"/>
 <entry field="true" id="9" symbol="DOWEBREQUEST"/>
 <entry id="8388610" symbol="statics"/>
 <entry id="8389123" method="true" symbol="onShow"/>
 <entry field="true" id="19" symbol="Total"/>
-<entry field="true" id="59" symbol="CURRENT"/>
+<entry field="true" id="61" symbol="CURRENT"/>
 <entry field="true" id="18" symbol="ThisYear"/>
 <entry id="8389350" module="true" symbol="globals"/>
-<entry id="75" method="true" symbol="HandleCommand"/>
+<entry id="78" method="true" symbol="HandleCommand"/>
 <entry id="8388770" module="true" object="true" symbol="Strings"/>
-<entry field="true" id="50" symbol="title_username"/>
-<entry field="true" id="47" symbol="title_startpage"/>
+<entry field="true" id="51" symbol="title_username"/>
+<entry field="true" id="48" symbol="title_startpage"/>
 <entry id="8388702" method="true" symbol="initialize"/>
 <entry id="8389279" method="true" symbol="onStart"/>
-<entry field="true" id="63" symbol="opt_page_6"/>
-<entry field="true" id="66" symbol="opt_page_5"/>
-<entry field="true" id="65" symbol="opt_page_4"/>
-<entry field="true" id="56" symbol="opt_page_3"/>
-<entry field="true" id="55" symbol="opt_page_2"/>
-<entry field="true" id="58" symbol="opt_page_1"/>
-<entry field="true" id="39" symbol="omniklogo"/>
+<entry field="true" id="65" symbol="opt_page_6"/>
+<entry field="true" id="68" symbol="opt_page_5"/>
+<entry field="true" id="67" symbol="opt_page_4"/>
+<entry field="true" id="58" symbol="opt_page_3"/>
+<entry field="true" id="56" symbol="opt_page_2"/>
+<entry field="true" id="60" symbol="opt_page_1"/>
+<entry field="true" id="40" symbol="omniklogo"/>
 <entry id="8389280" method="true" symbol="getInitialView"/>
 <entry id="8389281" method="true" symbol="onStop"/>
 <entry field="true" id="8388939" symbol="day"/>
 <entry field="true" id="8388940" symbol="year"/>
-<entry id="37" module="true" symbol="Layouts"/>
-<entry id="32" method="true" symbol="PreviousPage"/>
+<entry id="38" module="true" symbol="Layouts"/>
+<entry id="33" method="true" symbol="PreviousPage"/>
+<entry field="true" id="57" symbol="title_plantid"/>
 <entry id="5" module="true" symbol="globals/Rez/Fonts"/>
 <entry id="8389125" method="true" symbol="onHide"/>
-<entry field="true" id="68" symbol="title_password"/>
-<entry field="true" id="34" symbol="gSettingsChanged"/>
-<entry id="36" object="true" symbol="OmnikWidgetDelegate"/>
+<entry field="true" id="70" symbol="title_password"/>
+<entry field="true" id="35" symbol="gSettingsChanged"/>
+<entry id="37" object="true" symbol="OmnikWidgetDelegate"/>
 <entry id="8389101" method="true" symbol="onSwipe"/>
 </symbolTable>
 <localVars>
-<entry arg="true" endPc="268435977" name="info" stackId="1" startPc="268435854"/>
-<entry endPc="268436069" name="DateText" stackId="2" startPc="268435981"/>
-<entry arg="true" endPc="268436070" name="info" stackId="1" startPc="268435977"/>
-<entry endPc="268436119" name="info" stackId="2" startPc="268436074"/>
-<entry arg="true" endPc="268436120" name="moment" stackId="1" startPc="268436070"/>
-<entry endPc="268436414" name="gpreviousupdate" stackId="5" startPc="268436124"/>
-<entry endPc="268436414" name="CurrentMoment" stackId="4" startPc="268436124"/>
-<entry endPc="268436414" name="timeZoneOffset" stackId="3" startPc="268436124"/>
-<entry endPc="268436414" name="myTime" stackId="2" startPc="268436124"/>
-<entry endPc="268436414" name="LastUpdateMinute" stackId="1" startPc="268436124"/>
-<entry arg="true" endPc="268436449" name="data" stackId="1" startPc="268436415"/>
-<entry endPc="268437322" name="a" stackId="4" startPc="268436680"/>
-<entry endPc="268437322" name="power" stackId="3" startPc="268436680"/>
-<entry arg="true" endPc="268437931" name="responseCode" stackId="1" startPc="268436449"/>
-<entry arg="true" endPc="268437931" name="data" stackId="2" startPc="268436449"/>
-<entry arg="true" endPc="268438794" name="responseCode" stackId="1" startPc="268437931"/>
-<entry arg="true" endPc="268438794" name="data" stackId="2" startPc="268437931"/>
-<entry endPc="268439189" name="options" stackId="3" startPc="268438798"/>
-<entry endPc="268439189" name="url" stackId="1" startPc="268438798"/>
-<entry endPc="268439189" name="headers" stackId="2" startPc="268438798"/>
-<entry endPc="268439589" name="options" stackId="2" startPc="268439241"/>
-<entry endPc="268439589" name="url" stackId="1" startPc="268439241"/>
-<entry endPc="268439589" name="params" stackId="3" startPc="268439241"/>
-<entry arg="true" endPc="268439647" name="dc" stackId="1" startPc="268439605"/>
-<entry endPc="268439942" name="app" stackId="1" startPc="268439651"/>
-<entry endPc="268442824" name="offset" stackId="3" startPc="268442148"/>
-<entry endPc="268442827" name="image" stackId="2" startPc="268439947"/>
-<entry arg="true" endPc="268442828" name="dc" stackId="1" startPc="268439943"/>
-<entry endPc="268443026" name="app" stackId="1" startPc="268442832"/>
-<entry arg="true" endPc="268443055" name="state" stackId="1" startPc="268443050"/>
-<entry arg="true" endPc="268443060" name="state" stackId="1" startPc="268443055"/>
-<entry endPc="268443337" name="swipe" stackId="2" startPc="268443263"/>
-<entry arg="true" endPc="268443338" name="evt" stackId="1" startPc="268443259"/>
-<entry arg="true" endPc="268443375" name="handler" stackId="1" startPc="268443338"/>
-<entry endPc="268443509" name="rez_cmp_local_bitmap_logo" stackId="2" startPc="268443387"/>
-<entry arg="true" endPc="268443510" name="dc" stackId="1" startPc="268443375"/>
+<entry endPc="268435720" name="deviceSettings" stackId="1" startPc="268435690"/>
+<entry endPc="268435720" name="partNumber" stackId="2" startPc="268435690"/>
+<entry endPc="268436519" name="options" stackId="2" startPc="268435945"/>
+<entry endPc="268436519" name="info" stackId="4" startPc="268435945"/>
+<entry endPc="268436519" name="time" stackId="3" startPc="268435945"/>
+<entry arg="true" endPc="268436520" name="string" stackId="1" startPc="268435941"/>
+<entry arg="true" endPc="268436643" name="info" stackId="1" startPc="268436520"/>
+<entry endPc="268436735" name="DateText" stackId="2" startPc="268436647"/>
+<entry arg="true" endPc="268436736" name="info" stackId="1" startPc="268436643"/>
+<entry endPc="268436785" name="info" stackId="2" startPc="268436740"/>
+<entry arg="true" endPc="268436786" name="moment" stackId="1" startPc="268436736"/>
+<entry endPc="268437080" name="gpreviousupdate" stackId="5" startPc="268436790"/>
+<entry endPc="268437080" name="CurrentMoment" stackId="4" startPc="268436790"/>
+<entry endPc="268437080" name="timeZoneOffset" stackId="3" startPc="268436790"/>
+<entry endPc="268437080" name="myTime" stackId="2" startPc="268436790"/>
+<entry endPc="268437080" name="LastUpdateMinute" stackId="1" startPc="268436790"/>
+<entry arg="true" endPc="268437115" name="data" stackId="1" startPc="268437081"/>
+<entry endPc="268437571" name="options" stackId="2" startPc="268437205"/>
+<entry endPc="268437571" name="url" stackId="1" startPc="268437205"/>
+<entry endPc="268437571" name="params" stackId="3" startPc="268437205"/>
+<entry arg="true" endPc="268438592" name="responseCode" stackId="1" startPc="268437608"/>
+<entry arg="true" endPc="268438592" name="data" stackId="2" startPc="268437608"/>
+<entry endPc="268438983" name="options" stackId="3" startPc="268438652"/>
+<entry endPc="268438983" name="url" stackId="1" startPc="268438652"/>
+<entry endPc="268438983" name="headers" stackId="2" startPc="268438652"/>
+<entry arg="true" endPc="268439965" name="responseCode" stackId="1" startPc="268438999"/>
+<entry arg="true" endPc="268439965" name="data" stackId="2" startPc="268438999"/>
+<entry endPc="268440360" name="options" stackId="3" startPc="268439969"/>
+<entry endPc="268440360" name="url" stackId="1" startPc="268439969"/>
+<entry endPc="268440360" name="headers" stackId="2" startPc="268439969"/>
+<entry endPc="268441539" name="a" stackId="4" startPc="268440675"/>
+<entry endPc="268441539" name="power" stackId="3" startPc="268440675"/>
+<entry arg="true" endPc="268442148" name="responseCode" stackId="1" startPc="268440361"/>
+<entry arg="true" endPc="268442148" name="data" stackId="2" startPc="268440361"/>
+<entry arg="true" endPc="268442190" name="dc" stackId="1" startPc="268442148"/>
+<entry endPc="268442485" name="app" stackId="1" startPc="268442194"/>
+<entry endPc="268445394" name="offset" stackId="3" startPc="268444691"/>
+<entry endPc="268445397" name="image" stackId="2" startPc="268442490"/>
+<entry arg="true" endPc="268445398" name="dc" stackId="1" startPc="268442486"/>
+<entry endPc="268445621" name="app" stackId="1" startPc="268445402"/>
+<entry arg="true" endPc="268445650" name="state" stackId="1" startPc="268445645"/>
+<entry arg="true" endPc="268445655" name="state" stackId="1" startPc="268445650"/>
+<entry endPc="268445932" name="swipe" stackId="2" startPc="268445858"/>
+<entry arg="true" endPc="268445933" name="evt" stackId="1" startPc="268445854"/>
+<entry arg="true" endPc="268445970" name="handler" stackId="1" startPc="268445933"/>
+<entry endPc="268446104" name="rez_cmp_local_bitmap_logo" stackId="2" startPc="268445982"/>
+<entry arg="true" endPc="268446105" name="dc" stackId="1" startPc="268445970"/>
 </localVars>
 <annotations/>
 <dataEntryOffsetMappings>
 <dataEntry offset="87" parentId="" symbolId="globals" type="module"/>
-<dataEntry offset="358" parentId="globals" symbolId="Rez" type="module"/>
-<dataEntry offset="437" parentId="Rez" symbolId="Drawables" type="module"/>
-<dataEntry offset="492" parentId="Rez" symbolId="Menus" type="module"/>
-<dataEntry offset="523" parentId="Rez" symbolId="Fonts" type="module"/>
-<dataEntry offset="554" parentId="Rez" symbolId="Layouts" type="module"/>
-<dataEntry offset="593" parentId="Rez" symbolId="JsonData" type="module"/>
-<dataEntry offset="624" parentId="Rez" symbolId="Strings" type="module"/>
-<dataEntry offset="871" parentId="globals" symbolId="OmnikWidgetView" type="class"/>
-<dataEntry offset="1030" parentId="globals" symbolId="OmnikWidgetDelegate" type="class"/>
-<dataEntry offset="1109" parentId="globals" symbolId="OmnikWidgetApp" type="class"/>
+<dataEntry offset="366" parentId="globals" symbolId="Rez" type="module"/>
+<dataEntry offset="445" parentId="Rez" symbolId="Drawables" type="module"/>
+<dataEntry offset="500" parentId="Rez" symbolId="Menus" type="module"/>
+<dataEntry offset="531" parentId="Rez" symbolId="Fonts" type="module"/>
+<dataEntry offset="562" parentId="Rez" symbolId="Layouts" type="module"/>
+<dataEntry offset="601" parentId="Rez" symbolId="JsonData" type="module"/>
+<dataEntry offset="632" parentId="Rez" symbolId="Strings" type="module"/>
+<dataEntry offset="879" parentId="globals" symbolId="OmnikWidgetView" type="class"/>
+<dataEntry offset="1070" parentId="globals" symbolId="OmnikWidgetDelegate" type="class"/>
+<dataEntry offset="1149" parentId="globals" symbolId="OmnikWidgetApp" type="class"/>
 </dataEntryOffsetMappings>
 <functions>
 <functionEntry accessMode="public" name="NextPage">
@@ -461,7 +561,14 @@
 <functionEntry accessMode="public" name="initialize" parent="OmnikWidgetView">
 <documentation/>
 </functionEntry>
+<functionEntry accessMode="public" name="getDevicePartNumber" parent="OmnikWidgetView">
+<documentation/>
+</functionEntry>
 <functionEntry accessMode="public" name="retrieveSettings" parent="OmnikWidgetView">
+<documentation/>
+</functionEntry>
+<functionEntry accessMode="public" name="formatTimeStampRFC3339" parent="OmnikWidgetView">
+<param id="string"/>
 <documentation/>
 </functionEntry>
 <functionEntry accessMode="public" name="moment_from_info" parent="OmnikWidgetView">
@@ -483,9 +590,7 @@
 <param id="data"/>
 <documentation/>
 </functionEntry>
-<functionEntry accessMode="public" name="onReceiveData" parent="OmnikWidgetView">
-<param id="responseCode"/>
-<param id="data"/>
+<functionEntry accessMode="public" name="makeRequest" parent="OmnikWidgetView">
 <documentation/>
 </functionEntry>
 <functionEntry accessMode="public" name="onReceive" parent="OmnikWidgetView">
@@ -493,10 +598,20 @@
 <param id="data"/>
 <documentation/>
 </functionEntry>
+<functionEntry accessMode="public" name="makeRequestPlantId" parent="OmnikWidgetView">
+<documentation/>
+</functionEntry>
+<functionEntry accessMode="public" name="onReceivePlantId" parent="OmnikWidgetView">
+<param id="responseCode"/>
+<param id="data"/>
+<documentation/>
+</functionEntry>
 <functionEntry accessMode="public" name="makeRequestData" parent="OmnikWidgetView">
 <documentation/>
 </functionEntry>
-<functionEntry accessMode="public" name="makeRequest" parent="OmnikWidgetView">
+<functionEntry accessMode="public" name="onReceiveData" parent="OmnikWidgetView">
+<param id="responseCode"/>
+<param id="data"/>
 <documentation/>
 </functionEntry>
 <functionEntry accessMode="public" name="onLayout" parent="OmnikWidgetView">

@@ -20,8 +20,14 @@
         <setting propertyKey="@Properties.PROP_USERNAME" title="@Strings.title_username">
         	<settingConfig type="AlphaNumeric" required="true"></settingConfig>
         </setting>
-                <setting propertyKey="@Properties.PROP_PASSWORD" title="@Strings.title_password">
-        	<settingConfig type="AlphaNumeric" required="true"></settingConfig>
+        <setting propertyKey="@Properties.PROP_PASSWORD" title="@Strings.title_password">
+        	<settingConfig type="Password" required="true"></settingConfig>
+        </setting>
+		<setting propertyKey="@Properties.PROP_UID" title="@Strings.title_uid">
+        	<settingConfig type="AlphaNumeric" required="false" readonly="true"></settingConfig>
+        </setting>
+		<setting propertyKey="@Properties.PROP_PLANTID" title="@Strings.title_plantid">
+        	<settingConfig type="AlphaNumeric" required="false" readonly="true"></settingConfig>
         </setting>
 	</settings>
 </resources>
