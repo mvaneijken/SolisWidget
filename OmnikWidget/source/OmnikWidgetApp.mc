@@ -1,10 +1,10 @@
-using Toybox.Application as App;
-using Toybox.WatchUi as Ui;
+using Toybox.Application;
+using Toybox.WatchUi;
 
 var gSettingsChanged = true;
 
 
-class OmnikWidgetApp extends App.AppBase {
+class OmnikWidgetApp extends Application.AppBase {
     hidden var mView;
 
     function initialize() {
@@ -23,7 +23,7 @@ class OmnikWidgetApp extends App.AppBase {
     // New app settings have been received so trigger a UI update
 	function onSettingsChanged() {
 		$.gSettingsChanged = true;
-		Ui.requestUpdate();
+		WatchUi.requestUpdate();
 	}
     
 
@@ -31,6 +31,10 @@ class OmnikWidgetApp extends App.AppBase {
     function getInitialView() {
         mView = new OmnikWidgetView();
         return [mView, new OmnikWidgetDelegate(mView.method(:HandleCommand))];
+    }
+    
+    function getGlanceView() {
+        return [ new OmnikWidgetGlanceView() ];
     }
 
 }

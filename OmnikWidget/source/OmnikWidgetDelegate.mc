@@ -3,11 +3,11 @@
 // Subject to Garmin SDK License Agreement and Wearables
 // Application Developer Agreement.
 //
-using Toybox.Application as App;
-using Toybox.WatchUi as Ui;
-using Toybox.System as System;
+using Toybox.Application;
+using Toybox.WatchUi;
+using Toybox.System;
 
-class OmnikWidgetDelegate extends Ui.BehaviorDelegate {
+class OmnikWidgetDelegate extends WatchUi.BehaviorDelegate {
     var notify;
 
     // Handle menu button press
@@ -33,19 +33,9 @@ class OmnikWidgetDelegate extends Ui.BehaviorDelegate {
         return true;
     }
         
-
     // Set up the callback to the view
     function initialize(handler) {
-        Ui.BehaviorDelegate.initialize();
+        WatchUi.BehaviorDelegate.initialize();
         notify = handler;
     }
-
-    // Receive the data from the web request
-    // function onReceive(responseCode, data) {
-      //   if (responseCode == 200) {
-        //    notify.invoke(data);
-        // } else {
-         //    notify.invoke("Error");
-       //  }
-    // }
 }
