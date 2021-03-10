@@ -1,0 +1,4 @@
+<drawables>
+    <bitmap id="omnikicon" filename="omniklogo.png" />
+    <bitmap id="omniklogo" filename="omniklogo_app.png"/>
+</drawables>
