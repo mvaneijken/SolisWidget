@@ -3,7 +3,6 @@ using Toybox.WatchUi;
 
 var gSettingsChanged = true;
 
-
 class OmnikWidgetApp extends Application.AppBase {
     hidden var mView;
 
@@ -33,6 +32,7 @@ class OmnikWidgetApp extends Application.AppBase {
         return [mView, new OmnikWidgetDelegate(mView.method(:HandleCommand))];
     }
     
+    (:glance)
     function getGlanceView() {
         return [ new OmnikWidgetGlanceView() ];
     }

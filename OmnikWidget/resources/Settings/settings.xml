@@ -18,10 +18,10 @@
             </settingConfig>
         </setting>
         <setting propertyKey="@Properties.PROP_USERNAME" title="@Strings.title_username">
-        	<settingConfig type="AlphaNumeric" required="true"></settingConfig>
+        	<settingConfig type="AlphaNumeric" required="false"></settingConfig>
         </setting>
         <setting propertyKey="@Properties.PROP_PASSWORD" title="@Strings.title_password">
-        	<settingConfig type="Password" required="true"></settingConfig>
+        	<settingConfig type="Password" required="false"></settingConfig>
         </setting>
 		<setting propertyKey="@Properties.PROP_UID" title="@Strings.title_uid">
         	<settingConfig type="AlphaNumeric" required="false" readonly="true"></settingConfig>

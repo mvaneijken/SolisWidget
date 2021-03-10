@@ -8,13 +8,16 @@
     <string id="THISYEAR">Year</string>
     <string id="TOTAL">Total</string>
     
-    <string id="NOBLUETOOTHERRORTEXT1">No Bluetooth</string>
-    <string id="NOBLUETOOTHERRORTEXT2">Turn on Bluetooth</string>
-    <string id="NOBLUETOOTHERRORTEXT3">And pair with handset</string>
+    <string id="NOBLUETOOTHERRORTEXT1">No Connection</string>
+    <string id="NOBLUETOOTHERRORTEXT2">Check connection</string>
+    <string id="NOBLUETOOTHERRORTEXT3">with mobile phone</string>
     
     <string id="INVALIDSETTINGSTEXT1">Invalid settings</string>
     <string id="INVALIDSETTINGSTEXT2">Configure correct settings at</string>
     <string id="INVALIDSETTINGSTEXT3">Garmin Connect or Express</string>
+    
+    <string id="APIERRORTEXT2">Check Omnik</string>
+    <string id="APIERRORTEXT3">credentials in  app</string>
     
     <string id="NOINTERNET1">No Internet"</string>
     <string id="NOINTERNET2">turn on wifi or data"</string>

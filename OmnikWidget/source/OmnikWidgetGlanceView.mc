@@ -5,35 +5,35 @@ using Toybox.Application;
 
 (:glance)
 class OmnikWidgetGlanceView extends WatchUi.GlanceView {
-	
-    function initialize() {
-      GlanceView.initialize();
-    }
-    
-    function onUpdate(dc) {
-   	   	var glancesName = ""; 
-   	   	glancesName = Application.getApp().getProperty("glancesName");
+
+	function initialize() {
+		GlanceView.initialize();
+	}
+
+	function onUpdate(dc) {
+		var glancesName = ""; 
+		glancesName = Application.getApp().getProperty("glancesName");
 		var glancesValue = ""; 
 		glancesValue = Application.getApp().getProperty("glancesValue");
-		   
+			
 		System.println(glancesValue);
 		System.println(glancesValue);
 		dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
 		dc.clear();
 		dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-	   
+		
 		var font = Graphics.FONT_SMALL;
 		var fontHeight = Graphics.getFontHeight(font);
-	    
+		
 		var lineOneValue = glancesName;
 		var lineTwoValue = glancesValue;
-	    
+		
 		var height = dc.getHeight();
 		System.println(dc.getHeight());
 		var lineOnePosY = 0;
 		var lineTwoPosY = lineOnePosY + ((fontHeight/2) + (fontHeight/2));
-		 
+			
 		dc.drawText(dc.getWidth()/2,lineOnePosY,font,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
-	    dc.drawText(dc.getWidth()/2,lineTwoPosY,font,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);    
-    }
-}
+		dc.drawText(dc.getWidth()/2,lineTwoPosY,font,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);    
+	}
+	}

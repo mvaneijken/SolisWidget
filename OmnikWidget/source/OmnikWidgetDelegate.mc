@@ -17,7 +17,17 @@ class OmnikWidgetDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onSelect() {
+        RefreshPage();
+        return true;
+    }
+    
+    function onNextPage() {
         NextPage();
+        return true;
+    }
+    
+    function onPreviousPage() {
+        PreviousPage();
         return true;
     }
     
