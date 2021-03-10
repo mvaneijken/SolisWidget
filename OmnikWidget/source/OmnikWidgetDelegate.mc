@@ -1,8 +1,3 @@
-//
-// Copyright 2016 by Garmin Ltd. or its subsidiaries.
-// Subject to Garmin SDK License Agreement and Wearables
-// Application Developer Agreement.
-//
 using Toybox.Application;
 using Toybox.WatchUi;
 using Toybox.System;
@@ -16,8 +11,17 @@ class OmnikWidgetDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    function onSelect() {
-        RefreshPage();
+	// TODO: Add support for refresh and the use of up/down keys. 
+	//	function onKey(keyEvent) {
+	//		System.println("onkey: " + keyEvent.getKey());
+	//		return true;
+	//	}
+  
+    function onSelect(keyEvent) {
+        // TODO: Add support for refresh and the use of up/down keys. 
+        //RefreshPage();
+  		System.println(keyEvent.getType());
+        NextPage();
         return true;
     }
     
