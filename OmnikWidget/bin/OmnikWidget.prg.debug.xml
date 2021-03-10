@@ -516,8 +516,8 @@
 <entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="43" lineNum="51" pc="268448882" symbol="initialize"/>
 <entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="43" lineNum="52" pc="268448904" symbol="initialize"/>
 <entry filename="Rez" id="49" lineNum="17" pc="268448915" symbol="MainLayout"/>
-<entry filename="Rez" id="49" lineNum="19" pc="268448927" symbol="MainLayout"/>
-<entry filename="Rez" id="49" lineNum="21" pc="268449032" symbol="MainLayout"/>
+<entry filename="Rez" id="49" lineNum="20" pc="268448927" symbol="MainLayout"/>
+<entry filename="Rez" id="49" lineNum="22" pc="268449032" symbol="MainLayout"/>
 </pcToLineNum>
 <symbolTable>
 <entry id="8388639" module="true" symbol="Graphics"/>
