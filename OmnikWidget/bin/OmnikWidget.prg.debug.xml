@@ -498,27 +498,26 @@
 <entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="38" lineNum="11" pc="268448735" symbol="onMenu"/>
 <entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="39" lineNum="20" pc="268448739" symbol="onSelect"/>
 <entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="39" lineNum="23" pc="268448743" symbol="onSelect"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="39" lineNum="24" pc="268448770" symbol="onSelect"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="39" lineNum="25" pc="268448782" symbol="onSelect"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="40" lineNum="28" pc="268448786" symbol="onNextPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="40" lineNum="29" pc="268448790" symbol="onNextPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="40" lineNum="30" pc="268448802" symbol="onNextPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="41" lineNum="33" pc="268448806" symbol="onPreviousPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="41" lineNum="34" pc="268448810" symbol="onPreviousPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="41" lineNum="35" pc="268448822" symbol="onPreviousPage"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="38" pc="268448826" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="39" pc="268448830" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="41" pc="268448843" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="42" pc="268448857" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="43" pc="268448872" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="44" pc="268448886" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="47" pc="268448901" symbol="onSwipe"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="43" lineNum="51" pc="268448905" symbol="initialize"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="43" lineNum="52" pc="268448909" symbol="initialize"/>
-<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="43" lineNum="53" pc="268448931" symbol="initialize"/>
-<entry filename="Rez" id="49" lineNum="17" pc="268448942" symbol="MainLayout"/>
-<entry filename="Rez" id="49" lineNum="19" pc="268448954" symbol="MainLayout"/>
-<entry filename="Rez" id="49" lineNum="21" pc="268449059" symbol="MainLayout"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="39" lineNum="24" pc="268448755" symbol="onSelect"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="40" lineNum="27" pc="268448759" symbol="onNextPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="40" lineNum="28" pc="268448763" symbol="onNextPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="40" lineNum="29" pc="268448775" symbol="onNextPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="41" lineNum="32" pc="268448779" symbol="onPreviousPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="41" lineNum="33" pc="268448783" symbol="onPreviousPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="41" lineNum="34" pc="268448795" symbol="onPreviousPage"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="37" pc="268448799" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="38" pc="268448803" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="40" pc="268448816" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="41" pc="268448830" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="42" pc="268448845" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="43" pc="268448859" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="42" lineNum="46" pc="268448874" symbol="onSwipe"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="43" lineNum="50" pc="268448878" symbol="initialize"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="43" lineNum="51" pc="268448882" symbol="initialize"/>
+<entry filename="D:\\Users\\mark\\git\\OmnikWidget\\OmnikWidget\\source\\OmnikWidgetDelegate.mc" id="43" lineNum="52" pc="268448904" symbol="initialize"/>
+<entry filename="Rez" id="49" lineNum="17" pc="268448915" symbol="MainLayout"/>
+<entry filename="Rez" id="49" lineNum="19" pc="268448927" symbol="MainLayout"/>
+<entry filename="Rez" id="49" lineNum="21" pc="268449032" symbol="MainLayout"/>
 </pcToLineNum>
 <symbolTable>
 <entry id="8388639" module="true" symbol="Graphics"/>
@@ -744,12 +743,11 @@
 <entry arg="true" endPc="268448244" name="dc" stackId="1" startPc="268444659"/>
 <entry arg="true" endPc="268435934" name="state" stackId="1" startPc="268435929"/>
 <entry arg="true" endPc="268435939" name="state" stackId="1" startPc="268435934"/>
-<entry arg="true" endPc="268448786" name="keyEvent" stackId="1" startPc="268448739"/>
-<entry endPc="268448904" name="swipe" stackId="2" startPc="268448830"/>
-<entry arg="true" endPc="268448905" name="evt" stackId="1" startPc="268448826"/>
-<entry arg="true" endPc="268448942" name="handler" stackId="1" startPc="268448905"/>
-<entry endPc="268449076" name="rez_cmp_local_bitmap_logo" stackId="2" startPc="268448954"/>
-<entry arg="true" endPc="268449077" name="dc" stackId="1" startPc="268448942"/>
+<entry endPc="268448877" name="swipe" stackId="2" startPc="268448803"/>
+<entry arg="true" endPc="268448878" name="evt" stackId="1" startPc="268448799"/>
+<entry arg="true" endPc="268448915" name="handler" stackId="1" startPc="268448878"/>
+<entry endPc="268449049" name="rez_cmp_local_bitmap_logo" stackId="2" startPc="268448927"/>
+<entry arg="true" endPc="268449050" name="dc" stackId="1" startPc="268448915"/>
 </localVars>
 <annotations/>
 <dataEntryOffsetMappings>
@@ -885,7 +883,6 @@
 <documentation/>
 </functionEntry>
 <functionEntry accessMode="public" name="onSelect" parent="OmnikWidgetDelegate">
-<param id="keyEvent"/>
 <documentation/>
 </functionEntry>
 <functionEntry accessMode="public" name="onNextPage" parent="OmnikWidgetDelegate">
