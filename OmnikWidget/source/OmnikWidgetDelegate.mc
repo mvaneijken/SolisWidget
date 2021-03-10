@@ -17,10 +17,9 @@ class OmnikWidgetDelegate extends WatchUi.BehaviorDelegate {
 	//		return true;
 	//	}
   
-    function onSelect(keyEvent) {
+    function onSelect() {
         // TODO: Add support for refresh and the use of up/down keys. 
         //RefreshPage();
-  		System.println(keyEvent.getType());
         NextPage();
         return true;
     }
