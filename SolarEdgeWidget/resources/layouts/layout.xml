@@ -1,3 +1,0 @@
-<layout id="MainLayout">
-    <bitmap id="logo"                        x="40" y="10" filename="../drawables/SolarEdge_logo_garmin.png"/>
-</layout>
