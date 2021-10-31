@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<debugInfo>
+    <manifest filename="D:\Users\mark\git\SolisWidget\SolisWidget\manifest.xml"/>
+    <pcToLineNum>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="1" lineNum="53" parent="globals" pc="268436165" symbol="NextPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="1" lineNum="56" parent="globals" pc="268436177" symbol="NextPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="1" lineNum="59" parent="globals" pc="268436196" symbol="NextPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="1" lineNum="60" parent="globals" pc="268436213" symbol="NextPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="1" lineNum="64" parent="globals" pc="268436229" symbol="NextPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="2" lineNum="67" parent="globals" pc="268436246" symbol="PreviousPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="2" lineNum="70" parent="globals" pc="268436258" symbol="PreviousPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="2" lineNum="73" parent="globals" pc="268436277" symbol="PreviousPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="2" lineNum="74" parent="globals" pc="268436294" symbol="PreviousPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="2" lineNum="78" parent="globals" pc="268436310" symbol="PreviousPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="3" lineNum="81" parent="globals" pc="268436327" symbol="RefreshPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="3" lineNum="83" parent="globals" pc="268436339" symbol="RefreshPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="3" lineNum="84" parent="globals" pc="268436355" symbol="RefreshPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="4" lineNum="89" parent="globals/SolisWidgetView" pc="268436366" symbol="initialize"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="4" lineNum="90" parent="globals/SolisWidgetView" pc="268436370" symbol="initialize"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="4" lineNum="91" parent="globals/SolisWidgetView" pc="268436403" symbol="initialize"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="4" lineNum="92" parent="globals/SolisWidgetView" pc="268436415" symbol="initialize"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="4" lineNum="94" parent="globals/SolisWidgetView" pc="268436433" symbol="initialize"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="4" lineNum="95" parent="globals/SolisWidgetView" pc="268436470" symbol="initialize"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="5" lineNum="98" parent="globals/SolisWidgetView" pc="268436522" symbol="getDevicePartNumber"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="5" lineNum="99" parent="globals/SolisWidgetView" pc="268436526" symbol="getDevicePartNumber"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="5" lineNum="101" parent="globals/SolisWidgetView" pc="268436543" symbol="getDevicePartNumber"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="5" lineNum="102" parent="globals/SolisWidgetView" pc="268436553" symbol="getDevicePartNumber"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="6" lineNum="105" parent="globals/SolisWidgetView" pc="268436557" symbol="retrieveSettings"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="6" lineNum="107" parent="globals/SolisWidgetView" pc="268436561" symbol="retrieveSettings"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="6" lineNum="108" parent="globals/SolisWidgetView" pc="268436598" symbol="retrieveSettings"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="6" lineNum="111" parent="globals/SolisWidgetView" pc="268436628" symbol="retrieveSettings"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="6" lineNum="114" parent="globals/SolisWidgetView" pc="268436665" symbol="retrieveSettings"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="6" lineNum="117" parent="globals/SolisWidgetView" pc="268436702" symbol="retrieveSettings"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="6" lineNum="120" parent="globals/SolisWidgetView" pc="268436739" symbol="retrieveSettings"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="6" lineNum="123" parent="globals/SolisWidgetView" pc="268436776" symbol="retrieveSettings"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="6" lineNum="124" parent="globals/SolisWidgetView" pc="268436819" symbol="retrieveSettings"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="7" lineNum="127" parent="globals/SolisWidgetView" pc="268436833" symbol="formatDateTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="7" lineNum="129" parent="globals/SolisWidgetView" pc="268436837" symbol="formatDateTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="7" lineNum="130" parent="globals/SolisWidgetView" pc="268436864" symbol="formatDateTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="7" lineNum="138" parent="globals/SolisWidgetView" pc="268437154" symbol="formatDateTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="7" lineNum="139" parent="globals/SolisWidgetView" pc="268437173" symbol="formatDateTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="7" lineNum="140" parent="globals/SolisWidgetView" pc="268437173" symbol="formatDateTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="7" lineNum="142" parent="globals/SolisWidgetView" pc="268437204" symbol="formatDateTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="8" lineNum="152" parent="globals/SolisWidgetView" pc="268437412" symbol="formatDateFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="8" lineNum="154" parent="globals/SolisWidgetView" pc="268437416" symbol="formatDateFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="8" lineNum="155" parent="globals/SolisWidgetView" pc="268437443" symbol="formatDateFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="8" lineNum="163" parent="globals/SolisWidgetView" pc="268437733" symbol="formatDateFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="8" lineNum="164" parent="globals/SolisWidgetView" pc="268437752" symbol="formatDateFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="8" lineNum="165" parent="globals/SolisWidgetView" pc="268437752" symbol="formatDateFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="8" lineNum="167" parent="globals/SolisWidgetView" pc="268437783" symbol="formatDateFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="9" lineNum="174" parent="globals/SolisWidgetView" pc="268437901" symbol="formatTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="9" lineNum="176" parent="globals/SolisWidgetView" pc="268437905" symbol="formatTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="9" lineNum="177" parent="globals/SolisWidgetView" pc="268437932" symbol="formatTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="9" lineNum="185" parent="globals/SolisWidgetView" pc="268438222" symbol="formatTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="9" lineNum="186" parent="globals/SolisWidgetView" pc="268438241" symbol="formatTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="9" lineNum="187" parent="globals/SolisWidgetView" pc="268438241" symbol="formatTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="9" lineNum="189" parent="globals/SolisWidgetView" pc="268438272" symbol="formatTimeFromRFC3339"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="10" lineNum="197" parent="globals/SolisWidgetView" pc="268438390" symbol="moment_from_info"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="10" lineNum="199" parent="globals/SolisWidgetView" pc="268438394" symbol="moment_from_info"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="11" lineNum="209" parent="globals/SolisWidgetView" pc="268438513" symbol="StringFromInfo"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="11" lineNum="211" parent="globals/SolisWidgetView" pc="268438517" symbol="StringFromInfo"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="11" lineNum="212" parent="globals/SolisWidgetView" pc="268438602" symbol="StringFromInfo"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="12" lineNum="215" parent="globals/SolisWidgetView" pc="268438606" symbol="StringFromMoment"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="12" lineNum="217" parent="globals/SolisWidgetView" pc="268438610" symbol="StringFromMoment"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="12" lineNum="218" parent="globals/SolisWidgetView" pc="268438641" symbol="StringFromMoment"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="13" lineNum="222" parent="globals/SolisWidgetView" pc="268438656" symbol="DetermineNextUpdateFromLastUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="13" lineNum="228" parent="globals/SolisWidgetView" pc="268438660" symbol="DetermineNextUpdateFromLastUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="13" lineNum="231" parent="globals/SolisWidgetView" pc="268438698" symbol="DetermineNextUpdateFromLastUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="13" lineNum="232" parent="globals/SolisWidgetView" pc="268438715" symbol="DetermineNextUpdateFromLastUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="13" lineNum="235" parent="globals/SolisWidgetView" pc="268438751" symbol="DetermineNextUpdateFromLastUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="13" lineNum="238" parent="globals/SolisWidgetView" pc="268438777" symbol="DetermineNextUpdateFromLastUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="13" lineNum="241" parent="globals/SolisWidgetView" pc="268438791" symbol="DetermineNextUpdateFromLastUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="13" lineNum="245" parent="globals/SolisWidgetView" pc="268438811" symbol="DetermineNextUpdateFromLastUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="13" lineNum="246" parent="globals/SolisWidgetView" pc="268438868" symbol="DetermineNextUpdateFromLastUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="13" lineNum="249" parent="globals/SolisWidgetView" pc="268438878" symbol="DetermineNextUpdateFromLastUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="13" lineNum="250" parent="globals/SolisWidgetView" pc="268438939" symbol="DetermineNextUpdateFromLastUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="14" lineNum="254" parent="globals/SolisWidgetView" pc="268438949" symbol="HandleCommand"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="14" lineNum="257" parent="globals/SolisWidgetView" pc="268438953" symbol="HandleCommand"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="14" lineNum="259" parent="globals/SolisWidgetView" pc="268438967" symbol="HandleCommand"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="263" parent="globals/SolisWidgetView" pc="268438983" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="264" parent="globals/SolisWidgetView" pc="268438987" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="265" parent="globals/SolisWidgetView" pc="268439008" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="267" parent="globals/SolisWidgetView" pc="268439038" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="268" parent="globals/SolisWidgetView" pc="268439048" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="270" parent="globals/SolisWidgetView" pc="268439083" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="271" parent="globals/SolisWidgetView" pc="268439093" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="272" parent="globals/SolisWidgetView" pc="268439103" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="273" parent="globals/SolisWidgetView" pc="268439119" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="274" parent="globals/SolisWidgetView" pc="268439165" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="282" parent="globals/SolisWidgetView" pc="268439213" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="283" parent="globals/SolisWidgetView" pc="268439237" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="284" parent="globals/SolisWidgetView" pc="268439261" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="288" parent="globals/SolisWidgetView" pc="268439306" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="15" lineNum="289" parent="globals/SolisWidgetView" pc="268439327" symbol="makeRequest"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="294" parent="globals/SolisWidgetView" pc="268439340" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="296" parent="globals/SolisWidgetView" pc="268439344" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="299" parent="globals/SolisWidgetView" pc="268439365" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="300" parent="globals/SolisWidgetView" pc="268439375" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="301" parent="globals/SolisWidgetView" pc="268439393" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="304" parent="globals/SolisWidgetView" pc="268439411" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="307" parent="globals/SolisWidgetView" pc="268439422" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="308" parent="globals/SolisWidgetView" pc="268439432" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="309" parent="globals/SolisWidgetView" pc="268439457" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="312" parent="globals/SolisWidgetView" pc="268439483" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="313" parent="globals/SolisWidgetView" pc="268439513" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="314" parent="globals/SolisWidgetView" pc="268439523" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="315" parent="globals/SolisWidgetView" pc="268439536" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="316" parent="globals/SolisWidgetView" pc="268439549" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="317" parent="globals/SolisWidgetView" pc="268439584" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="319" parent="globals/SolisWidgetView" pc="268439619" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="320" parent="globals/SolisWidgetView" pc="268439641" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="321" parent="globals/SolisWidgetView" pc="268439684" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="325" parent="globals/SolisWidgetView" pc="268439730" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="326" parent="globals/SolisWidgetView" pc="268439740" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="327" parent="globals/SolisWidgetView" pc="268439756" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="328" parent="globals/SolisWidgetView" pc="268439794" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="329" parent="globals/SolisWidgetView" pc="268439818" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="330" parent="globals/SolisWidgetView" pc="268439848" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="334" parent="globals/SolisWidgetView" pc="268439863" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="337" parent="globals/SolisWidgetView" pc="268439881" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="338" parent="globals/SolisWidgetView" pc="268439891" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="339" parent="globals/SolisWidgetView" pc="268439934" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="340" parent="globals/SolisWidgetView" pc="268439977" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="342" parent="globals/SolisWidgetView" pc="268440023" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="345" parent="globals/SolisWidgetView" pc="268440041" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="346" parent="globals/SolisWidgetView" pc="268440051" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="347" parent="globals/SolisWidgetView" pc="268440094" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="348" parent="globals/SolisWidgetView" pc="268440137" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="350" parent="globals/SolisWidgetView" pc="268440183" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="353" parent="globals/SolisWidgetView" pc="268440201" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="354" parent="globals/SolisWidgetView" pc="268440211" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="355" parent="globals/SolisWidgetView" pc="268440254" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="356" parent="globals/SolisWidgetView" pc="268440297" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="361" parent="globals/SolisWidgetView" pc="268440343" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="362" parent="globals/SolisWidgetView" pc="268440353" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="363" parent="globals/SolisWidgetView" pc="268440369" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="364" parent="globals/SolisWidgetView" pc="268440382" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="16" lineNum="366" parent="globals/SolisWidgetView" pc="268440395" symbol="onReceive"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="17" lineNum="369" parent="globals/SolisWidgetView" pc="268440412" symbol="makeRequestPlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="17" lineNum="370" parent="globals/SolisWidgetView" pc="268440416" symbol="makeRequestPlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="17" lineNum="371" parent="globals/SolisWidgetView" pc="268440437" symbol="makeRequestPlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="17" lineNum="373" parent="globals/SolisWidgetView" pc="268440467" symbol="makeRequestPlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="17" lineNum="375" parent="globals/SolisWidgetView" pc="268440502" symbol="makeRequestPlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="17" lineNum="376" parent="globals/SolisWidgetView" pc="268440512" symbol="makeRequestPlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="17" lineNum="377" parent="globals/SolisWidgetView" pc="268440522" symbol="makeRequestPlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="17" lineNum="378" parent="globals/SolisWidgetView" pc="268440538" symbol="makeRequestPlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="17" lineNum="380" parent="globals/SolisWidgetView" pc="268440578" symbol="makeRequestPlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="17" lineNum="386" parent="globals/SolisWidgetView" pc="268440626" symbol="makeRequestPlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="17" lineNum="387" parent="globals/SolisWidgetView" pc="268440650" symbol="makeRequestPlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="17" lineNum="388" parent="globals/SolisWidgetView" pc="268440674" symbol="makeRequestPlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="17" lineNum="392" parent="globals/SolisWidgetView" pc="268440719" symbol="makeRequestPlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="396" parent="globals/SolisWidgetView" pc="268440732" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="398" parent="globals/SolisWidgetView" pc="268440736" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="401" parent="globals/SolisWidgetView" pc="268440757" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="402" parent="globals/SolisWidgetView" pc="268440767" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="403" parent="globals/SolisWidgetView" pc="268440785" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="406" parent="globals/SolisWidgetView" pc="268440803" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="409" parent="globals/SolisWidgetView" pc="268440814" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="410" parent="globals/SolisWidgetView" pc="268440824" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="411" parent="globals/SolisWidgetView" pc="268440849" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="414" parent="globals/SolisWidgetView" pc="268440875" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="415" parent="globals/SolisWidgetView" pc="268440885" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="416" parent="globals/SolisWidgetView" pc="268440898" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="417" parent="globals/SolisWidgetView" pc="268440911" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="418" parent="globals/SolisWidgetView" pc="268440946" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="420" parent="globals/SolisWidgetView" pc="268440981" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="421" parent="globals/SolisWidgetView" pc="268441003" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="422" parent="globals/SolisWidgetView" pc="268441016" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="426" parent="globals/SolisWidgetView" pc="268441032" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="427" parent="globals/SolisWidgetView" pc="268441042" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="428" parent="globals/SolisWidgetView" pc="268441070" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="429" parent="globals/SolisWidgetView" pc="268441108" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="430" parent="globals/SolisWidgetView" pc="268441138" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="433" parent="globals/SolisWidgetView" pc="268441153" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="436" parent="globals/SolisWidgetView" pc="268441171" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="437" parent="globals/SolisWidgetView" pc="268441181" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="438" parent="globals/SolisWidgetView" pc="268441224" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="439" parent="globals/SolisWidgetView" pc="268441267" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="441" parent="globals/SolisWidgetView" pc="268441313" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="444" parent="globals/SolisWidgetView" pc="268441331" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="445" parent="globals/SolisWidgetView" pc="268441341" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="446" parent="globals/SolisWidgetView" pc="268441384" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="447" parent="globals/SolisWidgetView" pc="268441427" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="449" parent="globals/SolisWidgetView" pc="268441473" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="452" parent="globals/SolisWidgetView" pc="268441491" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="453" parent="globals/SolisWidgetView" pc="268441501" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="454" parent="globals/SolisWidgetView" pc="268441544" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="455" parent="globals/SolisWidgetView" pc="268441587" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="460" parent="globals/SolisWidgetView" pc="268441633" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="461" parent="globals/SolisWidgetView" pc="268441643" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="462" parent="globals/SolisWidgetView" pc="268441659" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="463" parent="globals/SolisWidgetView" pc="268441672" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="18" lineNum="465" parent="globals/SolisWidgetView" pc="268441685" symbol="onReceivePlantId"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="19" lineNum="468" parent="globals/SolisWidgetView" pc="268441702" symbol="makeRequestData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="19" lineNum="470" parent="globals/SolisWidgetView" pc="268441706" symbol="makeRequestData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="19" lineNum="473" parent="globals/SolisWidgetView" pc="268441727" symbol="makeRequestData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="19" lineNum="474" parent="globals/SolisWidgetView" pc="268441737" symbol="makeRequestData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="19" lineNum="475" parent="globals/SolisWidgetView" pc="268441747" symbol="makeRequestData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="19" lineNum="476" parent="globals/SolisWidgetView" pc="268441763" symbol="makeRequestData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="19" lineNum="477" parent="globals/SolisWidgetView" pc="268441793" symbol="makeRequestData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="19" lineNum="479" parent="globals/SolisWidgetView" pc="268441851" symbol="makeRequestData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="19" lineNum="487" parent="globals/SolisWidgetView" pc="268441899" symbol="makeRequestData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="19" lineNum="488" parent="globals/SolisWidgetView" pc="268441923" symbol="makeRequestData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="19" lineNum="489" parent="globals/SolisWidgetView" pc="268441947" symbol="makeRequestData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="492" parent="globals/SolisWidgetView" pc="268441990" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="494" parent="globals/SolisWidgetView" pc="268441994" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="497" parent="globals/SolisWidgetView" pc="268442015" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="498" parent="globals/SolisWidgetView" pc="268442025" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="499" parent="globals/SolisWidgetView" pc="268442043" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="504" parent="globals/SolisWidgetView" pc="268442061" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="507" parent="globals/SolisWidgetView" pc="268442072" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="508" parent="globals/SolisWidgetView" pc="268442082" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="509" parent="globals/SolisWidgetView" pc="268442107" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="512" parent="globals/SolisWidgetView" pc="268442133" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="513" parent="globals/SolisWidgetView" pc="268442143" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="514" parent="globals/SolisWidgetView" pc="268442156" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="515" parent="globals/SolisWidgetView" pc="268442169" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="516" parent="globals/SolisWidgetView" pc="268442204" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="518" parent="globals/SolisWidgetView" pc="268442239" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="519" parent="globals/SolisWidgetView" pc="268442261" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="520" parent="globals/SolisWidgetView" pc="268442274" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="524" parent="globals/SolisWidgetView" pc="268442290" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="525" parent="globals/SolisWidgetView" pc="268442300" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="527" parent="globals/SolisWidgetView" pc="268442314" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="530" parent="globals/SolisWidgetView" pc="268442321" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="531" parent="globals/SolisWidgetView" pc="268442346" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="533" parent="globals/SolisWidgetView" pc="268442357" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="535" parent="globals/SolisWidgetView" pc="268442391" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="537" parent="globals/SolisWidgetView" pc="268442421" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="540" parent="globals/SolisWidgetView" pc="268442460" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="541" parent="globals/SolisWidgetView" pc="268442485" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="544" parent="globals/SolisWidgetView" pc="268442496" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="550" parent="globals/SolisWidgetView" pc="268442530" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="552" parent="globals/SolisWidgetView" pc="268442560" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="571" parent="globals/SolisWidgetView" pc="268442599" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="572" parent="globals/SolisWidgetView" pc="268442624" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="575" parent="globals/SolisWidgetView" pc="268442635" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="577" parent="globals/SolisWidgetView" pc="268442669" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="580" parent="globals/SolisWidgetView" pc="268442680" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="584" parent="globals/SolisWidgetView" pc="268442713" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="586" parent="globals/SolisWidgetView" pc="268442749" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="589" parent="globals/SolisWidgetView" pc="268442788" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="590" parent="globals/SolisWidgetView" pc="268442804" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="591" parent="globals/SolisWidgetView" pc="268442817" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="592" parent="globals/SolisWidgetView" pc="268442844" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="593" parent="globals/SolisWidgetView" pc="268442871" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="598" parent="globals/SolisWidgetView" pc="268442901" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="599" parent="globals/SolisWidgetView" pc="268442910" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="600" parent="globals/SolisWidgetView" pc="268442919" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="601" parent="globals/SolisWidgetView" pc="268442928" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="602" parent="globals/SolisWidgetView" pc="268442937" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="603" parent="globals/SolisWidgetView" pc="268442946" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="604" parent="globals/SolisWidgetView" pc="268442955" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="605" parent="globals/SolisWidgetView" pc="268442964" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="606" parent="globals/SolisWidgetView" pc="268442973" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="610" parent="globals/SolisWidgetView" pc="268442985" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="613" parent="globals/SolisWidgetView" pc="268443003" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="614" parent="globals/SolisWidgetView" pc="268443013" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="615" parent="globals/SolisWidgetView" pc="268443056" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="616" parent="globals/SolisWidgetView" pc="268443099" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="618" parent="globals/SolisWidgetView" pc="268443145" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="621" parent="globals/SolisWidgetView" pc="268443163" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="622" parent="globals/SolisWidgetView" pc="268443173" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="623" parent="globals/SolisWidgetView" pc="268443216" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="624" parent="globals/SolisWidgetView" pc="268443259" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="626" parent="globals/SolisWidgetView" pc="268443305" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="629" parent="globals/SolisWidgetView" pc="268443323" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="630" parent="globals/SolisWidgetView" pc="268443333" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="631" parent="globals/SolisWidgetView" pc="268443376" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="632" parent="globals/SolisWidgetView" pc="268443419" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="637" parent="globals/SolisWidgetView" pc="268443465" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="638" parent="globals/SolisWidgetView" pc="268443475" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="639" parent="globals/SolisWidgetView" pc="268443491" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="640" parent="globals/SolisWidgetView" pc="268443504" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="20" lineNum="642" parent="globals/SolisWidgetView" pc="268443517" symbol="onReceiveData"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="21" lineNum="646" parent="globals/SolisWidgetView" pc="268443534" symbol="onLayout"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="21" lineNum="647" parent="globals/SolisWidgetView" pc="268443538" symbol="onLayout"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="22" lineNum="653" parent="globals/SolisWidgetView" pc="268443576" symbol="onShow"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="22" lineNum="655" parent="globals/SolisWidgetView" pc="268443580" symbol="onShow"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="22" lineNum="656" parent="globals/SolisWidgetView" pc="268443617" symbol="onShow"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="22" lineNum="659" parent="globals/SolisWidgetView" pc="268443654" symbol="onShow"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="22" lineNum="660" parent="globals/SolisWidgetView" pc="268443691" symbol="onShow"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="22" lineNum="661" parent="globals/SolisWidgetView" pc="268443728" symbol="onShow"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="22" lineNum="662" parent="globals/SolisWidgetView" pc="268443765" symbol="onShow"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="22" lineNum="663" parent="globals/SolisWidgetView" pc="268443802" symbol="onShow"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="22" lineNum="664" parent="globals/SolisWidgetView" pc="268443839" symbol="onShow"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="22" lineNum="667" parent="globals/SolisWidgetView" pc="268443876" symbol="onShow"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="22" lineNum="669" parent="globals/SolisWidgetView" pc="268443889" symbol="onShow"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="22" lineNum="672" parent="globals/SolisWidgetView" pc="268443904" symbol="onShow"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="22" lineNum="674" parent="globals/SolisWidgetView" pc="268443965" symbol="onShow"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="680" parent="globals/SolisWidgetView" pc="268443981" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="681" parent="globals/SolisWidgetView" pc="268443985" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="682" parent="globals/SolisWidgetView" pc="268444018" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="684" parent="globals/SolisWidgetView" pc="268444051" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="685" parent="globals/SolisWidgetView" pc="268444066" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="686" parent="globals/SolisWidgetView" pc="268444080" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="691" parent="globals/SolisWidgetView" pc="268444095" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="692" parent="globals/SolisWidgetView" pc="268444135" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="693" parent="globals/SolisWidgetView" pc="268444147" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="695" parent="globals/SolisWidgetView" pc="268444187" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="696" parent="globals/SolisWidgetView" pc="268444203" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="697" parent="globals/SolisWidgetView" pc="268444219" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="698" parent="globals/SolisWidgetView" pc="268444235" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="699" parent="globals/SolisWidgetView" pc="268444251" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="700" parent="globals/SolisWidgetView" pc="268444272" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="701" parent="globals/SolisWidgetView" pc="268444293" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="702" parent="globals/SolisWidgetView" pc="268444314" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="703" parent="globals/SolisWidgetView" pc="268444335" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="704" parent="globals/SolisWidgetView" pc="268444348" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="705" parent="globals/SolisWidgetView" pc="268444358" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="706" parent="globals/SolisWidgetView" pc="268444380" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="707" parent="globals/SolisWidgetView" pc="268444402" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="708" parent="globals/SolisWidgetView" pc="268444409" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="709" parent="globals/SolisWidgetView" pc="268444416" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="710" parent="globals/SolisWidgetView" pc="268444416" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="711" parent="globals/SolisWidgetView" pc="268444416" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="712" parent="globals/SolisWidgetView" pc="268444416" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="713" parent="globals/SolisWidgetView" pc="268444416" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="723" parent="globals/SolisWidgetView" pc="268444416" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="725" parent="globals/SolisWidgetView" pc="268444427" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="726" parent="globals/SolisWidgetView" pc="268444437" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="727" parent="globals/SolisWidgetView" pc="268444459" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="728" parent="globals/SolisWidgetView" pc="268444481" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="729" parent="globals/SolisWidgetView" pc="268444491" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="730" parent="globals/SolisWidgetView" pc="268444501" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="731" parent="globals/SolisWidgetView" pc="268444511" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="732" parent="globals/SolisWidgetView" pc="268444560" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="733" parent="globals/SolisWidgetView" pc="268444609" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="735" parent="globals/SolisWidgetView" pc="268444661" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="736" parent="globals/SolisWidgetView" pc="268444672" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="737" parent="globals/SolisWidgetView" pc="268444682" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="738" parent="globals/SolisWidgetView" pc="268444719" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="742" parent="globals/SolisWidgetView" pc="268444771" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="744" parent="globals/SolisWidgetView" pc="268444788" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="745" parent="globals/SolisWidgetView" pc="268444798" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="746" parent="globals/SolisWidgetView" pc="268444820" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="747" parent="globals/SolisWidgetView" pc="268444842" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="748" parent="globals/SolisWidgetView" pc="268444864" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="749" parent="globals/SolisWidgetView" pc="268444901" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="750" parent="globals/SolisWidgetView" pc="268444911" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="751" parent="globals/SolisWidgetView" pc="268444921" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="752" parent="globals/SolisWidgetView" pc="268444931" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="753" parent="globals/SolisWidgetView" pc="268444980" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="754" parent="globals/SolisWidgetView" pc="268445029" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="755" parent="globals/SolisWidgetView" pc="268445078" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="756" parent="globals/SolisWidgetView" pc="268445127" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="757" parent="globals/SolisWidgetView" pc="268445137" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="759" parent="globals/SolisWidgetView" pc="268445150" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="761" parent="globals/SolisWidgetView" pc="268445167" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="762" parent="globals/SolisWidgetView" pc="268445177" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="763" parent="globals/SolisWidgetView" pc="268445199" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="764" parent="globals/SolisWidgetView" pc="268445221" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="765" parent="globals/SolisWidgetView" pc="268445243" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="766" parent="globals/SolisWidgetView" pc="268445280" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="767" parent="globals/SolisWidgetView" pc="268445290" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="768" parent="globals/SolisWidgetView" pc="268445300" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="769" parent="globals/SolisWidgetView" pc="268445310" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="770" parent="globals/SolisWidgetView" pc="268445359" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="771" parent="globals/SolisWidgetView" pc="268445408" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="772" parent="globals/SolisWidgetView" pc="268445457" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="773" parent="globals/SolisWidgetView" pc="268445506" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="774" parent="globals/SolisWidgetView" pc="268445516" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="827" parent="globals/SolisWidgetView" pc="268445529" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="828" parent="globals/SolisWidgetView" pc="268445546" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="829" parent="globals/SolisWidgetView" pc="268445556" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="830" parent="globals/SolisWidgetView" pc="268445578" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="831" parent="globals/SolisWidgetView" pc="268445600" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="832" parent="globals/SolisWidgetView" pc="268445622" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="833" parent="globals/SolisWidgetView" pc="268445644" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="834" parent="globals/SolisWidgetView" pc="268445696" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="835" parent="globals/SolisWidgetView" pc="268445748" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="836" parent="globals/SolisWidgetView" pc="268445800" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="837" parent="globals/SolisWidgetView" pc="268445852" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="839" parent="globals/SolisWidgetView" pc="268445904" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="840" parent="globals/SolisWidgetView" pc="268445953" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="841" parent="globals/SolisWidgetView" pc="268446002" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="842" parent="globals/SolisWidgetView" pc="268446051" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="843" parent="globals/SolisWidgetView" pc="268446100" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="845" parent="globals/SolisWidgetView" pc="268446152" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="847" parent="globals/SolisWidgetView" pc="268446197" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="848" parent="globals/SolisWidgetView" pc="268446211" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="23" lineNum="849" parent="globals/SolisWidgetView" pc="268446241" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="24" lineNum="856" parent="globals/SolisWidgetView" pc="268446257" symbol="onHide"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="24" lineNum="859" parent="globals/SolisWidgetView" pc="268446261" symbol="onHide"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="24" lineNum="860" parent="globals/SolisWidgetView" pc="268446299" symbol="onHide"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="24" lineNum="863" parent="globals/SolisWidgetView" pc="268446337" symbol="onHide"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="24" lineNum="864" parent="globals/SolisWidgetView" pc="268446375" symbol="onHide"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="24" lineNum="865" parent="globals/SolisWidgetView" pc="268446413" symbol="onHide"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="24" lineNum="866" parent="globals/SolisWidgetView" pc="268446451" symbol="onHide"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="24" lineNum="867" parent="globals/SolisWidgetView" pc="268446489" symbol="onHide"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="24" lineNum="868" parent="globals/SolisWidgetView" pc="268446527" symbol="onHide"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="24" lineNum="869" parent="globals/SolisWidgetView" pc="268446565" symbol="onHide"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="24" lineNum="870" parent="globals/SolisWidgetView" pc="268446603" symbol="onHide"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="25" lineNum="87" parent="globals/SolisWidgetView" pc="268447017" symbol="&lt;init&gt;"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetView.mc" id="25" lineNum="87" parent="globals/SolisWidgetView" pc="268447017" symbol="&lt;init&gt;"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="27" lineNum="9" parent="globals/SolisWidgetApp" pc="268435456" symbol="initialize"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="27" lineNum="10" parent="globals/SolisWidgetApp" pc="268435460" symbol="initialize"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="28" lineNum="15" parent="globals/SolisWidgetApp" pc="268435479" symbol="onStart"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="29" lineNum="19" parent="globals/SolisWidgetApp" pc="268435484" symbol="onStop"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="30" lineNum="23" parent="globals/SolisWidgetApp" pc="268435489" symbol="onSettingsChanged"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="30" lineNum="24" parent="globals/SolisWidgetApp" pc="268435493" symbol="onSettingsChanged"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="30" lineNum="25" parent="globals/SolisWidgetApp" pc="268435507" symbol="onSettingsChanged"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="31" lineNum="30" parent="globals/SolisWidgetApp" pc="268435524" symbol="getInitialView"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="31" lineNum="31" parent="globals/SolisWidgetApp" pc="268435528" symbol="getInitialView"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="31" lineNum="32" parent="globals/SolisWidgetApp" pc="268435558" symbol="getInitialView"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="32" lineNum="36" parent="globals/SolisWidgetApp" pc="268435634" symbol="getGlanceView"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="32" lineNum="37" parent="globals/SolisWidgetApp" pc="268435638" symbol="getGlanceView"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="33" lineNum="6" parent="globals/SolisWidgetApp" pc="268436146" symbol="&lt;init&gt;"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetApp.mc" id="33" lineNum="6" parent="globals/SolisWidgetApp" pc="268436146" symbol="&lt;init&gt;"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="35" lineNum="9" parent="globals/SolisWidgetDelegate" pc="268446642" symbol="onMenu"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="35" lineNum="10" parent="globals/SolisWidgetDelegate" pc="268446646" symbol="onMenu"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="35" lineNum="11" parent="globals/SolisWidgetDelegate" pc="268446672" symbol="onMenu"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="36" lineNum="20" parent="globals/SolisWidgetDelegate" pc="268446676" symbol="onSelect"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="36" lineNum="23" parent="globals/SolisWidgetDelegate" pc="268446680" symbol="onSelect"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="36" lineNum="24" parent="globals/SolisWidgetDelegate" pc="268446692" symbol="onSelect"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="37" lineNum="27" parent="globals/SolisWidgetDelegate" pc="268446696" symbol="onNextPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="37" lineNum="28" parent="globals/SolisWidgetDelegate" pc="268446700" symbol="onNextPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="37" lineNum="29" parent="globals/SolisWidgetDelegate" pc="268446712" symbol="onNextPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="38" lineNum="32" parent="globals/SolisWidgetDelegate" pc="268446716" symbol="onPreviousPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="38" lineNum="33" parent="globals/SolisWidgetDelegate" pc="268446720" symbol="onPreviousPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="38" lineNum="34" parent="globals/SolisWidgetDelegate" pc="268446732" symbol="onPreviousPage"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="39" lineNum="37" parent="globals/SolisWidgetDelegate" pc="268446736" symbol="onSwipe"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="39" lineNum="38" parent="globals/SolisWidgetDelegate" pc="268446740" symbol="onSwipe"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="39" lineNum="40" parent="globals/SolisWidgetDelegate" pc="268446753" symbol="onSwipe"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="39" lineNum="41" parent="globals/SolisWidgetDelegate" pc="268446767" symbol="onSwipe"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="39" lineNum="42" parent="globals/SolisWidgetDelegate" pc="268446782" symbol="onSwipe"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="39" lineNum="43" parent="globals/SolisWidgetDelegate" pc="268446796" symbol="onSwipe"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="39" lineNum="46" parent="globals/SolisWidgetDelegate" pc="268446811" symbol="onSwipe"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="40" lineNum="50" parent="globals/SolisWidgetDelegate" pc="268446815" symbol="initialize"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="40" lineNum="51" parent="globals/SolisWidgetDelegate" pc="268446819" symbol="initialize"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="40" lineNum="52" parent="globals/SolisWidgetDelegate" pc="268446841" symbol="initialize"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="41" lineNum="5" parent="globals/SolisWidgetDelegate" pc="268447036" symbol="&lt;init&gt;"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetDelegate.mc" id="41" lineNum="5" parent="globals/SolisWidgetDelegate" pc="268447036" symbol="&lt;init&gt;"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="43" lineNum="9" parent="globals/SolisWidgetGlanceView" pc="268435676" symbol="initialize"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="43" lineNum="10" parent="globals/SolisWidgetGlanceView" pc="268435680" symbol="initialize"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="13" parent="globals/SolisWidgetGlanceView" pc="268435699" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="14" parent="globals/SolisWidgetGlanceView" pc="268435703" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="15" parent="globals/SolisWidgetGlanceView" pc="268435710" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="16" parent="globals/SolisWidgetGlanceView" pc="268435741" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="17" parent="globals/SolisWidgetGlanceView" pc="268435748" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="19" parent="globals/SolisWidgetGlanceView" pc="268435779" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="20" parent="globals/SolisWidgetGlanceView" pc="268435799" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="21" parent="globals/SolisWidgetGlanceView" pc="268435819" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="22" parent="globals/SolisWidgetGlanceView" pc="268435859" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="23" parent="globals/SolisWidgetGlanceView" pc="268435871" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="25" parent="globals/SolisWidgetGlanceView" pc="268435911" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="26" parent="globals/SolisWidgetGlanceView" pc="268435927" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="28" parent="globals/SolisWidgetGlanceView" pc="268435948" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="29" parent="globals/SolisWidgetGlanceView" pc="268435952" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="31" parent="globals/SolisWidgetGlanceView" pc="268435956" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="32" parent="globals/SolisWidgetGlanceView" pc="268435969" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="33" parent="globals/SolisWidgetGlanceView" pc="268435998" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="34" parent="globals/SolisWidgetGlanceView" pc="268436005" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="36" parent="globals/SolisWidgetGlanceView" pc="268436027" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="44" lineNum="37" parent="globals/SolisWidgetGlanceView" pc="268436076" symbol="onUpdate"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="45" lineNum="7" parent="globals/SolisWidgetGlanceView" pc="268436127" symbol="&lt;init&gt;"/>
+        <entry filename="D:\\Users\\mark\\git\\SolisWidget\\SolisWidget\\source\\SolisWidgetGlanceView.mc" id="45" lineNum="7" parent="globals/SolisWidgetGlanceView" pc="268436127" symbol="&lt;init&gt;"/>
+        <entry filename="Rez" id="47" lineNum="2" parent="globals/Rez/Drawables" pc="268447011" symbol="&lt;init&gt;"/>
+        <entry filename="Rez" id="48" lineNum="8" parent="globals/Rez/Fonts" pc="268447013" symbol="&lt;init&gt;"/>
+        <entry filename="Rez" id="49" lineNum="10" parent="globals/Rez/JsonData" pc="268447015" symbol="&lt;init&gt;"/>
+        <entry filename="Rez" id="50" lineNum="19" parent="globals/Rez/Layouts" pc="268446852" symbol="MainLayout"/>
+        <entry filename="Rez" id="50" lineNum="22" parent="globals/Rez/Layouts" pc="268446864" symbol="MainLayout"/>
+        <entry filename="Rez" id="50" lineNum="24" parent="globals/Rez/Layouts" pc="268446969" symbol="MainLayout"/>
+        <entry filename="Rez" id="51" lineNum="12" parent="globals/Rez/Layouts" pc="268447014" symbol="&lt;init&gt;"/>
+        <entry filename="Rez" id="52" lineNum="29" parent="globals/Rez/Menus" pc="268447012" symbol="&lt;init&gt;"/>
+        <entry filename="Rez" id="53" lineNum="31" parent="globals/Rez/Strings" pc="268447016" symbol="&lt;init&gt;"/>
+        <entry filename="Rez" id="54" lineNum="1" parent="globals/Rez" pc="268446987" symbol="&lt;init&gt;"/>
+        <entry filename="Rez" id="54" lineNum="1" parent="globals/Rez" pc="268446987" symbol="&lt;init&gt;"/>
+    </pcToLineNum>
+    <symbolTable>
+        <entry id="8388639" module="true" symbol="Graphics"/>
+        <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
+        <entry id="4" module="true" symbol="globals/Rez/Menus"/>
+        <entry id="45" method="true" symbol="RefreshPage"/>
+        <entry field="true" id="26" symbol="appid"/>
+        <entry id="90" method="true" symbol="moment_from_info"/>
+        <entry field="true" id="64" symbol="TOTAL"/>
+        <entry id="57" method="true" symbol="MainLayout"/>
+        <entry field="true" id="11" symbol="ShowError"/>
+        <entry id="8389683" method="true" symbol="onSettingsChanged"/>
+        <entry field="true" id="8388938" symbol="month"/>
+        <entry field="true" id="33" symbol="uid"/>
+        <entry field="true" id="34" symbol="plantid"/>
+        <entry field="true" id="42" symbol="UpdateInterval"/>
+        <entry id="8388924" module="true" symbol="Gregorian"/>
+        <entry field="true" id="8388611" module="true" symbol="Toybox"/>
+        <entry field="true" id="40" symbol="Username"/>
+        <entry field="true" id="16" symbol="Today"/>
+        <entry id="88" method="true" symbol="formatDateFromRFC3339"/>
+        <entry field="true" id="51" symbol="mView"/>
+        <entry id="100" method="true" symbol="onReceiveData"/>
+        <entry field="true" id="59" symbol="AppName"/>
+        <entry id="8389339" symbol="second"/>
+        <entry field="true" id="17" symbol="ThisMonth"/>
+        <entry field="true" id="60" symbol="title_uid"/>
+        <entry id="93" method="true" symbol="DetermineNextUpdateFromLastUpdate"/>
+        <entry id="8" module="true" symbol="globals/Rez/Strings"/>
+        <entry id="8389080" method="true" symbol="onMenu"/>
+        <entry id="8388772" module="true" object="true" symbol="Fonts"/>
+        <entry id="86" method="true" symbol="retrieveSettings"/>
+        <entry id="8389345" symbol="rezId"/>
+        <entry field="true" id="69" symbol="NOBLUETOOTHERRORTEXT3"/>
+        <entry field="true" id="68" symbol="NOBLUETOOTHERRORTEXT2"/>
+        <entry field="true" id="67" symbol="NOBLUETOOTHERRORTEXT1"/>
+        <entry field="true" id="71" symbol="APIERRORTEXT3"/>
+        <entry field="true" id="70" symbol="APIERRORTEXT2"/>
+        <entry field="true" id="81" symbol="THISMONTH"/>
+        <entry id="8389338" symbol="minute"/>
+        <entry field="true" id="21" symbol="lastUpdateTimeLocalized"/>
+        <entry id="8388648" module="true" symbol="WatchUi"/>
+        <entry id="87" method="true" symbol="formatDateTimeFromRFC3339"/>
+        <entry field="true" id="35" symbol="glancesName"/>
+        <entry id="2" module="true" symbol="globals/Rez"/>
+        <entry field="true" id="55" symbol="logo"/>
+        <entry field="true" id="25" symbol="BaseUrl"/>
+        <entry id="85" method="true" symbol="getDevicePartNumber"/>
+        <entry field="true" id="61" symbol="NOINTERNET3"/>
+        <entry field="true" id="63" symbol="NOINTERNET2"/>
+        <entry field="true" id="58" symbol="NOINTERNET1"/>
+        <entry field="true" id="28" symbol="push_sn"/>
+        <entry field="true" id="74" symbol="THISYEAR"/>
+        <entry id="97" method="true" symbol="makeRequestPlantId"/>
+        <entry id="8389124" method="true" symbol="onUpdate"/>
+        <entry field="true" id="8389065" symbol="locY"/>
+        <entry field="true" id="8389064" symbol="locX"/>
+        <entry field="true" id="15" symbol="Current"/>
+        <entry id="8388771" module="true" object="true" symbol="Drawables"/>
+        <entry field="true" id="54" symbol="Solislogo"/>
+        <entry id="8389079" method="true" symbol="onPreviousPage"/>
+        <entry id="53" module="true" symbol="Menus"/>
+        <entry id="6" module="true" symbol="globals/Rez/Layouts"/>
+        <entry field="true" id="79" symbol="INVALIDSETTINGSTEXT3"/>
+        <entry field="true" id="78" symbol="INVALIDSETTINGSTEXT2"/>
+        <entry field="true" id="77" symbol="INVALIDSETTINGSTEXT1"/>
+        <entry field="true" id="41" symbol="Password"/>
+        <entry field="true" id="36" symbol="glancesValue"/>
+        <entry id="8389122" method="true" symbol="onLayout"/>
+        <entry field="true" id="29" symbol="timezone"/>
+        <entry field="true" id="38" symbol="resultCode"/>
+        <entry field="true" id="8389063" symbol="identifier"/>
+        <entry field="true" id="27" symbol="terminate"/>
+        <entry field="true" id="39" symbol="CurrentPage"/>
+        <entry field="true" id="23" symbol="LastUpdate"/>
+        <entry id="95" method="true" symbol="makeRequest"/>
+        <entry id="7" module="true" symbol="globals/Rez/JsonData"/>
+        <entry field="true" id="24" symbol="NextUpdate"/>
+        <entry id="46" object="true" symbol="SolisWidgetView"/>
+        <entry id="8388637" module="true" symbol="Communications"/>
+        <entry id="3" module="true" symbol="globals/Rez/Drawables"/>
+        <entry id="99" method="true" symbol="makeRequestData"/>
+        <entry id="49" object="true" symbol="SolisWidgetDelegate"/>
+        <entry id="8389844" symbol="responseType"/>
+        <entry field="true" id="14" symbol="Errortext3"/>
+        <entry field="true" id="13" symbol="Errortext2"/>
+        <entry field="true" id="12" symbol="Errortext1"/>
+        <entry field="true" id="10" symbol="ShowRefreshing"/>
+        <entry field="true" id="66" symbol="TODAY"/>
+        <entry field="true" id="83" symbol="UPDATING"/>
+        <entry field="true" id="30" symbol="lan"/>
+        <entry id="98" method="true" symbol="onReceivePlantId"/>
+        <entry id="8388786" method="true" symbol="method"/>
+        <entry id="8388644" module="true" symbol="System"/>
+        <entry field="true" id="22" symbol="lastUpdateDateLocalized"/>
+        <entry id="8389619" method="true" symbol="onSelect"/>
+        <entry field="true" id="31" symbol="country"/>
+        <entry id="8388645" module="true" symbol="Time"/>
+        <entry id="8388769" module="true" object="true" symbol="Rez"/>
+        <entry id="96" method="true" symbol="onReceive"/>
+        <entry field="true" id="20" symbol="lastUpdateLocalized"/>
+        <entry id="92" method="true" symbol="StringFromMoment"/>
+        <entry field="true" id="8388720" symbol="hour"/>
+        <entry field="true" id="101" symbol="notify"/>
+        <entry id="8388640" module="true" symbol="Lang"/>
+        <entry id="91" method="true" symbol="StringFromInfo"/>
+        <entry id="8390088" module="true" object="true" symbol="JsonData"/>
+        <entry id="43" method="true" symbol="NextPage"/>
+        <entry field="true" id="9" symbol="DOWEBREQUEST"/>
+        <entry id="8388610" symbol="statics"/>
+        <entry id="8389123" method="true" symbol="onShow"/>
+        <entry id="89" method="true" symbol="formatTimeFromRFC3339"/>
+        <entry field="true" id="19" symbol="Total"/>
+        <entry field="true" id="76" symbol="CURRENT"/>
+        <entry field="true" id="18" symbol="ThisYear"/>
+        <entry field="true" id="37" symbol="forceUpdate"/>
+        <entry id="8389350" module="true" symbol="globals"/>
+        <entry id="94" method="true" symbol="HandleCommand"/>
+        <entry id="8388770" module="true" object="true" symbol="Strings"/>
+        <entry field="true" id="65" symbol="title_username"/>
+        <entry field="true" id="62" symbol="title_startpage"/>
+        <entry id="8388702" method="true" symbol="initialize"/>
+        <entry id="8389279" method="true" symbol="onStart"/>
+        <entry field="true" id="56" symbol="Solisicon"/>
+        <entry field="true" id="80" symbol="opt_page_6"/>
+        <entry field="true" id="82" symbol="opt_page_5"/>
+        <entry field="true" id="72" symbol="opt_page_2"/>
+        <entry field="true" id="75" symbol="opt_page_1"/>
+        <entry id="8389280" method="true" symbol="getInitialView"/>
+        <entry id="8389281" method="true" symbol="onStop"/>
+        <entry field="true" id="8388939" symbol="day"/>
+        <entry id="48" object="true" symbol="SolisWidgetApp"/>
+        <entry field="true" id="8388940" symbol="year"/>
+        <entry id="52" module="true" symbol="Layouts"/>
+        <entry id="44" method="true" symbol="PreviousPage"/>
+        <entry field="true" id="73" symbol="title_plantid"/>
+        <entry id="50" object="true" symbol="SolisWidgetGlanceView"/>
+        <entry id="5" module="true" symbol="globals/Rez/Fonts"/>
+        <entry id="8391457" method="true" symbol="getGlanceView"/>
+        <entry id="8389125" method="true" symbol="onHide"/>
+        <entry field="true" id="84" symbol="title_password"/>
+        <entry id="8389078" method="true" symbol="onNextPage"/>
+        <entry field="true" id="47" symbol="gSettingsChanged"/>
+        <entry id="8388635" module="true" symbol="Application"/>
+        <entry field="true" id="32" symbol="cust"/>
+        <entry id="8389101" method="true" symbol="onSwipe"/>
+    </symbolTable>
+    <localVars>
+        <entry endPc="268436520" name="solisicon" stackId="1" startPc="268436370"/>
+        <entry endPc="268436555" name="deviceSettings" stackId="1" startPc="268436526"/>
+        <entry endPc="268436555" name="partNumber" stackId="2" startPc="268436526"/>
+        <entry endPc="268437410" name="options" stackId="2" startPc="268436837"/>
+        <entry endPc="268437410" name="info" stackId="4" startPc="268436837"/>
+        <entry endPc="268437410" name="time" stackId="3" startPc="268436837"/>
+        <entry arg="true" endPc="268437411" name="string" stackId="1" startPc="268436833"/>
+        <entry endPc="268437899" name="options" stackId="2" startPc="268437416"/>
+        <entry endPc="268437899" name="info" stackId="4" startPc="268437416"/>
+        <entry endPc="268437899" name="time" stackId="3" startPc="268437416"/>
+        <entry arg="true" endPc="268437900" name="string" stackId="1" startPc="268437412"/>
+        <entry endPc="268438388" name="options" stackId="2" startPc="268437905"/>
+        <entry endPc="268438388" name="info" stackId="4" startPc="268437905"/>
+        <entry endPc="268438388" name="time" stackId="3" startPc="268437905"/>
+        <entry arg="true" endPc="268438389" name="string" stackId="1" startPc="268437901"/>
+        <entry arg="true" endPc="268438512" name="info" stackId="1" startPc="268438390"/>
+        <entry endPc="268438604" name="DateText" stackId="2" startPc="268438517"/>
+        <entry arg="true" endPc="268438605" name="info" stackId="1" startPc="268438513"/>
+        <entry endPc="268438654" name="info" stackId="2" startPc="268438610"/>
+        <entry arg="true" endPc="268438655" name="moment" stackId="1" startPc="268438606"/>
+        <entry endPc="268438947" name="gpreviousupdate" stackId="5" startPc="268438660"/>
+        <entry endPc="268438947" name="CurrentMoment" stackId="4" startPc="268438660"/>
+        <entry endPc="268438947" name="timeZoneOffset" stackId="3" startPc="268438660"/>
+        <entry endPc="268438947" name="myTime" stackId="2" startPc="268438660"/>
+        <entry endPc="268438947" name="LastUpdateMinute" stackId="1" startPc="268438660"/>
+        <entry arg="true" endPc="268438982" name="data" stackId="1" startPc="268438949"/>
+        <entry endPc="268439302" name="options" stackId="2" startPc="268439083"/>
+        <entry endPc="268439302" name="url" stackId="1" startPc="268439083"/>
+        <entry arg="true" endPc="268440411" name="responseCode" stackId="1" startPc="268439340"/>
+        <entry arg="true" endPc="268440411" name="data" stackId="2" startPc="268439340"/>
+        <entry endPc="268440715" name="options" stackId="2" startPc="268440502"/>
+        <entry endPc="268440715" name="url" stackId="1" startPc="268440502"/>
+        <entry arg="true" endPc="268441701" name="responseCode" stackId="1" startPc="268440732"/>
+        <entry arg="true" endPc="268441701" name="data" stackId="2" startPc="268440732"/>
+        <entry endPc="268441988" name="options" stackId="2" startPc="268441706"/>
+        <entry endPc="268441988" name="url" stackId="1" startPc="268441706"/>
+        <entry endPc="268442897" name="a" stackId="4" startPc="268442314"/>
+        <entry endPc="268442897" name="power" stackId="3" startPc="268442314"/>
+        <entry arg="true" endPc="268443533" name="responseCode" stackId="1" startPc="268441990"/>
+        <entry arg="true" endPc="268443533" name="data" stackId="2" startPc="268441990"/>
+        <entry arg="true" endPc="268443575" name="dc" stackId="1" startPc="268443534"/>
+        <entry endPc="268446255" name="lineFourValue" stackId="19" startPc="268443985"/>
+        <entry endPc="268446255" name="lineTwoValue" stackId="17" startPc="268443985"/>
+        <entry endPc="268446255" name="fontMedium" stackId="3" startPc="268443985"/>
+        <entry endPc="268446255" name="fontHotHeight" stackId="9" startPc="268443985"/>
+        <entry endPc="268446255" name="fontHot" stackId="5" startPc="268443985"/>
+        <entry endPc="268446255" name="lineFivePosY" stackId="15" startPc="268443985"/>
+        <entry endPc="268446255" name="fontLarge" stackId="4" startPc="268443985"/>
+        <entry endPc="268446255" name="lineOneValue" stackId="16" startPc="268443985"/>
+        <entry endPc="268446255" name="fontSmallHeight" stackId="6" startPc="268443985"/>
+        <entry endPc="268446255" name="height" stackId="10" startPc="268443985"/>
+        <entry endPc="268446255" name="fontMediumHeight" stackId="7" startPc="268443985"/>
+        <entry endPc="268446255" name="fontSmall" stackId="2" startPc="268443985"/>
+        <entry endPc="268446255" name="lineThreeValue" stackId="18" startPc="268443985"/>
+        <entry endPc="268446255" name="lineOnePosY" stackId="11" startPc="268443985"/>
+        <entry endPc="268446255" name="lineTwoPosY" stackId="12" startPc="268443985"/>
+        <entry endPc="268446255" name="lineThreePosY" stackId="13" startPc="268443985"/>
+        <entry endPc="268446255" name="lineFiveValue" stackId="20" startPc="268443985"/>
+        <entry endPc="268446255" name="lineFourPosY" stackId="14" startPc="268443985"/>
+        <entry endPc="268446255" name="fontLargeHeight" stackId="8" startPc="268443985"/>
+        <entry arg="true" endPc="268446256" name="dc" stackId="1" startPc="268443981"/>
+        <entry arg="true" endPc="268435483" name="state" stackId="1" startPc="268435479"/>
+        <entry arg="true" endPc="268435488" name="state" stackId="1" startPc="268435484"/>
+        <entry endPc="268446813" name="swipe" stackId="2" startPc="268446740"/>
+        <entry arg="true" endPc="268446814" name="evt" stackId="1" startPc="268446736"/>
+        <entry arg="true" endPc="268446851" name="handler" stackId="1" startPc="268446815"/>
+        <entry endPc="268436124" name="lineTwoPosY" stackId="10" startPc="268435703"/>
+        <entry endPc="268436124" name="lineOneValue" stackId="6" startPc="268435703"/>
+        <entry endPc="268436124" name="fontHeight" stackId="5" startPc="268435703"/>
+        <entry endPc="268436124" name="lineTwoValue" stackId="7" startPc="268435703"/>
+        <entry endPc="268436124" name="font" stackId="4" startPc="268435703"/>
+        <entry endPc="268436124" name="glancesValue" stackId="3" startPc="268435703"/>
+        <entry endPc="268436124" name="lineOnePosY" stackId="9" startPc="268435703"/>
+        <entry endPc="268436124" name="glancesName" stackId="2" startPc="268435703"/>
+        <entry endPc="268436124" name="height" stackId="8" startPc="268435703"/>
+        <entry arg="true" endPc="268436125" name="dc" stackId="1" startPc="268435699"/>
+        <entry endPc="268446985" name="rez_cmp_local_bitmap_logo" stackId="2" startPc="268446864"/>
+        <entry arg="true" endPc="268446986" name="dc" stackId="1" startPc="268446852"/>
+    </localVars>
+    <annotations>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="Solislogo"/>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="logo"/>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="Solisicon"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="NOINTERNET1"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppName"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="title_uid"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="NOINTERNET3"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="title_startpage"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="NOINTERNET2"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="TOTAL"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="title_username"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="TODAY"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="NOBLUETOOTHERRORTEXT1"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="NOBLUETOOTHERRORTEXT2"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="NOBLUETOOTHERRORTEXT3"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="APIERRORTEXT2"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="APIERRORTEXT3"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="opt_page_2"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="title_plantid"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="THISYEAR"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="opt_page_1"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="CURRENT"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="INVALIDSETTINGSTEXT1"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="INVALIDSETTINGSTEXT2"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="INVALIDSETTINGSTEXT3"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="opt_page_6"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="THISMONTH"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="opt_page_5"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="UPDATING"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="title_password"/>
+    </annotations>
+    <dataEntryOffsetMappings>
+        <dataEntry label="globals" offset="87" parentId="" symbolId="globals" type="module"/>
+        <dataEntry label="globals/SolisWidgetGlanceView" offset="470" parentId="globals" symbolId="SolisWidgetGlanceView" type="class"/>
+        <dataEntry label="globals/SolisWidgetApp" offset="525" parentId="globals" symbolId="SolisWidgetApp" type="class"/>
+        <dataEntry label="globals/Rez" offset="1146" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry label="globals/Rez/Drawables" offset="1225" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry label="globals/Rez/Menus" offset="1280" parentId="Rez" symbolId="Menus" type="module"/>
+        <dataEntry label="globals/Rez/Fonts" offset="1311" parentId="Rez" symbolId="Fonts" type="module"/>
+        <dataEntry label="globals/Rez/Layouts" offset="1342" parentId="Rez" symbolId="Layouts" type="module"/>
+        <dataEntry label="globals/Rez/JsonData" offset="1381" parentId="Rez" symbolId="JsonData" type="module"/>
+        <dataEntry label="globals/Rez/Strings" offset="1412" parentId="Rez" symbolId="Strings" type="module"/>
+        <dataEntry label="globals/SolisWidgetView" offset="1659" parentId="globals" symbolId="SolisWidgetView" type="class"/>
+        <dataEntry label="globals/SolisWidgetDelegate" offset="1866" parentId="globals" symbolId="SolisWidgetDelegate" type="class"/>
+    </dataEntryOffsetMappings>
+    <functions>
+        <functionEntry accessMode="public" endPc="268436245" name="NextPage" startPc="268436165">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436326" name="PreviousPage" startPc="268436246">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436365" name="RefreshPage" startPc="268436327">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436521" name="initialize" parent="SolisWidgetView" startPc="268436366">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436556" name="getDevicePartNumber" parent="SolisWidgetView" startPc="268436522">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436832" name="retrieveSettings" parent="SolisWidgetView" startPc="268436557">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437411" name="formatDateTimeFromRFC3339" parent="SolisWidgetView" startPc="268436833">
+            <param id="string"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437900" name="formatDateFromRFC3339" parent="SolisWidgetView" startPc="268437412">
+            <param id="string"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438389" name="formatTimeFromRFC3339" parent="SolisWidgetView" startPc="268437901">
+            <param id="string"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438512" name="moment_from_info" parent="SolisWidgetView" startPc="268438390">
+            <param id="info"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438605" name="StringFromInfo" parent="SolisWidgetView" startPc="268438513">
+            <param id="info"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438655" name="StringFromMoment" parent="SolisWidgetView" startPc="268438606">
+            <param id="moment"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438948" name="DetermineNextUpdateFromLastUpdate" parent="SolisWidgetView" startPc="268438656">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438982" name="HandleCommand" parent="SolisWidgetView" startPc="268438949">
+            <param id="data"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439339" name="makeRequest" parent="SolisWidgetView" startPc="268438983">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440411" name="onReceive" parent="SolisWidgetView" startPc="268439340">
+            <param id="responseCode"/>
+            <param id="data"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440731" name="makeRequestPlantId" parent="SolisWidgetView" startPc="268440412">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441701" name="onReceivePlantId" parent="SolisWidgetView" startPc="268440732">
+            <param id="responseCode"/>
+            <param id="data"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441989" name="makeRequestData" parent="SolisWidgetView" startPc="268441702">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443533" name="onReceiveData" parent="SolisWidgetView" startPc="268441990">
+            <param id="responseCode"/>
+            <param id="data"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443575" name="onLayout" parent="SolisWidgetView" startPc="268443534">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268443980" name="onShow" parent="SolisWidgetView" startPc="268443576">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446256" name="onUpdate" parent="SolisWidgetView" startPc="268443981">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446641" name="onHide" parent="SolisWidgetView" startPc="268446257">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="protected" endPc="268447035" name="&lt;init&gt;" parent="SolisWidgetView" startPc="268447017">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435478" name="initialize" parent="SolisWidgetApp" startPc="268435456">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435483" name="onStart" parent="SolisWidgetApp" startPc="268435479">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435488" name="onStop" parent="SolisWidgetApp" startPc="268435484">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435523" name="onSettingsChanged" parent="SolisWidgetApp" startPc="268435489">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435633" name="getInitialView" parent="SolisWidgetApp" startPc="268435524">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435675" name="getGlanceView" parent="SolisWidgetApp" startPc="268435634">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="protected" endPc="268436164" name="&lt;init&gt;" parent="SolisWidgetApp" startPc="268436146">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446675" name="onMenu" parent="SolisWidgetDelegate" startPc="268446642">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446695" name="onSelect" parent="SolisWidgetDelegate" startPc="268446676">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446715" name="onNextPage" parent="SolisWidgetDelegate" startPc="268446696">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446735" name="onPreviousPage" parent="SolisWidgetDelegate" startPc="268446716">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446814" name="onSwipe" parent="SolisWidgetDelegate" startPc="268446736">
+            <param id="evt"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446851" name="initialize" parent="SolisWidgetDelegate" startPc="268446815">
+            <param id="handler"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="protected" endPc="268447054" name="&lt;init&gt;" parent="SolisWidgetDelegate" startPc="268447036">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435698" name="initialize" parent="SolisWidgetGlanceView" startPc="268435676">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436125" name="onUpdate" parent="SolisWidgetGlanceView" startPc="268435699">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="protected" endPc="268436145" name="&lt;init&gt;" parent="SolisWidgetGlanceView" startPc="268436127">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="protected" endPc="268447011" name="&lt;init&gt;" parent="Drawables" startPc="268447011">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="protected" endPc="268447013" name="&lt;init&gt;" parent="Fonts" startPc="268447013">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="protected" endPc="268447015" name="&lt;init&gt;" parent="JsonData" startPc="268447015">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446986" name="MainLayout" parent="Layouts" startPc="268446852">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="protected" endPc="268447014" name="&lt;init&gt;" parent="Layouts" startPc="268447014">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="protected" endPc="268447012" name="&lt;init&gt;" parent="Menus" startPc="268447012">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="protected" endPc="268447016" name="&lt;init&gt;" parent="Strings" startPc="268447016">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="protected" endPc="268447010" name="&lt;init&gt;" parent="Rez" startPc="268446987">
+            <documentation/>
+        </functionEntry>
+    </functions>
+</debugInfo>
