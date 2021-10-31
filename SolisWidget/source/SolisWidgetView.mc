@@ -530,18 +530,18 @@ class SolisWidgetView extends WatchUi.View {
                     power = data["power_out"]["power"].toFloat();
                     if (power<1)
                     {
-                        Current=(power * 1000).toNumber() + " W";
+                        Current=(power).toNumber() + " W";
                     } else {
-                        Current=power.format("%.2f") + " kW";
+                        Current=power.format("%.2f") + " W";
                     }
                     System.println("current_power: "+power + " Current: "+ Current);
 
                     // Format Today
-                    power = data["data"]["energy_day"].toFloat();
-                    if (power<1)
+                    power = data["power_out"]["energy_day"].toFloat();
+                    if (power<1000)
                     {
                         // Less than 1 kWh Present in Wh
-                        Today=(power * 1000).toNumber() + " Wh";
+                        Today=(power).toNumber() + " Wh";
                     }
                     else
                     {
