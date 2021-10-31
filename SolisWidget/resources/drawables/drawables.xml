@@ -1,0 +1,4 @@
+<drawables>
+    <bitmap id="Solisicon" filename="solislogo.png" />
+    <bitmap id="Solislogo" filename="solislogo_app.png"/>
+</drawables>

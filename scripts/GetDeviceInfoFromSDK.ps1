@@ -1,4 +1,4 @@
-﻿$loc = "D:\Users\mark\AppData\Roaming\Garmin\ConnectIQ\Devices"
+﻿$loc = "D:\Users\$($env:USERNAME))\AppData\Roaming\Garmin\ConnectIQ\Devices"
 
 $jsonfiles = Get-ChildItem -Path $loc -Filter "compiler.json" -Recurse
 
@@ -26,7 +26,7 @@ foreach($j in $jsonfiles){
 }
 
 #return $devices
-    
+
 
 #Jungle lines for launcher icon https://developer.garmin.com/connect-iq/reference-guides/jungle-reference/
 $lines = $devices | Group-Object launcherIcon | Sort-Object count | %{
