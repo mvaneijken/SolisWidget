@@ -26,6 +26,8 @@
     <string id="title_startpage">Startpagina</string>
     <string id="opt_page_1">Huidige Vermogen</string>
     <string id="opt_page_2">Vandaag</string>
+    <string id="opt_page_3">Maand</string>
+    <string id="opt_page_4">Jaar</string>
     <string id="opt_page_5">Totaal</string>
     <string id="opt_page_6">Overzicht</string>
 
