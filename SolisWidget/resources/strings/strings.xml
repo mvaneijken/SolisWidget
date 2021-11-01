@@ -26,6 +26,8 @@
     <string id="title_startpage">Starting Page</string>
     <string id="opt_page_1">Current Power</string>
     <string id="opt_page_2">Today</string>
+    <string id="opt_page_3">Month</string>
+    <string id="opt_page_4">Year</string>
     <string id="opt_page_5">Total</string>
     <string id="opt_page_6">Overview</string>
 

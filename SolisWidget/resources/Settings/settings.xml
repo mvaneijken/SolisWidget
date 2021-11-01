@@ -11,6 +11,9 @@
             <settingConfig type="list">
             	<listEntry value="1">@Strings.opt_page_1</listEntry>
             	<listEntry value="2">@Strings.opt_page_2</listEntry>
+                <listEntry value="3">@Strings.opt_page_3</listEntry>
+                <listEntry value="4">@Strings.opt_page_4</listEntry>
+                <listEntry value="5">@Strings.opt_page_5</listEntry>
             	<listEntry value="6">@Strings.opt_page_6</listEntry>
             </settingConfig>
         </setting>

@@ -28,19 +28,20 @@ var lastUpdateDateLocalized;
 var LastUpdate;
 var NextUpdate;
 var BaseUrl = "https://apic-cdn.solarman.cn";
-var appid = "10038";
-var terminate = "android";
-var push_sn = "a006469bad435bbe70ada73a4f162544";
-var timezone = "1";
-var lan = "en";
-var country = "CN";
-var cust = "006";
 var uid = ""; //c_user_id variable received when authenticating to the API
 var plantid = ""; //plant_id variable received when retrieving the plants.
 var glancesName = "";
 var glancesValue = "";
 var forceUpdate = false;
 var resultCode = "";
+var dateToday = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+var dateTodayString = Lang.format("$1$-$2$-$3$",[
+    dateToday.year,
+    dateToday.month,
+    dateToday.day
+    ]
+);
+
 
 // Settings
 var CurrentPage;
@@ -86,13 +87,15 @@ function RefreshPage()
 
 class SolisWidgetView extends WatchUi.View {
 
+    //var icon as BitmapResource;
+    //var logo as BitmapResource;
+
     function initialize() {
         System.println("getDevicePartNumber: " + getDevicePartNumber());
         retrieveSettings();
         View.initialize();
-
-        var solisicon = WatchUi.loadResource(Rez.Drawables.Solisicon);
-        System.println("icon imagewidth: " + solisicon.getHeight() + " imageHeight: " + solisicon.getWidth());
+        //logo = WatchUi.loadResource(Rez.Drawables.SolisLogo);
+        //icon = WatchUi.loadResource(Rez.Drawables.SolisIcon);
     }
 
     function getDevicePartNumber() {
@@ -218,6 +221,189 @@ class SolisWidgetView extends WatchUi.View {
         return StringFromInfo(info);
     }
 
+    function formatEnergy(power)
+    {
+
+        if (power<1)
+        {
+        // Less than 1 kWh Present in Wh
+            return (power * 1000).toNumber() + " Wh";
+        }
+        else
+        {
+            // > more than kWh, so present in in kWh
+            return power.format("%.1f") + " kWh";
+        }
+    }
+
+    function processResponseCode(responseCode,data){
+
+        // Turn off refreshpage
+        ShowRefreshing=false;
+        System.println(responseCode);
+        System.println(data);
+
+        if (responseCode==200)
+        {
+            // Make sure no error is shown
+            ShowError=false;
+            resultCode = data["result"].toString();
+            if(resultCode.toNumber() != 1)
+            {
+                // Reset values to reinitiate login
+                ShowError=true;
+                uid = "";
+                plantid = "";
+                Application.getApp().setProperty("PROP_UID","");
+                Application.getApp().setProperty("PROP_PLANTID","");
+
+                Errortext1="Error:"+ data["result"];
+                Errortext2="If needed check Solis credentials in";
+                Errortext3="Garmin Connect or Express";
+            }
+        }
+        else if (responseCode==Communications.BLE_CONNECTION_UNAVAILABLE)
+        {
+            // bluetooth connection issue
+            ShowError = true;
+            Errortext1=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT1);
+            Errortext2=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT2);
+            Errortext3=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT3);
+        }
+        else if (responseCode==Communications.INVALID_HTTP_BODY_IN_NETWORK_RESPONSE)
+        {
+            // Invalid API key
+            ShowError = true;
+            Errortext1=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT1);
+            Errortext2=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT2);
+            Errortext3=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT3);
+        }
+        else if (responseCode==Communications.NETWORK_REQUEST_TIMED_OUT )
+        {
+            // No Internet
+            ShowError = true;
+            Errortext1=WatchUi.loadResource(Rez.Strings.NOINTERNET1);
+            Errortext2=WatchUi.loadResource(Rez.Strings.NOINTERNET2);
+            Errortext3=WatchUi.loadResource(Rez.Strings.NOINTERNET3);
+        }
+        else
+        {
+            // general Error
+            ShowError = true;
+            Errortext1="Error "+responseCode;
+            Errortext2="Check settings in";
+            Errortext3="Garmin Connect or Express";
+        }
+
+    }
+
+    function formatScreenLines(value1,value2,value3,value4,value5,lines,dc){
+        var height = dc.getHeight();
+        var lineSpacingLarge = 2;
+        var lineSpacingMedium = 2.6;
+        var screenDevider = lines - 1;
+        var lineOneFont = Graphics.FONT_SYSTEM_LARGE;
+        var lineTwoFont = 0;
+        var lineThreeFont = 0;
+        var lineFourFont = 0;
+        var lineFiveFont = 0;
+        if(lines == 1 || lines == 2){
+            screenDevider = 2;
+        }
+        if(lines >= 2){
+            lineOneFont = Graphics.FONT_SYSTEM_LARGE;
+            lineTwoFont = Graphics.FONT_SYSTEM_LARGE;
+        }
+        if(lines >= 3){
+            lineOneFont = Graphics.FONT_SYSTEM_LARGE;
+            lineTwoFont = Graphics.FONT_SYSTEM_LARGE;
+            lineThreeFont = Graphics.FONT_SMALL;
+        }
+        if(lines >= 4){
+            lineOneFont = Graphics.FONT_SYSTEM_LARGE;
+            lineTwoFont = Graphics.FONT_SYSTEM_LARGE;
+            lineThreeFont = Graphics.FONT_SMALL;
+            lineFourFont  = Graphics.FONT_SMALL;
+        }
+        if(lines >= 5){
+            lineOneFont = Graphics.FONT_MEDIUM;
+            lineTwoFont = Graphics.FONT_MEDIUM;
+            lineThreeFont = Graphics.FONT_MEDIUM;
+            lineFourFont  = Graphics.FONT_MEDIUM;
+            lineFiveFont = Graphics.FONT_MEDIUM;
+            lineSpacingLarge = 2.6;
+        }
+        var lineOnePosY = height / screenDevider;
+        var lineTwoPosY = lineOnePosY + ((Graphics.getFontHeight(lineOneFont) / lineSpacingMedium) + (Graphics.getFontHeight(lineOneFont) / lineSpacingMedium));
+        var lineThreePosY = lineTwoPosY + ((Graphics.getFontHeight(lineTwoFont) / lineSpacingLarge) + (Graphics.getFontHeight(lineTwoFont) / lineSpacingLarge));
+        var lineFourPosY = lineThreePosY + ((Graphics.getFontHeight(lineThreeFont) / lineSpacingMedium) + (Graphics.getFontHeight(lineThreeFont) / lineSpacingMedium));
+        var lineFivePosY = lineFourPosY + ((Graphics.getFontHeight(lineFourFont) / lineSpacingMedium) + (Graphics.getFontHeight(lineFourFont) / lineSpacingMedium));
+
+        var lineOneValue = value1;
+        var lineTwoValue = value2;
+        var lineThreeValue = value3;
+        var lineFourValue = value4;
+        var lineFiveValue = value5;
+
+        dc.drawText(
+            dc.getWidth() / 2,
+            lineOnePosY,
+            lineOneFont,
+            lineOneValue,
+            Graphics.TEXT_JUSTIFY_CENTER
+        );
+        if(lines >= 2){
+            dc.drawText(
+                dc.getWidth() / 2,
+                lineTwoPosY,
+                lineTwoFont,
+                lineTwoValue,
+                Graphics.TEXT_JUSTIFY_CENTER
+            );
+        }
+        if(lines >= 3){
+            dc.drawText(
+                dc.getWidth() / 2,
+                lineThreePosY,
+                lineThreeFont,
+                lineThreeValue,
+                Graphics.TEXT_JUSTIFY_CENTER
+            );
+        }
+        if(lines >= 4){
+            dc.drawText(
+                dc.getWidth() / 2,
+                lineFourPosY,
+                lineFourFont,
+                lineFourValue,
+                Graphics.TEXT_JUSTIFY_CENTER
+            );
+        }
+        if(lines >= 5){
+            dc.drawText(
+                dc.getWidth() / 2,
+                lineFivePosY,
+                lineFiveFont,
+                lineFiveValue,
+                Graphics.TEXT_JUSTIFY_CENTER
+            );
+        }
+    }
+
+    function setNotParsable()
+    {
+        // not parsable
+        Current = null;
+        Today = null;
+        ThisMonth = null;
+        ThisYear = null;
+        Total = null;
+        LastUpdate = null;
+        lastUpdateLocalized = null;
+        lastUpdateTimeLocalized = null;
+        lastUpdateDateLocalized = null;
+    }
+
     // function to convert date in string format to moment object
     function DetermineNextUpdateFromLastUpdate()
     {
@@ -256,6 +442,7 @@ class SolisWidgetView extends WatchUi.View {
         // update of data requested
         if (data==DOWEBREQUEST)
         {
+            System.println("HandleCommand: makeRequest");
             makeRequest();
         }
     }
@@ -295,75 +482,13 @@ class SolisWidgetView extends WatchUi.View {
     {
         System.println("onReceive");
 
-        // Turn off refreshpage
-        ShowRefreshing=false;
-        System.println(responseCode);
-        System.println(data);
-
-        // Check responsecode
-        if (responseCode==200)
-        {
-            // Make sure no error is shown
-            ShowError=false;
-            resultCode = data["result"].toString();
-            if(resultCode.toNumber() != 1)
-            {
-                // Reset values to reinitiate login
-                System.println("Error onReceive! " + resultCode);
-                ShowError=true;
-                uid = "";
-                plantid = "";
-                Application.getApp().setProperty("PROP_UID","");
-                Application.getApp().setProperty("PROP_PLANTID","");
-
-                Errortext1="API Error: "+ resultCode;
-                Errortext2=WatchUi.loadResource(Rez.Strings.APIERRORTEXT2);
-                Errortext3=WatchUi.loadResource(Rez.Strings.APIERRORTEXT3);
-            }
-            else
-            {
-                ShowError=false;
-                uid = data["uid"];
-                Application.getApp().setProperty("PROP_UID",uid);
-                System.println(data["uid"]);
-                System.println("uid set:"+uid);
-                makeRequestPlantId();
-            }
-
-        }
-        else if (responseCode==Communications.BLE_CONNECTION_UNAVAILABLE)
-        {
-            // bluetooth connection issue
-            ShowError = true;
-            Errortext1=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT1);
-            Errortext2=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT2);
-            Errortext3=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT3);
-        }
-        else if (responseCode==Communications.INVALID_HTTP_BODY_IN_NETWORK_RESPONSE)
-        {
-            // Invalid API key
-            ShowError = true;
-            Errortext1=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT1);
-            Errortext2=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT2);
-            Errortext3=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT3);
-        }
-        else if (responseCode==Communications.NETWORK_REQUEST_TIMED_OUT )
-        {
-            // No Internet
-            ShowError = true;
-            Errortext1=WatchUi.loadResource(Rez.Strings.NOINTERNET1);
-            Errortext2=WatchUi.loadResource(Rez.Strings.NOINTERNET2);
-            Errortext3=WatchUi.loadResource(Rez.Strings.NOINTERNET3);
-        }
-        else
-        {
-            // general Error
-            ShowError = true;
-            Errortext1="Error "+responseCode;
-            Errortext2="Configure settings in";
-            Errortext3="Garmin Connect or Express";
-        }
-        WatchUi.requestUpdate();
+        processResponseCode(responseCode,data);
+        ShowError=false;
+        uid = data["uid"];
+        Application.getApp().setProperty("PROP_UID",uid);
+        System.println(data["uid"]);
+        System.println("uid set:"+uid);
+        makeRequestPlantId();
     }
 
     function makeRequestPlantId() {
@@ -389,85 +514,25 @@ class SolisWidgetView extends WatchUi.View {
         }
         else{
             //PlantId allready known, go ahead and request data.
-            makeRequestData();
+            makeRequestPlantOverview();
         }
     }
 
     function onReceivePlantId(responseCode, data)
     {
         System.println("onReceivePlantId ");
+        processResponseCode(responseCode,data);
 
-        // Turn off refreshpage
-        ShowRefreshing=false;
-        System.println(responseCode);
-        System.println(data);
-
-        // Check responsecode
-        if (responseCode==200)
-        {
-            // Make sure no error is shown
-            ShowError=false;
-            resultCode = data["result"].toString();
-            if(resultCode.toNumber() != 1)
-            {
-                // Reset values to reinitiate login
-                ShowError=true;
-                uid = "";
-                plantid = "";
-                Application.getApp().setProperty("PROP_UID","");
-                Application.getApp().setProperty("PROP_PLANTID","");
-
-                Errortext1="Error: "+ data["result"];
-                Errortext2="If needed check Solis credentials in";
-                Errortext3="Garmin Connect or Express";
-            }
-            else
-            {
-                ShowError=false;
-                plantid = data["list"][0]["plant_id"];
-                Application.getApp().setProperty("PROP_PLANTID",plantid);
-                System.println("plantid set:"+plantid);
-                makeRequestData();
-            }
-        }
-        else if (responseCode==Communications.BLE_CONNECTION_UNAVAILABLE)
-        {
-            // bluetooth connection issue
-            ShowError = true;
-            Errortext1=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT1);
-            Errortext2=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT2);
-            Errortext3=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT3);
-        }
-        else if (responseCode==Communications.INVALID_HTTP_BODY_IN_NETWORK_RESPONSE)
-        {
-            // Invalid API key
-            ShowError = true;
-            Errortext1=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT1);
-            Errortext2=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT2);
-            Errortext3=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT3);
-        }
-        else if (responseCode==Communications.NETWORK_REQUEST_TIMED_OUT )
-        {
-            // No Internet
-            ShowError = true;
-            Errortext1=WatchUi.loadResource(Rez.Strings.NOINTERNET1);
-            Errortext2=WatchUi.loadResource(Rez.Strings.NOINTERNET2);
-            Errortext3=WatchUi.loadResource(Rez.Strings.NOINTERNET3);
-        }
-        else
-        {
-            // general Error
-            ShowError = true;
-            Errortext1="Error "+responseCode;
-            Errortext2="Configure settings in";
-            Errortext3="Garmin Connect or Express";
-        }
-        WatchUi.requestUpdate();
+        ShowError=false;
+        plantid = data["list"][0]["plant_id"];
+        Application.getApp().setProperty("PROP_PLANTID",plantid);
+        System.println("plantid set:"+plantid);
+        makeRequestPlantOverview();
     }
 
-    function makeRequestData()
+    function makeRequestPlantOverview()
     {
-        System.println("makeRequestData");
+        System.println("makeRequestPlantOverview");
 
         // Show refreshing page
         ShowError=false; // turn off an error screen (if any)
@@ -481,166 +546,146 @@ class SolisWidgetView extends WatchUi.View {
                     :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
         };
 
-        // only retrieve the settings if they've actually changed
+        // Make the authentication request
+        System.println("makeRequest url:"+url);
+        System.println("makeRequest options:"+options);
+        Communications.makeWebRequest(url,{},options,method(:onReceivePlantOverview));
+    }
+
+    function onReceivePlantOverview(responseCode, data)
+    {
+        System.println("onReceivePlantOverview");
+
+        processResponseCode(responseCode,data);
+        ShowError=false;
+        if (data instanceof Dictionary)
+        {
+            var power = 0.0; // init variable
+            // Format Current Power
+            power = data["power_out"]["power"].toFloat();
+            if (power<1)
+            {
+                Current=(power).toNumber() + " W";
+            } else {
+                Current=power.format("%.2f") + " W";
+            }
+            System.println("current_power: "+power + " Current: "+ Current);
+
+            // Format Today
+            power = data["power_out"]["energy_day"].toFloat();
+            Today= formatEnergy(power);
+            System.println("today_energy: "+power + " Today :"+Today);
+
+            // Format Total
+            power = data["power_out"]["energy_accu_real"].toFloat();
+            Total= formatEnergy(power);
+            System.println("total_energy: "+power + " Total: " + Total);
+
+            // Format Last Update
+            LastUpdate=data["date"];
+            var a = DetermineNextUpdateFromLastUpdate();
+            lastUpdateLocalized = formatDateTimeFromRFC3339(LastUpdate);
+            lastUpdateTimeLocalized = formatTimeFromRFC3339(LastUpdate);
+            lastUpdateDateLocalized = formatDateFromRFC3339(LastUpdate);
+        }
+        else
+        {
+            setNotParsable();
+        }
+        makeRequestPlantMonthStatistics();
+    }
+
+    function makeRequestPlantMonthStatistics()
+    {
+        System.println("makeRequestPlantMonthStatistics");
+
+        // Show refreshing page
+        ShowError=false; // turn off an error screen (if any)
+        ShowRefreshing=true; // make sure refreshingscreen is shown when updating the UI.
+        WatchUi.requestUpdate();
+        System.println("makeRequest uid:"+uid);
+        var url = BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_month2?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
+
+        var options = {
+                    :method => Communications.HTTP_REQUEST_METHOD_GET,
+                    :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+        };
 
         // Make the authentication request
         System.println("makeRequest url:"+url);
         System.println("makeRequest options:"+options);
-        Communications.makeWebRequest(url,{},options,method(:onReceiveData));
+        Communications.makeWebRequest(url,{},options,method(:onReceivePlantMonthStatistics));
     }
 
-    function onReceiveData(responseCode, data)
+    function onReceivePlantMonthStatistics(responseCode, data)
     {
-        System.println("onReceiveData");
-
-        // Turn off refreshpage
-        ShowRefreshing=false;
-        System.println(responseCode);
-        System.println(data);
-        //System.println(data["data"]["c_user_id"]);
-        //System.println(data["error_msg"].length());
-
-        // Check responsecode
-        if (responseCode==200)
+        processResponseCode(responseCode,data);
+        ShowError=false;
+        if (data instanceof Dictionary)
         {
-            // Make sure no error is shown
-            ShowError=false;
-            resultCode = data["result"].toString();
-            if(resultCode.toNumber() != 1)
-            {
-                // Reset values to reinitiate login
-                ShowError=true;
-                uid = "";
-                plantid = "";
-                Application.getApp().setProperty("PROP_UID","");
-                Application.getApp().setProperty("PROP_PLANTID","");
-
-                Errortext1="Error:"+ data["result"];
-                Errortext2="If needed check Solis credentials in";
-                Errortext3="Garmin Connect or Express";
+            var list = data["list"];
+            var power = 0;
+            for(var i=0;i<list.size();i++) {
+                System.println("day "+ data["list"][i]["month"] +"="+ data["list"][i]["energy"]);
+                power = power + data["list"][i]["energy"];
             }
-            else
-            {
-                ShowError=false;
-                if (data instanceof Dictionary)
-                {
-                    var power=0.0; // init variable
+            ThisMonth= formatEnergy(power);
+            System.println("ThisMonth: " + ThisMonth);
+        }
+        else {
+            setNotParsable();
+        }
+        makeRequestPlantYearStatistics();
+    }
 
-                    // Format Current Power
-                    power = data["power_out"]["power"].toFloat();
-                    if (power<1)
-                    {
-                        Current=(power).toNumber() + " W";
-                    } else {
-                        Current=power.format("%.2f") + " W";
-                    }
-                    System.println("current_power: "+power + " Current: "+ Current);
+    function makeRequestPlantYearStatistics()
+    {
+        System.println("makeRequestPlantYearStatistics");
 
-                    // Format Today
-                    power = data["power_out"]["energy_day"].toFloat();
-                    if (power<1000)
-                    {
-                        // Less than 1 kWh Present in Wh
-                        Today=(power).toNumber() + " Wh";
-                    }
-                    else
-                    {
-                        // > more than kWh, so present in in kWh
-                        // Current=Lang.format("$1$ kWh",power/1000);
-                        Today = power.format("%.2f") + " kWh";
-                    }
-                    System.println("today_energy: "+power + " Today :"+Today);
+        // Show refreshing page
+        ShowError=false; // turn off an error screen (if any)
+        ShowRefreshing=true; // make sure refreshingscreen is shown when updating the UI.
+        WatchUi.requestUpdate();
+        System.println("makeRequest uid:"+uid);
+        var url = BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_year?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
 
-                    //TODO: Make request to get data for this month
-                   //  // Format This Month
-                    // power = data["data"]["monthly_energy"].toFloat();
-                    // if (power<1)
-                    // {
-                        // Less than 1 kWh Present in Wh
-                       //  ThisMonth=(power * 1000).toNumber() + " Wh";
-                    // }
-                    // else
-                    // {
-                       //  // > more than kWh, so present in in kWh
-                        // // Current=Lang.format("$1$ kWh",power/1000);
-                        // ThisMonth= power.format("%.1f") + " kWh";
-                    // }
-                    // System.println("monthly_energy: "+power + " ThisMonth: " + ThisMonth);
+        var options = {
+                    :method => Communications.HTTP_REQUEST_METHOD_GET,
+                    :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+        };
 
-                    // Format Total
-                    power = data["power_out"]["energy_accu"].toFloat();
-                    if (power<1)
-                    {
-                        // Less than 1 kWh Present in Wh
-                        Total=(power * 1000).toNumber() + " Wh";
-                    }
-                    else if (power<1000)
-                    {
-                        // > more than kWh, so present in in kWh
-                        Total= power.format("%.1f") + " kWh";
-                    }
-                    else
-                    {
-                        Total= (power/1000).format("%.2f") + " MWh";
-                    }
-                    System.println("total_energy: "+power + " Total: " + Total);
+        // Make the authentication request
+        System.println("makeRequest url:"+url);
+        System.println("makeRequest options:"+options);
+        Communications.makeWebRequest(url,{},options,method(:onReceivePlantYearStatistics));
+    }
 
-                    // Format Last Update
-                    LastUpdate=data["date"];
-                    var a = DetermineNextUpdateFromLastUpdate();
-                    lastUpdateLocalized = formatDateTimeFromRFC3339(LastUpdate);
-                    lastUpdateTimeLocalized = formatTimeFromRFC3339(LastUpdate);
-                    lastUpdateDateLocalized = formatDateFromRFC3339(LastUpdate);
-                }
-                else
-                {
-                        // not parsable
-                        Current = null;
-                        Today = null;
-                        ThisMonth = null;
-                        ThisYear = null;
-                        Total = null;
-                        LastUpdate = null;
-                        lastUpdateLocalized = null;
-                        lastUpdateTimeLocalized = null;
-                        lastUpdateDateLocalized = null;
-                }
+    function onReceivePlantYearStatistics(responseCode, data)
+    {
+        System.println("onReceivePlantOverview");
+
+        processResponseCode(responseCode, data);
+        ShowError=false;
+        if (data instanceof Dictionary)
+        {
+            var list = data["list"];
+            var power = 0;
+            for(var i=0;i<list.size();i++) {
+                System.println("year "+ data["list"][i]["year"] +"="+ data["list"][i]["energy"]);
+                power = power + data["list"][i]["energy"];
             }
-        }
-        else if (responseCode==Communications.BLE_CONNECTION_UNAVAILABLE)
-        {
-            // bluetooth connection issue
-            ShowError = true;
-            Errortext1=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT1);
-            Errortext2=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT2);
-            Errortext3=WatchUi.loadResource(Rez.Strings.NOBLUETOOTHERRORTEXT3);
-        }
-        else if (responseCode==Communications.INVALID_HTTP_BODY_IN_NETWORK_RESPONSE)
-        {
-            // Invalid API key
-            ShowError = true;
-            Errortext1=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT1);
-            Errortext2=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT2);
-            Errortext3=WatchUi.loadResource(Rez.Strings.INVALIDSETTINGSTEXT3);
-        }
-        else if (responseCode==Communications.NETWORK_REQUEST_TIMED_OUT )
-        {
-            // No Internet
-            ShowError = true;
-            Errortext1=WatchUi.loadResource(Rez.Strings.NOINTERNET1);
-            Errortext2=WatchUi.loadResource(Rez.Strings.NOINTERNET2);
-            Errortext3=WatchUi.loadResource(Rez.Strings.NOINTERNET3);
+
+            ThisYear= formatEnergy(power);
+            System.println("yearly_energy: "+power + " ThisYear: " + ThisYear);
         }
         else
         {
-            // general Error
-            ShowError = true;
-            Errortext1="Error "+responseCode;
-            Errortext2="Check settings in";
-            Errortext3="Garmin Connect or Express";
+            setNotParsable();
         }
         WatchUi.requestUpdate();
     }
+
+
 
     // Load your resources here
     function onLayout(dc) {
@@ -692,155 +737,132 @@ class SolisWidgetView extends WatchUi.View {
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
-        var fontSmall = Graphics.FONT_SMALL;
-        var fontMedium = Graphics.FONT_MEDIUM;
-        var fontLarge = Graphics.FONT_SYSTEM_LARGE;
-        var fontHot = Graphics.FONT_SYSTEM_NUMBER_HOT;
-        var fontSmallHeight = Graphics.getFontHeight(fontSmall);
-        var fontMediumHeight = Graphics.getFontHeight(fontMedium);
-        var fontLargeHeight = Graphics.getFontHeight(fontLarge);
-        var fontHotHeight = Graphics.getFontHeight(fontHot);
-        var height = dc.getHeight();
-        var lineOnePosY = height / 3;
-        var lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
-        var lineThreePosY = lineTwoPosY + ((fontLargeHeight/2.6) + (fontSmallHeight/2.6));
-        var lineFourPosY = 0;
-        var lineFivePosY= 0;
-        var lineOneValue;
-        var lineTwoValue;
-        var lineThreeValue;
-        var lineFourValue;
-        var lineFiveValue;
-
         // Draw logo
-        //var image = WatchUi.loadResource(Rez.Drawables.Solislogo);
-       // var imagewidth = image.getWidth();
-      //  System.println("imagewidth: " + imagewidth + " imageHeight: " + image.getHeight());
-      //  var imagePosX = (dc.getWidth() - imagewidth)/2;
-      //  var imagePosY = (dc.getHeight() - imagewidth)/5;
-     //   dc.drawBitmap((dc.getWidth() - imagewidth)/2,imagePosY,image);
+        //var logowidth = logo.getWidth();
+        //var logoPosX = (dc.getWidth() - logowidth) / 2;
+        //var logoPosY = (dc.getHeight() - logowidth) / 5;
+        //System.println("logowidth: " + logowidth + " logoHeight: " + logo.getHeight());
+        //dc.drawBitmap((dc.getWidth() - logowidth) / 2, logoPosY,logo);
 
         if (ShowError) {
            // Show Error
-                lineOnePosY = height / 3;
-                lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
-                lineThreePosY = lineTwoPosY + ((fontSmallHeight/2.6) + (fontSmallHeight/2.6));
-                lineOneValue = Errortext1;
-                lineTwoValue = Errortext2;
-                lineThreeValue = Errortext3;
-                dc.drawText(dc.getWidth()/2,lineOnePosY,fontMedium,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
-                dc.drawText(dc.getWidth()/2,lineTwoPosY,fontMedium,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
-                dc.drawText(dc.getWidth()/2,lineThreePosY,fontMedium,lineThreeValue,Graphics.TEXT_JUSTIFY_CENTER);
+            formatScreenLines(
+                Errortext1,
+                Errortext2,
+                Errortext3,
+                "",
+                "",
+                3,
+                dc
+            );
         }
         else  if (ShowRefreshing) {
-                lineOnePosY = height / 2;
-                lineOneValue = WatchUi.loadResource(Rez.Strings.UPDATING);
-                dc.drawText(dc.getWidth()/2,lineOnePosY,fontLarge,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
+            formatScreenLines(
+                WatchUi.loadResource(Rez.Strings.UPDATING),
+                "",
+                "",
+                "",
+                "",
+                1,
+                dc
+            );
         }
         else {
             // Show status page
-            if (CurrentPage==1) {
-                // Current Power
-                lineOnePosY = height / 3;
-                lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
-                lineThreePosY = lineTwoPosY + ((fontLargeHeight/2) + (fontLargeHeight/2));
-                lineFourPosY = lineThreePosY + ((fontSmallHeight/2.6) + (fontSmallHeight/2.6));
-                lineOneValue = WatchUi.loadResource(Rez.Strings.CURRENT);
-                lineTwoValue = Current;
-                lineThreeValue = lastUpdateTimeLocalized;
-                lineFourValue = lastUpdateDateLocalized;
-                dc.drawText(dc.getWidth()/2,lineOnePosY,fontLarge,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
-                dc.drawText(dc.getWidth()/2,lineTwoPosY,fontLarge,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
-                dc.drawText(dc.getWidth()/2,lineThreePosY,fontSmall,lineThreeValue,Graphics.TEXT_JUSTIFY_CENTER);
-                dc.drawText(dc.getWidth()/2,lineFourPosY,fontSmall,lineFourValue,Graphics.TEXT_JUSTIFY_CENTER);
-                glancesName =  lineOneValue;
-                glancesValue = lineTwoValue;
-            }
-            else if (CurrentPage==2) {
-                // Today
-                lineOnePosY = height / 3;
-                lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
-                lineThreePosY = lineTwoPosY + ((fontLargeHeight/2) + (fontLargeHeight/2));
-                lineFourPosY = lineThreePosY + ((fontSmallHeight/2.6) + (fontSmallHeight/2.6));
-                lineOneValue = WatchUi.loadResource(Rez.Strings.TODAY);
-                lineTwoValue = Today;
-                lineThreeValue = lastUpdateTimeLocalized;
-                lineFourValue = lastUpdateDateLocalized;
-                dc.drawText(dc.getWidth()/2,lineOnePosY,fontLarge,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
-                dc.drawText(dc.getWidth()/2,lineTwoPosY,fontLarge,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
-                dc.drawText(dc.getWidth()/2,lineThreePosY,fontSmall,lineThreeValue,Graphics.TEXT_JUSTIFY_CENTER);
-                dc.drawText(dc.getWidth()/2,lineFourPosY,fontSmall,lineFourValue,Graphics.TEXT_JUSTIFY_CENTER);
-                glancesName =  lineOneValue;
-                glancesValue = lineTwoValue;
-            }
-          //   else if (CurrentPage==3) {
-          //       //  this Week
-          //       lineOnePosY = height / 3;
-          //       lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
-          //       lineThreePosY = lineTwoPosY + ((fontLargeHeight/2) + (fontLargeHeight/2));
-          //       lineFourPosY = lineThreePosY + ((fontSmallHeight/2.6) + (fontSmallHeight/2.6));
-          //       lineOneValue = WatchUi.loadResource(Rez.Strings.THISMONTH);
-          //       lineTwoValue = ThisMonth;
-          //       lineThreeValue = lastUpdateTimeLocalized;
-          //       lineFourValue = lastUpdateDateLocalized;
-          //       dc.drawText(dc.getWidth()/2,lineOnePosY,fontLarge,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
-          //       dc.drawText(dc.getWidth()/2,lineTwoPosY,fontLarge,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
-          //       dc.drawText(dc.getWidth()/2,lineThreePosY,fontSmall,lineThreeValue,Graphics.TEXT_JUSTIFY_CENTER);
-          //       dc.drawText(dc.getWidth()/2,lineFourPosY,fontSmall,lineFourValue,Graphics.TEXT_JUSTIFY_CENTER);
-          //       glancesName =  lineOneValue;
-          //       glancesValue = lineTwoValue;
-          //   }
-           //  else if (CurrentPage==4) {
-           //      // This Month
-           //      lineOnePosY = height / 3;
-           //      lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
-           //      lineThreePosY = lineTwoPosY + ((fontLargeHeight/2) + (fontLargeHeight/2));
-           //      lineFourPosY = lineThreePosY + ((fontSmallHeight/2.6) + (fontSmallHeight/2.6));
-           //      lineOneValue = WatchUi.loadResource(Rez.Strings.THISYEAR);
-           //      lineTwoValue = ThisYear;
-           //      lineThreeValue = lastUpdateTimeLocalized;
-           //      lineFourValue = lastUpdateDateLocalized;
-           //      dc.drawText(dc.getWidth()/2,lineOnePosY,fontLarge,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
-           //      dc.drawText(dc.getWidth()/2,lineTwoPosY,fontLarge,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
-           //      dc.drawText(dc.getWidth()/2,lineThreePosY,fontSmall,lineThreeValue,Graphics.TEXT_JUSTIFY_CENTER);
-           //      dc.drawText(dc.getWidth()/2,lineFourPosY,fontSmall,lineFourValue,Graphics.TEXT_JUSTIFY_CENTER);
-           //      glancesName =  lineOneValue;
-           //      glancesValue = lineTwoValue;
-           //  }
-           //  else if (CurrentPage==5) {
-           //      // Total
-           //      lineOnePosY = height / 3;
-           //      lineTwoPosY = lineOnePosY + ((fontLargeHeight/2.6) + (fontLargeHeight/2.6));
-           //      lineThreePosY = lineTwoPosY + ((fontLargeHeight/2) + (fontLargeHeight/2));
-           //      lineFourPosY = lineThreePosY + ((fontSmallHeight/2.6) + (fontSmallHeight/2.6));
-           //      lineOneValue = WatchUi.loadResource(Rez.Strings.TOTAL);
-           //      lineTwoValue = Total;
-           //      lineThreeValue = lastUpdateTimeLocalized;
-           //      lineFourValue = lastUpdateDateLocalized;
-           //      dc.drawText(dc.getWidth()/2,lineOnePosY,fontLarge,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
-           //      dc.drawText(dc.getWidth()/2,lineTwoPosY,fontLarge,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
-           //      dc.drawText(dc.getWidth()/2,lineThreePosY,fontSmall,lineThreeValue,Graphics.TEXT_JUSTIFY_CENTER);
-           //      dc.drawText(dc.getWidth()/2,lineFourPosY,fontSmall,lineFourValue,Graphics.TEXT_JUSTIFY_CENTER);
-           //      glancesName =  lineOneValue;
-           //      glancesValue = lineTwoValue;
-           //  }
-            else if (CurrentPage==6) {
-                lineOnePosY = height / 4;
-                lineTwoPosY = lineOnePosY + ((fontMediumHeight/2.6) + (fontMediumHeight/2.6));
-                lineThreePosY = lineTwoPosY + ((fontMediumHeight/2.6) + (fontMediumHeight/2.6));
-                lineFourPosY = lineThreePosY + ((fontMediumHeight/2.6) + (fontMediumHeight/2.6));
-                lineFivePosY = lineFourPosY + ((fontMediumHeight/2.6) + (fontMediumHeight/2.6));
-                lineOneValue = WatchUi.loadResource(Rez.Strings.CURRENT)+": "+Current;
-                lineTwoValue = WatchUi.loadResource(Rez.Strings.TODAY)+": "+Today;
-                lineThreeValue = WatchUi.loadResource(Rez.Strings.THISMONTH)+": "+ThisMonth;
-                lineFourValue = WatchUi.loadResource(Rez.Strings.THISYEAR)+": "+ThisYear;
-                lineFiveValue = WatchUi.loadResource(Rez.Strings.TOTAL)+": "+Total;
+            switch (CurrentPage){
+                case 1:
+                    // Current Power
+                    formatScreenLines(
+                        WatchUi.loadResource(Rez.Strings.CURRENT),
+                        Current,
+                        lastUpdateTimeLocalized,
+                        lastUpdateDateLocalized,
+                        "",
+                        4,
+                        dc
+                    );
+                    glancesName = Rez.Strings.CURRENT;
+                    glancesValue = Current;
+                    break;
+                case 2:
+                    // Today
+                    formatScreenLines(
+                        WatchUi.loadResource(Rez.Strings.TODAY),
+                        Today,
+                        lastUpdateTimeLocalized,
+                        lastUpdateDateLocalized,
+                        "",
+                        4,
+                        dc
+                    );
+                    glancesName = Rez.Strings.TODAY;
+                    glancesValue = Today;
+                    break;
+                case 3:
+                    // This Month
+                    formatScreenLines(
+                        WatchUi.loadResource(Rez.Strings.THISMONTH),
+                        ThisMonth,
+                        lastUpdateTimeLocalized,
+                        lastUpdateDateLocalized,
+                        "",
+                        4,
+                        dc
+                    );
+                    glancesName = Rez.Strings.THISMONTH;
+                    glancesValue = ThisMonth;
+                    break;
+                case 4:
+                    // This Year
+                    formatScreenLines(
+                        WatchUi.loadResource(Rez.Strings.THISYEAR),
+                        ThisYear,
+                        lastUpdateTimeLocalized,
+                        lastUpdateDateLocalized,
+                        "",
+                        4,
+                        dc
+                    );
+                    glancesName = Rez.Strings.THISYEAR;
+                    glancesValue = ThisYear;
+                    break;
+                case 5:
+                    // Total
+                    formatScreenLines(
+                        WatchUi.loadResource(Rez.Strings.TOTAL),
+                        Total,
+                        lastUpdateTimeLocalized,
+                        lastUpdateDateLocalized,
+                        "",
+                        4,
+                        dc
+                    );
+                    glancesName = Rez.Strings.TOTAL;
+                    glancesValue = Total;
+                    break;
+                case 6:
+                    formatScreenLines(
+                        WatchUi.loadResource(Rez.Strings.CURRENT)+": "+Current,
+                        WatchUi.loadResource(Rez.Strings.TODAY)+": "+Today,
+                        WatchUi.loadResource(Rez.Strings.THISMONTH)+": "+ThisMonth,
+                        WatchUi.loadResource(Rez.Strings.THISYEAR)+": "+ThisYear,
+                        WatchUi.loadResource(Rez.Strings.TOTAL)+": "+Total,
+                        5,
+                        dc
+                    );
+                    break;
 
-                dc.drawText(dc.getWidth()/2, lineOnePosY, fontMedium, lineOneValue, Graphics.TEXT_JUSTIFY_CENTER);
-                dc.drawText(dc.getWidth()/2, lineTwoPosY, fontMedium, lineTwoValue, Graphics.TEXT_JUSTIFY_CENTER);
-                dc.drawText(dc.getWidth()/2, lineThreePosY, fontMedium, lineThreeValue, Graphics.TEXT_JUSTIFY_CENTER);
-                dc.drawText(dc.getWidth()/2, lineFourPosY, fontMedium, lineFourValue, Graphics.TEXT_JUSTIFY_CENTER);
-                dc.drawText(dc.getWidth()/2, lineFivePosY, fontMedium, lineFiveValue, Graphics.TEXT_JUSTIFY_CENTER);
+                default:
+                    formatScreenLines(
+                            "Unsupported CurrentPage value: " + CurrentPage,
+                            "",
+                            "",
+                            "",
+                            "",
+                            1,
+                            dc
+                        );
+                    break;
             }
             System.println("glancesValue: " + glancesValue + ", glancesName: " + glancesName );
 
@@ -858,8 +880,8 @@ class SolisWidgetView extends WatchUi.View {
         // Save data for later
         Application.getApp().setProperty("Current",Current);
         Application.getApp().setProperty("Today", Today);
-      //  Application.getApp().setProperty("ThisMonth", ThisMonth);
-      //  Application.getApp().setProperty("ThisYear", ThisYear);
+        Application.getApp().setProperty("ThisMonth", ThisMonth);
+        Application.getApp().setProperty("ThisYear", ThisYear);
         Application.getApp().setProperty("Total",Total);
         Application.getApp().setProperty("LastUpdate", LastUpdate);
         Application.getApp().setProperty("NextUpdate", NextUpdate);
