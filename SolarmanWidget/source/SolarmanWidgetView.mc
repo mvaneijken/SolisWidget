@@ -230,10 +230,14 @@ class SolarmanWidgetView extends WatchUi.View {
         // Less than 1 kWh Present in Wh
             return (power * 1000).toNumber() + " Wh";
         }
-        else
+        else if (power<1000)
         {
             // > more than kWh, so present in in kWh
             return power.format("%.1f") + " kWh";
+        }
+        else{
+            // > more than kWh, so present in in kWh
+            return (power / 1000).toFloat().format("%.2f") + " MWh";
         }
     }
 
