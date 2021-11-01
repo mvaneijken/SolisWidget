@@ -1,0 +1,4 @@
+<drawables>
+    <bitmap id="LauncherIcon" filename="solarmanlogo_40x40.png" />
+    <bitmap id="Logo" filename="solarmanlogo_app_100x38.png"/>
+</drawables>

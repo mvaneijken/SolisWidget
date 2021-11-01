@@ -1,0 +1,39 @@
+<strings>
+    <string id="AppName">SolarmanWidget</string>
+
+    <string id="UPDATING">Updating...</string>
+    <string id="CURRENT">Current</string>
+    <string id="TODAY">Today</string>
+    <string id="THISMONTH">Month</string>
+    <string id="THISYEAR">Year</string>
+    <string id="TOTAL">Total</string>
+
+    <string id="NOBLUETOOTHERRORTEXT1">No Connection</string>
+    <string id="NOBLUETOOTHERRORTEXT2">Check connection</string>
+    <string id="NOBLUETOOTHERRORTEXT3">with mobile phone</string>
+
+    <string id="INVALIDSETTINGSTEXT1">Invalid settings</string>
+    <string id="INVALIDSETTINGSTEXT2">Configure correct settings at</string>
+    <string id="INVALIDSETTINGSTEXT3">Garmin Connect or Express</string>
+
+    <string id="APIERRORTEXT2">Check Solarman</string>
+    <string id="APIERRORTEXT3">credentials in  app</string>
+
+    <string id="NOINTERNET1">No Internet"</string>
+    <string id="NOINTERNET2">turn on wifi or data"</string>
+    <string id="NOINTERNET3">connection on phone"</string>
+
+    <string id="title_startpage">Starting Page</string>
+    <string id="opt_page_1">Current Power</string>
+    <string id="opt_page_2">Today</string>
+    <string id="opt_page_3">Month</string>
+    <string id="opt_page_4">Year</string>
+    <string id="opt_page_5">Total</string>
+    <string id="opt_page_6">Overview</string>
+
+    <string id="title_username">Solarman Portal Username</string>
+    <string id="title_password">Solarman Portal Password</string>
+
+    <string id="title_uid">Solarman User Identifier</string>
+    <string id="title_plantid">Solarman Site Identifier</string>
+</strings>
