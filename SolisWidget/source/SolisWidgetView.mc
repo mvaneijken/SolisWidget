@@ -699,8 +699,8 @@ class SolisWidgetView extends WatchUi.View {
         //  Load saved data
         Current = Application.getApp().getProperty("Current");
         Today = Application.getApp().getProperty("Today");
-       // ThisMonth = Application.getApp().getProperty("ThisMonth");
-      //  ThisYear = Application.getApp().getProperty("ThisYear");
+        ThisMonth = Application.getApp().getProperty("ThisMonth");
+        ThisYear = Application.getApp().getProperty("ThisYear");
         Total = Application.getApp().getProperty("Total");
         LastUpdate= Application.getApp().getProperty("LastUpdate");
         NextUpdate = Application.getApp().getProperty("NextUpdate");
@@ -781,7 +781,7 @@ class SolisWidgetView extends WatchUi.View {
                         4,
                         dc
                     );
-                    glancesName = Rez.Strings.CURRENT;
+                    glancesName = WatchUi.loadResource(Rez.Strings.CURRENT);
                     glancesValue = Current;
                     break;
                 case 2:
@@ -795,7 +795,7 @@ class SolisWidgetView extends WatchUi.View {
                         4,
                         dc
                     );
-                    glancesName = Rez.Strings.TODAY;
+                    glancesName = WatchUi.loadResource(Rez.Strings.TODAY);
                     glancesValue = Today;
                     break;
                 case 3:
@@ -809,7 +809,7 @@ class SolisWidgetView extends WatchUi.View {
                         4,
                         dc
                     );
-                    glancesName = Rez.Strings.THISMONTH;
+                    glancesName = WatchUi.loadResource(Rez.Strings.THISMONTH);
                     glancesValue = ThisMonth;
                     break;
                 case 4:
@@ -823,7 +823,7 @@ class SolisWidgetView extends WatchUi.View {
                         4,
                         dc
                     );
-                    glancesName = Rez.Strings.THISYEAR;
+                    glancesName = WatchUi.loadResource(Rez.Strings.THISYEAR);
                     glancesValue = ThisYear;
                     break;
                 case 5:
@@ -837,7 +837,7 @@ class SolisWidgetView extends WatchUi.View {
                         4,
                         dc
                     );
-                    glancesName = Rez.Strings.TOTAL;
+                    glancesName = WatchUi.loadResource(Rez.Strings.TOTAL);
                     glancesValue = Total;
                     break;
                 case 6:
