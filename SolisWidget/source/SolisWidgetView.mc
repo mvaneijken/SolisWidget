@@ -240,6 +240,7 @@ class SolisWidgetView extends WatchUi.View {
 
         // Turn off refreshpage
         ShowRefreshing=false;
+        ShowError=false;
         System.println(responseCode);
         System.println(data);
 
@@ -294,7 +295,7 @@ class SolisWidgetView extends WatchUi.View {
             Errortext2="Check settings in";
             Errortext3="Garmin Connect or Express";
         }
-
+        WatchUi.requestUpdate();
     }
 
     function formatScreenLines(value1,value2,value3,value4,value5,lines,dc){
@@ -456,19 +457,29 @@ class SolisWidgetView extends WatchUi.View {
             // Show refreshing page
             ShowError=false; // turn off an error screen (if any)
             ShowRefreshing=true; // make sure refreshingscreen is shown when updating the UI.
-            WatchUi.requestUpdate();
-            var url = BaseUrl+"/v/ap.2.0/cust/user/login?user_id=" + Username + "&user_pass=" + Password + "&terminate=android&push_sn=11007f002bc2b3ebc16db92898f5d3ea&timezone=1&lan=en&country=CN&cust=006";
-            var options = {
-                    :method => Communications.HTTP_REQUEST_METHOD_GET,
-                    :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-            };
 
-            // only retrieve the settings if they've actually changed
+            if(Username.toString().length == 0 || Password.toString().length == 0){
+                ShowError=true;
+                Errortext1="Invalid username/";
+                Errortext2="password. Configure in";
+                Errortext3=" Garmin Connect or Express";
+                WatchUi.requestUpdate();
+            }
+            else{
+                WatchUi.requestUpdate();
+                var url = BaseUrl+"/v/ap.2.0/cust/user/login?user_id=" + Username + "&user_pass=" + Password + "&terminate=android&push_sn=11007f002bc2b3ebc16db92898f5d3ea&timezone=1&lan=en&country=CN&cust=006";
+                var options = {
+                        :method => Communications.HTTP_REQUEST_METHOD_GET,
+                        :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+                };
 
-            // Make the authentication request
-            System.println("makeRequest url:"+url);
-            System.println("makeRequest options:"+options);
-            Communications.makeWebRequest(url,{},options,method(:onReceive));
+                // only retrieve the settings if they've actually changed
+
+                // Make the authentication request
+                System.println("makeRequest url:"+url);
+                System.println("makeRequest options:"+options);
+                Communications.makeWebRequest(url,{},options,method(:onReceive));
+            }
         }
         else{
             //Go and check the plantid when the uid is allready set.
@@ -557,7 +568,6 @@ class SolisWidgetView extends WatchUi.View {
         System.println("onReceivePlantOverview");
 
         processResponseCode(responseCode,data);
-        ShowError=false;
         if (data instanceof Dictionary)
         {
             var power = 0.0; // init variable
