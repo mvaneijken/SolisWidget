@@ -12,11 +12,11 @@
     <string id="NOBLUETOOTHERRORTEXT2">Controleer verbinding</string>
     <string id="NOBLUETOOTHERRORTEXT3">met telefoon</string>
 
-    <string id="INVALIDSETTINGSTEXT1">Foute Instellingen</string>
-    <string id="INVALIDSETTINGSTEXT2">Configureer widget in</string>
-    <string id="INVALIDSETTINGSTEXT3">Garmin Connect of Express</string>
+    <string id="INVALIDSETTINGSTEXT1">Config fout</string>
+    <string id="INVALIDSETTINGSTEXT2">Controleer instellingen</string>
+    <string id="INVALIDSETTINGSTEXT3">Garmin Connect/Express</string>
 
-    <string id="APIERRORTEXT2">Check Solis inlog</string>
+    <string id="APIERRORTEXT2">Check inloggegevens</string>
     <string id="APIERRORTEXT3">in app</string>
 
     <string id="NOINTERNET1">Geen Internet"</string>
@@ -31,8 +31,8 @@
     <string id="opt_page_5">Totaal</string>
     <string id="opt_page_6">Overzicht</string>
 
-    <string id="title_username">Solis Portal Gebruikersnaam</string>
-    <string id="title_password">Solis Portal Wachtwoord</string>
+    <string id="title_username">Solis gebruikersnaam</string>
+    <string id="title_password">Solis wachtwoord</string>
 
     <string id="title_uid">Solis User Identifier</string>
     <string id="title_plantid">Solis Site Identifier</string>
