@@ -7,10 +7,12 @@ using Toybox.Application;
 class SolisWidgetGlanceView extends WatchUi.GlanceView {
 
     function initialize() {
+        System.println("SolisWidgetGlanceView:initialize");
         GlanceView.initialize();
     }
 
     function onUpdate(dc) {
+        System.println("SolisWidgetGlanceView:onUpdate");
         var glancesName = "";
         glancesName = Application.getApp().getProperty("glancesName");
         var glancesValue = "";
@@ -36,4 +38,4 @@ class SolisWidgetGlanceView extends WatchUi.GlanceView {
         dc.drawText(dc.getWidth()/2,lineOnePosY,font,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(dc.getWidth()/2,lineTwoPosY,font,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
     }
-    }
+}

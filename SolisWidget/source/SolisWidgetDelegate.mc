@@ -7,6 +7,7 @@ class SolisWidgetDelegate extends WatchUi.BehaviorDelegate {
 
     // Handle menu button press
     function onMenu() {
+        System.println("SolisWidgetDelegate:onMenu");
         notify.invoke(DOWEBREQUEST);
         return true;
     }
@@ -18,6 +19,7 @@ class SolisWidgetDelegate extends WatchUi.BehaviorDelegate {
     //  }
 
     function onSelect() {
+        System.println("SolisWidgetDelegate:onSelect");
         // TODO: Add support for refresh and the use of up/down keys.
         //RefreshPage();
         NextPage();
@@ -25,16 +27,19 @@ class SolisWidgetDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onNextPage() {
+        System.println("SolisWidgetDelegate:onNextPage");
         NextPage();
         return true;
     }
 
     function onPreviousPage() {
+        System.println("SolisWidgetDelegate:onPreviousPage");
         PreviousPage();
         return true;
     }
 
     function onSwipe(evt) {
+        System.println("SolisWidgetDelegate:onSwipe");
         var swipe = evt.getDirection();
 
         if (swipe == SWIPE_UP) {
@@ -48,6 +53,7 @@ class SolisWidgetDelegate extends WatchUi.BehaviorDelegate {
 
     // Set up the callback to the view
     function initialize(handler) {
+        System.println("SolisWidgetDelegate:initialize");
         WatchUi.BehaviorDelegate.initialize();
         notify = handler;
     }
