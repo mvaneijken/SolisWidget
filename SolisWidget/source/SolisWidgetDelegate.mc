@@ -5,21 +5,26 @@ using Toybox.System;
 class SolisWidgetDelegate extends WatchUi.BehaviorDelegate {
     var notify;
 
+    (:debug)
+    function debugMessage(object){
+        System.println(object);
+    }
+
     // Handle menu button press
     function onMenu() {
-        System.println("SolisWidgetDelegate:onMenu");
+        debugMessage("SolisWidgetDelegate:onMenu");
         notify.invoke(DOWEBREQUEST);
         return true;
     }
 
     // TODO: Add support for refresh and the use of up/down keys.
     //  function onKey(keyEvent) {
-    //      System.println("onkey: " + keyEvent.getKey());
+    //      debugMessage("onkey: " + keyEvent.getKey());
     //      return true;
     //  }
 
     function onSelect() {
-        System.println("SolisWidgetDelegate:onSelect");
+        debugMessage("SolisWidgetDelegate:onSelect");
         // TODO: Add support for refresh and the use of up/down keys.
         //RefreshPage();
         NextPage();
@@ -27,19 +32,19 @@ class SolisWidgetDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onNextPage() {
-        System.println("SolisWidgetDelegate:onNextPage");
+        debugMessage("SolisWidgetDelegate:onNextPage");
         NextPage();
         return true;
     }
 
     function onPreviousPage() {
-        System.println("SolisWidgetDelegate:onPreviousPage");
+        debugMessage("SolisWidgetDelegate:onPreviousPage");
         PreviousPage();
         return true;
     }
 
     function onSwipe(evt) {
-        System.println("SolisWidgetDelegate:onSwipe");
+        debugMessage("SolisWidgetDelegate:onSwipe");
         var swipe = evt.getDirection();
 
         if (swipe == SWIPE_UP) {
@@ -53,7 +58,7 @@ class SolisWidgetDelegate extends WatchUi.BehaviorDelegate {
 
     // Set up the callback to the view
     function initialize(handler) {
-        System.println("SolisWidgetDelegate:initialize");
+        debugMessage("SolisWidgetDelegate:initialize");
         WatchUi.BehaviorDelegate.initialize();
         notify = handler;
     }

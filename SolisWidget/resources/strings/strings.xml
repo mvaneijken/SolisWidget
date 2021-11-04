@@ -13,8 +13,8 @@
     <string id="NOBLUETOOTHERRORTEXT3">with mobile phone</string>
 
     <string id="INVALIDSETTINGSTEXT1">Invalid settings</string>
-    <string id="INVALIDSETTINGSTEXT2">Validate settings in</string>
-    <string id="INVALIDSETTINGSTEXT3">Garmin Connect/Express</string>
+    <string id="INVALIDSETTINGSTEXT2">Validate in Garmin</string>
+    <string id="INVALIDSETTINGSTEXT3">Connect/Express</string>
 
     <string id="APIERRORTEXT2">Check credentials</string>
     <string id="APIERRORTEXT3">in app</string>

@@ -6,20 +6,25 @@ using Toybox.Application;
 (:glance)
 class SolisWidgetGlanceView extends WatchUi.GlanceView {
 
+    (:debug)
+    function debugMessage(object){
+        System.println(object);
+    }
+
     function initialize() {
-        System.println("SolisWidgetGlanceView:initialize");
+        debugMessage("SolisWidgetGlanceView:initialize");
         GlanceView.initialize();
     }
 
     function onUpdate(dc) {
-        System.println("SolisWidgetGlanceView:onUpdate");
+        debugMessage("SolisWidgetGlanceView:onUpdate");
         var glancesName = "";
         glancesName = Application.getApp().getProperty("glancesName");
         var glancesValue = "";
         glancesValue = Application.getApp().getProperty("glancesValue");
 
-        System.println(glancesValue);
-        System.println(glancesValue);
+        debugMessage(glancesValue);
+        debugMessage(glancesValue);
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
@@ -31,7 +36,7 @@ class SolisWidgetGlanceView extends WatchUi.GlanceView {
         var lineTwoValue = glancesValue;
 
         var height = dc.getHeight();
-        System.println(dc.getHeight());
+        debugMessage(dc.getHeight());
         var lineOnePosY = 0;
         var lineTwoPosY = lineOnePosY + ((fontHeight/2) + (fontHeight/2));
 
