@@ -6,26 +6,31 @@ var gSettingsChanged = true;
 class SolisWidgetApp extends Application.AppBase {
     hidden var mView;
 
+    (:debug)
+    function debugMessage(object){
+        System.println(object);
+    }
+
     function initialize() {
-        System.println("SolisWidgetApp:initialize");
+        debugMessage("SolisWidgetApp:initialize");
         AppBase.initialize();
 
     }
 
     // onStart() is called on application start up
     function onStart(state) {
-        System.println("SolisWidgetApp:onStart");
+        debugMessage("SolisWidgetApp:onStart");
     }
 
     // onStop() is called when your application is exiting
     function onStop(state) {
-        System.println("SolisWidgetApp:onStop");
+        debugMessage("SolisWidgetApp:onStop");
 
     }
 
     // New app settings have been received so trigger a UI update
     function onSettingsChanged() {
-        System.println("SolisWidgetApp:onSettingsChanged");
+        debugMessage("SolisWidgetApp:onSettingsChanged");
         $.gSettingsChanged = true;
         WatchUi.requestUpdate();
     }
@@ -33,14 +38,14 @@ class SolisWidgetApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() {
-        System.println("SolisWidgetApp:getInitialView");
+        debugMessage("SolisWidgetApp:getInitialView");
         mView = new SolisWidgetView();
         return [mView, new SolisWidgetDelegate(mView.method(:HandleCommand))];
     }
 
     (:glance)
     function getGlanceView() {
-        System.println("SolisWidgetApp:getGlanceView");
+        debugMessage("SolisWidgetApp:getGlanceView");
         return [ new SolisWidgetGlanceView() ];
     }
 

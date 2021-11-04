@@ -51,9 +51,14 @@ var Password = "-";
 // Constants
 var UpdateInterval=5; // in Minutes
 
+(:debug)
+function debugMessage(object){
+    System.println(object);
+}
+
 function NextPage()
 {
-    //System.println("SolisWidgetView:NextPage");
+    debugMessage("SolisWidgetView:NextPage");
     // Next Page pressed, increase the pagenumber
     CurrentPage++;
 
@@ -68,7 +73,7 @@ function NextPage()
 
 function PreviousPage()
 {
-    //System.println("SolisWidgetView:PreviousPage");
+    debugMessage("SolisWidgetView:PreviousPage");
 
     // Previous Page pressed, decrease the pagenumber
     CurrentPage--;
@@ -84,7 +89,7 @@ function PreviousPage()
 
 function RefreshPage()
 {
-    //System.println("SolisWidgetView:RefreshPage");
+    debugMessage("SolisWidgetView:RefreshPage");
     WatchUi.requestUpdate();
     forceUpdate = true;
 }
@@ -95,8 +100,8 @@ class SolisWidgetView extends WatchUi.View {
     //var logo as BitmapResource;
 
     function initialize() {
-        //System.println("SolisWidgetView:initialize");
-        //System.println("getDevicePartNumber: " + getDevicePartNumber());
+        debugMessage("SolisWidgetView:initialize");
+        debugMessage("getDevicePartNumber: " + getDevicePartNumber());
         retrieveSettings();
         View.initialize();
         //logo = WatchUi.loadResource(Rez.Drawables.SolisLogo);
@@ -104,7 +109,7 @@ class SolisWidgetView extends WatchUi.View {
     }
 
     function getDevicePartNumber() {
-        //System.println("SolisWidgetView:getDevicePartNumber");
+        debugMessage("SolisWidgetView:getDevicePartNumber");
         var deviceSettings = System.getDeviceSettings();
         // device part numbers come from ${SDKROOT}/bin/devices.xml
         var partNumber = deviceSettings.partNumber;
@@ -112,10 +117,10 @@ class SolisWidgetView extends WatchUi.View {
     }
 
     function retrieveSettings() {
-        //System.println("SolisWidgetView:retrieveSettings");
+        debugMessage("SolisWidgetView:retrieveSettings");
         // Get Username From settings
         Username = Application.getApp().getProperty("PROP_USERNAME");
-        //System.println("Username: " + Username);
+        debugMessage("Username: " + Username);
 
         // Get Password from Settings
         Password = Application.getApp().getProperty("PROP_PASSWORD");
@@ -136,9 +141,9 @@ class SolisWidgetView extends WatchUi.View {
 
     function formatDateTimeFromRFC3339 (string)
     {
-        //System.println("SolisWidgetView:formatDateTimeFromRFC3339");
+        debugMessage("SolisWidgetView:formatDateTimeFromRFC3339");
 
-        //System.println(string.toString());
+        debugMessage(string.toString());
         var options ={
             :year   => string.toString().substring(0,4).toNumber(),
             :month  => string.toString().substring(5,7).toNumber(),
@@ -163,8 +168,8 @@ class SolisWidgetView extends WatchUi.View {
 
     function formatDateFromRFC3339 (string)
     {
-        //System.println("SolisWidgetView:formatDateFromRFC3339");
-        //System.println(string.toString());
+        debugMessage("SolisWidgetView:formatDateFromRFC3339");
+        debugMessage(string.toString());
         var options ={
             :year   => string.toString().substring(0,4).toNumber(),
             :month  => string.toString().substring(5,7).toNumber(),
@@ -186,8 +191,8 @@ class SolisWidgetView extends WatchUi.View {
 
     function formatTimeFromRFC3339 (string)
     {
-        //System.println("SolisWidgetView:formatTimeFromRFC3339");
-        //System.println(string.toString());
+        debugMessage("SolisWidgetView:formatTimeFromRFC3339");
+        debugMessage(string.toString());
         var options ={
             :year   => string.toString().substring(0,4).toNumber(),
             :month  => string.toString().substring(5,7).toNumber(),
@@ -210,7 +215,7 @@ class SolisWidgetView extends WatchUi.View {
 
     function moment_from_info(info)
     {
-        //System.println("SolisWidgetView:moment_from_info");
+        debugMessage("SolisWidgetView:moment_from_info");
         return Gregorian.moment({
             :year   => info.year,
             :month  => info.month,
@@ -223,21 +228,21 @@ class SolisWidgetView extends WatchUi.View {
 
     function StringFromInfo(info)
     {
-        //System.println("SolisWidgetView:StringFromInfo");
+        debugMessage("SolisWidgetView:StringFromInfo");
         var DateText = info.year+"-"+info.month+"-"+info.day+" "+info.hour+":"+info.min+":"+info.sec;
         return DateText;
     }
 
     // function StringFromMoment(moment)
     // {
-    //     //System.println("SolisWidgetView:StringFromMoment");
+    //     debugMessage("SolisWidgetView:StringFromMoment");
     //     var info=Gregorian.info(moment,Time.FORMAT_MEDIUM);
     //     return StringFromInfo(info);
     // }
 
     function formatEnergy(power)
     {
-        //System.println("SolisWidgetView:formatEnergy");
+        debugMessage("SolisWidgetView:formatEnergy");
         if (power<1)
         {
         // Less than 1 kWh Present in Wh
@@ -251,13 +256,13 @@ class SolisWidgetView extends WatchUi.View {
     }
 
     function processResponseCode(responseCode,data){
-        //System.println("SolisWidgetView:processResponseCode");
+        debugMessage("SolisWidgetView:processResponseCode");
 
         // Turn off refreshpage
         ShowRefreshing=false;
         ShowError=false;
-        //System.println(responseCode);
-        //System.println(data);
+        debugMessage(responseCode);
+        debugMessage(data);
 
         if (responseCode==200)
         {
@@ -316,7 +321,7 @@ class SolisWidgetView extends WatchUi.View {
     }
 
     function formatScreenLines(value1,value2,value3,value4,value5,lines,dc){
-        //System.println("SolisWidgetView:formatScreenLines");
+        debugMessage("SolisWidgetView:formatScreenLines");
 
         var height = dc.getHeight();
         var lineSpacingLarge = 2;
@@ -353,7 +358,7 @@ class SolisWidgetView extends WatchUi.View {
             lineFiveFont = Graphics.FONT_MEDIUM;
             lineSpacingLarge = 2.6;
         }
-        var lineOnePosY = height / screenDevider;
+        var lineOnePosY = ((height / screenDevider) - (Graphics.getFontHeight(lineOneFont)/2));
         var lineTwoPosY = lineOnePosY + ((Graphics.getFontHeight(lineOneFont) / lineSpacingMedium) + (Graphics.getFontHeight(lineOneFont) / lineSpacingMedium));
         var lineThreePosY = lineTwoPosY + ((Graphics.getFontHeight(lineTwoFont) / lineSpacingLarge) + (Graphics.getFontHeight(lineTwoFont) / lineSpacingLarge));
         var lineFourPosY = lineThreePosY + ((Graphics.getFontHeight(lineThreeFont) / lineSpacingMedium) + (Graphics.getFontHeight(lineThreeFont) / lineSpacingMedium));
@@ -412,7 +417,7 @@ class SolisWidgetView extends WatchUi.View {
 
     function setNotParsable()
     {
-        //System.println("SolisWidgetView:setNotParsable");
+        debugMessage("SolisWidgetView:setNotParsable");
 
         // not parsable
         Current = null;
@@ -429,7 +434,7 @@ class SolisWidgetView extends WatchUi.View {
     // function to convert date in string format to moment object
     function DetermineNextUpdateFromLastUpdate()
     {
-        //System.println("SolisWidgetView:DetermineNextUpdateFromLastUpdate");
+        debugMessage("SolisWidgetView:DetermineNextUpdateFromLastUpdate");
 
         // There might be a time difference, so only use the number of minutes from the string,
         // and derive the lastupdate time from the current time)
@@ -463,18 +468,18 @@ class SolisWidgetView extends WatchUi.View {
     // Handle Command from Delegate view
     function HandleCommand (data)
     {
-        //System.println("SolisWidgetView:HandleCommand");
+        debugMessage("SolisWidgetView:HandleCommand");
 
         // update of data requested
         if (data==DOWEBREQUEST)
         {
-            //System.println("HandleCommand: makeRequest");
+            debugMessage("HandleCommand: makeRequest");
             makeRequest();
         }
     }
 
     function makeRequest() {
-        //System.println("SolisWidgetView:makeRequest");
+        debugMessage("SolisWidgetView:makeRequest");
 
         forceUpdate = false;
         if(uid.toString().length() <3 ){
@@ -501,14 +506,14 @@ class SolisWidgetView extends WatchUi.View {
                 // only retrieve the settings if they've actually changed
 
                 // Make the authentication request
-                //System.println("makeRequest url:"+url);
-                //System.println("makeRequest options:"+options);
+                debugMessage("makeRequest url:"+url);
+                debugMessage("makeRequest options:"+options);
                 Communications.makeWebRequest(url,{},options,method(:onReceive));
             }
         }
         else{
             //Go and check the plantid when the uid is allready set.
-            //System.println("makeRequest");
+            debugMessage("makeRequest");
             makeRequestPlantId();
         }
     }
@@ -516,23 +521,24 @@ class SolisWidgetView extends WatchUi.View {
     // Receive the data from the web request
     function onReceive(responseCode, data)
     {
-        //System.println("SolisWidgetView:onReceive");
+        debugMessage("SolisWidgetView:onReceive");
         ShowError = processResponseCode(responseCode,data);
 
         if(ShowError){
             WatchUi.requestUpdate();
         }
         else{
+            WatchUi.requestUpdate();
             uid = data["uid"];
             Application.getApp().setProperty("PROP_UID",uid);
-            //System.println(data["uid"]);
-            //System.println("uid set:"+uid);
+            debugMessage(data["uid"]);
+            debugMessage("uid set:"+uid);
             makeRequestPlantId();
         }
     }
 
     function makeRequestPlantId() {
-        //System.println("SolisWidgetView:makeRequestPlantId");
+        debugMessage("SolisWidgetView:makeRequestPlantId");
 
         if(plantid.toString().length() < 3 ){
             // Show refreshing page
@@ -547,8 +553,8 @@ class SolisWidgetView extends WatchUi.View {
             };
 
             // Make the authentication request
-            //System.println("makeRequestPlantId url:"+url);
-            //System.println("makeRequestPlantId options:"+options);
+            debugMessage("makeRequestPlantId url:"+url);
+            debugMessage("makeRequestPlantId options:"+options);
             Communications.makeWebRequest(url,{},options,method(:onReceivePlantId));
         }
         else{
@@ -559,30 +565,31 @@ class SolisWidgetView extends WatchUi.View {
 
     function onReceivePlantId(responseCode, data)
     {
-        //System.println("SolisWidgetView:onReceivePlantId");
+        debugMessage("SolisWidgetView:onReceivePlantId");
 
         ShowError = processResponseCode(responseCode,data);
         if(ShowError){
             WatchUi.requestUpdate();
         }
         else{
+            WatchUi.requestUpdate();
             ShowError=false;
             plantid = data["list"][0]["plant_id"];
             Application.getApp().setProperty("PROP_PLANTID",plantid);
-            //System.println("plantid set:"+plantid);
+            debugMessage("plantid set:"+plantid);
             makeRequestPlantOverview();
         }
     }
 
     function makeRequestPlantOverview()
     {
-        //System.println("SolisWidgetView:makeRequestPlantOverview");
+        debugMessage("SolisWidgetView:makeRequestPlantOverview");
 
         // Show refreshing page
         ShowError=false; // turn off an error screen (if any)
         ShowRefreshing=true; // make sure refreshingscreen is shown when updating the UI.
         //WatchUi.requestUpdate();
-        //System.println("makeRequest uid:"+uid);
+        debugMessage("makeRequest uid:"+uid);
         var url = BaseUrl+"/v/ap.2.0/plant/get_plant_overview?uid=" + uid.toString() + "&plant_id=" + plantid.toString();
 
         var options = {
@@ -591,20 +598,21 @@ class SolisWidgetView extends WatchUi.View {
         };
 
         // Make the authentication request
-        //System.println("makeRequest url:"+url);
-        //System.println("makeRequest options:"+options);
+        debugMessage("makeRequest url:"+url);
+        debugMessage("makeRequest options:"+options);
         Communications.makeWebRequest(url,{},options,method(:onReceivePlantOverview));
     }
 
     function onReceivePlantOverview(responseCode, data)
     {
-        //System.println("SolisWidgetView:onReceivePlantOverview");
+        debugMessage("SolisWidgetView:onReceivePlantOverview");
 
         ShowError = processResponseCode(responseCode,data);
         if(ShowError){
             WatchUi.requestUpdate();
         }
         else{
+            WatchUi.requestUpdate();
             if (data instanceof Dictionary)
             {
                 var power = 0.0; // init variable
@@ -616,17 +624,17 @@ class SolisWidgetView extends WatchUi.View {
                 } else {
                     Current=power.format("%.2f") + " W";
                 }
-                //System.println("current_power: "+power + " Current: "+ Current);
+                debugMessage("current_power: "+power + " Current: "+ Current);
 
                 // Format Today
                 power = data["power_out"]["energy_day"].toFloat();
                 Today= formatEnergy(power);
-                //System.println("today_energy: "+power + " Today :"+Today);
+                debugMessage("today_energy: "+power + " Today :"+Today);
 
                 // Format Total
                 power = data["power_out"]["energy_accu_real"].toFloat();
                 Total= formatEnergy(power);
-                //System.println("total_energy: "+power + " Total: " + Total);
+                debugMessage("total_energy: "+power + " Total: " + Total);
 
                 // Format Last Update
                 LastUpdate=data["date"];
@@ -646,13 +654,13 @@ class SolisWidgetView extends WatchUi.View {
 
     function makeRequestPlantMonthStatistics()
     {
-        //System.println("SolisWidgetView:makeRequestPlantMonthStatistics");
+        debugMessage("SolisWidgetView:makeRequestPlantMonthStatistics");
 
         // Show refreshing page
         ShowError=false; // turn off an error screen (if any)
         ShowRefreshing=true; // make sure refreshingscreen is shown when updating the UI.
         //WatchUi.requestUpdate();
-        //System.println("makeRequest uid:"+uid);
+        debugMessage("makeRequest uid:"+uid);
         var url = BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_month2?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
 
         var options = {
@@ -661,30 +669,31 @@ class SolisWidgetView extends WatchUi.View {
         };
 
         // Make the authentication request
-        //System.println("makeRequest url:"+url);
-        //System.println("makeRequest options:"+options);
+        debugMessage("makeRequest url:"+url);
+        debugMessage("makeRequest options:"+options);
         Communications.makeWebRequest(url,{},options,method(:onReceivePlantMonthStatistics));
     }
 
     function onReceivePlantMonthStatistics(responseCode, data)
     {
-        //System.println("SolisWidgetView:onReceivePlantMonthStatistics");
+        debugMessage("SolisWidgetView:onReceivePlantMonthStatistics");
 
         ShowError = processResponseCode(responseCode,data);
         if(ShowError){
             WatchUi.requestUpdate();
         }
         else{
+            WatchUi.requestUpdate();
             if (data instanceof Dictionary)
             {
                 var list = data["list"];
                 var power = 0;
                 for(var i=0;i<list.size();i++) {
-                    //System.println("day "+ data["list"][i]["month"] +"="+ data["list"][i]["energy"]);
+                    debugMessage("day "+ data["list"][i]["month"] +"="+ data["list"][i]["energy"]);
                     power = power + data["list"][i]["energy"];
                 }
                 ThisMonth= formatEnergy(power);
-                //System.println("ThisMonth: " + ThisMonth);
+                debugMessage("ThisMonth: " + ThisMonth);
                 data = null;
             }
             else {
@@ -696,13 +705,13 @@ class SolisWidgetView extends WatchUi.View {
 
     function makeRequestPlantYearStatistics()
     {
-        //System.println("SolisWidgetView:makeRequestPlantYearStatistics");
+        debugMessage("SolisWidgetView:makeRequestPlantYearStatistics");
 
         // Show refreshing page
         ShowError=false; // turn off an error screen (if any)
         ShowRefreshing=true; // make sure refreshingscreen is shown when updating the UI.
         //WatchUi.requestUpdate();
-        //System.println("makeRequest uid:"+uid);
+        debugMessage("makeRequest uid:"+uid);
         var url = BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_year?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
 
         var options = {
@@ -711,31 +720,32 @@ class SolisWidgetView extends WatchUi.View {
         };
 
         // Make the authentication request
-        //System.println("makeRequest url:"+url);
-        //System.println("makeRequest options:"+options);
+        debugMessage("makeRequest url:"+url);
+        debugMessage("makeRequest options:"+options);
         Communications.makeWebRequest(url,{},options,method(:onReceivePlantYearStatistics));
     }
 
     function onReceivePlantYearStatistics(responseCode, data)
     {
-        //System.println("SolisWidgetView:onReceivePlantYearStatistics");
+        debugMessage("SolisWidgetView:onReceivePlantYearStatistics");
 
         ShowError = processResponseCode(responseCode, data);
         if(ShowError){
             WatchUi.requestUpdate();
         }
         else{
+            WatchUi.requestUpdate();
             if (data instanceof Dictionary)
             {
                 var list = data["list"];
                 var power = 0;
                 for(var i=0;i<list.size();i++) {
-                    //System.println("year "+ data["list"][i]["year"] +"="+ data["list"][i]["energy"]);
+                    debugMessage("year "+ data["list"][i]["year"] +"="+ data["list"][i]["energy"]);
                     power = power + data["list"][i]["energy"];
                 }
 
                 ThisYear= formatEnergy(power);
-                //System.println("yearly_energy: "+power + " ThisYear: " + ThisYear);
+                debugMessage("yearly_energy: "+power + " ThisYear: " + ThisYear);
                 data = null;
             }
             else
@@ -748,7 +758,7 @@ class SolisWidgetView extends WatchUi.View {
 
     // Load your resources here
     function onLayout(dc) {
-        //System.println("SolisWidgetView:onLayout");
+        debugMessage("SolisWidgetView:onLayout");
 
         setLayout(Rez.Layouts.MainLayout(dc));
     }
@@ -757,7 +767,7 @@ class SolisWidgetView extends WatchUi.View {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() {
-        //System.println("SolisWidgetView:onShow");
+        debugMessage("SolisWidgetView:onShow");
 
         //  Load saved data
         Current = Application.getApp().getProperty("Current");
@@ -786,10 +796,10 @@ class SolisWidgetView extends WatchUi.View {
 
     // Update the view
     function onUpdate(dc) {
-        //System.println("SolisWidgetView:onUpdate");
+        debugMessage("SolisWidgetView:onUpdate");
 
-        //System.println("Screen heigth: " + dc.getHeight());
-        //System.println("Screen width: " + dc.getWidth());
+        debugMessage("Screen heigth: " + dc.getHeight());
+        debugMessage("Screen width: " + dc.getWidth());
 
         if ($.gSettingsChanged) {
             $.gSettingsChanged = false;
@@ -806,7 +816,7 @@ class SolisWidgetView extends WatchUi.View {
         //var logowidth = logo.getWidth();
         //var logoPosX = (dc.getWidth() - logowidth) / 2;
         //var logoPosY = (dc.getHeight() - logowidth) / 5;
-        ////System.println("logowidth: " + logowidth + " logoHeight: " + logo.getHeight());
+        //debugMessage("logowidth: " + logowidth + " logoHeight: " + logo.getHeight());
         //dc.drawBitmap((dc.getWidth() - logowidth) / 2, logoPosY,logo);
 
         if (ShowError) {
@@ -929,10 +939,10 @@ class SolisWidgetView extends WatchUi.View {
                         );
                     break;
             }
-            //System.println("glancesValue: " + glancesValue + ", glancesName: " + glancesName );
+            debugMessage("glancesValue: " + glancesValue + ", glancesName: " + glancesName );
 
             if(forceUpdate == true){
-                //System.println("forceUpdate = " + forceUpdate);
+                debugMessage("forceUpdate = " + forceUpdate);
                 makeRequest();
             }
         }
@@ -941,7 +951,7 @@ class SolisWidgetView extends WatchUi.View {
     // Called when this View is removed from the screen. Save the
     // state of this View here. This includes freeing resources from memory.
     function onHide() {
-        //System.println("SolisWidgetView:onHide");
+        debugMessage("SolisWidgetView:onHide");
 
         // Save data for later
         Application.getApp().setProperty("Current",Current);
