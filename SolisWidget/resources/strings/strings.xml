@@ -1,39 +1,39 @@
 <strings>
     <string id="AppName">SolisWidget</string>
 
-    <string id="UPDATING">Updating...</string>
-    <string id="CURRENT">Current</string>
+    <string id="UPDT">Updating...</string>
+    <string id="CURR">Current</string>
     <string id="TODAY">Today</string>
     <string id="THISMONTH">Month</string>
     <string id="THISYEAR">Year</string>
-    <string id="TOTAL">Total</string>
+    <string id="TOT">Total</string>
 
-    <string id="NOBLUETOOTHERRORTEXT1">No Connection</string>
-    <string id="NOBLUETOOTHERRORTEXT2">Check connection</string>
-    <string id="NOBLUETOOTHERRORTEXT3">with mobile phone</string>
+    <string id="BLERRSTR1">No Connection</string>
+    <string id="BLERRSTR2">Check connection</string>
+    <string id="BLERRSTR3">with mobile phone</string>
 
-    <string id="INVALIDSETTINGSTEXT1">Invalid settings</string>
-    <string id="INVALIDSETTINGSTEXT2">Validate in Garmin</string>
-    <string id="INVALIDSETTINGSTEXT3">Connect/Express</string>
+    <string id="INVALSETTXT1">Invalid settings</string>
+    <string id="INVALSETTXT2">Validate in Garmin</string>
+    <string id="INVALSETTXT3">Connect/Express</string>
 
-    <string id="APIERRORTEXT2">Check credentials</string>
-    <string id="APIERRORTEXT3">in app</string>
+    <string id="APIERRTXT2">Check credentials</string>
+    <string id="APIERRTXT3">in app</string>
 
-    <string id="NOINTERNET1">No Internet"</string>
-    <string id="NOINTERNET2">turn on wifi or data"</string>
-    <string id="NOINTERNET3">connection on phone"</string>
+    <string id="NOINET1">No Internet"</string>
+    <string id="NOINET2">turn on wifi or data"</string>
+    <string id="NOINET3">connection on phone"</string>
 
-    <string id="title_startpage">Starting Page</string>
-    <string id="opt_page_1">Current Power</string>
-    <string id="opt_page_2">Today</string>
-    <string id="opt_page_3">Month</string>
-    <string id="opt_page_4">Year</string>
-    <string id="opt_page_5">Total</string>
-    <string id="opt_page_6">Overview</string>
+    <string id="ttlstrtpg">Starting Page</string>
+    <string id="optpg1">Current Power</string>
+    <string id="optpg2">Today</string>
+    <string id="optpg3">Month</string>
+    <string id="optpg4">Year</string>
+    <string id="optpg5">Total</string>
+    <string id="optpg6">Overview</string>
 
-    <string id="title_username">Solis Portal Username</string>
-    <string id="title_password">Solis Portal Password</string>
+    <string id="titleusr">Username</string>
+    <string id="titlepswrd">Password</string>
 
-    <string id="title_uid">Solis User Identifier</string>
-    <string id="title_plantid">Solis Site Identifier</string>
+    <string id="titleuid">Solis User Identifier</string>
+    <string id="titleplantid">Solis Site Identifier</string>
 </strings>

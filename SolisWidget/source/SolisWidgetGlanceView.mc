@@ -6,41 +6,29 @@ using Toybox.Application;
 (:glance)
 class SolisWidgetGlanceView extends WatchUi.GlanceView {
 
-    (:debug)
-    function debugMessage(object){
-        System.println(object);
-    }
-
     function initialize() {
-        debugMessage("SolisWidgetGlanceView:initialize");
+        //System.println("SolisWidgetGlanceView:initialize");
         GlanceView.initialize();
     }
 
     function onUpdate(dc) {
-        debugMessage("SolisWidgetGlanceView:onUpdate");
-        var glancesName = "";
-        glancesName = Application.getApp().getProperty("glancesName");
-        var glancesValue = "";
-        glancesValue = Application.getApp().getProperty("glancesValue");
+        //System.println("SolisWidgetGlanceView:onUpdate");
 
-        debugMessage(glancesValue);
-        debugMessage(glancesValue);
-        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
+        dc.setColor(0x000000,0x000000); //(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(0xFFFFFF,-1); //(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
-        var font = Graphics.FONT_SMALL;
+        var font = 2; //Graphics.FONT_SMALL;
         var fontHeight = Graphics.getFontHeight(font);
 
-        var lineOneValue = glancesName;
-        var lineTwoValue = glancesValue;
+        var lineOneValue = Application.getApp().getProperty("glanceName");
+        var lineTwoValue = Application.getApp().getProperty("glanceVal");
 
         var height = dc.getHeight();
-        debugMessage(dc.getHeight());
         var lineOnePosY = 0;
         var lineTwoPosY = lineOnePosY + ((fontHeight/2) + (fontHeight/2));
 
-        dc.drawText(dc.getWidth()/2,lineOnePosY,font,lineOneValue,Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(dc.getWidth()/2,lineTwoPosY,font,lineTwoValue,Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth()/2,lineOnePosY,font,lineOneValue,1); //Graphics.TEXT_JUSTIFY_CENTER)
+        dc.drawText(dc.getWidth()/2,lineTwoPosY,font,lineTwoValue,1); //Graphics.TEXT_JUSTIFY_CENTER)
     }
 }
