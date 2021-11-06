@@ -1,40 +1,40 @@
 <strings>
     <string id="AppName">SolisWidget</string>
 
-    <string id="UPDATING">Verversen...</string>
-    <string id="CURRENT">Huidig</string>
+    <string id="UPDT">Verversen...</string>
+    <string id="CURR">Huidig</string>
     <string id="TODAY">Vandaag</string>
     <string id="THISMONTH">Maand</string>
     <string id="THISYEAR">Jaar</string>
-    <string id="TOTAL">Totaal</string>
+    <string id="TOT">Totaal</string>
 
-    <string id="NOBLUETOOTHERRORTEXT1">Geen verbinding</string>
-    <string id="NOBLUETOOTHERRORTEXT2">Controleer verbinding</string>
-    <string id="NOBLUETOOTHERRORTEXT3">met telefoon</string>
+    <string id="BLERRSTR1">Geen verbinding</string>
+    <string id="BLERRSTR2">Controleer verbinding</string>
+    <string id="BLERRSTR3">met telefoon</string>
 
-    <string id="INVALIDSETTINGSTEXT1">Config fout</string>
-    <string id="INVALIDSETTINGSTEXT2">Controleer instellingen</string>
-    <string id="INVALIDSETTINGSTEXT3">Garmin Connect/Express</string>
+    <string id="INVALSETTXT1">Config fout</string>
+    <string id="INVALSETTXT2">Controleer instellingen</string>
+    <string id="INVALSETTXT3">Garmin Connect/Express</string>
 
-    <string id="APIERRORTEXT2">Check inloggegevens</string>
-    <string id="APIERRORTEXT3">in app</string>
+    <string id="APIERRTXT2">Check inloggegevens</string>
+    <string id="APIERRTXT3">in app</string>
 
-    <string id="NOINTERNET1">Geen Internet"</string>
-    <string id="NOINTERNET2">Zet internetverbinding"</string>
-    <string id="NOINTERNET3">aan op telefoon"</string>
+    <string id="NOINET1">Geen Internet"</string>
+    <string id="NOINET2">Zet internetverbinding"</string>
+    <string id="NOINET3">aan op telefoon"</string>
 
-    <string id="title_startpage">Startpagina</string>
-    <string id="opt_page_1">Huidige Vermogen</string>
-    <string id="opt_page_2">Vandaag</string>
-    <string id="opt_page_3">Maand</string>
-    <string id="opt_page_4">Jaar</string>
-    <string id="opt_page_5">Totaal</string>
-    <string id="opt_page_6">Overzicht</string>
+    <string id="ttlstrtpg">Startpagina</string>
+    <string id="optpg1">Huidige Vermogen</string>
+    <string id="optpg2">Vandaag</string>
+    <string id="optpg3">Maand</string>
+    <string id="optpg4">Jaar</string>
+    <string id="optpg5">Totaal</string>
+    <string id="optpg6">Overzicht</string>
 
-    <string id="title_username">Solis gebruikersnaam</string>
-    <string id="title_password">Solis wachtwoord</string>
+    <string id="titleusr">Solis gebruikersnaam</string>
+    <string id="titlepswrd">Solis wachtwoord</string>
 
-    <string id="title_uid">Solis User Identifier</string>
-    <string id="title_plantid">Solis Site Identifier</string>
+    <string id="titleuid">Solis User Identifier</string>
+    <string id="titleplantid">Solis Site Identifier</string>
 
 </strings>
