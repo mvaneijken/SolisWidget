@@ -5,26 +5,21 @@ using Toybox.System;
 class SolisWidgetDelegate extends WatchUi.BehaviorDelegate {
     var notify;
 
-    (:debug)
-    function debugMessage(object){
-        System.println(object);
-    }
-
     // Handle menu button press
     function onMenu() {
-        debugMessage("SolisWidgetDelegate:onMenu");
+        //System.println("SolisWidgetDelegate:onMenu");
         notify.invoke(DOWEBREQUEST);
         return true;
     }
 
     // TODO: Add support for refresh and the use of up/down keys.
     //  function onKey(keyEvent) {
-    //      debugMessage("onkey: " + keyEvent.getKey());
+    //      //System.println("onkey: " + keyEvent.getKey());
     //      return true;
     //  }
 
     function onSelect() {
-        debugMessage("SolisWidgetDelegate:onSelect");
+        //System.println("SolisWidgetDelegate:onSelect");
         // TODO: Add support for refresh and the use of up/down keys.
         //RefreshPage();
         NextPage();
@@ -32,19 +27,19 @@ class SolisWidgetDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onNextPage() {
-        debugMessage("SolisWidgetDelegate:onNextPage");
+        //System.println("SolisWidgetDelegate:onNextPage");
         NextPage();
         return true;
     }
 
     function onPreviousPage() {
-        debugMessage("SolisWidgetDelegate:onPreviousPage");
+        //System.println("SolisWidgetDelegate:onPreviousPage");
         PreviousPage();
         return true;
     }
 
     function onSwipe(evt) {
-        debugMessage("SolisWidgetDelegate:onSwipe");
+        //System.println("SolisWidgetDelegate:onSwipe");
         var swipe = evt.getDirection();
 
         if (swipe == SWIPE_UP) {
@@ -58,7 +53,7 @@ class SolisWidgetDelegate extends WatchUi.BehaviorDelegate {
 
     // Set up the callback to the view
     function initialize(handler) {
-        debugMessage("SolisWidgetDelegate:initialize");
+        //System.println("SolisWidgetDelegate:initialize");
         WatchUi.BehaviorDelegate.initialize();
         notify = handler;
     }
