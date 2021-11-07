@@ -27,10 +27,10 @@ var lastUpdTmLocal as String;
 var lastUpdDtLocal as String;
 var lstUpd as String;
 var BaseUrl as String = "https://apic-cdn.solarman.cn";
-var uid as String = ""; //c_user_id variable received when authenticating to the API
-var plantid as String = ""; //plant_id variable received when retrieving the plants.
-var glanceName as String = "";
-var glanceVal as String = "";
+var uid as String; //c_user_id variable received when authenticating to the API
+var plantid as String; //plant_id variable received when retrieving the plants.
+var glanceName as String;
+var glanceVal as String;
 var fUpdt as Boolean = false;
 
 // Settings
@@ -182,7 +182,7 @@ function retrieveSettings() {
         {
             // Make sure no error is shown
             ShowErr=false;
-            var rsltCode as String = data["result"].toString();
+            var rsltCode as String = data["result"];
             if(rsltCode.toNumber() != 1)
             {
                 // Reset values to reinitiate login
@@ -354,12 +354,12 @@ function retrieveSettings() {
         //System.println("SolisWidgetView:makeReq");
 
         fUpdt = false;
-        if(uid.toString().length() <3 ){
+        if(uid == null ){
             // Show refreshing page
             ShowErr=false; // turn off an error screen (if any)
             ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
 
-            if(Usr.toString().length == 0 || Pwrd.toString().length == 0){
+            if(Usr == null || Pwrd == null){
                 ShowErr=true;
                 ErrStr1=WatchUi.loadResource(Rez.Strings.INVALSETTXT1);
                 ErrStr2=WatchUi.loadResource(Rez.Strings.APIERRTXT2);
@@ -410,12 +410,12 @@ function retrieveSettings() {
     function makeReqPlantId() {
         //System.println("SolisWidgetView:makeReqPlantId");
 
-        if(plantid.toString().length() < 3 ){
+        if(plantid == null ){
             // Show refreshing page
             ShowErr=false; // turn off an error screen (if any)
             ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
             //WatchUi.requestUpdate();
-            var url as String =  BaseUrl+"/v/ap.2.0/plant/find_plant_list?uid=" + uid.toString() + "&sel_scope=1&sort_type=1";
+            var url as String =  BaseUrl+"/v/ap.2.0/plant/find_plant_list?uid=" + uid + "&sel_scope=1&sort_type=1";
 
             var options as Dictionary = {
                 :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
@@ -457,7 +457,7 @@ function retrieveSettings() {
         ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
         //WatchUi.requestUpdate();
         //System.println("makeReq uid:"+uid);
-        var url as String =  BaseUrl+"/v/ap.2.0/plant/get_plant_overview?uid=" + uid.toString() + "&plant_id=" + plantid.toString();
+        var url as String =  BaseUrl+"/v/ap.2.0/plant/get_plant_overview?uid=" + uid + "&plant_id=" + plantid;
 
         var options as Dictionary = {
                     :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
@@ -531,7 +531,7 @@ function retrieveSettings() {
             dateToday.day
             ]
         );
-        var url as String =  BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_month2?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
+        var url as String =  BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_month2?date=" + dateTodayString + "&uid=" + uid + "&plant_id=" + plantid;
 
         var options as Dictionary = {
                     :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
@@ -590,7 +590,7 @@ function retrieveSettings() {
             ]
         );
 
-        var url as String =  BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_year?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
+        var url as String =  BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_year?date=" + dateTodayString + "&uid=" + uid + "&plant_id=" + plantid;
 
         var options as Dictionary = {
                     :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
