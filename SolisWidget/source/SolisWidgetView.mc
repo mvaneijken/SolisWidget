@@ -183,7 +183,7 @@ function retrieveSettings() {
             // Make sure no error is shown
             ShowErr=false;
             var rsltCode as String = data["result"];
-            if(rsltCode.toNumber() != 1)
+            if(rsltCode == null || rsltCode == "" || rsltCode != "1")
             {
                 // Reset values to reinitiate login
                 ShowErr=true;
@@ -196,6 +196,7 @@ function retrieveSettings() {
                 ErrStr2=WatchUi.loadResource(Rez.Strings.INVALSETTXT1);
                 ErrStr3=WatchUi.loadResource(Rez.Strings.INVALSETTXT2);
                 ErrStr4=WatchUi.loadResource(Rez.Strings.INVALSETTXT3);
+                data = null;
             }
         }
         else if (rspCode==-104) //Communications.BLE_CONNECTION_UNAVAILABLE
@@ -205,6 +206,7 @@ function retrieveSettings() {
             ErrStr1=WatchUi.loadResource(Rez.Strings.BLERRSTR1);
             ErrStr2=WatchUi.loadResource(Rez.Strings.BLERRSTR2);
             ErrStr3=WatchUi.loadResource(Rez.Strings.BLERRSTR3);
+            data = null;
         }
         else if (rspCode==-400) //Communications.INVALID_HTTP_BODY_IN_NETWORK_RESPONSE
         {
@@ -213,6 +215,7 @@ function retrieveSettings() {
             ErrStr1=WatchUi.loadResource(Rez.Strings.INVALSETTXT1);
             ErrStr2=WatchUi.loadResource(Rez.Strings.INVALSETTXT2);
             ErrStr3=WatchUi.loadResource(Rez.Strings.INVALSETTXT3);
+            data = null;
         }
         else if (rspCode==-300) //Communications.NETWORK_REQUEST_TIMED_OUT
         {
@@ -221,6 +224,7 @@ function retrieveSettings() {
             ErrStr1=WatchUi.loadResource(Rez.Strings.NOINET1);
             ErrStr2=WatchUi.loadResource(Rez.Strings.NOINET2);
             ErrStr3=WatchUi.loadResource(Rez.Strings.NOINET3);
+            data = null;
         }
         else
         {
@@ -228,7 +232,8 @@ function retrieveSettings() {
             ShowErr = true;
             ErrStr1="Error "+rspCode;
             ErrStr2="Check settings in";
-            ErrStr3="Garmin Connect or Express";
+            ErrStr3="Garmin Connect/";
+            ErrStr4="Express";
         }
         WatchUi.requestUpdate();
         return ShowErr;
@@ -354,12 +359,12 @@ function retrieveSettings() {
         //System.println("SolisWidgetView:makeReq");
 
         fUpdt = false;
-        if(uid == null ){
+        if(uid == null || uid == ""){
             // Show refreshing page
             ShowErr=false; // turn off an error screen (if any)
             ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
 
-            if(Usr == null || Pwrd == null){
+            if(Usr == null || Usr == "" || Pwrd == null || Pwrd == "" ){
                 ShowErr=true;
                 ErrStr1=WatchUi.loadResource(Rez.Strings.INVALSETTXT1);
                 ErrStr2=WatchUi.loadResource(Rez.Strings.APIERRTXT2);
@@ -410,7 +415,7 @@ function retrieveSettings() {
     function makeReqPlantId() {
         //System.println("SolisWidgetView:makeReqPlantId");
 
-        if(plantid == null ){
+        if(plantid == null || plantid == ""){
             // Show refreshing page
             ShowErr=false; // turn off an error screen (if any)
             ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
