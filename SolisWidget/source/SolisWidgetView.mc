@@ -887,7 +887,7 @@ function retrieveSettings() {
                         dc
                     );
                 }
-            
+
             //System.println("glanceVal: " + glanceVal + ", glanceName: " + glanceName );
 
             if(fUpdt == true){
