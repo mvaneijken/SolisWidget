@@ -18,15 +18,15 @@ class SolisWidgetGlanceView extends WatchUi.GlanceView {
         dc.clear();
         dc.setColor(0xFFFFFF,-1); //(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
-        var font = 2; //Graphics.FONT_SMALL;
-        var fontHeight = Graphics.getFontHeight(font);
+        var font as Number = 2; //Graphics.FONT_SMALL;
+        var fontHeight as Number = Graphics.getFontHeight(font);
 
-        var lineOneValue = Application.getApp().getProperty("glanceName");
-        var lineTwoValue = Application.getApp().getProperty("glanceVal");
+        var lineOneValue as String = Application.getApp().getProperty("glanceName");
+        var lineTwoValue as String = Application.getApp().getProperty("glanceVal");
 
-        var height = dc.getHeight();
-        var lineOnePosY = 0;
-        var lineTwoPosY = lineOnePosY + ((fontHeight/2) + (fontHeight/2));
+        var height as Number = dc.getHeight();
+        var lineOnePosY as Number = 0;
+        var lineTwoPosY as Number = lineOnePosY + ((fontHeight/2) + (fontHeight/2));
 
         dc.drawText(dc.getWidth()/2,lineOnePosY,font,lineOneValue,1); //Graphics.TEXT_JUSTIFY_CENTER)
         dc.drawText(dc.getWidth()/2,lineTwoPosY,font,lineTwoValue,1); //Graphics.TEXT_JUSTIFY_CENTER)

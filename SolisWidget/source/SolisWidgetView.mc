@@ -7,40 +7,36 @@ using Toybox.Communications;
 using Toybox.System;
 
 // Commands from the delegate
-var DOWEBREQUEST=1;
+var DOWEBREQUEST as Number = 1;
 
 // Status screens vars
-var ShowRefrsh=false;
-var ShowErr=false;
-var ErrStr1 = "";
-var ErrStr2 = "";
-var ErrStr3 = "";
-var ErrStr4 = "";
+var ShowRefrsh as Boolean = false;
+var ShowErr as Boolean = false;
+var ErrStr1 as String = "";
+var ErrStr2 as String = "";
+var ErrStr3 as String = "";
+var ErrStr4 as String = "";
 
 // vars to remember
-var Curr;
-var Today;
-var ThisMonth;
-var ThisYear;
-var Total;
-var lastUpdTmLocal;
-var lastUpdDtLocal;
-var lstUpd;
-var nxtUpdt;
-var BaseUrl = "https://apic-cdn.solarman.cn";
-var uid = ""; //c_user_id variable received when authenticating to the API
-var plantid = ""; //plant_id variable received when retrieving the plants.
-var glanceName = "";
-var glanceVal = "";
-var fUpdt = false;
+var Curr as Float;
+var Today as Float;
+var ThisMonth as Float;
+var ThisYear as Float;
+var Total as Float;
+var lastUpdTmLocal as String;
+var lastUpdDtLocal as String;
+var lstUpd as String;
+var BaseUrl as String = "https://apic-cdn.solarman.cn";
+var uid as String = ""; //c_user_id variable received when authenticating to the API
+var plantid as String = ""; //plant_id variable received when retrieving the plants.
+var glanceName as String = "";
+var glanceVal as String = "";
+var fUpdt as Boolean = false;
 
 // Settings
-var CurrPage;
-var Usr = "-";
-var Pwrd = "-";
-
-// Constants
-var UpdateInterval=5; // in Minutes
+var CurrPage as Number;
+var Usr as String = "";
+var Pwrd as String = "";
 
 function NextPage()
 {
@@ -104,7 +100,7 @@ function retrieveSettings() {
         Pwrd = Application.getApp().getProperty("PROP_PASSWORD");
 
         // Get Curr Page From settings
-        CurrPage=Application.getApp().getProperty("PROP_STARTPAGE");
+        CurrPage= Application.getApp().getProperty("PROP_STARTPAGE");
 
         // Get the UID
         uid=Application.getApp().getProperty("PROP_UID");
@@ -120,7 +116,7 @@ function retrieveSettings() {
    function toMoment(string)
    {
         //System.println(string.toString());
-        var options ={
+        var options as Dictionary ={
             :year   => string.toString().substring(0,4).toNumber(),
             :month  => string.toString().substring(5,7).toNumber(),
             :day    => string.toString().substring(8,10).toNumber(),
@@ -135,8 +131,7 @@ function retrieveSettings() {
     {
         //System.println("SolisWidgetView:frmtDtFromRFC3339");
         //System.println(string.toString());
-        var i;
-        i = Gregorian.info(toMoment(string), 0); //Time.FORMAT_SHORT
+        var i as Time = Gregorian.info(toMoment(string), 0); //Time.FORMAT_SHORT
 
         return (Lang.format("$1$-$2$-$3$", [
             i.day.format("%01u"),
@@ -149,8 +144,7 @@ function retrieveSettings() {
     {
         //System.println("SolisWidgetView:frmtTmFromRFC3339");
         //System.println(string.toString());
-        var i;
-        i = Gregorian.info(toMoment(string), 0); //Time.FORMAT_SHORT
+        var i as Time = Gregorian.info(toMoment(string), 0); //Time.FORMAT_SHORT
 
         return (Lang.format("$1$:$2$:$3$", [
             i.hour.format("%01u"),
@@ -188,7 +182,7 @@ function retrieveSettings() {
         {
             // Make sure no error is shown
             ShowErr=false;
-            var rsltCode = data["result"].toString();
+            var rsltCode as String = data["result"].toString();
             if(rsltCode.toNumber() != 1)
             {
                 // Reset values to reinitiate login
@@ -243,14 +237,14 @@ function retrieveSettings() {
     function frmtScrLines(ln1val,ln2val,ln3val,ln4val,ln5val,lines,dc){
         //System.println("SolisWidgetView:frmtScrLines");
 
-        var lnSpaceL = 2;
-        var lnSpaceM = 2.6;
-        var scrnDev = lines - 1;
-        var ln1Font = 13; //Graphics.FONT_SYSTEM_LARGE;
-        var ln2Font = 0;
-        var ln3Font = 0;
-        var ln4Font = 0;
-        var ln5Font = 0;
+        var lnSpaceL as Number = 2;
+        var lnSpaceM as Float = 2.6;
+        var scrnDev as Number = lines - 1;
+        var ln1Font as Number = 13; //Graphics.FONT_SYSTEM_LARGE;
+        var ln2Font as Number = 0;
+        var ln3Font as Number = 0;
+        var ln4Font as Number = 0;
+        var ln5Font as Number = 0;
         if(lines == 1 || lines == 2){
             scrnDev = 2;
         }
@@ -277,11 +271,11 @@ function retrieveSettings() {
             ln5Font = 3; //Graphics.FONT_MEDIUM;
             lnSpaceL = 2.6;
         }
-        var ln1PosY = dc.getHeight() / scrnDev;
-        var ln2PosY = ln1PosY + ((Graphics.getFontHeight(ln1Font) / lnSpaceM) + (Graphics.getFontHeight(ln1Font) / lnSpaceM));
-        var ln3PosY = ln2PosY + ((Graphics.getFontHeight(ln2Font) / lnSpaceL) + (Graphics.getFontHeight(ln2Font) / lnSpaceL));
-        var ln4PosY = ln3PosY + ((Graphics.getFontHeight(ln3Font) / lnSpaceM) + (Graphics.getFontHeight(ln3Font) / lnSpaceM));
-        var ln5PosY = ln4PosY + ((Graphics.getFontHeight(ln4Font) / lnSpaceM) + (Graphics.getFontHeight(ln4Font) / lnSpaceM));
+        var ln1PosY as Number = dc.getHeight() / scrnDev;
+        var ln2PosY as Number = ln1PosY + ((Graphics.getFontHeight(ln1Font) / lnSpaceM) + (Graphics.getFontHeight(ln1Font) / lnSpaceM));
+        var ln3PosY as Number = ln2PosY + ((Graphics.getFontHeight(ln2Font) / lnSpaceL) + (Graphics.getFontHeight(ln2Font) / lnSpaceL));
+        var ln4PosY as Number = ln3PosY + ((Graphics.getFontHeight(ln3Font) / lnSpaceM) + (Graphics.getFontHeight(ln3Font) / lnSpaceM));
+        var ln5PosY as Number = ln4PosY + ((Graphics.getFontHeight(ln4Font) / lnSpaceM) + (Graphics.getFontHeight(ln4Font) / lnSpaceM));
 
         dc.drawText(
             dc.getWidth() / 2,
@@ -343,48 +337,6 @@ function retrieveSettings() {
         lastUpdDtLocal = null;
     }
 
-    // function to convert date in string format to moment object
-    function nextUpdate()
-    {
-        //System.println("SolisWidgetView:nxtUpdt");
-
-        // There might be a time difference, so only use the number of minutes from the string,
-        // and derive the lstUpd time from the Curr time)
-
-        // Determine minute number from lstUpd string
-        var lstUpdMin=lstUpd.substring(14, 16).toNumber();
-
-        // derive offset from GetClockTime object.
-        var myTime = System.getClockTime(); // ClockTime object
-        var timeZoneOffset = new Time.Moment(myTime.timeZoneOffset);
-
-        // get Curr time as moment to calculate with
-        var CurrMoment=Time.now().value();
-
-        // correct Curr hour if 12'o clock sign has passed after last update
-        if (myTime.min<lstUpdMin)
-        {
-            // hour has passed, so make sure the we are in the previous hour.
-            CurrMoment=CurrMoment-3600; //Gregorian.SECONDS_PER_HOUR;
-        }
-
-        // Create the gregorian i object for the previous update moment (Curr time, where minute number is changed to the minute number of the reported last update)
-        var gPrevUpdt = Gregorian.info(new Time.Moment(CurrMoment), 1); //Time.FORMAT_MEDIUM
-        gPrevUpdt.min=lstUpdMin;
-
-        // Calculate Next Update Moment (=previousupdate+UpdateInterval-offset to correct timezone)
-        var gPrevUpdtTmObj = Gregorian.moment({
-            :year   => gPrevUpdt.year,
-            :month  => gPrevUpdt.month,
-            :day    => gPrevUpdt.day,
-            :hour   => gPrevUpdt.hour,
-            :minute => gPrevUpdt.min,
-            :second => gPrevUpdt.sec
-        });
-        nxtUpdt=gPrevUpdtTmObj.value()+UpdateInterval*60-myTime.timeZoneOffset; //Gregorian.SECONDS_PER_MINUTE
-        return nxtUpdt;
-    }
-
     // Handle Command from Delegate view
     function HandleCommand (data)
     {
@@ -417,8 +369,8 @@ function retrieveSettings() {
             }
             else{
                 WatchUi.requestUpdate();
-                var url =  BaseUrl+"/v/ap.2.0/cust/user/login?user_id=" + Usr + "&user_pass=" + Pwrd + "&terminate=android&push_sn=11007f002bc2b3ebc16db92898f5d3ea&timezone=1&lan=en&country=CN&cust=006";
-                var options = {
+                var url as String =  BaseUrl+"/v/ap.2.0/cust/user/login?user_id=" + Usr + "&user_pass=" + Pwrd + "&terminate=android&push_sn=11007f002bc2b3ebc16db92898f5d3ea&timezone=1&lan=en&country=CN&cust=006";
+                var options as Dictionary = {
                         :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
                         :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
                 };
@@ -463,9 +415,9 @@ function retrieveSettings() {
             ShowErr=false; // turn off an error screen (if any)
             ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
             //WatchUi.requestUpdate();
-            var url =  BaseUrl+"/v/ap.2.0/plant/find_plant_list?uid=" + uid.toString() + "&sel_scope=1&sort_type=1";
+            var url as String =  BaseUrl+"/v/ap.2.0/plant/find_plant_list?uid=" + uid.toString() + "&sel_scope=1&sort_type=1";
 
-            var options = {
+            var options as Dictionary = {
                 :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
                 :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
             };
@@ -505,9 +457,9 @@ function retrieveSettings() {
         ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
         //WatchUi.requestUpdate();
         //System.println("makeReq uid:"+uid);
-        var url =  BaseUrl+"/v/ap.2.0/plant/get_plant_overview?uid=" + uid.toString() + "&plant_id=" + plantid.toString();
+        var url as String =  BaseUrl+"/v/ap.2.0/plant/get_plant_overview?uid=" + uid.toString() + "&plant_id=" + plantid.toString();
 
-        var options = {
+        var options as Dictionary = {
                     :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
                     :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
         };
@@ -528,7 +480,7 @@ function retrieveSettings() {
             WatchUi.requestUpdate();
             if (data instanceof Dictionary)
             {
-                var pwr = 0.0; // init variable
+                var pwr as String = 0.0; // init variable
                 // Format Curr pwr
                 pwr = data["power_out"]["power"].toFloat();
                 if (pwr<1)
@@ -551,7 +503,6 @@ function retrieveSettings() {
 
                 // Format Last Update
                 lstUpd=data["date"];
-                var a = nextUpdate();
                 lastUpdTmLocal = frmtTmFromRFC3339(lstUpd);
                 lastUpdDtLocal = frmtDtFromRFC3339(lstUpd);
                 data = null;
@@ -573,16 +524,16 @@ function retrieveSettings() {
         ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
         //WatchUi.requestUpdate();
         //System.println("makeReq uid:"+uid);
-        var dateToday = Gregorian.info(Time.now(), 0); //Time.FORMAT_SHORT
-        var dateTodayString = Lang.format("$1$-$2$-$3$",[
+        var dateToday as Moment = Gregorian.info(Time.now(), 0); //Time.FORMAT_SHORT
+        var dateTodayString as String = Lang.format("$1$-$2$-$3$",[
             dateToday.year,
             dateToday.month,
             dateToday.day
             ]
         );
-        var url =  BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_month2?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
+        var url as String =  BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_month2?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
 
-        var options = {
+        var options as Dictionary = {
                     :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
                     :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
         };
@@ -605,8 +556,8 @@ function retrieveSettings() {
             WatchUi.requestUpdate();
             if (data instanceof Dictionary)
             {
-                var list = data["list"];
-                var pwr = 0;
+                var list as Dictionary = data["list"];
+                var pwr as String = 0;
                 for(var i=0;i<list.size();i++) {
                     //System.println("day "+ data["list"][i]["month"] +"="+ data["list"][i]["energy"]);
                     pwr = pwr + data["list"][i]["energy"];
@@ -639,9 +590,9 @@ function retrieveSettings() {
             ]
         );
 
-        var url =  BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_year?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
+        var url as String =  BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_year?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
 
-        var options = {
+        var options as Dictionary = {
                     :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
                     :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
         };
@@ -664,9 +615,9 @@ function retrieveSettings() {
             WatchUi.requestUpdate();
             if (data instanceof Dictionary)
             {
-                var list = data["list"];
-                var pwr = 0;
-                for(var i=0;i<list.size();i++) {
+                var list as Dictionary = data["list"];
+                var pwr as String = 0;
+                for(var i as Number =0;i<list.size();i++) {
                     //System.println("year "+ data["list"][i]["year"] +"="+ data["list"][i]["energy"]);
                     pwr = pwr + data["list"][i]["energy"];
                 }
@@ -702,21 +653,9 @@ function retrieveSettings() {
         ThisYear = Application.getApp().getProperty("ThisYear");
         Total = Application.getApp().getProperty("Total");
         lstUpd= Application.getApp().getProperty("lstUpd");
-        nxtUpdt = Application.getApp().getProperty("nxtUpdt");
         lastUpdTmLocal = Application.getApp().getProperty("lastUpdTmLocal");
         lastUpdDtLocal = Application.getApp().getProperty("lastUpdDtLocal");
-
-        // Check if autoupdate is needed
-        if (nxtUpdt==null) {
-            // some kind of error in previous session. Do update
-            makeReq();
-        } else {
-            // var nxtUpdt=ParseDateToMoment(lstUpd).add(UpdateInterval);
-            if (Time.now().greaterThan(new Time.Moment(nxtUpdt)))
-            {
-                makeReq();
-            }
-        }
+        makeReq();
     }
 
     // Update the view
@@ -872,7 +811,6 @@ function retrieveSettings() {
         Application.getApp().setProperty("ThisYear", ThisYear);
         Application.getApp().setProperty("Total",Total);
         Application.getApp().setProperty("lstUpd", lstUpd);
-        Application.getApp().setProperty("nxtUpdt", nxtUpdt);
         Application.getApp().setProperty("lastUpdTmLocal", lastUpdTmLocal);
         Application.getApp().setProperty("lastUpdDtLocal", lastUpdDtLocal);
         Application.getApp().setProperty("glanceName", glanceName);
