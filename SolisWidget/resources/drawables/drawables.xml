@@ -1,4 +1,4 @@
 <drawables>
-    <bitmap id="SolisIcon" filename="launcher_icon.png" />
-    <bitmap id="SolisLogo" filename="monkey.png"/>
+    <bitmap id="icon" filename="solisicon.png" />
+    <bitmap id="logo" filename="monkey.png"/>
 </drawables>

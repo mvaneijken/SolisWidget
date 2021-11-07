@@ -12,10 +12,10 @@ var DOWEBREQUEST=1;
 // Status screens vars
 var ShowRefrsh=false;
 var ShowErr=false;
-var ErrStr1;
-var ErrStr2;
-var ErrStr3;
-var ErrStr4;
+var ErrStr1 = "";
+var ErrStr2 = "";
+var ErrStr3 = "";
+var ErrStr4 = "";
 
 // vars to remember
 var Curr;
@@ -23,26 +23,16 @@ var Today;
 var ThisMonth;
 var ThisYear;
 var Total;
-var lastUpdLocal;
 var lastUpdTmLocal;
 var lastUpdDtLocal;
 var lstUpd;
 var nxtUpdt;
 var BaseUrl = "https://apic-cdn.solarman.cn";
-var i;
 var uid = ""; //c_user_id variable received when authenticating to the API
 var plantid = ""; //plant_id variable received when retrieving the plants.
 var glanceName = "";
 var glanceVal = "";
 var fUpdt = false;
-var rsltCode = "";
-var dateToday = Gregorian.info(Time.now(), 0); //Time.FORMAT_SHORT
-var dateTodayString = Lang.format("$1$-$2$-$3$",[
-    dateToday.year,
-    dateToday.month,
-    dateToday.day
-    ]
-);
 
 // Settings
 var CurrPage;
@@ -100,8 +90,8 @@ class SolisWidgetView extends WatchUi.View {
         //System.println("getDevPartNr: " + System.getDeviceSettings().partNumber;
         retrieveSettings();
         View.initialize();
-        //logo = WatchUi.loadResource(Rez.Drawables.SolisLogo);
-        //icon = WatchUi.loadResource(Rez.Drawables.SolisIcon);
+        //logo = WatchUi.loadResource(Rez.Drawables.logo);
+        //icon = WatchUi.loadResource(Rez.Drawables.icon);
     }
 
 function retrieveSettings() {
@@ -127,21 +117,6 @@ function retrieveSettings() {
         glanceVal = "";
     }
 
-    function frmtDtTmFromRFC3339 (string)
-    {
-        //System.println("SolisWidgetView:frmtDtTmFromRFC3339");
-        i = Gregorian.info(toMoment(string), 0); //Time.FORMAT_SHORT
-
-        return (Lang.format("$1$-$2$-$3$ $4$:$5$:$6$", [
-            i.day.format("%01u"),
-            i.month.format("%01u"),
-            i.year.format("%02u"),
-            i.hour.format("%02u"),
-            i.min.format("%02u"),
-            i.sec.format("%02u")
-        ]));
-    }
-
    function toMoment(string)
    {
         //System.println(string.toString());
@@ -160,7 +135,7 @@ function retrieveSettings() {
     {
         //System.println("SolisWidgetView:frmtDtFromRFC3339");
         //System.println(string.toString());
-        i;
+        var i;
         i = Gregorian.info(toMoment(string), 0); //Time.FORMAT_SHORT
 
         return (Lang.format("$1$-$2$-$3$", [
@@ -174,7 +149,7 @@ function retrieveSettings() {
     {
         //System.println("SolisWidgetView:frmtTmFromRFC3339");
         //System.println(string.toString());
-        i;
+        var i;
         i = Gregorian.info(toMoment(string), 0); //Time.FORMAT_SHORT
 
         return (Lang.format("$1$:$2$:$3$", [
@@ -184,26 +159,6 @@ function retrieveSettings() {
         ]));
 
     }
-
-    function momentFromDtTm(i)
-    {
-        //System.println("SolisWidgetView:momentFromDtTm");
-        return Gregorian.moment({
-            :year   => i.year,
-            :month  => i.month,
-            :day    => i.day,
-            :hour   => i.hour,
-            :minute => i.min,
-            :second => i.sec
-        });
-    }
-
-    // function StringFromMoment(moment)
-    // {
-    //     //System.println("SolisWidgetView:StringFromMoment");
-    //     var i=Gregorian.info(moment,Time.FORMAT_MEDIUM);
-    //     return i.year+"-"+i.month+"-"+i.day+" "+i.hour+":"+i.min+":"+i.sec;
-    // }
 
     function frmtEnergy(pwr)
     {
@@ -233,7 +188,7 @@ function retrieveSettings() {
         {
             // Make sure no error is shown
             ShowErr=false;
-            rsltCode = data["result"].toString();
+            var rsltCode = data["result"].toString();
             if(rsltCode.toNumber() != 1)
             {
                 // Reset values to reinitiate login
@@ -285,7 +240,7 @@ function retrieveSettings() {
         return ShowErr;
     }
 
-    function frmtScrLines(val1,val2,val3,val4,val5,lines,dc){
+    function frmtScrLines(ln1val,ln2val,ln3val,ln4val,ln5val,lines,dc){
         //System.println("SolisWidgetView:frmtScrLines");
 
         var lnSpaceL = 2;
@@ -327,12 +282,6 @@ function retrieveSettings() {
         var ln3PosY = ln2PosY + ((Graphics.getFontHeight(ln2Font) / lnSpaceL) + (Graphics.getFontHeight(ln2Font) / lnSpaceL));
         var ln4PosY = ln3PosY + ((Graphics.getFontHeight(ln3Font) / lnSpaceM) + (Graphics.getFontHeight(ln3Font) / lnSpaceM));
         var ln5PosY = ln4PosY + ((Graphics.getFontHeight(ln4Font) / lnSpaceM) + (Graphics.getFontHeight(ln4Font) / lnSpaceM));
-
-        var ln1val = val1;
-        var ln2val = val2;
-        var ln3val = val3;
-        var ln4val = val4;
-        var ln5val = val5;
 
         dc.drawText(
             dc.getWidth() / 2,
@@ -390,7 +339,6 @@ function retrieveSettings() {
         ThisYear = null;
         Total = null;
         lstUpd = null;
-        lastUpdLocal = null;
         lastUpdTmLocal = null;
         lastUpdDtLocal = null;
     }
@@ -425,7 +373,15 @@ function retrieveSettings() {
         gPrevUpdt.min=lstUpdMin;
 
         // Calculate Next Update Moment (=previousupdate+UpdateInterval-offset to correct timezone)
-        nxtUpdt=momentFromDtTm(gPrevUpdt).value()+UpdateInterval*60-myTime.timeZoneOffset; //Gregorian.SECONDS_PER_MINUTE
+        var gPrevUpdtTmObj = Gregorian.moment({
+            :year   => gPrevUpdt.year,
+            :month  => gPrevUpdt.month,
+            :day    => gPrevUpdt.day,
+            :hour   => gPrevUpdt.hour,
+            :minute => gPrevUpdt.min,
+            :second => gPrevUpdt.sec
+        });
+        nxtUpdt=gPrevUpdtTmObj.value()+UpdateInterval*60-myTime.timeZoneOffset; //Gregorian.SECONDS_PER_MINUTE
         return nxtUpdt;
     }
 
@@ -466,8 +422,6 @@ function retrieveSettings() {
                         :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
                         :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
                 };
-
-                // only retrieve the settings if they've actually changed
 
                 // Make the authentication request
                 //System.println("makeReq url:"+url);
@@ -515,8 +469,6 @@ function retrieveSettings() {
                 :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
                 :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
             };
-
-            // Make the authentication request
             //System.println("makeReqPlantId url:"+url);
             //System.println("makeReqPlantId options:"+options);
             Communications.makeWebRequest(url,{},options,method(:onRecPlantId));
@@ -559,8 +511,6 @@ function retrieveSettings() {
                     :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
                     :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
         };
-
-        // Make the authentication request
         //System.println("makeReq url:"+url);
         //System.println("makeReq options:"+options);
         Communications.makeWebRequest(url,{},options,method(:onRecPlantOv));
@@ -602,7 +552,6 @@ function retrieveSettings() {
                 // Format Last Update
                 lstUpd=data["date"];
                 var a = nextUpdate();
-                lastUpdLocal = frmtDtTmFromRFC3339(lstUpd);
                 lastUpdTmLocal = frmtTmFromRFC3339(lstUpd);
                 lastUpdDtLocal = frmtDtFromRFC3339(lstUpd);
                 data = null;
@@ -624,6 +573,13 @@ function retrieveSettings() {
         ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
         //WatchUi.requestUpdate();
         //System.println("makeReq uid:"+uid);
+        var dateToday = Gregorian.info(Time.now(), 0); //Time.FORMAT_SHORT
+        var dateTodayString = Lang.format("$1$-$2$-$3$",[
+            dateToday.year,
+            dateToday.month,
+            dateToday.day
+            ]
+        );
         var url =  BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_month2?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
 
         var options = {
@@ -675,6 +631,14 @@ function retrieveSettings() {
         ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
         //WatchUi.requestUpdate();
         //System.println("makeReq uid:"+uid);
+        var dateToday = Gregorian.info(Time.now(), 0); //Time.FORMAT_SHORT
+        var dateTodayString = Lang.format("$1$-$2$-$3$",[
+            dateToday.year,
+            dateToday.month,
+            dateToday.day
+            ]
+        );
+
         var url =  BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_year?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
 
         var options = {
@@ -739,7 +703,6 @@ function retrieveSettings() {
         Total = Application.getApp().getProperty("Total");
         lstUpd= Application.getApp().getProperty("lstUpd");
         nxtUpdt = Application.getApp().getProperty("nxtUpdt");
-        lastUpdLocal = Application.getApp().getProperty("lastUpdLocal");
         lastUpdTmLocal = Application.getApp().getProperty("lastUpdTmLocal");
         lastUpdDtLocal = Application.getApp().getProperty("lastUpdDtLocal");
 
@@ -910,7 +873,6 @@ function retrieveSettings() {
         Application.getApp().setProperty("Total",Total);
         Application.getApp().setProperty("lstUpd", lstUpd);
         Application.getApp().setProperty("nxtUpdt", nxtUpdt);
-        Application.getApp().setProperty("lastUpdLocal", lastUpdLocal);
         Application.getApp().setProperty("lastUpdTmLocal", lastUpdTmLocal);
         Application.getApp().setProperty("lastUpdDtLocal", lastUpdDtLocal);
         Application.getApp().setProperty("glanceName", glanceName);
