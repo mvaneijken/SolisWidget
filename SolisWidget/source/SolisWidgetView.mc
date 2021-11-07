@@ -101,12 +101,19 @@ function retrieveSettings() {
 
         // Get Curr Page From settings
         CurrPage= Application.getApp().getProperty("PROP_STARTPAGE");
+        if(CurrPage == null){CurrPage=1;}
 
         // Get the UID
         uid=Application.getApp().getProperty("PROP_UID");
+        if(uid instanceof(Number)){
+            uid = uid.toString();
+        }
 
         // Get the plantid
         plantid=Application.getApp().getProperty("PROP_PLANTID");
+        if(plantid instanceof(Number)){
+            plantid = plantid.toString();
+        }
 
         // Set initial glanceVal
         glanceName = "SolisWidget";
@@ -182,8 +189,8 @@ function retrieveSettings() {
         {
             // Make sure no error is shown
             ShowErr=false;
-            var rsltCode as String = data["result"];
-            if(rsltCode == null || rsltCode == "" || rsltCode != "1")
+            var rsltCode as Number = data["result"].toNumber();
+            if(rsltCode == null || rsltCode != 1)
             {
                 // Reset values to reinitiate login
                 ShowErr=true;
@@ -359,12 +366,12 @@ function retrieveSettings() {
         //System.println("SolisWidgetView:makeReq");
 
         fUpdt = false;
-        if(uid == null || uid == ""){
+        if(uid == null || uid.length() == 0){
             // Show refreshing page
             ShowErr=false; // turn off an error screen (if any)
             ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
 
-            if(Usr == null || Usr == "" || Pwrd == null || Pwrd == "" ){
+            if(Usr == null || Usr.length() == 0 || Pwrd == null || Pwrd.length() == 0 ){
                 ShowErr=true;
                 ErrStr1=WatchUi.loadResource(Rez.Strings.INVALSETTXT1);
                 ErrStr2=WatchUi.loadResource(Rez.Strings.APIERRTXT2);
@@ -415,7 +422,7 @@ function retrieveSettings() {
     function makeReqPlantId() {
         //System.println("SolisWidgetView:makeReqPlantId");
 
-        if(plantid == null || plantid == ""){
+        if(plantid == null || plantid.length() == 0){
             // Show refreshing page
             ShowErr=false; // turn off an error screen (if any)
             ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
