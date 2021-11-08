@@ -9,7 +9,6 @@ class SolisWidgetApp extends Application.AppBase {
     function initialize() {
         //System.println("SolisWidgetApp:initialize");
         AppBase.initialize();
-
     }
 
     // onStart() is called on application start up
@@ -20,7 +19,6 @@ class SolisWidgetApp extends Application.AppBase {
     // onStop() is called when your application is exiting
     function onStop(state) {
         //System.println("SolisWidgetApp:onStop");
-
     }
 
     // New app settings have been received so trigger a UI update
@@ -29,7 +27,6 @@ class SolisWidgetApp extends Application.AppBase {
         $.gSettingsChanged = true;
         WatchUi.requestUpdate();
     }
-
 
     // Return the initial view of your application here
     function getInitialView() {
@@ -43,5 +40,4 @@ class SolisWidgetApp extends Application.AppBase {
         //System.println("SolisWidgetApp:getGlanceView");
         return [ new SolisWidgetGlanceView() ];
     }
-
 }
