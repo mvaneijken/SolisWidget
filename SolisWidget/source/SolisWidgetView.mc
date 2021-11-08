@@ -471,7 +471,14 @@ function retrieveSettings() {
         showRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
         //WatchUi.requestUpdate();
         //System.println("makeReq uid:"+uid);
-        var url as String =  baseUrl+"/v/ap.2.0/plant/get_plant_overview?uid=" + uid.toString() + "&plant_id=" + plantid.toString();
+        var dateToday as Moment = Gregorian.info(Time.now(), 0); //Time.FORMAT_SHORT
+        var dateTodayString as String = Lang.format("$1$-$2$-$3$",[
+            dateToday.year.format("%02u"),
+            dateToday.month.format("%02u"),
+            dateToday.day.format("%02u")
+            ]
+        );
+        var url as String =  baseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_day?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
 
         //System.println("makeReq url:"+url);
         Communications.makeWebRequest(url,{},{
@@ -493,24 +500,28 @@ function retrieveSettings() {
             if (data instanceof Dictionary)
             {
                 // Format curr pwr
-                if (data["power_out"]["power"] <1)
+                if (data["current"] <1)
                 {
-                    curr=data["power_out"]["power"] + " W";
+                    curr=data["current"] + " W";
                 } else {
-                    curr=data["power_out"]["power"].format("%.2f") + " W";
+                    curr=data["current"].format("%.2f") + " W";
                 }
                 //System.println("curr_pwr: "+pwr + " curr: "+ curr);
 
                 // Format today
-                today=frmtEnergy(data["power_out"]["energy_day"]);
+                today=frmtEnergy(data["energy"]);
                 //System.println("today_energy: "+pwr + " today :"+today);
 
-                // Format total
-                total=frmtEnergy(data["power_out"]["energy_accu_real"]);
-                //System.println("total_energy: "+pwr + " total: " + total);
-
                 // Format Last Update
-                lstUpd=data["date"];
+                var i as Time = Gregorian.info(Time.now(), 0); //Time.FORMAT_SHORT
+                lstUpd = (Lang.format("$1$-$2$-$3$ $4$:$5$:$6$", [
+                    i.year.format("%04u"),
+                    i.month.format("%02u"),
+                    i.day.format("%02u"),
+                    i.hour.format("%02u"),
+                    i.min.format("%02u"),
+                    i.sec.format("%02u")
+                ]));
                 lastUpdTmLocal=frmtTmFromRFC3339(lstUpd);
                 lastUpdDtLocal=frmtDtFromRFC3339(lstUpd);
                 data=null;
@@ -588,9 +599,9 @@ function retrieveSettings() {
         //System.println("makeReq uid:"+uid);
         var dateToday = Gregorian.info(Time.now(), 0); //Time.FORMAT_SHORT
         var dateTodayString = Lang.format("$1$-$2$-$3$",[
-            dateToday.year,
-            dateToday.month,
-            dateToday.day
+            dateToday.year.format("%02u"),
+            dateToday.month.format("%02u"),
+            dateToday.day.format("%02u")
             ]
         );
 
@@ -614,6 +625,11 @@ function retrieveSettings() {
         }
         else{
             WatchUi.requestUpdate();
+
+            // Format total
+            total= frmtEnergy(data["total"]);
+            //System.println("total_energy: "+pwr + " total: " + total);
+
             if (data instanceof Dictionary)
             {
                 var pwr as Float = 0;
