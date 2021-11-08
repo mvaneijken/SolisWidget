@@ -10,43 +10,43 @@ using Toybox.System;
 var DOWEBREQUEST as Number = 1;
 
 // Status screens vars
-var ShowRefrsh as Boolean = false;
-var ShowErr as Boolean = false;
-var ErrStr1 as String = "";
-var ErrStr2 as String = "";
-var ErrStr3 as String = "";
-var ErrStr4 as String = "";
+var showRefrsh as Boolean = false;
+var showErr as Boolean = false;
+var errStr1 as String = "";
+var errStr2 as String = "";
+var errStr3 as String = "";
+var errStr4 as String = "";
 
 // vars to remember
-var Curr as Float;
-var Today as Float;
-var ThisMonth as Float;
-var ThisYear as Float;
-var Total as Float;
+var curr as Float;
+var today as Float;
+var thisMonth as Float;
+var thisYear as Float;
+var total as Float;
 var lastUpdTmLocal as String;
 var lastUpdDtLocal as String;
 var lstUpd as String;
-var BaseUrl as String = "https://apic-cdn.solarman.cn";
-var uid as String; //c_user_id variable received when authenticating to the API
-var plantid as String; //plant_id variable received when retrieving the plants.
+var baseUrl as String = "https://apic-cdn.solarman.cn";
+var uid as Number; //c_user_id variable received when authenticating to the API
+var plantid as Number; //plant_id variable received when retrieving the plants.
 var glanceName as String;
 var glanceVal as String;
 var fUpdt as Boolean = false;
 
 // Settings
-var CurrPage as Number;
-var Usr as String = "";
-var Pwrd as String = "";
+var currPage as Number;
+var usr as String = "";
+var pwrd as String = "";
 
 function NextPage()
 {
     //Sys.println("SolisWidgetView:NextPage");
     // Next Page pressed, increase the pagenumber
-    CurrPage++;
+    currPage++;
 
     // Rotate is last page = met
-    if (CurrPage>6) {
-        CurrPage=1;
+    if (currPage>6) {
+        currPage=1;
     }
 
     // refresh the screen
@@ -58,11 +58,11 @@ function PreviousPage()
     //Sys.println("SolisWidgetView:PreviousPage");
 
     // Previous Page pressed, decrease the pagenumber
-    CurrPage--;
+    currPage--;
 
     // Rotate is last page = met
-    if (CurrPage<1) {
-        CurrPage=6;
+    if (currPage<1) {
+        currPage=6;
     }
 
     // refresh the screen
@@ -93,45 +93,46 @@ class SolisWidgetView extends WatchUi.View {
 function retrieveSettings() {
         //System.println("SolisWidgetView:retrieveSettings");
         // Get Username From settings
-        Usr = Application.getApp().getProperty("PROP_USERNAME");
+        usr = Application.getApp().getProperty("PUN");
         //System.println("Username: " + Username);
 
         // Get Password from Settings
-        Pwrd = Application.getApp().getProperty("PROP_PASSWORD");
+        pwrd = Application.getApp().getProperty("PPS");
 
-        // Get Curr Page From settings
-        CurrPage= Application.getApp().getProperty("PROP_STARTPAGE");
-        if(CurrPage == null){CurrPage=1;}
+        // Get curr Page From settings
+        currPage= Application.getApp().getProperty("PSP");
+        if(currPage == null){currPage=1;}
 
         // Get the UID
-        uid=Application.getApp().getProperty("PROP_UID");
-        if(uid instanceof(Number)){
-            uid = uid.toString();
-        }
+        uid=Application.getApp().getProperty("PUI");
+        if(uid == null){uid = -1;}
+        if(uid instanceof String){uid = -1;}
 
         // Get the plantid
-        plantid=Application.getApp().getProperty("PROP_PLANTID");
-        if(plantid instanceof(Number)){
-            plantid = plantid.toString();
-        }
+        plantid=Application.getApp().getProperty("PPI");
+        if(plantid == null){plantid = -1;}
+        if(plantid instanceof String){plantid = -1;}
+
+        //Allow to update credentials (gSettingsChanged will be set to true which calls this function twice)
+        if(Application.getApp().getProperty("currUsr") != "" && usr != Application.getApp().getProperty("currUsr")){uid = -1;plantid = -1;}
+        if(Application.getApp().getProperty("currPwrd") != "" && pwrd != Application.getApp().getProperty("currPwrd")){uid = -1;plantid = -1;}
 
         // Set initial glanceVal
-        glanceName = "SolisWidget";
+        glanceName = Application.getApp().getProperty("AppName");
         glanceVal = "";
     }
 
    function toMoment(string)
    {
-        //System.println(string.toString());
-        var options as Dictionary ={
+        //System.println(string);
+        return Gregorian.moment({
             :year   => string.toString().substring(0,4).toNumber(),
             :month  => string.toString().substring(5,7).toNumber(),
             :day    => string.toString().substring(8,10).toNumber(),
             :hour   => string.toString().substring(11,13).toNumber(),
             :minute => string.toString().substring(14,16).toNumber(),
             :second => string.toString().substring(17,19).toNumber()
-        };
-        return Gregorian.moment(options);
+        });
    }
 
     function frmtDtFromRFC3339 (string)
@@ -180,70 +181,75 @@ function retrieveSettings() {
         //System.println("SolisWidgetView:procRespCode");
 
         // Turn off refreshpage
-        ShowRefrsh=false;
-        ShowErr=false;
+        showRefrsh=false;
+        showErr=false;
         //System.println(rspCode);
         //System.println(data);
 
         if (rspCode==200)
         {
             // Make sure no error is shown
-            ShowErr=false;
-            var rsltCode as Number = data["result"].toNumber();
-            if(rsltCode == null || rsltCode != 1)
+            showErr=false;
+            if(data["result"] == null || data["result"].toNumber() != 1)
             {
                 // Reset values to reinitiate login
-                ShowErr=true;
-                uid = "";
-                plantid = "";
-                Application.getApp().setProperty("PROP_UID","");
-                Application.getApp().setProperty("PROP_PLANTID","");
-
-                ErrStr1="API Error: "+ data["result"];
-                ErrStr2=WatchUi.loadResource(Rez.Strings.INVALSETTXT1);
-                ErrStr3=WatchUi.loadResource(Rez.Strings.INVALSETTXT2);
-                ErrStr4=WatchUi.loadResource(Rez.Strings.INVALSETTXT3);
-                data = null;
+                showErr=true;
+                uid = -1;
+                plantid = -1;
+                Application.getApp().setProperty("PUI",0);
+                Application.getApp().setProperty("PPI",0);
+                errStr1="API Error: "+ data["result"];
+                if(data["result"].toNumber() == 5 || data["result"].toNumber() == 11){
+                    errStr2=WatchUi.loadResource(Rez.Strings.A1);
+                    errStr3=WatchUi.loadResource(Rez.Strings.A2);
+                    errStr4=WatchUi.loadResource(Rez.Strings.A3);
+                }
+                else{
+                    errStr2=WatchUi.loadResource(Rez.Strings.I1);
+                    errStr3=WatchUi.loadResource(Rez.Strings.I2);
+                    errStr4=WatchUi.loadResource(Rez.Strings.I3);
+                }
+                data=null;
             }
         }
         else if (rspCode==-104) //Communications.BLE_CONNECTION_UNAVAILABLE
         {
             // bluetooth connection issue
-            ShowErr = true;
-            ErrStr1=WatchUi.loadResource(Rez.Strings.BLERRSTR1);
-            ErrStr2=WatchUi.loadResource(Rez.Strings.BLERRSTR2);
-            ErrStr3=WatchUi.loadResource(Rez.Strings.BLERRSTR3);
-            data = null;
+            showErr = true;
+            errStr1=WatchUi.loadResource(Rez.Strings.B1);
+            errStr2=WatchUi.loadResource(Rez.Strings.B2);
+            errStr3=WatchUi.loadResource(Rez.Strings.B3);
+            data=null;
         }
         else if (rspCode==-400) //Communications.INVALID_HTTP_BODY_IN_NETWORK_RESPONSE
         {
             // Invalid API key
-            ShowErr = true;
-            ErrStr1=WatchUi.loadResource(Rez.Strings.INVALSETTXT1);
-            ErrStr2=WatchUi.loadResource(Rez.Strings.INVALSETTXT2);
-            ErrStr3=WatchUi.loadResource(Rez.Strings.INVALSETTXT3);
-            data = null;
+            showErr = true;
+            errStr1=WatchUi.loadResource(Rez.Strings.I1);
+            errStr2=WatchUi.loadResource(Rez.Strings.I2);
+            errStr3=WatchUi.loadResource(Rez.Strings.I3);
+            data=null;
         }
         else if (rspCode==-300) //Communications.NETWORK_REQUEST_TIMED_OUT
         {
             // No Internet
-            ShowErr = true;
-            ErrStr1=WatchUi.loadResource(Rez.Strings.NOINET1);
-            ErrStr2=WatchUi.loadResource(Rez.Strings.NOINET2);
-            ErrStr3=WatchUi.loadResource(Rez.Strings.NOINET3);
-            data = null;
+            showErr = true;
+            errStr1=WatchUi.loadResource(Rez.Strings.N1);
+            errStr2=WatchUi.loadResource(Rez.Strings.N2);
+            errStr3=WatchUi.loadResource(Rez.Strings.N3);
+            data=null;
         }
         else
         {
             // general Error
-            ShowErr = true;
-            ErrStr1="Error "+rspCode;
-            ErrStr2="Check settings in";
-            ErrStr3="Garmin Connect/";
-            ErrStr4="Express";
+            showErr = true;
+            errStr1="Error "+rspCode;
+            errStr2=WatchUi.loadResource(Rez.Strings.E1);
+            errStr3=WatchUi.loadResource(Rez.Strings.E2);
+            errStr4=WatchUi.loadResource(Rez.Strings.E3);
         }
         WatchUi.requestUpdate();
-        return ShowErr;
+        return showErr;
     }
 
     function frmtScrLines(ln1val,ln2val,ln3val,ln4val,ln5val,lines,dc){
@@ -339,11 +345,11 @@ function retrieveSettings() {
         //Sys.println("SolisWidgetView:setNotParsable");
 
         // not parsable
-        Curr = null;
-        Today = null;
-        ThisMonth = null;
-        ThisYear = null;
-        Total = null;
+        curr = null;
+        today = null;
+        thisMonth = null;
+        thisYear = null;
+        total = null;
         lstUpd = null;
         lastUpdTmLocal = null;
         lastUpdDtLocal = null;
@@ -366,31 +372,29 @@ function retrieveSettings() {
         //System.println("SolisWidgetView:makeReq");
 
         fUpdt = false;
-        if(uid == null || uid.length() == 0){
+        if(uid == null || uid == -1){
             // Show refreshing page
-            ShowErr=false; // turn off an error screen (if any)
-            ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
+            showErr=false; // turn off an error screen (if any)
+            showRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
 
-            if(Usr == null || Usr.length() == 0 || Pwrd == null || Pwrd.length() == 0 ){
-                ShowErr=true;
-                ErrStr1=WatchUi.loadResource(Rez.Strings.INVALSETTXT1);
-                ErrStr2=WatchUi.loadResource(Rez.Strings.APIERRTXT2);
-                ErrStr3=WatchUi.loadResource(Rez.Strings.APIERRTXT3);
-                ErrStr4="";
+            if(usr == null || usr.length() == 0 || pwrd == null || pwrd.length() == 0 ){
+                showErr=true;
+                errStr1=WatchUi.loadResource(Rez.Strings.I1);
+                errStr2=WatchUi.loadResource(Rez.Strings.A2);
+                errStr3=WatchUi.loadResource(Rez.Strings.A3);
+                errStr4="";
                 WatchUi.requestUpdate();
             }
             else{
                 WatchUi.requestUpdate();
-                var url as String =  BaseUrl+"/v/ap.2.0/cust/user/login?user_id=" + Usr + "&user_pass=" + Pwrd + "&terminate=android&push_sn=11007f002bc2b3ebc16db92898f5d3ea&timezone=1&lan=en&country=CN&cust=006";
-                var options as Dictionary = {
-                        :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
-                        :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-                };
+                var url as String =  baseUrl+"/v/ap.2.0/cust/user/login?user_id=" + usr + "&user_pass=" + pwrd + "&terminate=android&push_sn=11007f002bc2b3ebc16db92898f5d3ea&timezone=1&lan=en&country=CN&cust=006";
 
                 // Make the authentication request
                 //System.println("makeReq url:"+url);
-                //System.println("makeReq options:"+options);
-                Communications.makeWebRequest(url,{},options,method(:onRec));
+                Communications.makeWebRequest(url,{},{
+                        :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
+                        :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+                },method(:onRec));
             }
         }
         else{
@@ -404,15 +408,15 @@ function retrieveSettings() {
     function onRec(rspCode, data)
     {
         //System.println("SolisWidgetView:onRec");
-        ShowErr = procRespCode(rspCode,data);
+        showErr = procRespCode(rspCode,data);
 
-        if(ShowErr){
+        if(showErr){
             WatchUi.requestUpdate();
         }
         else{
             WatchUi.requestUpdate();
             uid = data["uid"];
-            Application.getApp().setProperty("PROP_UID",uid);
+            Application.getApp().setProperty("PUI",uid);
             //System.println(data["uid"]);
             //System.println("uid set:"+uid);
             makeReqPlantId();
@@ -422,20 +426,18 @@ function retrieveSettings() {
     function makeReqPlantId() {
         //System.println("SolisWidgetView:makeReqPlantId");
 
-        if(plantid == null || plantid.length() == 0){
+        if(plantid == null || plantid == -1){
             // Show refreshing page
-            ShowErr=false; // turn off an error screen (if any)
-            ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
+            showErr=false; // turn off an error screen (if any)
+            showRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
             //WatchUi.requestUpdate();
-            var url as String =  BaseUrl+"/v/ap.2.0/plant/find_plant_list?uid=" + uid + "&sel_scope=1&sort_type=1";
+            var url as String =  baseUrl+"/v/ap.2.0/plant/find_plant_list?uid=" + uid + "&sel_scope=1&sort_type=1";
 
-            var options as Dictionary = {
+            //System.println("makeReqPlantId url:"+url);
+            Communications.makeWebRequest(url,{},{
                 :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
                 :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-            };
-            //System.println("makeReqPlantId url:"+url);
-            //System.println("makeReqPlantId options:"+options);
-            Communications.makeWebRequest(url,{},options,method(:onRecPlantId));
+            },method(:onRecPlantId));
         }
         else{
             //PlantId allready known, go ahead and request data.
@@ -447,14 +449,14 @@ function retrieveSettings() {
     {
         //System.println("SolisWidgetView:onRecPlantId");
 
-        ShowErr = procRespCode(rspCode,data);
-        if(ShowErr){
+        showErr = procRespCode(rspCode,data);
+        if(showErr){
             WatchUi.requestUpdate();
         }
         else{
-            ShowErr=false;
+            showErr=false;
             plantid = data["list"][0]["plant_id"];
-            Application.getApp().setProperty("PROP_PLANTID",plantid);
+            Application.getApp().setProperty("PPI",plantid);
             //System.println("plantid set:"+plantid);
             makeReqPlantOv();
         }
@@ -465,59 +467,53 @@ function retrieveSettings() {
         //System.println("SolisWidgetView:makeReqPlantOv");
 
         // Show refreshing page
-        ShowErr=false; // turn off an error screen (if any)
-        ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
+        showErr=false; // turn off an error screen (if any)
+        showRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
         //WatchUi.requestUpdate();
         //System.println("makeReq uid:"+uid);
-        var url as String =  BaseUrl+"/v/ap.2.0/plant/get_plant_overview?uid=" + uid + "&plant_id=" + plantid;
+        var url as String =  baseUrl+"/v/ap.2.0/plant/get_plant_overview?uid=" + uid.toString() + "&plant_id=" + plantid.toString();
 
-        var options as Dictionary = {
+        //System.println("makeReq url:"+url);
+        Communications.makeWebRequest(url,{},{
                     :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
                     :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-        };
-        //System.println("makeReq url:"+url);
-        //System.println("makeReq options:"+options);
-        Communications.makeWebRequest(url,{},options,method(:onRecPlantOv));
+        },method(:onRecPlantOv));
     }
 
     function onRecPlantOv(rspCode, data)
     {
         //System.println("SolisWidgetView:onRecPlantOv");
 
-        ShowErr = procRespCode(rspCode,data);
-        if(ShowErr){
+        showErr = procRespCode(rspCode,data);
+        if(showErr){
             WatchUi.requestUpdate();
         }
         else{
             WatchUi.requestUpdate();
             if (data instanceof Dictionary)
             {
-                var pwr as String = 0.0; // init variable
-                // Format Curr pwr
-                pwr = data["power_out"]["power"].toFloat();
-                if (pwr<1)
+                // Format curr pwr
+                if (data["power_out"]["power"] <1)
                 {
-                    Curr= pwr + " W";
+                    curr=data["power_out"]["power"] + " W";
                 } else {
-                    Curr=pwr.format("%.2f") + " W";
+                    curr=data["power_out"]["power"].format("%.2f") + " W";
                 }
-                //System.println("Curr_pwr: "+pwr + " Curr: "+ Curr);
+                //System.println("curr_pwr: "+pwr + " curr: "+ curr);
 
-                // Format Today
-                pwr = data["power_out"]["energy_day"].toFloat();
-                Today= frmtEnergy(pwr);
-                //System.println("today_energy: "+pwr + " Today :"+Today);
+                // Format today
+                today=frmtEnergy(data["power_out"]["energy_day"]);
+                //System.println("today_energy: "+pwr + " today :"+today);
 
-                // Format Total
-                pwr = data["power_out"]["energy_accu_real"].toFloat();
-                Total= frmtEnergy(pwr);
-                //System.println("total_energy: "+pwr + " Total: " + Total);
+                // Format total
+                total=frmtEnergy(data["power_out"]["energy_accu_real"]);
+                //System.println("total_energy: "+pwr + " total: " + total);
 
                 // Format Last Update
                 lstUpd=data["date"];
-                lastUpdTmLocal = frmtTmFromRFC3339(lstUpd);
-                lastUpdDtLocal = frmtDtFromRFC3339(lstUpd);
-                data = null;
+                lastUpdTmLocal=frmtTmFromRFC3339(lstUpd);
+                lastUpdDtLocal=frmtDtFromRFC3339(lstUpd);
+                data=null;
             }
             else
             {
@@ -532,8 +528,8 @@ function retrieveSettings() {
         //System.println("SolisWidgetView:makeReqPlantMonthStats");
 
         // Show refreshing page
-        ShowErr=false; // turn off an error screen (if any)
-        ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
+        showErr=false; // turn off an error screen (if any)
+        showRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
         //WatchUi.requestUpdate();
         //System.println("makeReq uid:"+uid);
         var dateToday as Moment = Gregorian.info(Time.now(), 0); //Time.FORMAT_SHORT
@@ -543,40 +539,36 @@ function retrieveSettings() {
             dateToday.day
             ]
         );
-        var url as String =  BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_month2?date=" + dateTodayString + "&uid=" + uid + "&plant_id=" + plantid;
-
-        var options as Dictionary = {
-                    :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
-                    :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-        };
+        var url as String =  baseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_month2?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
 
         // Make the authentication request
         //System.println("makeReq url:"+url);
-        //System.println("makeReq options:"+options);
-        Communications.makeWebRequest(url,{},options,method(:onRecPlantMonthStats));
+        Communications.makeWebRequest(url,{},{
+                    :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
+                    :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+        },method(:onRecPlantMonthStats));
     }
 
     function onRecPlantMonthStats(rspCode, data)
     {
         //System.println("SolisWidgetView:onRecPlantMonthStats");
 
-        ShowErr = procRespCode(rspCode,data);
-        if(ShowErr){
+        showErr = procRespCode(rspCode,data);
+        if(showErr){
             WatchUi.requestUpdate();
         }
         else{
             WatchUi.requestUpdate();
             if (data instanceof Dictionary)
             {
-                var list as Dictionary = data["list"];
-                var pwr as String = 0;
-                for(var i=0;i<list.size();i++) {
+                var pwr as Float = 0;
+                for(var i=0;i<(data["list"]).size();i++) {
                     //System.println("day "+ data["list"][i]["month"] +"="+ data["list"][i]["energy"]);
                     pwr = pwr + data["list"][i]["energy"];
                 }
-                ThisMonth= frmtEnergy(pwr);
-                //System.println("ThisMonth: " + ThisMonth);
-                data = null;
+                thisMonth= frmtEnergy(pwr);
+                //System.println("thisMonth: " + thisMonth);
+                data=null;
             }
             else {
                 setNotParsable();
@@ -590,8 +582,8 @@ function retrieveSettings() {
         //System.println("SolisWidgetView:makeReqPlantYrStats");
 
         // Show refreshing page
-        ShowErr=false; // turn off an error screen (if any)
-        ShowRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
+        showErr=false; // turn off an error screen (if any)
+        showRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
         //WatchUi.requestUpdate();
         //System.println("makeReq uid:"+uid);
         var dateToday = Gregorian.info(Time.now(), 0); //Time.FORMAT_SHORT
@@ -602,41 +594,36 @@ function retrieveSettings() {
             ]
         );
 
-        var url as String =  BaseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_year?date=" + dateTodayString + "&uid=" + uid + "&plant_id=" + plantid;
-
-        var options as Dictionary = {
-                    :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
-                    :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-        };
+        var url as String =  baseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_year?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
 
         // Make the authentication request
         //System.println("makeReq url:"+url);
-        //System.println("makeReq options:"+options);
-        Communications.makeWebRequest(url,{},options,method(:onRecPlantYrStats));
+        Communications.makeWebRequest(url,{},{
+                    :method => 1, //Communications.HTTP_REQUEST_METHOD_GET
+                    :responseType => 0 //Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+        },method(:onRecPlantYrStats));
     }
 
     function onRecPlantYrStats(rspCode, data)
     {
         //System.println("SolisWidgetView:onRecPlantYrStats");
 
-        ShowErr = procRespCode(rspCode, data);
-        if(ShowErr){
+        showErr = procRespCode(rspCode, data);
+        if(showErr){
             WatchUi.requestUpdate();
         }
         else{
             WatchUi.requestUpdate();
             if (data instanceof Dictionary)
             {
-                var list as Dictionary = data["list"];
-                var pwr as String = 0;
-                for(var i as Number =0;i<list.size();i++) {
+                var pwr as Float = 0;
+                for(var i as Number =0;i<(data["list"]).size();i++) {
                     //System.println("year "+ data["list"][i]["year"] +"="+ data["list"][i]["energy"]);
                     pwr = pwr + data["list"][i]["energy"];
                 }
-
-                ThisYear= frmtEnergy(pwr);
-                //System.println("yearly_energy: "+pwr + " ThisYear: " + ThisYear);
-                data = null;
+                thisYear= frmtEnergy(pwr);
+                //System.println("yearly_energy: "+pwr + " thisYear: " + thisYear);
+                data=null;
             }
             else
             {
@@ -659,11 +646,11 @@ function retrieveSettings() {
         //Sys.println("SolisWidgetView:onShow");
 
         //  Load saved data
-        Curr = Application.getApp().getProperty("Curr");
-        Today = Application.getApp().getProperty("Today");
-        ThisMonth = Application.getApp().getProperty("ThisMonth");
-        ThisYear = Application.getApp().getProperty("ThisYear");
-        Total = Application.getApp().getProperty("Total");
+        curr = Application.getApp().getProperty("curr");
+        today = Application.getApp().getProperty("today");
+        thisMonth = Application.getApp().getProperty("thisMonth");
+        thisYear = Application.getApp().getProperty("thisYear");
+        total = Application.getApp().getProperty("total");
         lstUpd= Application.getApp().getProperty("lstUpd");
         lastUpdTmLocal = Application.getApp().getProperty("lastUpdTmLocal");
         lastUpdDtLocal = Application.getApp().getProperty("lastUpdDtLocal");
@@ -695,21 +682,21 @@ function retrieveSettings() {
         ////Sys.println("logowidth: " + logowidth + " logoHeight: " + logo.getHeight());
         //dc.drawBitmap((dc.getWidth() - logowidth) / 2, logoPosY,logo);
 
-        if (ShowErr) {
+        if (showErr) {
            // Show Error
             frmtScrLines(
-                ErrStr1,
-                ErrStr2,
-                ErrStr3,
-                ErrStr4,
+                errStr1,
+                errStr2,
+                errStr3,
+                errStr4,
                 "",
                 5,
                 dc
             );
         }
-        else  if (ShowRefrsh) {
+        else  if (showRefrsh) {
             frmtScrLines(
-                WatchUi.loadResource(Rez.Strings.UPDT),
+                WatchUi.loadResource(Rez.Strings.UP),
                 "",
                 "",
                 "",
@@ -720,83 +707,83 @@ function retrieveSettings() {
         }
         else {
             // Show status page
-                if(CurrPage==1){
-                    // Curr pwr
+                if(currPage==1){
+                    // curr pwr
                     frmtScrLines(
-                        WatchUi.loadResource(Rez.Strings.CURR),
-                        Curr,
+                        WatchUi.loadResource(Rez.Strings.O1),
+                        curr,
                         lastUpdTmLocal,
                         lastUpdDtLocal,
                         "",
                         4,
                         dc
                     );
-                    glanceName = WatchUi.loadResource(Rez.Strings.CURR);
-                    glanceVal = Curr;
+                    glanceName = WatchUi.loadResource(Rez.Strings.O1);
+                    glanceVal = curr;
                 }
-                if(CurrPage==2){
-                    // Today
+                if(currPage==2){
+                    // today
                     frmtScrLines(
-                        WatchUi.loadResource(Rez.Strings.TODAY),
-                        Today,
+                        WatchUi.loadResource(Rez.Strings.O2),
+                        today,
                         lastUpdTmLocal,
                         lastUpdDtLocal,
                         "",
                         4,
                         dc
                     );
-                    glanceName = WatchUi.loadResource(Rez.Strings.TODAY);
-                    glanceVal = Today;
+                    glanceName = WatchUi.loadResource(Rez.Strings.O2);
+                    glanceVal = today;
                 }
-                if(CurrPage==3){
+                if(currPage==3){
                     // This Month
                     frmtScrLines(
-                        WatchUi.loadResource(Rez.Strings.THISMONTH),
-                        ThisMonth,
+                        WatchUi.loadResource(Rez.Strings.O3),
+                        thisMonth,
                         lastUpdTmLocal,
                         lastUpdDtLocal,
                         "",
                         4,
                         dc
                     );
-                    glanceName = WatchUi.loadResource(Rez.Strings.THISMONTH);
-                    glanceVal = ThisMonth;
+                    glanceName = WatchUi.loadResource(Rez.Strings.O3);
+                    glanceVal = thisMonth;
                 }
-                if(CurrPage==4){
+                if(currPage==4){
                     // This Year
                     frmtScrLines(
-                        WatchUi.loadResource(Rez.Strings.THISYEAR),
-                        ThisYear,
+                        WatchUi.loadResource(Rez.Strings.O4),
+                        thisYear,
                         lastUpdTmLocal,
                         lastUpdDtLocal,
                         "",
                         4,
                         dc
                     );
-                    glanceName = WatchUi.loadResource(Rez.Strings.THISYEAR);
-                    glanceVal = ThisYear;
+                    glanceName = WatchUi.loadResource(Rez.Strings.O4);
+                    glanceVal = thisYear;
                 }
-                if(CurrPage==5){
-                    // Total
+                if(currPage==5){
+                    // total
                     frmtScrLines(
-                        WatchUi.loadResource(Rez.Strings.TOT),
-                        Total,
+                        WatchUi.loadResource(Rez.Strings.O5),
+                        total,
                         lastUpdTmLocal,
                         lastUpdDtLocal,
                         "",
                         4,
                         dc
                     );
-                    glanceName = WatchUi.loadResource(Rez.Strings.TOT);
-                    glanceVal = Total;
+                    glanceName = WatchUi.loadResource(Rez.Strings.O5);
+                    glanceVal = total;
                 }
-                if(CurrPage==6){
+                if(currPage==6){
                     frmtScrLines(
-                        WatchUi.loadResource(Rez.Strings.CURR)+": "+Curr,
-                        WatchUi.loadResource(Rez.Strings.TODAY)+": "+Today,
-                        WatchUi.loadResource(Rez.Strings.THISMONTH)+": "+ThisMonth,
-                        WatchUi.loadResource(Rez.Strings.THISYEAR)+": "+ThisYear,
-                        WatchUi.loadResource(Rez.Strings.TOT)+": "+Total,
+                        WatchUi.loadResource(Rez.Strings.O1)+": "+curr,
+                        WatchUi.loadResource(Rez.Strings.O2)+": "+today,
+                        WatchUi.loadResource(Rez.Strings.O3)+": "+thisMonth,
+                        WatchUi.loadResource(Rez.Strings.O4)+": "+thisYear,
+                        WatchUi.loadResource(Rez.Strings.O5)+": "+total,
                         5,
                         dc
                     );
@@ -817,15 +804,17 @@ function retrieveSettings() {
         //Sys.println("SolisWidgetView:onHide");
 
         // Save data for later
-        Application.getApp().setProperty("Curr",Curr);
-        Application.getApp().setProperty("Today", Today);
-        Application.getApp().setProperty("ThisMonth", ThisMonth);
-        Application.getApp().setProperty("ThisYear", ThisYear);
-        Application.getApp().setProperty("Total",Total);
+        Application.getApp().setProperty("curr",curr);
+        Application.getApp().setProperty("today", today);
+        Application.getApp().setProperty("thisMonth", thisMonth);
+        Application.getApp().setProperty("thisYear", thisYear);
+        Application.getApp().setProperty("total",total);
         Application.getApp().setProperty("lstUpd", lstUpd);
         Application.getApp().setProperty("lastUpdTmLocal", lastUpdTmLocal);
         Application.getApp().setProperty("lastUpdDtLocal", lastUpdDtLocal);
         Application.getApp().setProperty("glanceName", glanceName);
         Application.getApp().setProperty("glanceVal", glanceVal);
+        Application.getApp().setProperty("currUsr", usr);
+        Application.getApp().setProperty("currPwrd", pwrd);
     }
 }
