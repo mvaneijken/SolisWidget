@@ -1,5 +1,5 @@
 <strings>
-    <string id="AppName">SolisWidget</string>
+    <string id="AppName" scope="glance">SolisWidget</string>
 
     <string id="E1">Probeer opnieuw</string>
     <string id="E2">of controleer</string>
@@ -36,4 +36,5 @@
     <string id="UI">Solis User Identifier</string>
     <string id="PI">Solis Site Identifier</string>
 
+    <string id="GL" scope="glance">Update nodig</string>
 </strings>

@@ -24,6 +24,11 @@ class SolisWidgetGlanceView extends WatchUi.GlanceView {
         var lineOneValue as String = Application.getApp().getProperty("glanceName");
         var lineTwoValue as String = Application.getApp().getProperty("glanceVal");
 
+        if(lineOneValue == null){
+            lineOneValue = WatchUi.loadResource(Rez.Strings.AppName);
+            lineTwoValue = WatchUi.loadResource(Rez.Strings.GL);
+        }
+
         var height as Number = dc.getHeight();
         var lineOnePosY as Number = 0;
         var lineTwoPosY as Number = lineOnePosY + ((fontHeight/2) + (fontHeight/2));

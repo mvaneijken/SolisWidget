@@ -828,8 +828,10 @@ function retrieveSettings() {
         Application.getApp().setProperty("lstUpd", lstUpd);
         Application.getApp().setProperty("lastUpdTmLocal", lastUpdTmLocal);
         Application.getApp().setProperty("lastUpdDtLocal", lastUpdDtLocal);
-        Application.getApp().setProperty("glanceName", glanceName);
-        Application.getApp().setProperty("glanceVal", glanceVal);
+        if(glanceVal != null and glanceName != null){
+            Application.getApp().setProperty("glanceName", glanceName);
+            Application.getApp().setProperty("glanceVal", glanceVal);
+        }
         Application.getApp().setProperty("currUsr", usr);
         Application.getApp().setProperty("currPwrd", pwrd);
     }
