@@ -135,33 +135,6 @@ function retrieveSettings() {
         });
    }
 
-    function frmtDtFromRFC3339 (string)
-    {
-        //System.println("SolisWidgetView:frmtDtFromRFC3339");
-        //System.println(string.toString());
-        var i as Time = Gregorian.info(toMoment(string), 0); //Time.FORMAT_SHORT
-
-        return (Lang.format("$1$-$2$-$3$", [
-            i.day.format("%01u"),
-            i.month.format("%01u"),
-            i.year.format("%02u")
-        ]));
-    }
-
-    function frmtTmFromRFC3339 (string)
-    {
-        //System.println("SolisWidgetView:frmtTmFromRFC3339");
-        //System.println(string.toString());
-        var i as Time = Gregorian.info(toMoment(string), 0); //Time.FORMAT_SHORT
-
-        return (Lang.format("$1$:$2$:$3$", [
-            i.hour.format("%01u"),
-            i.min.format("%02u"),
-            i.sec.format("%02u")
-        ]));
-
-    }
-
     function frmtEnergy(pwr)
     {
         //System.println("SolisWidgetView:frmtEnergy");
@@ -514,16 +487,16 @@ function retrieveSettings() {
 
                 // Format Last Update
                 var i as Time = Gregorian.info(Time.now(), 0); //Time.FORMAT_SHORT
-                lstUpd = (Lang.format("$1$-$2$-$3$ $4$:$5$:$6$", [
-                    i.year.format("%04u"),
-                    i.month.format("%02u"),
-                    i.day.format("%02u"),
+                lastUpdTmLocal = (Lang.format("$1$:$2$:$3$", [
                     i.hour.format("%02u"),
                     i.min.format("%02u"),
                     i.sec.format("%02u")
                 ]));
-                lastUpdTmLocal=frmtTmFromRFC3339(lstUpd);
-                lastUpdDtLocal=frmtDtFromRFC3339(lstUpd);
+                lastUpdDtLocal = (Lang.format("$1$-$2$-$3$", [
+                    i.year.format("%04u"),
+                    i.month.format("%02u"),
+                    i.day.format("%02u")
+                ]));
                 data=null;
             }
             else
