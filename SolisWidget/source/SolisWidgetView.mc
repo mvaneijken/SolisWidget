@@ -606,10 +606,8 @@ function retrieveSettings() {
             if (data instanceof Dictionary)
             {
                 var pwr as Float = 0;
-                for(var i as Number =0;i<(data["list"]).size();i++) {
-                    //System.println("year "+ data["list"][i]["year"] +"="+ data["list"][i]["energy"]);
-                    pwr = pwr + data["list"][i]["energy"];
-                }
+                var listsize = (data["list"]).size() - 1;
+                pwr = data["list"][listsize]["energy"];
                 thisYear= frmtEnergy(pwr);
                 //System.println("yearly_energy: "+pwr + " thisYear: " + thisYear);
                 data=null;
