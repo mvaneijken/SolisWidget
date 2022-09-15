@@ -151,7 +151,7 @@ function retrieveSettings() {
             }
         }
         else{
-            return "0 Wh";
+            return "No data received";
         }
     }
 
