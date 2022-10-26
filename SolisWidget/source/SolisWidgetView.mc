@@ -141,7 +141,7 @@ function retrieveSettings() {
         try{
             pwr = pwr.toFloat();
         }
-        catch{
+        catch(ex){
             pwr = null;
         }
         
@@ -498,7 +498,7 @@ function retrieveSettings() {
                     today=frmtEnergy(data["energy"]);
                 }
                 else{
-                    today = "No data received!"
+                    today = "No data received!";
                 }
                 //System.println("today_energy: "+pwr + " today :"+today);
 
