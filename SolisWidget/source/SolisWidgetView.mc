@@ -138,6 +138,13 @@ function retrieveSettings() {
     function frmtEnergy(pwr)
     {
         //System.println("SolisWidgetView:frmtEnergy");
+        try{
+            pwr = pwr.toFloat();
+        }
+        catch{
+            pwr = null;
+        }
+        
         if(pwr != null){
             if (pwr<1)
             {
@@ -487,7 +494,12 @@ function retrieveSettings() {
                 //System.println("curr_pwr: "+pwr + " curr: "+ curr);
 
                 // Format today
-                today=frmtEnergy(data["energy"]);
+                if(data["energy"]){
+                    today=frmtEnergy(data["energy"]);
+                }
+                else{
+                    today = "No data received!"
+                }
                 //System.println("today_energy: "+pwr + " today :"+today);
 
                 // Format Last Update
