@@ -138,15 +138,27 @@ function retrieveSettings() {
     function frmtEnergy(pwr)
     {
         //System.println("SolisWidgetView:frmtEnergy");
-        if (pwr<1)
-        {
-        // Less than 1 kWh Present in Wh
-            return (pwr * 1000).toNumber() + " Wh";
+        try{
+            pwr = pwr.toFloat();
         }
-        else
-        {
-            // > more than kWh, so present in in kWh
-            return pwr.format("%.1f") + " kWh";
+        catch(ex){
+            pwr = null;
+        }
+        
+        if(pwr != null){
+            if (pwr<1)
+            {
+            // Less than 1 kWh Present in Wh
+                return (pwr * 1000).toNumber() + " Wh";
+            }
+            else
+            {
+                // > more than kWh, so present in in kWh
+                return pwr.format("%.1f") + " kWh";
+            }
+        }
+        else{
+            return "No data received";
         }
     }
 
@@ -482,7 +494,12 @@ function retrieveSettings() {
                 //System.println("curr_pwr: "+pwr + " curr: "+ curr);
 
                 // Format today
-                today=frmtEnergy(data["energy"]);
+                if(data["energy"]){
+                    today=frmtEnergy(data["energy"]);
+                }
+                else{
+                    today = "No data received!";
+                }
                 //System.println("today_energy: "+pwr + " today :"+today);
 
                 // Format Last Update
@@ -600,7 +617,7 @@ function retrieveSettings() {
             WatchUi.requestUpdate();
 
             // Format total
-            total= frmtEnergy(data["total"]);
+            total = frmtEnergy(data["total"]);
             //System.println("total_energy: "+pwr + " total: " + total);
 
             if (data instanceof Dictionary)
@@ -608,7 +625,7 @@ function retrieveSettings() {
                 var pwr as Float = 0;
                 var listsize = (data["list"]).size() - 1;
                 pwr = data["list"][listsize]["energy"];
-                thisYear= frmtEnergy(pwr);
+                thisYear = frmtEnergy(pwr);
                 //System.println("yearly_energy: "+pwr + " thisYear: " + thisYear);
                 data=null;
             }
