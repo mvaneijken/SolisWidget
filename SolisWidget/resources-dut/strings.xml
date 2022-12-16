@@ -5,6 +5,10 @@
     <string id="E2">of controleer</string>
     <string id="E3">instellingen</string>
 
+    <string id="E4">Geen Plant Id ontvangen</string>
+    <string id="E5">Kan niet verder</string>
+    <string id="E6">Check Solis Portal</string>
+
     <string id="B1">Geen verbinding</string>
     <string id="B2">Controleer verbinding</string>
     <string id="B3">met telefoon</string>
