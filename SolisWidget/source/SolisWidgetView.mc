@@ -440,10 +440,23 @@ function retrieveSettings() {
         }
         else{
             showErr=false;
-            plantid = data["list"][0]["plant_id"];
-            Application.getApp().setProperty("PPI",plantid);
-            //System.println("plantid set:"+plantid);
-            makeReqPlantOv();
+            try{
+                plantid = data["list"][0]["plant_id"];
+                Application.getApp().setProperty("PPI",plantid);
+                //System.println("plantid set:"+plantid);
+            }
+            catch (ex) {
+                showErr=true;
+                plantid = null;
+                errStr1=WatchUi.loadResource(Rez.Strings.E4);
+                errStr2=WatchUi.loadResource(Rez.Strings.E5);
+                errStr3=WatchUi.loadResource(Rez.Strings.E6);
+                errStr4="";
+                WatchUi.requestUpdate();
+            }
+            if(plantid != null && plantid >= 1){
+                makeReqPlantOv();
+            }
         }
     }
 

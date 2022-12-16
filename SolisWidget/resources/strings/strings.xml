@@ -5,6 +5,10 @@
     <string id="E2">or check</string>
     <string id="E3">settings</string>
 
+    <string id="E4">Plant Id not received</string>
+    <string id="E5">Cannot continue</string>
+    <string id="E6">Check Solis Portal</string>
+
     <string id="B1">No Connection</string>
     <string id="B2">Check connection</string>
     <string id="B3">with mobile phone</string>
@@ -35,6 +39,8 @@
 
     <string id="UI">Solis User Identifier</string>
     <string id="PI">Solis Site Identifier</string>
+
+
 
     <string id="GL" scope="glance">Update needed</string>
 </strings>
