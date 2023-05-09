@@ -26,6 +26,14 @@ class Conversion {
         });
     }
 
+    function Base64StringToString(string) {
+        return StringUtil.convertEncodedString(string, {
+            :fromRepresentation => StringUtil.REPRESENTATION_STRING_BASE64,
+            :toRepresentation => StringUtil.REPRESENTATION_STRING_PLAIN_TEXT,
+            :encoding => StringUtil.CHAR_ENCODING_UTF8
+        });
+    }
+
     function Utf8ArrayToString(utf8Array) {
         return StringUtil.utf8ArrayToString(utf8Array);
     }
