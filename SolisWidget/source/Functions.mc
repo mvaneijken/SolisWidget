@@ -1,3 +1,5 @@
+import Toybox.Lang;
+
 class Conversion {
 
     function StringToByteArray(plain_text) {
@@ -31,33 +33,58 @@ class Conversion {
 
 class Hash {
 
-    function NewSha256HashObject() {
+    function NewSha256HashObject() as Object {
         return new Cryptography.Hash({
             :algorithm => Cryptography.HASH_SHA256
         });
     }
 
-    function NewSha1HashObject() {
+    function NewSha1HashObject() as Object{
         return new Cryptography.Hash({
             :algorithm => Cryptography.HASH_SHA1
         });
     }
 
-    function NewMd5HashObject() {
+    function NewSha256HashBasedMessageAuthenticationCodeObject(key as ByteArray) as Object{
+        return new Cryptography.HashBasedMessageAuthenticationCode({
+            :algorithm => Cryptography.HASH_SHA256,
+            :key => key
+        });
+    }
+
+    function NewSha1HashBasedMessageAuthenticationCodeObject(key as ByteArray) as Object{
+        return new Cryptography.HashBasedMessageAuthenticationCode({
+            :algorithm => Cryptography.HASH_SHA1,
+            :key => key
+        });
+    }
+
+    function NewMd5HashBasedMessageAuthenticationCodeObject(key as ByteArray) as Object{
+        return new Cryptography.HashBasedMessageAuthenticationCode({
+            :algorithm => Cryptography.HASH_MD5,
+            :key => key
+        });
+    }
+
+    function NewMd5HashObject() as Object{
         return new Cryptography.Hash({
             :algorithm => Cryptography.HASH_MD5
         });
     }
 
+
     function ComputeHash(hash, byte_array) {
         hash.update(byte_array);
         return hash.digest();
     }
+
+
+
 }
 
 class DateTime {
 
-    function GetDateUTCString() {
+    function GetDateUTCString() as String{
 
         var today = Time.Gregorian.info(Time.now(), Time.FORMAT_LONG);
         //"Fri, 26 Jul 2019 06:00:46 GMT"
