@@ -27,7 +27,7 @@ var total;
 var lastUpdTmLocal;
 var lastUpdDtLocal;
 var lstUpd;
-var baseUrl = "https://apic-cdn.solarman.cn";
+var baseUrl = "https://www.soliscloud.com:13333";
 var uid; //c_user_id variable received when authenticating to the API
 var plantid; //plant_id variable received when retrieving the plants.
 var glanceName;
@@ -87,11 +87,12 @@ class SolisWidgetView extends WatchUi.View {
         //System.println("getDevPartNr: " + System.getDeviceSettings().partNumber;
         retrieveSettings();
         View.initialize();
+
         //logo = WatchUi.loadResource(Rez.Drawables.logo);
         //icon = WatchUi.loadResource(Rez.Drawables.icon);
     }
 
-function retrieveSettings() {
+    function retrieveSettings() {
         //System.println("SolisWidgetView:retrieveSettings");
         // Get Username From settings
         usr = Application.getApp().getProperty("PUN");
@@ -358,83 +359,60 @@ function retrieveSettings() {
         //System.println("SolisWidgetView:makeReq");
 
         fUpdt = false;
-        if(uid == null || uid == -1){
-            // Show refreshing page
-            showErr=false; // turn off an error screen (if any)
-            showRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
+        WatchUi.requestUpdate();
+        var path = "/v1/api/userStationList";
+        var url =  baseUrl+path;
 
-            if(usr == null || usr.length() == 0 || pwrd == null || pwrd.length() == 0 ){
-                showErr=true;
-                errStr1=WatchUi.loadResource(Rez.Strings.I1);
-                errStr2=WatchUi.loadResource(Rez.Strings.A2);
-                errStr3=WatchUi.loadResource(Rez.Strings.A3);
-                errStr4="";
-                WatchUi.requestUpdate();
-            }
-            else{
-                WatchUi.requestUpdate();
-                var url =  baseUrl+"/v/ap.2.0/cust/user/login?user_id=" + usr + "&user_pass=" + pwrd + "&terminate=android&push_sn=11007f002bc2b3ebc16db92898f5d3ea&timezone=1&lan=en&country=CN&cust=006";
+        var body = {
+            "pageNo" => 1,
+            "pageSize" => 10
+        };
+        System.println(json.dumps({ "one" => 1, "two" => 2.0d, "three" => [ { "a" => [] } ] }));
+        var bodyString = json.dumps({
+            "pageNo" => 1,
+            "pageSize" => 10
+        });
 
-                // Make the authentication request
-                //System.println("makeReq url:"+url);
-                Communications.makeWebRequest(url,{},{
-                        :method => Communications.HTTP_REQUEST_METHOD_GET,
-                        :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-                },method(:onRec));
-            }
-        }
-        else{
-            //Go and check the plantid when the uid is allready set.
-            //System.println("makeReq");
-            makeReqPlantId();
-        }
+
+        // hash body to MD5
+        var body_byte_array = Conversion.StringToByteArray(bodyString);
+        var md5hash = Hash.NewMd5HashObject();
+        var md5hash_bytes = Hash.ComputeHash(md5hash,body_byte_array);
+        var contentMd5 = Conversion.ByteArrayToBase64String(md5hash_bytes);
+
+        var date = DateTime.GetDateUTCString();
+        var contentType = "application/json";
+
+        // authorization
+        var key = usr;
+        var secret = Conversion.StringToByteArray(pwrd);
+        var message = "POST\n" + contentMd5 + "\napplication/json\n" + date + "\n" + path;
+        var auth_byte_array = Conversion.StringToByteArray(message);
+        var sha1hash = Hash.NewSha1HashBasedMessageAuthenticationCodeObject(secret);
+        var sha1hash_bytes = Hash.ComputeHash(sha1hash,auth_byte_array);
+        var hmacSha1Base64 = Conversion.ByteArrayToBase64String(sha1hash_bytes);
+        var authorization = "API " + key + ":" + hmacSha1Base64;
+
+        var headers = {
+            "Content-Type" => "application/json",
+            "Authorization" => authorization,
+            "Content-MD5" => contentMd5,
+            "Date" => date
+        };
+
+        // Make the authentication request
+        //System.println("makeReq url:"+url);
+        Communications.makeWebRequest(url,body,{
+                :method => Communications.HTTP_REQUEST_METHOD_POST,
+                :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON,
+                :headers => headers
+        },method(:onRec));
     }
 
     // Receive the data from the web request
     function onRec(rspCode  as Number, data as Dictionary or String or Null) as Void
     {
-        //System.println("SolisWidgetView:onRec");
-        showErr = procRespCode(rspCode,data);
-
-        if(showErr){
-            WatchUi.requestUpdate();
-        }
-        else{
-            WatchUi.requestUpdate();
-            uid = data["uid"];
-            Application.getApp().setProperty("PUI",uid);
-            //System.println(data["uid"]);
-            //System.println("uid set:"+uid);
-            makeReqPlantId();
-        }
-    }
-
-    function makeReqPlantId() as Void  {
-        //System.println("SolisWidgetView:makeReqPlantId");
-
-        if(plantid == null || plantid == -1){
-            // Show refreshing page
-            showErr=false; // turn off an error screen (if any)
-            showRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
-            //WatchUi.requestUpdate();
-            var url =  baseUrl+"/v/ap.2.0/plant/find_plant_list?uid=" + uid + "&sel_scope=1&sort_type=1";
-
-            //System.println("makeReqPlantId url:"+url);
-            Communications.makeWebRequest(url,{},{
-                :method => Communications.HTTP_REQUEST_METHOD_GET,
-                :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-            },method(:onRecPlantId));
-        }
-        else{
-            //PlantId allready known, go ahead and request data.
-            makeReqPlantOv();
-        }
-    }
-
-    function onRecPlantId(rspCode  as Number, data as Dictionary or String or Null) as Void
-    {
         //System.println("SolisWidgetView:onRecPlantId");
-
         showErr = procRespCode(rspCode,data);
         if(showErr){
             WatchUi.requestUpdate();
@@ -442,79 +420,14 @@ function retrieveSettings() {
         else{
             showErr=false;
             try{
-                plantid = data["list"][0]["plant_id"];
+                plantid = data["data"]["page"]["records"][0]["id"];
                 Application.getApp().setProperty("PPI",plantid);
-                //System.println("plantid set:"+plantid);
-            }
-            catch (ex) {
-                showErr=true;
-                plantid = null;
-                errStr1=WatchUi.loadResource(Rez.Strings.E4);
-                errStr2=WatchUi.loadResource(Rez.Strings.E5);
-                errStr3=WatchUi.loadResource(Rez.Strings.E6);
-                errStr4="";
-                WatchUi.requestUpdate();
-            }
-            if(plantid != null && plantid >= 1){
-                makeReqPlantOv();
-            }
-        }
-    }
 
-    function makeReqPlantOv() as Void
-    {
-        //System.println("SolisWidgetView:makeReqPlantOv");
-
-        // Show refreshing page
-        showErr=false; // turn off an error screen (if any)
-        showRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
-        //WatchUi.requestUpdate();
-        //System.println("makeReq uid:"+uid);
-        var dateToday = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
-        var dateTodayString = Lang.format("$1$-$2$-$3$",[
-            dateToday.year.format("%02u"),
-            dateToday.month.format("%02u"),
-            dateToday.day.format("%02u")
-            ]
-        );
-        var url =  baseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_day?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
-
-        //System.println("makeReq url:"+url);
-        Communications.makeWebRequest(url,{},{
-                    :method => Communications.HTTP_REQUEST_METHOD_GET,
-                    :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-        },method(:onRecPlantOv));
-    }
-
-    function onRecPlantOv(rspCode  as Number, data as Dictionary or String or Null) as Void
-    {
-        //System.println("SolisWidgetView:onRecPlantOv");
-
-        showErr = procRespCode(rspCode,data);
-        if(showErr){
-            WatchUi.requestUpdate();
-        }
-        else{
-            WatchUi.requestUpdate();
-            if (data instanceof Dictionary)
-            {
-                // Format curr pwr
-                if (data["current"] <1)
-                {
-                    curr=data["current"] + " W";
-                } else {
-                    curr=data["current"].format("%.2f") + " W";
-                }
-                //System.println("curr_pwr: "+pwr + " curr: "+ curr);
-
-                // Format today
-                if(data["energy"]){
-                    today=frmtEnergy(data["energy"]);
-                }
-                else{
-                    today = "No data received!";
-                }
-                //System.println("today_energy: "+pwr + " today :"+today);
+                curr= data["data"]["page"]["records"][0]["power"] + " " + data["data"]["page"]["records"][0]["powerStr"];
+                today= data["data"]["page"]["records"][0]["dayPowerGeneration"] + " " + data["data"]["page"]["records"][0]["dayEnergyStr"];
+                thisMonth= data["data"]["page"]["records"][0]["monthEnergy"] + " " + data["data"]["page"]["records"][0]["monthEnergyStr"];
+                thisYear = data["data"]["page"]["records"][0]["yearEnergy"] + " " + data["data"]["page"]["records"][0]["yearEnergyStr"];
+                data=null;
 
                 // Format Last Update
                 var i = Time.Gregorian.Info(Time.now(), 0); //Time.FORMAT_SHORT
@@ -530,125 +443,16 @@ function retrieveSettings() {
                 ]));
                 data=null;
             }
-            else
-            {
-                setNotParsable();
-            }
-            makeReqPlantMonthStats();
-        }
-    }
-
-    function makeReqPlantMonthStats() as Void
-    {
-        //System.println("SolisWidgetView:makeReqPlantMonthStats");
-
-        // Show refreshing page
-        showErr=false; // turn off an error screen (if any)
-        showRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
-        //WatchUi.requestUpdate();
-        //System.println("makeReq uid:"+uid);
-        var dateToday = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
-        var dateTodayString = Lang.format("$1$-$2$-$3$",[
-            dateToday.year,
-            dateToday.month,
-            dateToday.day
-            ]
-        );
-        var url =  baseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_month2?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
-
-        // Make the authentication request
-        //System.println("makeReq url:"+url);
-        Communications.makeWebRequest(url,{},{
-                    :method => Communications.HTTP_REQUEST_METHOD_GET,
-                    :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-        },method(:onRecPlantMonthStats));
-    }
-
-    function onRecPlantMonthStats(rspCode  as Number, data as Dictionary or String or Null) as Void
-    {
-        //System.println("SolisWidgetView:onRecPlantMonthStats");
-
-        showErr = procRespCode(rspCode,data);
-        if(showErr){
-            WatchUi.requestUpdate();
-        }
-        else{
-            WatchUi.requestUpdate();
-            if (data instanceof Dictionary)
-            {
-                var pwr = 0;
-                for(var i=0;i<(data["list"]).size();i++) {
-                    //System.println("day "+ data["list"][i]["month"] +"="+ data["list"][i]["energy"]);
-                    pwr = pwr + data["list"][i]["energy"];
-                }
-                thisMonth= frmtEnergy(pwr);
-                //System.println("thisMonth: " + thisMonth);
-                data=null;
-            }
-            else {
-                setNotParsable();
-            }
-            makeReqPlantYrStats();
-        }
-    }
-
-    function makeReqPlantYrStats() as Void
-    {
-        //System.println("SolisWidgetView:makeReqPlantYrStats");
-
-        // Show refreshing page
-        showErr=false; // turn off an error screen (if any)
-        showRefrsh=true; // make sure refreshingscreen is shown when updating the UI.
-        //WatchUi.requestUpdate();
-        //System.println("makeReq uid:"+uid);
-        var dateToday = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
-        var dateTodayString = Lang.format("$1$-$2$-$3$",[
-            dateToday.year.format("%02u"),
-            dateToday.month.format("%02u"),
-            dateToday.day.format("%02u")
-            ]
-        );
-
-        var url =  baseUrl+"/v/ap.2.0/plant/get_plant_powerout_statics_year?date=" + dateTodayString + "&uid=" + uid.toString() + "&plant_id=" + plantid.toString();
-
-        // Make the authentication request
-        //System.println("makeReq url:"+url);
-        Communications.makeWebRequest(url,{},{
-                    :method => Communications.HTTP_REQUEST_METHOD_GET,
-                    :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-        },method(:onRecPlantYrStats));
-    }
-
-    function onRecPlantYrStats(rspCode  as Number, data as Dictionary or String or Null) as Void
-    {
-        //System.println("SolisWidgetView:onRecPlantYrStats");
-
-        showErr = procRespCode(rspCode, data);
-        if(showErr){
-            WatchUi.requestUpdate();
-        }
-        else{
-            WatchUi.requestUpdate();
-
-            // Format total
-            total = frmtEnergy(data["total"]);
-            //System.println("total_energy: "+pwr + " total: " + total);
-
-            if (data instanceof Dictionary)
-            {
-                var pwr = 0;
-                var listsize = (data["list"]).size() - 1;
-                pwr = data["list"][listsize]["energy"];
-                thisYear = frmtEnergy(pwr);
-                //System.println("yearly_energy: "+pwr + " thisYear: " + thisYear);
-                data=null;
-            }
-            else
-            {
-                setNotParsable();
+            catch (ex) {
+                showErr=true;
+                plantid = null;
+                errStr1=WatchUi.loadResource(Rez.Strings.E4);
+                errStr2=WatchUi.loadResource(Rez.Strings.E5);
+                errStr3=WatchUi.loadResource(Rez.Strings.E6);
+                errStr4="";
+                WatchUi.requestUpdate();
             }
         }
-        //WatchUi.requestUpdate();
     }
 
     // Load your resources here
