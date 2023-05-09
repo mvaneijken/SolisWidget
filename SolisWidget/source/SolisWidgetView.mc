@@ -87,12 +87,11 @@ class SolisWidgetView extends WatchUi.View {
         //System.println("getDevPartNr: " + System.getDeviceSettings().partNumber;
         retrieveSettings();
         View.initialize();
-
         //logo = WatchUi.loadResource(Rez.Drawables.logo);
         //icon = WatchUi.loadResource(Rez.Drawables.icon);
     }
 
-    function retrieveSettings() {
+function retrieveSettings() {
         //System.println("SolisWidgetView:retrieveSettings");
         // Get Username From settings
         usr = Application.getApp().getProperty("PUN");
@@ -363,19 +362,18 @@ class SolisWidgetView extends WatchUi.View {
         var path = "/v1/api/userStationList";
         var url =  baseUrl+path;
 
-        var body = {
-            "pageNo" => 1,
-            "pageSize" => 10
-        };
-        System.println(json.dumps({ "one" => 1, "two" => 2.0d, "three" => [ { "a" => [] } ] }));
-        var bodyString = json.dumps({
-            "pageNo" => 1,
-            "pageSize" => 10
-        });
-
+        // Created using Powershell:
+        //$Json = '{
+        //    "pageNo": 1,
+        //    "pageSize": 10
+        //}'
+        //$Bytes = [System.Text.Encoding]::UTF8.GetBytes($Json)
+        //[convert]::ToBase64String($Bytes)
+        var base64Body = "ewogICAgInBhZ2VObyI6IDEsCiAgICAicGFnZVNpemUiOiAxMAp9";
+        var body = Conversion.Base64StringToString(base64Body);
 
         // hash body to MD5
-        var body_byte_array = Conversion.StringToByteArray(bodyString);
+        var body_byte_array = Conversion.StringToByteArray(body);
         var md5hash = Hash.NewMd5HashObject();
         var md5hash_bytes = Hash.ComputeHash(md5hash,body_byte_array);
         var contentMd5 = Conversion.ByteArrayToBase64String(md5hash_bytes);
