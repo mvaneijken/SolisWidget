@@ -385,10 +385,12 @@ function retrieveSettings() {
         var key = usr;
         var secret = Conversion.StringToByteArray(pwrd);
         var message = "POST\n" + contentMd5 + "\napplication/json\n" + date + "\n" + path;
-        var auth_byte_array = Conversion.StringToByteArray(message);
-        var sha1hash = Hash.NewSha1HashBasedMessageAuthenticationCodeObject(secret);
-        var sha1hash_bytes = Hash.ComputeHash(sha1hash,auth_byte_array);
-        var hmacSha1Base64 = Conversion.ByteArrayToBase64String(sha1hash_bytes);
+        //var auth_byte_array = Conversion.StringToByteArray(message);
+        var sha1hash_string = Hash.generateSaltedSHA1(message,secret);
+        //var sha1hash = Hash.NewSha1HashBasedMessageAuthenticationCodeObject(secret);
+        //var sha1hash_bytes = Hash.ComputeHash(sha1hash,auth_byte_array);
+        //var hmacSha1Base64 = Conversion.ByteArrayToBase64String(sha1hash_bytes);
+        var hmacSha1Base64 = Conversion.StringToBase64String(sha1hash_string);
         var authorization = "API " + key + ":" + hmacSha1Base64;
 
         var headers = {
