@@ -40,7 +40,7 @@ class SolisWidgetDelegate extends WatchUi.BehaviorDelegate {
 
     function onSwipe(evt) {
         //System.println("SolisWidgetDelegate:onSwipe");
-        var swipe as Number = evt.getDirection();
+        var swipe = evt.getDirection();
 
         if (swipe == SWIPE_UP) {
             PreviousPage();
