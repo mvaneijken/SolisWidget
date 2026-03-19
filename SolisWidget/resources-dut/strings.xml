@@ -5,9 +5,9 @@
     <string id="E2">of controleer</string>
     <string id="E3">instellingen</string>
 
-    <string id="E4">Geen Plant Id ontvangen</string>
+    <string id="E4">Geen Station Id ontvangen</string>
     <string id="E5">Kan niet verder</string>
-    <string id="E6">Check Solis Portal</string>
+    <string id="E6">Check SolisCloud Portal</string>
 
     <string id="B1">Geen verbinding</string>
     <string id="B2">Controleer verbinding</string>
@@ -17,8 +17,8 @@
     <string id="I2">Controleer instellingen</string>
     <string id="I3">Garmin Connect/Express</string>
 
-    <string id="A1">Login fout</string>
-    <string id="A2">Check inloggegevens</string>
+    <string id="A1">API fout</string>
+    <string id="A2">Check API sleutel</string>
     <string id="A3">in app</string>
 
     <string id="N1">Geen Internet"</string>
@@ -34,11 +34,11 @@
     <string id="O5">Totaal</string>
     <string id="O6">Overzicht</string>
 
-    <string id="C1">Gebruikersnaam</string>
-    <string id="C2">Wachtwoord</string>
+    <string id="C1">API Sleutel</string>
+    <string id="C2">API Geheim</string>
 
-    <string id="UI">Solis User Identifier</string>
-    <string id="PI">Solis Site Identifier</string>
+    <string id="SI">Solis Station Identifier</string>
+    <string id="II">Solis Omvormer Identifier</string>
 
     <string id="GL" scope="glance">Update nodig</string>
 </strings>
