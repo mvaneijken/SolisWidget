@@ -9,24 +9,24 @@
     <string id="E5">Cannot continue</string>
     <string id="E6">Check SolisCloud Portal</string>
 
-    <string id="B1">No Connection</string>
+    <string id="B1" scope="background">No Connection</string>
     <string id="B2">Check connection</string>
     <string id="B3">with mobile phone</string>
 
-    <string id="I1">Invalid settings</string>
+    <string id="I1" scope="background">Invalid settings</string>
     <string id="I2">Validate in Garmin</string>
     <string id="I3">Connect/Express</string>
 
-    <string id="A1">API error</string>
+    <string id="A1" scope="background">API error</string>
     <string id="A2">Check API key</string>
     <string id="A3">in app</string>
 
-    <string id="N1">No Internet"</string>
+    <string id="N1" scope="background">No Internet"</string>
     <string id="N2">turn on wifi or data"</string>
     <string id="N3">connection on phone"</string>
 
     <string id="SP">Starting Page</string>
-    <string id="UP">Updating...</string>
+    <string id="UP" scope="background">Updating...</string>
     <string id="O1">Current</string>
     <string id="O2">Today</string>
     <string id="O3">Month</string>
