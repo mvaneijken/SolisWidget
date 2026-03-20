@@ -3,7 +3,7 @@
 <iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
     <iq:application entry="SolisWidgetApp" id="37ec15cd7a8b4fe5930dacd1dacc3894" launcherIcon="@Drawables.icon" minApiLevel="3.0.0" name="@Strings.AppName" type="widget" version="0.0.1">
         <iq:products>
-            <!-- Devices supporting Connect IQ SDK 3.2+ (required for Toybox.Cryptography) -->
+            <!-- Devices supporting Connect IQ SDK 3.0+ (required for Toybox.Cryptography) -->
             <iq:product id="approachs50"/>
             <iq:product id="approachs62"/>
             <iq:product id="approachs7042mm"/>

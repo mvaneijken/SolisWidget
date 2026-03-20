@@ -2,6 +2,7 @@
 
 using Toybox.WatchUi;
 using Toybox.Application;
+using Toybox.Time;
 
 (:glance)
 class SolisWidgetGlanceView extends WatchUi.GlanceView {
@@ -9,6 +10,18 @@ class SolisWidgetGlanceView extends WatchUi.GlanceView {
     function initialize() {
         //System.println("SolisWidgetGlanceView:initialize");
         GlanceView.initialize();
+    }
+
+    function onShow() {
+        var app = Application.getApp();
+        app.retrieveSettings();
+        $.gIsGlance = true;
+        var lastFetch = app.getProperty("PFT");
+        var now = Time.now().value();
+        //TODO: Not working now, needs to be investigated
+        // if (lastFetch == null || (now - lastFetch) > 60) {
+        //     app.makeReq();
+        // }
     }
 
     function onUpdate(dc) {
@@ -21,6 +34,16 @@ class SolisWidgetGlanceView extends WatchUi.GlanceView {
         var font = 2; //Graphics.FONT_SMALL;
         var fontHeight = Graphics.getFontHeight(font);
 
+        if($.showErr){
+            showRefrsh = false;
+        }
+
+        if (showRefrsh) {
+            dc.drawText(dc.getWidth()/2, 0, font, WatchUi.loadResource(Rez.Strings.AppName), 1);
+            dc.drawText(dc.getWidth()/2, fontHeight, font, WatchUi.loadResource(Rez.Strings.UP), 1);
+            return;
+        }
+
         var lineOneValue = Application.getApp().getProperty("glanceName");
         var lineTwoValue = Application.getApp().getProperty("glanceVal");
 
@@ -29,7 +52,11 @@ class SolisWidgetGlanceView extends WatchUi.GlanceView {
             lineTwoValue = WatchUi.loadResource(Rez.Strings.GL);
         }
 
-        var height = dc.getHeight();
+        if($.showErr) {
+            lineOneValue = WatchUi.loadResource(Rez.Strings.AppName);
+            lineTwoValue = errStr1;
+        }
+
         var lineOnePosY = 0;
         var lineTwoPosY = lineOnePosY + ((fontHeight/2) + (fontHeight/2));
 

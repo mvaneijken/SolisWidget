@@ -9,24 +9,24 @@
     <string id="E5">Kan niet verder</string>
     <string id="E6">Check SolisCloud Portal</string>
 
-    <string id="B1">Geen verbinding</string>
+    <string id="B1" scope="background">Geen verbinding</string>
     <string id="B2">Controleer verbinding</string>
     <string id="B3">met telefoon</string>
 
-    <string id="I1">Config fout</string>
+    <string id="I1" scope="background">Config fout</string>
     <string id="I2">Controleer instellingen</string>
     <string id="I3">Garmin Connect/Express</string>
 
-    <string id="A1">API fout</string>
+    <string id="A1" scope="background">API fout</string>
     <string id="A2">Check API sleutel</string>
     <string id="A3">in app</string>
 
-    <string id="N1">Geen Internet"</string>
+    <string id="N1" scope="background">Geen Internet"</string>
     <string id="N2">Zet internetverbinding"</string>
     <string id="N3">aan op telefoon"</string>
 
     <string id="SP">Startpagina</string>
-    <string id="UP">Verversen...</string>
+    <string id="UP" scope="background">Verversen...</string>
     <string id="O1">Huidig</string>
     <string id="O2">Vandaag</string>
     <string id="O3">Maand</string>
