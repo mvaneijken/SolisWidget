@@ -28,7 +28,10 @@ var lastUpdTmLocal;
 var lastUpdDtLocal;
 var lstUpd;
 var baseUrl = "https://www.soliscloud.com:13333";
+var legacyBaseUrl = "https://apic-cdn.solarman.cn";
 var stationId = ""; // station ID cached from userStationList
+var legacyUserId = -1;
+var legacyPlantId = -1;
 var glanceName;
 var glanceVal;
 var fUpdt = false;
@@ -37,8 +40,11 @@ var gIsGlance = false;    // true when API is triggered from glance context (no 
 
 // Settings
 var currPage;
+var apiType = 1;
 var apiKey = "";
 var apiSecret = "";
+var legacyUser = "";
+var legacyPassword = "";
 
 function NextPage()
 {

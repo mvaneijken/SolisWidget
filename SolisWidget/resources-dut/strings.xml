@@ -26,6 +26,9 @@
     <string id="N3">aan op telefoon"</string>
 
     <string id="SP">Startpagina</string>
+    <string id="AT">API Type</string>
+    <string id="AT1">SolisCloud API v2</string>
+    <string id="AT2">Legacy Solarman API</string>
     <string id="UP" scope="background">Verversen...</string>
     <string id="O1">Huidig</string>
     <string id="O2">Vandaag</string>
@@ -36,8 +39,12 @@
 
     <string id="C1">API Sleutel</string>
     <string id="C2">API Geheim</string>
+    <string id="C3">Gebruikersnaam (Legacy)</string>
+    <string id="C4">Wachtwoord (Legacy)</string>
 
     <string id="SI">Solis Station Identifier</string>
+    <string id="UI">Solis User Identifier</string>
+    <string id="PI">Solis Plant Identifier</string>
     <string id="II">Solis Omvormer Identifier</string>
 
     <string id="GL" scope="glance">Update nodig</string>

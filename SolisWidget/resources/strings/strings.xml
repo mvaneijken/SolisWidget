@@ -26,6 +26,9 @@
     <string id="N3">connection on phone"</string>
 
     <string id="SP">Starting Page</string>
+    <string id="AT">API Type</string>
+    <string id="AT1">SolisCloud API v2</string>
+    <string id="AT2">Legacy Solarman API</string>
     <string id="UP" scope="background">Updating...</string>
     <string id="O1">Current</string>
     <string id="O2">Today</string>
@@ -36,8 +39,12 @@
 
     <string id="C1">API Key</string>
     <string id="C2">API Secret</string>
+    <string id="C3">Username (Legacy)</string>
+    <string id="C4">Password (Legacy)</string>
 
     <string id="SI">Solis Station Identifier</string>
+    <string id="UI">Solis User Identifier</string>
+    <string id="PI">Solis Plant Identifier</string>
     <string id="II">Solis Inverter Identifier</string>
 
 

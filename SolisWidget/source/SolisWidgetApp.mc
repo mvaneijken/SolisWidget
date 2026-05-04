@@ -52,6 +52,17 @@ class SolisWidgetApp extends Application.AppBase {
     // -------------------------------------------------------------------------
 
     function retrieveSettings() {
+        apiType = getProperty("PAT");
+        if (apiType == null) {
+            apiType = 1;
+        }
+        if (apiType instanceof String) {
+            apiType = apiType.toNumber();
+        }
+        if (apiType != 1 && apiType != 2) {
+            apiType = 1;
+        }
+
         apiKey = getProperty("PAK");
         if (apiKey == null) {
             apiKey = "";
@@ -60,6 +71,16 @@ class SolisWidgetApp extends Application.AppBase {
         apiSecret = getProperty("PSK");
         if (apiSecret == null) {
             apiSecret = "";
+        }
+
+        legacyUser = getProperty("PUN");
+        if (legacyUser == null) {
+            legacyUser = "";
+        }
+
+        legacyPassword = getProperty("PPS");
+        if (legacyPassword == null) {
+            legacyPassword = "";
         }
 
         currPage = getProperty("PSP");
@@ -72,10 +93,44 @@ class SolisWidgetApp extends Application.AppBase {
             stationId = "";
         }
 
-        // Reset cached station ID if API credentials have changed
+        legacyUserId = getProperty("PUI");
+        if (legacyUserId == null) {
+            legacyUserId = -1;
+        } else if (legacyUserId instanceof String) {
+            if (legacyUserId.equals("")) {
+                legacyUserId = -1;
+            } else {
+                legacyUserId = legacyUserId.toNumber();
+            }
+        }
+
+        legacyPlantId = getProperty("PPI");
+        if (legacyPlantId == null) {
+            legacyPlantId = -1;
+        } else if (legacyPlantId instanceof String) {
+            if (legacyPlantId.equals("")) {
+                legacyPlantId = -1;
+            } else {
+                legacyPlantId = legacyPlantId.toNumber();
+            }
+        }
+
+        // Reset cache when API type changes
+        var storedApiType = getProperty("currApiType");
+        if (storedApiType instanceof String) {
+            storedApiType = storedApiType.toNumber();
+        }
+        if (storedApiType != null && storedApiType != apiType) {
+            stationId = "";
+            legacyUserId = -1;
+            legacyPlantId = -1;
+        }
+
+        // Reset cached station ID if API key credentials have changed
         var storedKey = getProperty("currApiKey");
         var storedSecret = getProperty("currApiSecret");
         if (
+            !isLegacyApiType() &&
             storedKey != null &&
             !storedKey.equals("") &&
             !apiKey.equals(storedKey)
@@ -83,6 +138,7 @@ class SolisWidgetApp extends Application.AppBase {
             stationId = "";
         }
         if (
+            !isLegacyApiType() &&
             storedSecret != null &&
             !storedSecret.equals("") &&
             !apiSecret.equals(storedSecret)
@@ -90,8 +146,34 @@ class SolisWidgetApp extends Application.AppBase {
             stationId = "";
         }
 
+        // Reset cached legacy IDs if legacy credentials have changed
+        var storedUser = getProperty("currUsr");
+        var storedPassword = getProperty("currPwrd");
+        if (
+            isLegacyApiType() &&
+            storedUser != null &&
+            !storedUser.equals("") &&
+            !legacyUser.equals(storedUser)
+        ) {
+            legacyUserId = -1;
+            legacyPlantId = -1;
+        }
+        if (
+            isLegacyApiType() &&
+            storedPassword != null &&
+            !storedPassword.equals("") &&
+            !legacyPassword.equals(storedPassword)
+        ) {
+            legacyUserId = -1;
+            legacyPlantId = -1;
+        }
+
         glanceName = getProperty("AppName");
         glanceVal = "";
+    }
+
+    function isLegacyApiType() {
+        return apiType == 2;
     }
 
     // -------------------------------------------------------------------------
@@ -168,28 +250,48 @@ class SolisWidgetApp extends Application.AppBase {
         return ba;
     }
 
+    function frmtEnergy(pwr) {
+        try {
+            pwr = pwr.toFloat();
+        } catch (ex) {
+            pwr = null;
+        }
+
+        if (pwr != null) {
+            if (pwr < 1) {
+                return (pwr * 1000).toNumber() + " Wh";
+            }
+            return pwr.format("%.1f") + " kWh";
+        }
+        return "No data received";
+    }
+
     // HMAC-SHA1 implemented manually using Cryptography.Hash (Garmin SDK has no Mac class).
     // keyBytes and msgBytes must be ByteArray.
     // Returns ByteArray (20-byte SHA1 digest).
     function hmacSha1(keyBytes, msgBytes) {
         var blockSize = 64;
+        var key = new [keyBytes.size()]b;
+        for (var i = 0; i < keyBytes.size(); i++) {
+            key[i] = keyBytes[i] & 0xff;
+        }
 
         // If key is longer than the block size, hash it first
-        if (keyBytes.size() > blockSize) {
+        if (key.size() > blockSize) {
             var h = new Cryptography.Hash({
                 :algorithm => Cryptography.HASH_SHA1,
             });
-            h.update(keyBytes);
-            keyBytes = h.digest();
+            h.update(key);
+            key = h.digest();
         }
 
         // Pad key to blockSize with zeros, build ipad and opad as ByteArrays
         var ipad = new [blockSize]b;
         var opad = new [blockSize]b;
-        for (var i = 0; i < blockSize; i++) {
-            var kb = i < keyBytes.size() ? keyBytes[i] & 0xff : 0;
-            ipad[i] = (kb ^ 0x36) & 0xff;
-            opad[i] = (kb ^ 0x5c) & 0xff;
+        for (var j = 0; j < blockSize; j++) {
+            var kb = j < key.size() ? key[j] & 0xff : 0;
+            ipad[j] = (kb ^ 0x36) & 0xff;
+            opad[j] = (kb ^ 0x5c) & 0xff;
         }
 
         // inner = SHA1(ipad || message)
@@ -280,25 +382,53 @@ class SolisWidgetApp extends Application.AppBase {
 
         if (rspCode == 200) {
             $.showErr = false;
-            var isOk =
-                data != null &&
-                data["code"] != null &&
-                data["code"].equals("0");
-            System.println(
-                "HTTP 200  code=" +
-                    (data != null ? data["code"] : "null") +
-                    "  success=" +
-                    (data != null ? data["success"] : "null") +
-                    "  msg=" +
-                    (data != null ? data["msg"] : "null")
-            );
+            var isOk = false;
+            var errResultCode = -1;
+            var msg = "";
+            if (isLegacyApiType()) {
+                isOk =
+                    data != null &&
+                    data["result"] != null &&
+                    data["result"].toNumber() == 1;
+                errResultCode =
+                    data != null && data["result"] != null
+                        ? data["result"].toNumber()
+                        : -1;
+                msg = data != null && data["result"] != null
+                    ? data["result"].toString()
+                    : "null";
+                System.println(
+                    "HTTP 200  result=" +
+                        (data != null ? data["result"] : "null")
+                );
+            } else {
+                isOk =
+                    data != null &&
+                    data["code"] != null &&
+                    data["code"].equals("0");
+                msg = data != null && data["msg"] != null
+                    ? data["msg"].toString()
+                    : "";
+                System.println(
+                    "HTTP 200  code=" +
+                        (data != null ? data["code"] : "null") +
+                        "  success=" +
+                        (data != null ? data["success"] : "null") +
+                        "  msg=" +
+                        (data != null ? data["msg"] : "null")
+                );
+            }
+
             if (!isOk) {
                 $.showErr = true;
-                var msg = "";
-                if (data != null && data["msg"] != null) {
-                    msg = data["msg"].toString();
-                }
                 errStr1 = "API Err: " + msg;
+
+                if (isLegacyApiType()) {
+                    legacyUserId = -1;
+                    legacyPlantId = -1;
+                    setProperty("PUI", "");
+                    setProperty("PPI", "");
+                }
 
                 if ($.gIsGlance) {
                     // Show shorter error message in glance view
@@ -306,9 +436,15 @@ class SolisWidgetApp extends Application.AppBase {
                     errStr3 = "";
                     errStr4 = "";
                 } else {
-                    errStr2 = WatchUi.loadResource(Rez.Strings.A2);
-                    errStr3 = WatchUi.loadResource(Rez.Strings.A3);
-                    errStr4 = WatchUi.loadResource(Rez.Strings.E6);
+                    if (isLegacyApiType() && (errResultCode == 5 || errResultCode == 11)) {
+                        errStr2 = WatchUi.loadResource(Rez.Strings.A1);
+                        errStr3 = WatchUi.loadResource(Rez.Strings.A2);
+                        errStr4 = WatchUi.loadResource(Rez.Strings.A3);
+                    } else {
+                        errStr2 = WatchUi.loadResource(Rez.Strings.A2);
+                        errStr3 = WatchUi.loadResource(Rez.Strings.A3);
+                        errStr4 = WatchUi.loadResource(Rez.Strings.E6);
+                    }
                 }
                 data = null;
             }
@@ -400,12 +536,22 @@ class SolisWidgetApp extends Application.AppBase {
     function makeReq() {
         fUpdt = false;
 
-        if (
-            apiKey == null ||
-            apiKey.length() == 0 ||
-            apiSecret == null ||
-            apiSecret.length() == 0
-        ) {
+        var missingCredentials = false;
+        if (isLegacyApiType()) {
+            missingCredentials =
+                legacyUser == null ||
+                legacyUser.length() == 0 ||
+                legacyPassword == null ||
+                legacyPassword.length() == 0;
+        } else {
+            missingCredentials =
+                apiKey == null ||
+                apiKey.length() == 0 ||
+                apiSecret == null ||
+                apiSecret.length() == 0;
+        }
+
+        if (missingCredentials) {
             $.showErr = true;
             showRefrsh = false;
             if ($.gIsGlance) {
@@ -427,17 +573,298 @@ class SolisWidgetApp extends Application.AppBase {
         showRefrsh = true;
         WatchUi.requestUpdate();
 
-        if($.gIsGlance && currPage == 1){
-            makeReqInverterList();
+        setProperty("currApiType", apiType);
+
+        if (isLegacyApiType()) {
+            setProperty("currUsr", legacyUser);
+            setProperty("currPwrd", legacyPassword);
+            if (legacyUserId == null || legacyUserId < 0) {
+                makeReqLegacyLogin();
+            } else if (legacyPlantId == null || legacyPlantId < 0) {
+                makeReqLegacyPlantId();
+            } else {
+                makeReqLegacyPlantOverview();
+            }
+            return;
         }
-        else {
+
+        setProperty("currApiKey", apiKey);
+        setProperty("currApiSecret", apiSecret);
+
+        if ($.gIsGlance && currPage == 1) {
+            makeReqInverterList();
+        } else {
             if (stationId == null || stationId.equals("")) {
                 makeReqStationList();
-            }
-            else {
+            } else {
                 makeReqStationDetail();
             }
         }
+    }
+
+    // Legacy API step 1: Login with username/password
+    function makeReqLegacyLogin() {
+        var path = "/v/ap.2.0/cust/user/login";
+        var query =
+            "user_id=" +
+            legacyUser +
+            "&user_pass=" +
+            legacyPassword +
+            "&terminate=android&push_sn=9601b3865bdabf6ea01a7318ac5cc749&timezone=1&lan=en&country=CN&cust=659";
+
+        Communications.makeWebRequest(
+            legacyBaseUrl + path + "?" + query,
+            {},
+            {
+                :method => Communications.HTTP_REQUEST_METHOD_GET,
+                :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON,
+            },
+            method(:onRecLegacyLogin)
+        );
+    }
+
+    function onRecLegacyLogin(rspCode, data) {
+        $.showErr = procRespCode(rspCode, data);
+        if ($.showErr) {
+            WatchUi.requestUpdate();
+            return;
+        }
+
+        try {
+            legacyUserId = data["uid"].toNumber();
+            setProperty("PUI", legacyUserId.toString());
+        } catch (ex) {
+            $.showErr = true;
+            errStr1 = WatchUi.loadResource(Rez.Strings.A1);
+            errStr2 = WatchUi.loadResource(Rez.Strings.A2);
+            errStr3 = WatchUi.loadResource(Rez.Strings.A3);
+            errStr4 = "";
+            WatchUi.requestUpdate();
+            return;
+        }
+        makeReqLegacyPlantId();
+    }
+
+    // Legacy API step 2: Fetch plant ID for the user
+    function makeReqLegacyPlantId() {
+        var path = "/v/ap.2.0/plant/find_plant_list";
+        var query =
+            "uid=" +
+            legacyUserId.toString() +
+            "&sel_scope=1&sort_type=1";
+
+        Communications.makeWebRequest(
+            legacyBaseUrl + path + "?" + query,
+            {},
+            {
+                :method => Communications.HTTP_REQUEST_METHOD_GET,
+                :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON,
+            },
+            method(:onRecLegacyPlantId)
+        );
+    }
+
+    function onRecLegacyPlantId(rspCode, data) {
+        $.showErr = procRespCode(rspCode, data);
+        if ($.showErr) {
+            WatchUi.requestUpdate();
+            return;
+        }
+
+        try {
+            legacyPlantId = data["list"][0]["plant_id"].toNumber();
+            setProperty("PPI", legacyPlantId.toString());
+        } catch (ex) {
+            $.showErr = true;
+            errStr1 = WatchUi.loadResource(Rez.Strings.E4);
+            errStr2 = WatchUi.loadResource(Rez.Strings.E5);
+            errStr3 = WatchUi.loadResource(Rez.Strings.E6);
+            errStr4 = "";
+            WatchUi.requestUpdate();
+            return;
+        }
+        makeReqLegacyPlantOverview();
+    }
+
+    // Legacy API step 3: Fetch daily overview (current + today)
+    function makeReqLegacyPlantOverview() {
+        var dateToday = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+        var dateTodayString = Lang.format("$1$-$2$-$3$", [
+            dateToday.year.format("%04u"),
+            dateToday.month.format("%02u"),
+            dateToday.day.format("%02u"),
+        ]);
+        var path = "/v/ap.2.0/plant/get_plant_powerout_statics_day";
+        var query =
+            "date=" +
+            dateTodayString +
+            "&uid=" +
+            legacyUserId.toString() +
+            "&plant_id=" +
+            legacyPlantId.toString();
+
+        Communications.makeWebRequest(
+            legacyBaseUrl + path + "?" + query,
+            {},
+            {
+                :method => Communications.HTTP_REQUEST_METHOD_GET,
+                :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON,
+            },
+            method(:onRecLegacyPlantOverview)
+        );
+    }
+
+    function onRecLegacyPlantOverview(rspCode, data) {
+        $.showErr = procRespCode(rspCode, data);
+        if ($.showErr) {
+            WatchUi.requestUpdate();
+            return;
+        }
+
+        if (data instanceof Dictionary) {
+            try {
+                var currentPower = data["current"].toFloat();
+                if (currentPower < 1) {
+                    curr = currentPower + " W";
+                } else {
+                    curr = currentPower.format("%.2f") + " W";
+                }
+
+                today = frmtEnergy(data["energy"]);
+
+                var i = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+                lastUpdTmLocal = Lang.format("$1$:$2$:$3$", [
+                    i.hour.format("%02u"),
+                    i.min.format("%02u"),
+                    i.sec.format("%02u"),
+                ]);
+                lastUpdDtLocal = Lang.format("$1$-$2$-$3$", [
+                    i.year.format("%04u"),
+                    i.month.format("%02u"),
+                    i.day.format("%02u"),
+                ]);
+            } catch (ex) {
+                setNotParsable();
+                WatchUi.requestUpdate();
+                return;
+            }
+            makeReqLegacyPlantMonthStats();
+        } else {
+            setNotParsable();
+            WatchUi.requestUpdate();
+        }
+    }
+
+    // Legacy API step 4: Fetch month totals
+    function makeReqLegacyPlantMonthStats() {
+        var dateToday = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+        var dateTodayString = Lang.format("$1$-$2$-$3$", [
+            dateToday.year.format("%04u"),
+            dateToday.month.format("%02u"),
+            dateToday.day.format("%02u"),
+        ]);
+        var path = "/v/ap.2.0/plant/get_plant_powerout_statics_month2";
+        var query =
+            "date=" +
+            dateTodayString +
+            "&uid=" +
+            legacyUserId.toString() +
+            "&plant_id=" +
+            legacyPlantId.toString();
+
+        Communications.makeWebRequest(
+            legacyBaseUrl + path + "?" + query,
+            {},
+            {
+                :method => Communications.HTTP_REQUEST_METHOD_GET,
+                :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON,
+            },
+            method(:onRecLegacyPlantMonthStats)
+        );
+    }
+
+    function onRecLegacyPlantMonthStats(rspCode, data) {
+        $.showErr = procRespCode(rspCode, data);
+        if ($.showErr) {
+            WatchUi.requestUpdate();
+            return;
+        }
+
+        if (data instanceof Dictionary) {
+            try {
+                var monthPower = 0;
+                for (var i = 0; i < data["list"].size(); i++) {
+                    monthPower = monthPower + data["list"][i]["energy"];
+                }
+                thisMonth = frmtEnergy(monthPower);
+            } catch (ex) {
+                setNotParsable();
+                WatchUi.requestUpdate();
+                return;
+            }
+            makeReqLegacyPlantYearStats();
+        } else {
+            setNotParsable();
+            WatchUi.requestUpdate();
+        }
+    }
+
+    // Legacy API step 5: Fetch year/total and finalize refresh
+    function makeReqLegacyPlantYearStats() {
+        var dateToday = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+        var dateTodayString = Lang.format("$1$-$2$-$3$", [
+            dateToday.year.format("%04u"),
+            dateToday.month.format("%02u"),
+            dateToday.day.format("%02u"),
+        ]);
+        var path = "/v/ap.2.0/plant/get_plant_powerout_statics_year";
+        var query =
+            "date=" +
+            dateTodayString +
+            "&uid=" +
+            legacyUserId.toString() +
+            "&plant_id=" +
+            legacyPlantId.toString();
+
+        Communications.makeWebRequest(
+            legacyBaseUrl + path + "?" + query,
+            {},
+            {
+                :method => Communications.HTTP_REQUEST_METHOD_GET,
+                :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON,
+            },
+            method(:onRecLegacyPlantYearStats)
+        );
+    }
+
+    function onRecLegacyPlantYearStats(rspCode, data) {
+        $.showErr = procRespCode(rspCode, data);
+        if ($.showErr) {
+            WatchUi.requestUpdate();
+            return;
+        }
+
+        if (data instanceof Dictionary) {
+            try {
+                total = frmtEnergy(data["total"]);
+                var listSize = data["list"].size();
+                if (listSize > 0) {
+                    var yearPower = data["list"][listSize - 1]["energy"];
+                    thisYear = frmtEnergy(yearPower);
+                } else {
+                    thisYear = frmtEnergy(0);
+                }
+
+                lastFetchTime = Time.now().value();
+                setProperty("PFT", lastFetchTime);
+                $.updateGlanceProperties();
+            } catch (ex) {
+                setNotParsable();
+            }
+        } else {
+            setNotParsable();
+        }
+        WatchUi.requestUpdate();
     }
 
     // Step 1: Fetch station list to obtain stationId
