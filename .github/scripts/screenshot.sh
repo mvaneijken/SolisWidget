@@ -107,16 +107,23 @@ wait_for_device_window() {
 # time) — keep the newest successful image. import can hang on a dead
 # window, so the pipeline is bounded with timeout.
 capture() {
-    local page=$1 ok=1 i w
+    local page=$1 ok=1 i w dark
     local img="$ROOT/$OUT_DIR/${DEVICE_ID}-page$page.png"
-    for i in 1 2 3 4 5; do
+    for i in $(seq 1 12); do
         if ! kill -0 "$SIM_PID" 2>/dev/null; then break; fi
         find_main_window || break
         if timeout 15 bash -c "import -display '$DISPLAY' -window '$SIM_WIN' png:- | convert - -trim +repage '$img.tmp'" 2>/dev/null; then
             w=$(identify -format '%w' "$img.tmp" 2>/dev/null || echo 0)
-            if (( w > 500 )); then
+            # The widget draws white text on a black screen; before the app
+            # has launched the device screen is blank white — only accept a
+            # frame whose screen centre is dark
+            dark=$(convert "$img.tmp" -gravity center -crop 30%x30%+0+0 +repage -colorspace Gray -format '%[fx:mean<0.6?1:0]' info: 2>/dev/null || echo 0)
+            if (( w > 500 )) && [[ $dark == "1" ]]; then
                 mv "$img.tmp" "$img"
                 ok=0
+                # One more loop iteration replaces this frame with a newer
+                # one if the app redraws; two good frames are plenty
+                if (( i > 1 )); then break; fi
             fi
         fi
         sleep 2
@@ -127,6 +134,7 @@ capture() {
     else
         echo "No valid capture for page $page"
         tail -3 /tmp/simulator.log || true
+        tail -5 /tmp/monkeydo.log || true
     fi
     return $ok
 }
