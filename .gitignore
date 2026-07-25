@@ -1,3 +1,5 @@
 ﻿**/bin/**
 **/.vscode/**
 **/temp/**
+**/*.der
+key.pem
