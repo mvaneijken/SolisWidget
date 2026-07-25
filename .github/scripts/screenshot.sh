@@ -3,6 +3,12 @@
 # (monkey-demo.jungle) which shows realistic values without network access.
 # One screenshot is saved per widget page (6 pages).
 #
+# The simulator segfaults roughly 20-30 seconds after startup under Xvfb,
+# and also crashes on synthetic key/mouse input. So: no input events are
+# used at all, and the simulator is restarted for every page. The demo
+# build advances to the next page on each app launch (a counter in app
+# storage, which persists on disk across simulator restarts).
+#
 # Designed to run inside the ghcr.io/matco/connectiq-tester container:
 #
 #   docker run --rm -v "$PWD":/work -w /work --entrypoint bash \
@@ -14,7 +20,6 @@ set -u
 DEVICE_ID=${1:?device id required}
 OUT_DIR=${2:-screenshots}
 
-# Kill the simulator and Xvfb when the script exits
 trap 'kill $(jobs -p) 2>/dev/null' EXIT
 
 echo "Installing capture tools..."
@@ -42,24 +47,23 @@ Xvfb "$DISPLAY" -screen 0 1600x1200x24 &
 sleep 2
 
 SIM_PID=0
+SIM_WIN=""
 
 start_sim_and_app() {
-    echo "Starting headless simulator..."
     simulator > /tmp/simulator.log 2>&1 &
     SIM_PID=$!
-    sleep 8
+    sleep 6
     if ! kill -0 "$SIM_PID" 2>/dev/null; then
         echo "Simulator died during startup:"
         tail -5 /tmp/simulator.log || true
         return 1
     fi
 
-    echo "Launching widget in the simulator..."
     monkeydo bin/demo.prg "$DEVICE_ID" > /tmp/monkeydo.log 2>&1 &
-    sleep 12
+    sleep 8
 
     if ! kill -0 "$SIM_PID" 2>/dev/null; then
-        echo "Simulator died while running the app:"
+        echo "Simulator died while launching the app:"
         tail -5 /tmp/simulator.log || true
         tail -5 /tmp/monkeydo.log || true
         return 1
@@ -67,60 +71,50 @@ start_sim_and_app() {
     return 0
 }
 
-# The simulator occasionally crashes under Xvfb — retry once
-if ! start_sim_and_app; then
-    echo "Retrying simulator start..."
-    kill $(jobs -p) 2>/dev/null
-    sleep 2
-    Xvfb "$DISPLAY" -screen 0 1600x1200x24 2>/dev/null &
-    sleep 2
-    start_sim_and_app || { echo "Simulator failed twice, giving up."; exit 1; }
-fi
-
-echo "Windows on the display:"
-xwininfo -root -tree -display "$DISPLAY" | grep -E '^\s+0x' || true
-
-# Find the main simulator window: several windows share the "simulator"
-# class, so pick the largest one (the device rendering)
-BEST_AREA=0
-SIM_WIN=""
-WX=0; WY=0; WW=0; WH=0
-for id in $(xdotool search --class "simulator" 2>/dev/null); do
-    eval "$(xdotool getwindowgeometry --shell "$id" 2>/dev/null)" || continue
-    area=$((WIDTH * HEIGHT))
-    if (( area > BEST_AREA )); then
-        BEST_AREA=$area
-        SIM_WIN=$id
-        WX=$X; WY=$Y; WW=$WIDTH; WH=$HEIGHT
-    fi
-done
-if [[ -z $SIM_WIN ]]; then
-    echo "Could not find the simulator window!"
-    exit 1
-fi
-echo "Main simulator window: $SIM_WIN (${WW}x${WH}+${WX}+${WY})"
+# Several simulator windows share the same class; the largest one holds
+# the device rendering
+find_main_window() {
+    local best_area=0 id area
+    SIM_WIN=""
+    for id in $(xdotool search --class "simulator" 2>/dev/null); do
+        eval "$(xdotool getwindowgeometry --shell "$id" 2>/dev/null)" || continue
+        area=$((WIDTH * HEIGHT))
+        if (( area > best_area )); then
+            best_area=$area
+            SIM_WIN=$id
+        fi
+    done
+    [[ -n $SIM_WIN ]]
+}
 
 capture() {
-    if ! kill -0 "$SIM_PID" 2>/dev/null; then
-        echo "Simulator is no longer running at page $1!"
-        tail -5 /tmp/simulator.log || true
-        return 1
-    fi
     import -display "$DISPLAY" -window "$SIM_WIN" png:- \
         | convert - -trim +repage "$ROOT/$OUT_DIR/${DEVICE_ID}-page$1.png"
     echo "Captured page $1: $(identify -format '%wx%h' "$ROOT/$OUT_DIR/${DEVICE_ID}-page$1.png" 2>/dev/null || echo missing)"
 }
 
-# Capture all six pages. The simulator crashes on synthetic key/mouse
-# input under Xvfb, so no input is sent at all: the demo build cycles to
-# the next page on every app launch (a counter in app storage), and the
-# app is simply relaunched with monkeydo between captures.
-echo "Capturing all pages..."
-capture 1 || exit 1
-for page in 2 3 4 5 6; do
-    monkeydo bin/demo.prg "$DEVICE_ID" > /tmp/monkeydo.log 2>&1 &
-    sleep 10
-    capture "$page" || exit 1
+stop_sim() {
+    kill "$SIM_PID" 2>/dev/null
+    wait "$SIM_PID" 2>/dev/null
+    pkill -f monkeydo 2>/dev/null
+    sleep 1
+}
+
+page_cycle() {
+    local page=$1
+    start_sim_and_app || { stop_sim; return 1; }
+    find_main_window || { echo "No simulator window found"; stop_sim; return 1; }
+    capture "$page" || { stop_sim; return 1; }
+    stop_sim
+    return 0
+}
+
+echo "Capturing all pages (fresh simulator per page)..."
+for page in 1 2 3 4 5 6; do
+    if ! page_cycle "$page"; then
+        echo "Retrying page $page..."
+        page_cycle "$page" || { echo "Page $page failed twice, giving up."; exit 1; }
+    fi
 done
 
 # Validate: a blank display trims down to a tiny image
