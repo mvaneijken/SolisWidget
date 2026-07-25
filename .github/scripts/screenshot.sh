@@ -94,7 +94,6 @@ wait_for_device_window() {
             return 1
         fi
         if find_main_window && (( SIM_AREA > 400000 )); then
-            sleep 2
             return 0
         fi
         sleep 1
@@ -103,10 +102,33 @@ wait_for_device_window() {
     return 1
 }
 
+# Capture the device window repeatedly (the widget needs a moment to
+# draw after the window appears, and the simulator can crash at any
+# time) — keep the newest successful image. import can hang on a dead
+# window, so the pipeline is bounded with timeout.
 capture() {
-    import -display "$DISPLAY" -window "$SIM_WIN" png:- \
-        | convert - -trim +repage "$ROOT/$OUT_DIR/${DEVICE_ID}-page$1.png"
-    echo "Captured page $1: $(identify -format '%wx%h' "$ROOT/$OUT_DIR/${DEVICE_ID}-page$1.png" 2>/dev/null || echo missing)"
+    local page=$1 ok=1 i w
+    local img="$ROOT/$OUT_DIR/${DEVICE_ID}-page$page.png"
+    for i in 1 2 3 4 5; do
+        if ! kill -0 "$SIM_PID" 2>/dev/null; then break; fi
+        find_main_window || break
+        if timeout 15 bash -c "import -display '$DISPLAY' -window '$SIM_WIN' png:- | convert - -trim +repage '$img.tmp'" 2>/dev/null; then
+            w=$(identify -format '%w' "$img.tmp" 2>/dev/null || echo 0)
+            if (( w > 500 )); then
+                mv "$img.tmp" "$img"
+                ok=0
+            fi
+        fi
+        sleep 2
+    done
+    rm -f "$img.tmp"
+    if (( ok == 0 )); then
+        echo "Captured page $page: $(identify -format '%wx%h' "$img" 2>/dev/null)"
+    else
+        echo "No valid capture for page $page"
+        tail -3 /tmp/simulator.log || true
+    fi
+    return $ok
 }
 
 stop_sim() {
