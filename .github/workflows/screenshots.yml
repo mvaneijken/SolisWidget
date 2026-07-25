@@ -27,7 +27,7 @@ jobs:
       - name: Capture simulator screenshots
         run: >
           docker run --rm -v "$PWD":/work -w /work --entrypoint bash
-          -e SDK_VERSION=8.4.1
+          -e SDK_VERSION=9.1.0
           ghcr.io/matco/connectiq-tester:latest
           .github/scripts/screenshot.sh ${{ matrix.device }} screenshots
 
