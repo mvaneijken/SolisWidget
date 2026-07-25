@@ -31,18 +31,26 @@ apt-get install -y -qq --no-install-recommends \
 # The simulator bundled with SDK 9.2.0 segfaults in an internal worker
 # thread shortly after loading a device under Xvfb. Swap in an older
 # SDK's simulator/compiler — the image's device files are kept.
-SDK_VERSION=${SDK_VERSION:-7.1.1}
-echo "Downloading Connect IQ SDK $SDK_VERSION..."
 curl -fsS "https://developer.garmin.com/downloads/connect-iq/sdks/sdks.json" -o /tmp/sdks.json
-SDK_FILE=$(grep -o "connectiq-sdk-lin-${SDK_VERSION}[^\"]*" /tmp/sdks.json | head -1)
+echo "Available Linux SDKs:"
+grep -o 'connectiq-sdk-lin-[^"]*' /tmp/sdks.json | sort -uV
+if [[ -n ${SDK_VERSION:-} ]]; then
+    SDK_FILE=$(grep -o "connectiq-sdk-lin-${SDK_VERSION}[^\"]*" /tmp/sdks.json | head -1)
+else
+    # Default to the oldest SDK on offer — its simulator predates the
+    # worker-thread crash seen with the newest one
+    SDK_FILE=$(grep -o 'connectiq-sdk-lin-[^"]*' /tmp/sdks.json | sort -uV | head -1)
+fi
 if [[ -n $SDK_FILE ]]; then
+    echo "Downloading $SDK_FILE..."
     curl -fsS "https://developer.garmin.com/downloads/connect-iq/sdks/$SDK_FILE" -o /tmp/sdk.zip \
         && mkdir -p /opt/sdk-alt \
         && unzip -qo /tmp/sdk.zip -d /opt/sdk-alt \
-        && export PATH="/opt/sdk-alt/bin:$PATH" \
-        && echo "Using SDK: $(monkeyc --version 2>&1 | head -1)"
+        && chmod +x /opt/sdk-alt/bin/* 2>/dev/null \
+        && export PATH="/opt/sdk-alt/bin:$PATH"
+    echo "Using monkeyc: $(command -v monkeyc) — simulator: $(command -v simulator)"
 else
-    echo "SDK $SDK_VERSION not found in sdks.json — continuing with the image's SDK"
+    echo "No alternative SDK found — continuing with the image's SDK"
 fi
 
 # The simulator segfaults shortly after loading the device skin when no
@@ -115,8 +123,11 @@ wait_for_device_window() {
     for i in $(seq 1 25); do
         if ! kill -0 "$SIM_PID" 2>/dev/null; then
             echo "Simulator died while waiting for the device window:"
+            echo "--- simulator.log ---"
             cat /tmp/simulator.log || true
+            echo "--- monkeydo.log ---"
             cat /tmp/monkeydo.log || true
+            echo "--- end logs ---"
             return 1
         fi
         if find_main_window && (( SIM_AREA > 400000 )); then
