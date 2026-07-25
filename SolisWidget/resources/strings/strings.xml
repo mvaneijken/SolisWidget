@@ -21,9 +21,9 @@
     <string id="A2">Check API key</string>
     <string id="A3">in app</string>
 
-    <string id="N1" scope="background">No Internet"</string>
-    <string id="N2">turn on wifi or data"</string>
-    <string id="N3">connection on phone"</string>
+    <string id="N1" scope="background">No Internet</string>
+    <string id="N2">turn on wifi or data</string>
+    <string id="N3">connection on phone</string>
 
     <string id="SP">Starting Page</string>
     <string id="UP" scope="background">Updating...</string>

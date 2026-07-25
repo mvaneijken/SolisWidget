@@ -21,9 +21,9 @@
     <string id="A2">Check API sleutel</string>
     <string id="A3">in app</string>
 
-    <string id="N1" scope="background">Geen Internet"</string>
-    <string id="N2">Zet internetverbinding"</string>
-    <string id="N3">aan op telefoon"</string>
+    <string id="N1" scope="background">Geen Internet</string>
+    <string id="N2">Zet internetverbinding</string>
+    <string id="N3">aan op telefoon</string>
 
     <string id="SP">Startpagina</string>
     <string id="UP" scope="background">Verversen...</string>

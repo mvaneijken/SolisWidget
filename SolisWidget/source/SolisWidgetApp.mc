@@ -242,11 +242,11 @@ class SolisWidgetApp extends Application.AppBase {
             "Authorization" => Authorization,
         };
 
-        System.println("POST " + path);
-        System.println("  Date: " + dateStr);
-        System.println("  MD5:  " + md5b64);
-        System.println("  Sig:  " + signature);
-        System.println("  Body: " + bodyStr);
+        //System.println("POST " + path);
+        //System.println("  Date: " + dateStr);
+        //System.println("  MD5:  " + md5b64);
+        //System.println("  Sig:  " + signature);
+        //System.println("  Body: " + bodyStr);
         Communications.makeWebRequest(
             baseUrl + path,
             bodyParams,
@@ -284,14 +284,14 @@ class SolisWidgetApp extends Application.AppBase {
                 data != null &&
                 data["code"] != null &&
                 data["code"].equals("0");
-            System.println(
-                "HTTP 200  code=" +
-                    (data != null ? data["code"] : "null") +
-                    "  success=" +
-                    (data != null ? data["success"] : "null") +
-                    "  msg=" +
-                    (data != null ? data["msg"] : "null")
-            );
+            //System.println(
+            //    "HTTP 200  code=" +
+            //        (data != null ? data["code"] : "null") +
+            //        "  success=" +
+            //        (data != null ? data["success"] : "null") +
+            //        "  msg=" +
+            //        (data != null ? data["msg"] : "null")
+            //);
             if (!isOk) {
                 $.showErr = true;
                 var msg = "";
@@ -451,7 +451,7 @@ class SolisWidgetApp extends Application.AppBase {
     }
 
     function onRecStationList(rspCode, data) {
-        System.println("onRecStationList rspCode=" + rspCode + " data=" + data);
+        //System.println("onRecStationList rspCode=" + rspCode + " data=" + data);
         $.showErr = procRespCode(rspCode, data);
         if ($.showErr) {
             WatchUi.requestUpdate();
