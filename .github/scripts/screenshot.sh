@@ -80,35 +80,45 @@ fi
 echo "Windows on the display:"
 xwininfo -root -tree -display "$DISPLAY" | grep -E '^\s+0x' || true
 
-# No window manager runs in Xvfb, so grab the root display and trim the
-# black background down to the simulator window
+# Find the main simulator window: several windows share the "simulator"
+# class, so pick the largest one (the device rendering)
+BEST_AREA=0
+SIM_WIN=""
+WX=0; WY=0; WW=0; WH=0
+for id in $(xdotool search --class "simulator" 2>/dev/null); do
+    eval "$(xdotool getwindowgeometry --shell "$id" 2>/dev/null)" || continue
+    area=$((WIDTH * HEIGHT))
+    if (( area > BEST_AREA )); then
+        BEST_AREA=$area
+        SIM_WIN=$id
+        WX=$X; WY=$Y; WW=$WIDTH; WH=$HEIGHT
+    fi
+done
+if [[ -z $SIM_WIN ]]; then
+    echo "Could not find the simulator window!"
+    exit 1
+fi
+echo "Main simulator window: $SIM_WIN (${WW}x${WH}+${WX}+${WY})"
+
 capture() {
     if ! kill -0 "$SIM_PID" 2>/dev/null; then
         echo "Simulator is no longer running at page $1!"
         tail -5 /tmp/simulator.log || true
         return 1
     fi
-    import -display "$DISPLAY" -window root png:- \
+    import -display "$DISPLAY" -window "$SIM_WIN" png:- \
         | convert - -trim +repage "$ROOT/$OUT_DIR/${DEVICE_ID}-page$1.png"
     echo "Captured page $1: $(identify -format '%wx%h' "$ROOT/$OUT_DIR/${DEVICE_ID}-page$1.png" 2>/dev/null || echo missing)"
 }
 
-# Focus the simulator window so key presses reach it
-SIM_WIN=$(xdotool search --name "imulator" | head -1 || true)
-if [[ -z ${SIM_WIN} ]]; then
-    SIM_WIN=$(xdotool search --name ".*" | tail -1 || true)
-fi
-echo "Simulator window: ${SIM_WIN:-not found}"
-if [[ -n ${SIM_WIN} ]]; then
-    xdotool windowactivate "$SIM_WIN" 2>/dev/null || xdotool windowfocus "$SIM_WIN" 2>/dev/null || true
-fi
-
-# Capture all six pages: Enter maps to the START/select button in the
-# simulator, and onSelect advances the widget to the next page
+# Capture all six pages. All target devices have touchscreens, and a tap
+# on the screen triggers onSelect which advances to the next page. The
+# click is sent with XTEST (no window focus needed — focusing the
+# simulator's helper windows has crashed it before).
 echo "Capturing all pages..."
 capture 1 || exit 1
 for page in 2 3 4 5 6; do
-    xdotool key --clearmodifiers Return
+    xdotool mousemove --sync $((WX + WW / 2)) $((WY + WH / 2)) click 1
     sleep 3
     capture "$page" || exit 1
 done
