@@ -25,8 +25,25 @@ trap 'kill $(jobs -p) 2>/dev/null' EXIT
 echo "Installing capture tools and software OpenGL..."
 apt-get update -qq >/dev/null
 apt-get install -y -qq --no-install-recommends \
-    imagemagick xdotool x11-utils gdb \
+    imagemagick xdotool x11-utils gdb unzip curl ca-certificates \
     libgl1 libglx-mesa0 libgl1-mesa-dri libegl1 mesa-utils >/dev/null
+
+# The simulator bundled with SDK 9.2.0 segfaults in an internal worker
+# thread shortly after loading a device under Xvfb. Swap in an older
+# SDK's simulator/compiler — the image's device files are kept.
+SDK_VERSION=${SDK_VERSION:-7.1.1}
+echo "Downloading Connect IQ SDK $SDK_VERSION..."
+curl -fsS "https://developer.garmin.com/downloads/connect-iq/sdks/sdks.json" -o /tmp/sdks.json
+SDK_FILE=$(grep -o "connectiq-sdk-lin-${SDK_VERSION}[^\"]*" /tmp/sdks.json | head -1)
+if [[ -n $SDK_FILE ]]; then
+    curl -fsS "https://developer.garmin.com/downloads/connect-iq/sdks/$SDK_FILE" -o /tmp/sdk.zip \
+        && mkdir -p /opt/sdk-alt \
+        && unzip -qo /tmp/sdk.zip -d /opt/sdk-alt \
+        && export PATH="/opt/sdk-alt/bin:$PATH" \
+        && echo "Using SDK: $(monkeyc --version 2>&1 | head -1)"
+else
+    echo "SDK $SDK_VERSION not found in sdks.json — continuing with the image's SDK"
+fi
 
 # The simulator segfaults shortly after loading the device skin when no
 # usable OpenGL is present — force Mesa software rendering
