@@ -10,19 +10,8 @@ using Toybox.Application;
 using Toybox.Cryptography;
 using Toybox.System;
 
-// -----------------------------------------------------------------------------
-// Helpers
-// -----------------------------------------------------------------------------
-
-// Build a ByteArray of the given size where every byte has the same value
-(:test)
-function makeFilledBytes(size, value) {
-    var ba = new [size]b;
-    for (var i = 0; i < size; i++) {
-        ba[i] = value;
-    }
-    return ba;
-}
+// NOTE: every (:test) function is executed as a test by the runner, so this
+// file deliberately has no shared helper functions.
 
 // -----------------------------------------------------------------------------
 // base64Encode
@@ -48,7 +37,10 @@ function testBase64EncodeDigestSizes(logger) {
     var app = Application.getApp();
 
     // 16 bytes: the size of an MD5 digest (used for Content-MD5)
-    var md5Sized = makeFilledBytes(16, 0x00);
+    var md5Sized = new [16]b;
+    for (var i = 0; i < 16; i++) {
+        md5Sized[i] = 0x00;
+    }
     Test.assertEqualMessage(
         app.base64Encode(md5Sized),
         "AAAAAAAAAAAAAAAAAAAAAA==",
@@ -56,7 +48,10 @@ function testBase64EncodeDigestSizes(logger) {
     );
 
     // 20 bytes: the size of a SHA1 digest (used for the request signature)
-    var sha1Sized = makeFilledBytes(20, 0xff);
+    var sha1Sized = new [20]b;
+    for (var i = 0; i < 20; i++) {
+        sha1Sized[i] = 0xff;
+    }
     Test.assertEqualMessage(
         app.base64Encode(sha1Sized),
         "//////////////////////////8=",
@@ -136,7 +131,10 @@ function testHmacSha1KeyLongerThanBlockSize(logger) {
     // RFC 2202 test case 6: 80-byte key of 0xaa exercises the
     // "hash the key first when longer than the 64-byte block size" path.
     // HMAC-SHA1 = aa4ae5e15272d00e95705637ce8a3b55ed402112
-    var key = makeFilledBytes(80, 0xaa);
+    var key = new [80]b;
+    for (var i = 0; i < 80; i++) {
+        key[i] = 0xaa;
+    }
     var digest = app.hmacSha1(
         key,
         app.strToBytes("Test Using Larger Than Block-Size Key - Hash Key First")
