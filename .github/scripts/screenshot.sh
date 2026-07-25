@@ -25,7 +25,7 @@ trap 'kill $(jobs -p) 2>/dev/null' EXIT
 echo "Installing capture tools and software OpenGL..."
 apt-get update -qq >/dev/null
 apt-get install -y -qq --no-install-recommends \
-    imagemagick xdotool x11-utils \
+    imagemagick xdotool x11-utils gdb \
     libgl1 libglx-mesa0 libgl1-mesa-dri libegl1 mesa-utils >/dev/null
 
 # The simulator segfaults shortly after loading the device skin when no
@@ -58,7 +58,8 @@ SIM_PID=0
 SIM_WIN=""
 
 start_sim_and_app() {
-    simulator > /tmp/simulator.log 2>&1 &
+    # Run under gdb so a segfault yields a backtrace in the log
+    gdb -batch -ex run -ex 'bt 20' --args "$(command -v simulator)" > /tmp/simulator.log 2>&1 &
     SIM_PID=$!
     sleep 4
     if ! kill -0 "$SIM_PID" 2>/dev/null; then
@@ -141,8 +142,10 @@ capture() {
         echo "Captured page $page: $(identify -format '%wx%h' "$img" 2>/dev/null)"
     else
         echo "No valid capture for page $page"
-        tail -3 /tmp/simulator.log || true
-        tail -5 /tmp/monkeydo.log || true
+        echo "--- simulator.log ---"
+        cat /tmp/simulator.log || true
+        echo "--- monkeydo.log ---"
+        cat /tmp/monkeydo.log || true
     fi
     return $ok
 }
