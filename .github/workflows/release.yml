@@ -1,0 +1,67 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build signed store package and create release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare signing key
+        env:
+          CONNECTIQ_DEVELOPER_KEY: ${{ secrets.CONNECTIQ_DEVELOPER_KEY }}
+        run: |
+          if [ -z "$CONNECTIQ_DEVELOPER_KEY" ]; then
+            echo "::error::CONNECTIQ_DEVELOPER_KEY secret is not set. Store updates must be signed with the same developer key as the originally published app. Add the secret (base64 of your developer key .der file) under Settings > Secrets and variables > Actions, then re-run this workflow."
+            exit 1
+          fi
+          echo "$CONNECTIQ_DEVELOPER_KEY" | base64 -d > developer_key.der
+
+      - name: Verify tag matches manifest version
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          MANIFEST_VERSION=$(python3 -c "import xml.etree.ElementTree as ET; print(ET.parse('SolisWidget/manifest.xml').getroot().find('{http://www.garmin.com/xml/connectiq}application').get('version'))")
+          echo "Tag version: $TAG_VERSION — manifest version: $MANIFEST_VERSION"
+          if [ "$TAG_VERSION" != "$MANIFEST_VERSION" ]; then
+            echo "::error::Tag version ($TAG_VERSION) does not match the version in SolisWidget/manifest.xml ($MANIFEST_VERSION). Update the manifest before tagging."
+            exit 1
+          fi
+
+      - name: Run unit tests in the Connect IQ simulator
+        run: >
+          docker run --rm -v "$PWD":/work -w /work --entrypoint bash
+          ghcr.io/matco/connectiq-tester:latest
+          .github/scripts/run-tests.sh fenix7
+
+      - name: Build signed .iq for all supported devices
+        run: >
+          docker run --rm -v "$PWD":/work -w /work --entrypoint bash
+          ghcr.io/matco/connectiq-tester:latest
+          .github/scripts/build-iq.sh developer_key.der
+          "bin/SolisWidget-${GITHUB_REF_NAME#v}.iq"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: bin/SolisWidget-*.iq
+          generate_release_notes: true
+          body: |
+            ## Publishing to the Connect IQ store
+
+            Garmin provides no API for store uploads, so this final step is manual:
+
+            1. Download the attached `.iq` file.
+            2. Go to the [Connect IQ developer dashboard](https://apps.garmin.com/developer/dashboard) and open the SolisWidget app.
+            3. Upload the `.iq` file as a new version and fill in the "What's New" text.
+
+            > **Breaking change (0.1.0):** the widget now uses the SolisCloud API v2.
+            > Existing users must create an API Key/Secret in the SolisCloud portal and
+            > re-enter their credentials in the widget settings — the old username/password
+            > configuration no longer works. Mention this in the store "What's New" text.
