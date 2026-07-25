@@ -31,27 +31,24 @@ apt-get install -y -qq --no-install-recommends \
 # The simulator bundled with SDK 9.2.0 segfaults in an internal worker
 # thread shortly after loading a device under Xvfb. Swap in an older
 # SDK's simulator/compiler — the image's device files are kept.
-curl -fsS "https://developer.garmin.com/downloads/connect-iq/sdks/sdks.json" -o /tmp/sdks.json
-echo "Available Linux SDKs:"
-grep -o 'connectiq-sdk-lin-[^"]*' /tmp/sdks.json | sort -uV
+# Optionally replace the image's SDK (set SDK_VERSION). By default the
+# image's own SDK is used — the workflow pins an image tag whose SDK and
+# device files match and whose simulator is stable under Xvfb.
 if [[ -n ${SDK_VERSION:-} ]]; then
+    curl -fsS "https://developer.garmin.com/downloads/connect-iq/sdks/sdks.json" -o /tmp/sdks.json
     SDK_FILE=$(grep -o "connectiq-sdk-lin-${SDK_VERSION}[^\"]*" /tmp/sdks.json | head -1)
-else
-    # Default to the oldest SDK on offer — its simulator predates the
-    # worker-thread crash seen with the newest one
-    SDK_FILE=$(grep -o 'connectiq-sdk-lin-[^"]*' /tmp/sdks.json | sort -uV | head -1)
+    if [[ -n $SDK_FILE ]]; then
+        echo "Downloading $SDK_FILE..."
+        curl -fsS "https://developer.garmin.com/downloads/connect-iq/sdks/$SDK_FILE" -o /tmp/sdk.zip \
+            && mkdir -p /opt/sdk-alt \
+            && unzip -qo /tmp/sdk.zip -d /opt/sdk-alt \
+            && chmod +x /opt/sdk-alt/bin/* 2>/dev/null \
+            && export PATH="/opt/sdk-alt/bin:$PATH"
+    else
+        echo "SDK $SDK_VERSION not offered — continuing with the image's SDK"
+    fi
 fi
-if [[ -n $SDK_FILE ]]; then
-    echo "Downloading $SDK_FILE..."
-    curl -fsS "https://developer.garmin.com/downloads/connect-iq/sdks/$SDK_FILE" -o /tmp/sdk.zip \
-        && mkdir -p /opt/sdk-alt \
-        && unzip -qo /tmp/sdk.zip -d /opt/sdk-alt \
-        && chmod +x /opt/sdk-alt/bin/* 2>/dev/null \
-        && export PATH="/opt/sdk-alt/bin:$PATH"
-    echo "Using monkeyc: $(command -v monkeyc) — simulator: $(command -v simulator)"
-else
-    echo "No alternative SDK found — continuing with the image's SDK"
-fi
+echo "Using monkeyc: $(command -v monkeyc) — simulator: $(command -v simulator)"
 
 # The simulator segfaults shortly after loading the device skin when no
 # usable OpenGL is present — force Mesa software rendering

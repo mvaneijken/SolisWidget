@@ -24,11 +24,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # v2.7.0 bundles SDK 8.4.0 with matching device files: recent enough
+      # for current devices, and its simulator does not have the 9.x
+      # crash-under-Xvfb bug
       - name: Capture simulator screenshots
         run: >
           docker run --rm -v "$PWD":/work -w /work --entrypoint bash
-          -e SDK_VERSION=9.1.0
-          ghcr.io/matco/connectiq-tester:latest
+          ghcr.io/matco/connectiq-tester:v2.7.0
           .github/scripts/screenshot.sh ${{ matrix.device }} screenshots
 
       - name: Upload screenshot artifact
