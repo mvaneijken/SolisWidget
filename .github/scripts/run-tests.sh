@@ -8,8 +8,8 @@
 #     ghcr.io/matco/connectiq-tester:latest .github/scripts/run-tests.sh fenix7
 #
 # The container's own entrypoint compiles with strict type checking (-l 3),
-# which this codebase does not use — this script mirrors it with gradual
-# type checking (-l 1) instead.
+# which this codebase does not use — this script mirrors it with type
+# checking disabled (-l 0) instead.
 #
 # Usage: run-tests.sh [device_id]
 set -u

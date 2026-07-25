@@ -184,6 +184,9 @@ class SolisWidgetView extends WatchUi.View {
     }
 
     function onShow() {
+        // Leaving glance context: reset so error messages and the request
+        // chain use full-widget behaviour again
+        $.gIsGlance = false;
         curr = Application.getApp().getProperty("curr");
         today = Application.getApp().getProperty("today");
         thisMonth = Application.getApp().getProperty("thisMonth");
