@@ -111,15 +111,15 @@ capture() {
     echo "Captured page $1: $(identify -format '%wx%h' "$ROOT/$OUT_DIR/${DEVICE_ID}-page$1.png" 2>/dev/null || echo missing)"
 }
 
-# Capture all six pages. All target devices have touchscreens, and a tap
-# on the screen triggers onSelect which advances to the next page. The
-# click is sent with XTEST (no window focus needed — focusing the
-# simulator's helper windows has crashed it before).
+# Capture all six pages. The simulator crashes on synthetic key/mouse
+# input under Xvfb, so no input is sent at all: the demo build cycles to
+# the next page on every app launch (a counter in app storage), and the
+# app is simply relaunched with monkeydo between captures.
 echo "Capturing all pages..."
 capture 1 || exit 1
 for page in 2 3 4 5 6; do
-    xdotool mousemove --sync $((WX + WW / 2)) $((WY + WH / 2)) click 1
-    sleep 3
+    monkeydo bin/demo.prg "$DEVICE_ID" > /tmp/monkeydo.log 2>&1 &
+    sleep 10
     capture "$page" || exit 1
 done
 
