@@ -1,4 +1,4 @@
-; Demo build: shows realistic hardcoded values without network access.
-; Used only to capture Connect IQ store screenshots in CI — never released.
+# Demo build: shows realistic hardcoded values without network access.
+# Used only to capture Connect IQ store screenshots in CI — never released.
 project.manifest = manifest.xml
 base.excludeAnnotations = prod
