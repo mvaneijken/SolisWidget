@@ -92,6 +92,28 @@ the final manual upload:
    [Connect IQ developer dashboard](https://apps.garmin.com/developer/dashboard),
    including the "What's New" text.
 
+### Store screenshots
+
+The store listing needs screenshots per device family. The **demo build**
+(`SolisWidget/monkey-demo.jungle`) shows realistic hardcoded values without any
+network access or credentials, and advances to the **next page on every app
+start** — so capturing all six screens takes a few minutes locally:
+
+```sh
+cd SolisWidget
+monkeyc -f monkey-demo.jungle -d fr965 -o bin/demo.prg -y <your-key.der> -l 0
+# start the simulator (Connect IQ: Simulate Device in VS Code, or `connectiq`)
+monkeydo bin/demo.prg fr965   # shows page 1 — capture, then re-run for page 2, etc.
+```
+
+Use the simulator's built-in screenshot function (File menu) for clean images.
+Repeat with `fr970`, `fenix847mm`, `venu3`, or any other device. The demo code
+is excluded from production builds via the `(:demo)`/`(:prod)` annotations.
+
+There is also a manual [Screenshots workflow](.github/workflows/screenshots.yml)
+that attempts this in CI, but the Connect IQ simulator is unstable on headless
+runners, so local capture is the dependable route.
+
 ### Signing key
 
 Store updates must be signed with the **same developer key** as the originally published
