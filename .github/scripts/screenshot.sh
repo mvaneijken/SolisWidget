@@ -22,9 +22,16 @@ OUT_DIR=${2:-screenshots}
 
 trap 'kill $(jobs -p) 2>/dev/null' EXIT
 
-echo "Installing capture tools..."
+echo "Installing capture tools and software OpenGL..."
 apt-get update -qq >/dev/null
-apt-get install -y -qq --no-install-recommends imagemagick xdotool x11-utils >/dev/null
+apt-get install -y -qq --no-install-recommends \
+    imagemagick xdotool x11-utils \
+    libgl1 libglx-mesa0 libgl1-mesa-dri libegl1 mesa-utils >/dev/null
+
+# The simulator segfaults shortly after loading the device skin when no
+# usable OpenGL is present — force Mesa software rendering
+export LIBGL_ALWAYS_SOFTWARE=1
+export GALLIUM_DRIVER=llvmpipe
 
 echo "Generating temporary signing key (demo build only)..."
 openssl genrsa -out /tmp/key.pem 4096 2>/dev/null
@@ -43,8 +50,9 @@ if [[ ! -f bin/demo.prg ]]; then
 fi
 
 export DISPLAY=:1
-Xvfb "$DISPLAY" -screen 0 1600x1200x24 &
+Xvfb "$DISPLAY" -screen 0 1600x1200x24 +extension GLX +render -noreset &
 sleep 2
+glxinfo -B 2>/dev/null | head -6 || echo "glxinfo unavailable"
 
 SIM_PID=0
 SIM_WIN=""
