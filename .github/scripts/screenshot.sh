@@ -110,9 +110,11 @@ capture() {
 }
 
 stop_sim() {
-    kill "$SIM_PID" 2>/dev/null
-    wait "$SIM_PID" 2>/dev/null
-    pkill -f monkeydo 2>/dev/null
+    # SIGKILL: the simulator can ignore SIGTERM, which would hang wait
+    kill -9 "$SIM_PID" 2>/dev/null
+    wait "$SIM_PID" 2>/dev/null || true
+    pkill -9 -x simulator 2>/dev/null || true
+    pkill -9 -f monkeybrains 2>/dev/null || true
     sleep 1
 }
 
