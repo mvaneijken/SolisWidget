@@ -131,7 +131,7 @@ page_cycle() {
     simulator > /tmp/simulator.log 2>&1 &
     SIM_PID=$!
     sleep 5
-    monkeydo bin/demo.prg "$DEVICE_ID" > /tmp/monkeydo.log 2>&1 &
+    stdbuf -oL -eL monkeydo bin/demo.prg "$DEVICE_ID" > /tmp/monkeydo.log 2>&1 &
     sleep 15
     capture "$page"
     local rc=$?
@@ -143,6 +143,19 @@ page_cycle() {
     stop_sim
     return $rc
 }
+
+# One-time diagnostics: does the sim CLI offer anything useful, and does
+# the monkeydo<->simulator channel work at all in this environment (the
+# unit-test path is known-good in CI)?
+echo "--- simulator --help ---"
+simulator --help 2>&1 | head -20 || true
+echo "--- monkeydo -t probe ---"
+simulator > /tmp/simulator.log 2>&1 &
+SIM_PID=$!
+sleep 5
+timeout 30 stdbuf -oL -eL monkeydo bin/demo.prg "$DEVICE_ID" -t 2>&1 | head -20 || true
+stop_sim
+echo "--- end probes ---"
 
 echo "Capturing all pages (fresh simulator per page)..."
 for page in 1 2 3 4 5 6; do
