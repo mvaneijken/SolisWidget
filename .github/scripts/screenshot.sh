@@ -52,7 +52,7 @@ SIM_WIN=""
 start_sim_and_app() {
     simulator > /tmp/simulator.log 2>&1 &
     SIM_PID=$!
-    sleep 6
+    sleep 4
     if ! kill -0 "$SIM_PID" 2>/dev/null; then
         echo "Simulator died during startup:"
         tail -5 /tmp/simulator.log || true
@@ -60,31 +60,47 @@ start_sim_and_app() {
     fi
 
     monkeydo bin/demo.prg "$DEVICE_ID" > /tmp/monkeydo.log 2>&1 &
-    sleep 8
-
-    if ! kill -0 "$SIM_PID" 2>/dev/null; then
-        echo "Simulator died while launching the app:"
-        tail -5 /tmp/simulator.log || true
-        tail -5 /tmp/monkeydo.log || true
-        return 1
-    fi
     return 0
 }
 
-# Several simulator windows share the same class; the largest one holds
-# the device rendering
+# Several simulator windows share the same class; the plain main window
+# (with menu bar) is ~450x670, while the device rendering opens as a
+# separate larger window once monkeydo has loaded the device
 find_main_window() {
     local best_area=0 id area
     SIM_WIN=""
+    SIM_AREA=0
     for id in $(xdotool search --class "simulator" 2>/dev/null); do
         eval "$(xdotool getwindowgeometry --shell "$id" 2>/dev/null)" || continue
         area=$((WIDTH * HEIGHT))
         if (( area > best_area )); then
             best_area=$area
             SIM_WIN=$id
+            SIM_AREA=$area
         fi
     done
     [[ -n $SIM_WIN ]]
+}
+
+# Wait until the device window exists (bigger than the ~300k px main
+# window), checking that the simulator stays alive meanwhile
+wait_for_device_window() {
+    local i
+    for i in $(seq 1 25); do
+        if ! kill -0 "$SIM_PID" 2>/dev/null; then
+            echo "Simulator died while waiting for the device window:"
+            tail -5 /tmp/simulator.log || true
+            tail -5 /tmp/monkeydo.log || true
+            return 1
+        fi
+        if find_main_window && (( SIM_AREA > 400000 )); then
+            sleep 2
+            return 0
+        fi
+        sleep 1
+    done
+    echo "Device window never appeared."
+    return 1
 }
 
 capture() {
@@ -103,7 +119,7 @@ stop_sim() {
 page_cycle() {
     local page=$1
     start_sim_and_app || { stop_sim; return 1; }
-    find_main_window || { echo "No simulator window found"; stop_sim; return 1; }
+    wait_for_device_window || { stop_sim; return 1; }
     capture "$page" || { stop_sim; return 1; }
     stop_sim
     return 0
@@ -121,7 +137,7 @@ done
 for page in 1 2 3 4 5 6; do
     img="$ROOT/$OUT_DIR/${DEVICE_ID}-page$page.png"
     width=$(identify -format '%w' "$img" 2>/dev/null || echo 0)
-    if [[ ${width} -lt 100 ]]; then
+    if [[ ${width} -lt 500 ]]; then
         echo "Screenshot for page $page is blank (width ${width}px) — capture failed!"
         exit 1
     fi
