@@ -6,6 +6,11 @@ name: Screenshots
 # Connect IQ store listing.
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/screenshots.yml'
+      - '.github/scripts/screenshot.sh'
+      - 'SolisWidget/monkey-demo.jungle'
 
 jobs:
   screenshot:
