@@ -425,6 +425,25 @@ class SolisWidgetApp extends Application.AppBase {
             i.day.format("%02u"),
         ]);
 
+        // Cycle the shown page on every app launch, so the screenshot
+        // script can capture all pages by relaunching the app — the
+        // simulator crashes on synthetic key/mouse input under Xvfb
+        var demoPage = getProperty("demoPage");
+        if (
+            demoPage == null ||
+            !(demoPage instanceof Lang.Number) ||
+            demoPage < 1 ||
+            demoPage > 6
+        ) {
+            demoPage = 1;
+        }
+        currPage = demoPage;
+        setProperty("demoPage", (demoPage % 6) + 1);
+
+        // Prevent the first onUpdate from re-reading settings and
+        // resetting currPage to the configured starting page
+        $.gSettingsChanged = false;
+
         showRefrsh = false;
         $.showErr = false;
         $.updateGlanceProperties();
