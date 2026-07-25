@@ -64,7 +64,7 @@ start_sim_and_app() {
     sleep 4
     if ! kill -0 "$SIM_PID" 2>/dev/null; then
         echo "Simulator died during startup:"
-        tail -5 /tmp/simulator.log || true
+        cat /tmp/simulator.log || true
         return 1
     fi
 
@@ -98,8 +98,8 @@ wait_for_device_window() {
     for i in $(seq 1 25); do
         if ! kill -0 "$SIM_PID" 2>/dev/null; then
             echo "Simulator died while waiting for the device window:"
-            tail -5 /tmp/simulator.log || true
-            tail -5 /tmp/monkeydo.log || true
+            cat /tmp/simulator.log || true
+            cat /tmp/monkeydo.log || true
             return 1
         fi
         if find_main_window && (( SIM_AREA > 400000 )); then
