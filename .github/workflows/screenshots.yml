@@ -4,13 +4,14 @@ name: Screenshots
 # build (hardcoded realistic values, no network). One image per widget page
 # per device. The results are committed to docs/screenshots on the branch
 # and also uploaded as artifacts.
+#
+# NOTE: the Connect IQ simulator is unstable under Xvfb on GitHub-hosted
+# runners (it segfaults shortly after an app launch — observed with SDKs
+# 8.4.0 through 9.2.0), so this workflow is manual-only and may fail.
+# The reliable path is capturing locally with the demo build; see the
+# "Store screenshots" section in the README.
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - '.github/workflows/screenshots.yml'
-      - '.github/scripts/screenshot.sh'
-      - 'SolisWidget/monkey-demo.jungle'
 
 jobs:
   screenshot:
