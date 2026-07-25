@@ -1,6 +1,7 @@
 #!/bin/bash
-# Capture a Connect IQ store screenshot for one device, using the demo build
+# Capture Connect IQ store screenshots for one device, using the demo build
 # (monkey-demo.jungle) which shows realistic values without network access.
+# One screenshot is saved per widget page (6 pages).
 #
 # Designed to run inside the ghcr.io/matco/connectiq-tester container:
 #
@@ -16,9 +17,9 @@ OUT_DIR=${2:-screenshots}
 # Kill the simulator and Xvfb when the script exits
 trap 'kill $(jobs -p) 2>/dev/null' EXIT
 
-echo "Installing ImageMagick and xdotool for the capture..."
+echo "Installing capture tools..."
 apt-get update -qq >/dev/null
-apt-get install -y -qq --no-install-recommends imagemagick xdotool >/dev/null
+apt-get install -y -qq --no-install-recommends imagemagick xdotool x11-utils >/dev/null
 
 echo "Generating temporary signing key (demo build only)..."
 openssl genrsa -out /tmp/key.pem 4096 2>/dev/null
@@ -36,23 +37,60 @@ if [[ ! -f bin/demo.prg ]]; then
     exit 1
 fi
 
-echo "Starting headless simulator..."
 export DISPLAY=:1
 Xvfb "$DISPLAY" -screen 0 1600x1200x24 &
-simulator > /dev/null 2>&1 &
-sleep 5
+sleep 2
 
-echo "Launching widget in the simulator..."
-monkeydo bin/demo.prg "$DEVICE_ID" &
-# Give the app time to start and render the demo data
-sleep 20
+SIM_PID=0
+
+start_sim_and_app() {
+    echo "Starting headless simulator..."
+    simulator > /tmp/simulator.log 2>&1 &
+    SIM_PID=$!
+    sleep 8
+    if ! kill -0 "$SIM_PID" 2>/dev/null; then
+        echo "Simulator died during startup:"
+        tail -5 /tmp/simulator.log || true
+        return 1
+    fi
+
+    echo "Launching widget in the simulator..."
+    monkeydo bin/demo.prg "$DEVICE_ID" > /tmp/monkeydo.log 2>&1 &
+    sleep 12
+
+    if ! kill -0 "$SIM_PID" 2>/dev/null; then
+        echo "Simulator died while running the app:"
+        tail -5 /tmp/simulator.log || true
+        tail -5 /tmp/monkeydo.log || true
+        return 1
+    fi
+    return 0
+}
+
+# The simulator occasionally crashes under Xvfb — retry once
+if ! start_sim_and_app; then
+    echo "Retrying simulator start..."
+    kill $(jobs -p) 2>/dev/null
+    sleep 2
+    Xvfb "$DISPLAY" -screen 0 1600x1200x24 2>/dev/null &
+    sleep 2
+    start_sim_and_app || { echo "Simulator failed twice, giving up."; exit 1; }
+fi
+
+echo "Windows on the display:"
+xwininfo -root -tree -display "$DISPLAY" | grep -E '^\s+0x' || true
 
 # No window manager runs in Xvfb, so grab the root display and trim the
 # black background down to the simulator window
 capture() {
+    if ! kill -0 "$SIM_PID" 2>/dev/null; then
+        echo "Simulator is no longer running at page $1!"
+        tail -5 /tmp/simulator.log || true
+        return 1
+    fi
     import -display "$DISPLAY" -window root png:- \
         | convert - -trim +repage "$ROOT/$OUT_DIR/${DEVICE_ID}-page$1.png"
-    echo "Captured page $1"
+    echo "Captured page $1: $(identify -format '%wx%h' "$ROOT/$OUT_DIR/${DEVICE_ID}-page$1.png" 2>/dev/null || echo missing)"
 }
 
 # Focus the simulator window so key presses reach it
@@ -62,22 +100,26 @@ if [[ -z ${SIM_WIN} ]]; then
 fi
 echo "Simulator window: ${SIM_WIN:-not found}"
 if [[ -n ${SIM_WIN} ]]; then
-    xdotool windowfocus --sync "$SIM_WIN" || true
+    xdotool windowactivate "$SIM_WIN" 2>/dev/null || xdotool windowfocus "$SIM_WIN" 2>/dev/null || true
 fi
 
 # Capture all six pages: Enter maps to the START/select button in the
 # simulator, and onSelect advances the widget to the next page
 echo "Capturing all pages..."
-capture 1
+capture 1 || exit 1
 for page in 2 3 4 5 6; do
     xdotool key --clearmodifiers Return
     sleep 3
-    capture "$page"
+    capture "$page" || exit 1
 done
 
-if [[ ! -s "$ROOT/$OUT_DIR/${DEVICE_ID}-page1.png" ]]; then
-    echo "Screenshot capture failed!"
-    exit 1
-fi
-identify "$ROOT/$OUT_DIR/${DEVICE_ID}"-page*.png
-echo "Saved page screenshots to $OUT_DIR/"
+# Validate: a blank display trims down to a tiny image
+for page in 1 2 3 4 5 6; do
+    img="$ROOT/$OUT_DIR/${DEVICE_ID}-page$page.png"
+    width=$(identify -format '%w' "$img" 2>/dev/null || echo 0)
+    if [[ ${width} -lt 100 ]]; then
+        echo "Screenshot for page $page is blank (width ${width}px) — capture failed!"
+        exit 1
+    fi
+done
+echo "All page screenshots captured successfully."

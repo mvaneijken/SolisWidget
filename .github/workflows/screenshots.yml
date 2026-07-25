@@ -1,9 +1,9 @@
 name: Screenshots
 
 # Captures Connect IQ store screenshots in the simulator, using the demo
-# build (hardcoded realistic values, no network). Run manually from the
-# Actions tab, then download the artifacts and upload the images to the
-# Connect IQ store listing.
+# build (hardcoded realistic values, no network). One image per widget page
+# per device. The results are committed to docs/screenshots on the branch
+# and also uploaded as artifacts.
 on:
   workflow_dispatch:
   push:
@@ -23,14 +23,46 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Capture simulator screenshot
+      - name: Capture simulator screenshots
         run: >
           docker run --rm -v "$PWD":/work -w /work --entrypoint bash
           ghcr.io/matco/connectiq-tester:latest
           .github/scripts/screenshot.sh ${{ matrix.device }} screenshots
 
       - name: Upload screenshot artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: screenshot-${{ matrix.device }}
           path: screenshots/*.png
+
+  commit:
+    name: Commit screenshots to the branch
+    needs: screenshot
+    if: github.ref_type == 'branch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/download-artifact@v5
+        with:
+          pattern: screenshot-*
+          merge-multiple: true
+          path: docs/screenshots
+
+      - name: Commit and push screenshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/screenshots
+          if git diff --cached --quiet; then
+            echo "No screenshot changes to commit."
+            exit 0
+          fi
+          git commit -m "Update simulator screenshots [skip ci]"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
