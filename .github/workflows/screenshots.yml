@@ -1,0 +1,31 @@
+name: Screenshots
+
+# Captures Connect IQ store screenshots in the simulator, using the demo
+# build (hardcoded realistic values, no network). Run manually from the
+# Actions tab, then download the artifacts and upload the images to the
+# Connect IQ store listing.
+on:
+  workflow_dispatch:
+
+jobs:
+  screenshot:
+    name: Screenshot ${{ matrix.device }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        device: [fr970, fr965, fenix847mm, venu3]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Capture simulator screenshot
+        run: >
+          docker run --rm -v "$PWD":/work -w /work --entrypoint bash
+          ghcr.io/matco/connectiq-tester:latest
+          .github/scripts/screenshot.sh ${{ matrix.device }} screenshots
+
+      - name: Upload screenshot artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshot-${{ matrix.device }}
+          path: screenshots/*.png

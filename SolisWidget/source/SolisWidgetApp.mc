@@ -396,9 +396,49 @@ class SolisWidgetApp extends Application.AppBase {
     // API request chain
     // -------------------------------------------------------------------------
 
+    // Production build (monkey.jungle excludes :demo): no demo data,
+    // continue with the real API request chain
+    (:prod)
+    function applyDemoData() {
+        return false;
+    }
+
+    // Demo build (monkey-demo.jungle excludes :prod): show realistic values
+    // without any network access. Used to capture store screenshots in CI.
+    (:demo)
+    function applyDemoData() {
+        curr = "3.21 kW";
+        today = "18.6 kWh";
+        thisMonth = "412.9 kWh";
+        thisYear = "4056.3 kWh";
+        total = "9846.3 kWh";
+
+        var i = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+        lastUpdTmLocal = Lang.format("$1$:$2$:$3$", [
+            i.hour.format("%02u"),
+            i.min.format("%02u"),
+            i.sec.format("%02u"),
+        ]);
+        lastUpdDtLocal = Lang.format("$1$-$2$-$3$", [
+            i.year.format("%04u"),
+            i.month.format("%02u"),
+            i.day.format("%02u"),
+        ]);
+
+        showRefrsh = false;
+        $.showErr = false;
+        $.updateGlanceProperties();
+        return true;
+    }
+
     // Entry point: route to the correct first uncached step
     function makeReq() {
         fUpdt = false;
+
+        if (applyDemoData()) {
+            WatchUi.requestUpdate();
+            return;
+        }
 
         if (
             apiKey == null ||
