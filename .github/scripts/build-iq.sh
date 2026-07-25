@@ -20,7 +20,7 @@ mkdir -p "$(dirname "$ROOT/$OUTPUT")"
 
 cd SolisWidget
 echo "Building release export package..."
-monkeyc -e -f monkey.jungle -o "$ROOT/$OUTPUT" -y "$ROOT/$KEY_PATH" -r -w -l 1
+monkeyc -e -f monkey.jungle -o "$ROOT/$OUTPUT" -y "$ROOT/$KEY_PATH" -r -w -l 0
 
 if [[ ! -f "$ROOT/$OUTPUT" ]]; then
     echo "Export build failed!"

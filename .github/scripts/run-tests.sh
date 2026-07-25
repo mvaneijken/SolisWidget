@@ -27,7 +27,7 @@ openssl pkcs8 -topk8 -inform PEM -outform DER -in /tmp/key.pem -out /tmp/key.der
 cd "$APP_DIR"
 
 echo "Compiling unit-test build for $DEVICE_ID..."
-monkeyc -f monkey.jungle -d "$DEVICE_ID" -o bin/app-test.prg -y /tmp/key.der -t -w -l 1
+monkeyc -f monkey.jungle -d "$DEVICE_ID" -o bin/app-test.prg -y /tmp/key.der -t -w -l 0
 if [[ ! -f bin/app-test.prg ]]; then
     echo "Compilation failed!"
     exit 1
