@@ -16,9 +16,9 @@ OUT_DIR=${2:-screenshots}
 # Kill the simulator and Xvfb when the script exits
 trap 'kill $(jobs -p) 2>/dev/null' EXIT
 
-echo "Installing ImageMagick for the capture..."
+echo "Installing ImageMagick and xdotool for the capture..."
 apt-get update -qq >/dev/null
-apt-get install -y -qq --no-install-recommends imagemagick >/dev/null
+apt-get install -y -qq --no-install-recommends imagemagick xdotool >/dev/null
 
 echo "Generating temporary signing key (demo build only)..."
 openssl genrsa -out /tmp/key.pem 4096 2>/dev/null
@@ -47,15 +47,37 @@ monkeydo bin/demo.prg "$DEVICE_ID" &
 # Give the app time to start and render the demo data
 sleep 20
 
-echo "Capturing screenshot..."
 # No window manager runs in Xvfb, so grab the root display and trim the
 # black background down to the simulator window
-import -display "$DISPLAY" -window root png:- \
-    | convert - -trim +repage "$ROOT/$OUT_DIR/$DEVICE_ID.png"
+capture() {
+    import -display "$DISPLAY" -window root png:- \
+        | convert - -trim +repage "$ROOT/$OUT_DIR/${DEVICE_ID}-page$1.png"
+    echo "Captured page $1"
+}
 
-if [[ ! -s "$ROOT/$OUT_DIR/$DEVICE_ID.png" ]]; then
+# Focus the simulator window so key presses reach it
+SIM_WIN=$(xdotool search --name "imulator" | head -1 || true)
+if [[ -z ${SIM_WIN} ]]; then
+    SIM_WIN=$(xdotool search --name ".*" | tail -1 || true)
+fi
+echo "Simulator window: ${SIM_WIN:-not found}"
+if [[ -n ${SIM_WIN} ]]; then
+    xdotool windowfocus --sync "$SIM_WIN" || true
+fi
+
+# Capture all six pages: Enter maps to the START/select button in the
+# simulator, and onSelect advances the widget to the next page
+echo "Capturing all pages..."
+capture 1
+for page in 2 3 4 5 6; do
+    xdotool key --clearmodifiers Return
+    sleep 3
+    capture "$page"
+done
+
+if [[ ! -s "$ROOT/$OUT_DIR/${DEVICE_ID}-page1.png" ]]; then
     echo "Screenshot capture failed!"
     exit 1
 fi
-identify "$ROOT/$OUT_DIR/$DEVICE_ID.png"
-echo "Saved $OUT_DIR/$DEVICE_ID.png"
+identify "$ROOT/$OUT_DIR/${DEVICE_ID}"-page*.png
+echo "Saved page screenshots to $OUT_DIR/"

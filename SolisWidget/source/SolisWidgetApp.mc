@@ -410,8 +410,8 @@ class SolisWidgetApp extends Application.AppBase {
         curr = "3.21 kW";
         today = "18.6 kWh";
         thisMonth = "412.9 kWh";
-        thisYear = "4056.3 kWh";
-        total = "9846.3 kWh";
+        thisYear = "4.06 MWh";
+        total = "9.85 MWh";
 
         var i = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
         lastUpdTmLocal = Lang.format("$1$:$2$:$3$", [
