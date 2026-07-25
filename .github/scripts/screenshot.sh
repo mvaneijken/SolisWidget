@@ -3,11 +3,10 @@
 # (monkey-demo.jungle) which shows realistic values without network access.
 # One screenshot is saved per widget page (6 pages).
 #
-# The simulator segfaults roughly 20-30 seconds after startup under Xvfb,
-# and also crashes on synthetic key/mouse input. So: no input events are
-# used at all, and the simulator is restarted for every page. The demo
-# build advances to the next page on each app launch (a counter in app
-# storage, which persists on disk across simulator restarts).
+# The simulator is fragile under Xvfb: it can crash on synthetic input and
+# sometimes shortly after device load. So: no input events at all, plain
+# Xvfb, a fresh simulator per page, and the demo build advances to the next
+# page on each app launch (a counter in app storage, persisted on disk).
 #
 # Designed to run inside the ghcr.io/matco/connectiq-tester container:
 #
@@ -22,18 +21,13 @@ OUT_DIR=${2:-screenshots}
 
 trap 'kill $(jobs -p) 2>/dev/null' EXIT
 
-echo "Installing capture tools and software OpenGL..."
+echo "Installing capture tools..."
 apt-get update -qq >/dev/null
 apt-get install -y -qq --no-install-recommends \
-    imagemagick xdotool x11-utils gdb unzip curl ca-certificates \
-    libgl1 libglx-mesa0 libgl1-mesa-dri libegl1 mesa-utils >/dev/null
+    imagemagick xdotool x11-utils unzip curl ca-certificates >/dev/null
 
-# The simulator bundled with SDK 9.2.0 segfaults in an internal worker
-# thread shortly after loading a device under Xvfb. Swap in an older
-# SDK's simulator/compiler — the image's device files are kept.
-# Optionally replace the image's SDK (set SDK_VERSION). By default the
-# image's own SDK is used — the workflow pins an image tag whose SDK and
-# device files match and whose simulator is stable under Xvfb.
+# Optionally replace the image's SDK (set SDK_VERSION); by default the
+# image's own SDK and device files are used.
 if [[ -n ${SDK_VERSION:-} ]]; then
     curl -fsS "https://developer.garmin.com/downloads/connect-iq/sdks/sdks.json" -o /tmp/sdks.json
     SDK_FILE=$(grep -o "connectiq-sdk-lin-${SDK_VERSION}[^\"]*" /tmp/sdks.json | head -1)
@@ -49,11 +43,6 @@ if [[ -n ${SDK_VERSION:-} ]]; then
     fi
 fi
 echo "Using monkeyc: $(command -v monkeyc) — simulator: $(command -v simulator)"
-
-# The simulator segfaults shortly after loading the device skin when no
-# usable OpenGL is present — force Mesa software rendering
-export LIBGL_ALWAYS_SOFTWARE=1
-export GALLIUM_DRIVER=llvmpipe
 
 echo "Generating temporary signing key (demo build only)..."
 openssl genrsa -out /tmp/key.pem 4096 2>/dev/null
@@ -72,92 +61,50 @@ if [[ ! -f bin/demo.prg ]]; then
 fi
 
 export DISPLAY=:1
-Xvfb "$DISPLAY" -screen 0 1600x1200x24 +extension GLX +render -noreset &
+Xvfb "$DISPLAY" -screen 0 1600x1200x24 &
 sleep 2
-glxinfo -B 2>/dev/null | head -6 || echo "glxinfo unavailable"
 
 SIM_PID=0
 SIM_WIN=""
 
-start_sim_and_app() {
-    # Run under gdb so a segfault yields a backtrace in the log
-    gdb -batch -ex run -ex 'bt 20' --args "$(command -v simulator)" > /tmp/simulator.log 2>&1 &
-    SIM_PID=$!
-    sleep 4
-    if ! kill -0 "$SIM_PID" 2>/dev/null; then
-        echo "Simulator died during startup:"
-        cat /tmp/simulator.log || true
-        return 1
-    fi
-
-    monkeydo bin/demo.prg "$DEVICE_ID" > /tmp/monkeydo.log 2>&1 &
-    return 0
-}
-
-# Several simulator windows share the same class; the plain main window
-# (with menu bar) is ~450x670, while the device rendering opens as a
-# separate larger window once monkeydo has loaded the device
+# Several simulator windows share the same class; the largest one is the
+# device rendering (only present once the device has loaded)
 find_main_window() {
     local best_area=0 id area
     SIM_WIN=""
-    SIM_AREA=0
     for id in $(xdotool search --class "simulator" 2>/dev/null); do
         eval "$(xdotool getwindowgeometry --shell "$id" 2>/dev/null)" || continue
         area=$((WIDTH * HEIGHT))
-        if (( area > best_area )); then
+        if (( area > best_area && area > 400000 )); then
             best_area=$area
             SIM_WIN=$id
-            SIM_AREA=$area
         fi
     done
     [[ -n $SIM_WIN ]]
 }
 
-# Wait until the device window exists (bigger than the ~300k px main
-# window), checking that the simulator stays alive meanwhile
-wait_for_device_window() {
-    local i
-    for i in $(seq 1 25); do
-        if ! kill -0 "$SIM_PID" 2>/dev/null; then
-            echo "Simulator died while waiting for the device window:"
-            echo "--- simulator.log ---"
-            cat /tmp/simulator.log || true
-            echo "--- monkeydo.log ---"
-            cat /tmp/monkeydo.log || true
-            echo "--- end logs ---"
-            return 1
-        fi
-        if find_main_window && (( SIM_AREA > 400000 )); then
-            return 0
-        fi
-        sleep 1
-    done
-    echo "Device window never appeared."
-    return 1
-}
-
-# Capture the device window repeatedly (the widget needs a moment to
-# draw after the window appears, and the simulator can crash at any
-# time) — keep the newest successful image. import can hang on a dead
-# window, so the pipeline is bounded with timeout.
+# Capture the device window; only accept a frame whose screen centre is
+# dark (the widget draws white-on-black — a blank device screen is white).
+# import can hang on a dead window, so the pipeline is bounded.
 capture() {
     local page=$1 ok=1 i w dark
     local img="$ROOT/$OUT_DIR/${DEVICE_ID}-page$page.png"
-    for i in $(seq 1 12); do
-        if ! kill -0 "$SIM_PID" 2>/dev/null; then break; fi
-        find_main_window || break
+    for i in $(seq 1 8); do
+        if ! kill -0 "$SIM_PID" 2>/dev/null; then
+            echo "Simulator no longer running (attempt $i)"
+            break
+        fi
+        if ! find_main_window; then
+            sleep 2
+            continue
+        fi
         if timeout 15 bash -c "import -display '$DISPLAY' -window '$SIM_WIN' png:- | convert - -trim +repage '$img.tmp'" 2>/dev/null; then
             w=$(identify -format '%w' "$img.tmp" 2>/dev/null || echo 0)
-            # The widget draws white text on a black screen; before the app
-            # has launched the device screen is blank white — only accept a
-            # frame whose screen centre is dark
             dark=$(convert "$img.tmp" -gravity center -crop 30%x30%+0+0 +repage -colorspace Gray -format '%[fx:mean<0.6?1:0]' info: 2>/dev/null || echo 0)
             if (( w > 500 )) && [[ $dark == "1" ]]; then
                 mv "$img.tmp" "$img"
                 ok=0
-                # One more loop iteration replaces this frame with a newer
-                # one if the app redraws; two good frames are plenty
-                if (( i > 1 )); then break; fi
+                break
             fi
         fi
         sleep 2
@@ -167,16 +114,11 @@ capture() {
         echo "Captured page $page: $(identify -format '%wx%h' "$img" 2>/dev/null)"
     else
         echo "No valid capture for page $page"
-        echo "--- simulator.log ---"
-        cat /tmp/simulator.log || true
-        echo "--- monkeydo.log ---"
-        cat /tmp/monkeydo.log || true
     fi
     return $ok
 }
 
 stop_sim() {
-    # SIGKILL: the simulator can ignore SIGTERM, which would hang wait
     kill -9 "$SIM_PID" 2>/dev/null
     wait "$SIM_PID" 2>/dev/null || true
     pkill -9 -x simulator 2>/dev/null || true
@@ -186,11 +128,20 @@ stop_sim() {
 
 page_cycle() {
     local page=$1
-    start_sim_and_app || { stop_sim; return 1; }
-    wait_for_device_window || { stop_sim; return 1; }
-    capture "$page" || { stop_sim; return 1; }
+    simulator > /tmp/simulator.log 2>&1 &
+    SIM_PID=$!
+    sleep 5
+    monkeydo bin/demo.prg "$DEVICE_ID" > /tmp/monkeydo.log 2>&1 &
+    sleep 15
+    capture "$page"
+    local rc=$?
+    echo "--- monkeydo.log (page $page) ---"
+    cat /tmp/monkeydo.log 2>/dev/null || true
+    echo "--- simulator.log tail (page $page) ---"
+    tail -5 /tmp/simulator.log 2>/dev/null || true
+    echo "--- end logs ---"
     stop_sim
-    return 0
+    return $rc
 }
 
 echo "Capturing all pages (fresh simulator per page)..."
@@ -201,12 +152,12 @@ for page in 1 2 3 4 5 6; do
     fi
 done
 
-# Validate: a blank display trims down to a tiny image
+# Final validation: every page must be a real device-sized image
 for page in 1 2 3 4 5 6; do
     img="$ROOT/$OUT_DIR/${DEVICE_ID}-page$page.png"
     width=$(identify -format '%w' "$img" 2>/dev/null || echo 0)
     if [[ ${width} -lt 500 ]]; then
-        echo "Screenshot for page $page is blank (width ${width}px) — capture failed!"
+        echo "Screenshot for page $page is invalid (width ${width}px)!"
         exit 1
     fi
 done
